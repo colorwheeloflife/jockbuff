@@ -1,4 +1,18 @@
 Rails.application.routes.draw do
+  get 'compares/show'
+
+  get 'owners/show'
+
+  get 'players/show'
+
+  get 'players/index'
+
+  get 'leagues/new'
+
+  get 'leagues/index'
+
+  get 'leagues/show'
+
   resources :users
   root to: 'visitors#index'
   get '/auth/:provider/callback' => 'sessions#create'
