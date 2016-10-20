@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get 'leagues/show'
 
   resources :users
-  root to: 'visitors#index'
+  root to: 'welcome#welcome'
   get '/auth/:provider/callback' => 'sessions#create'
   get '/signin' => 'sessions#new', :as => :signin
   get '/signout' => 'sessions#destroy', :as => :signout
