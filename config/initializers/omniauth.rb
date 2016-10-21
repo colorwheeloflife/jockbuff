@@ -1,3 +1,10 @@
+# require 'httplog'
+
 Rails.application.config.middleware.use OmniAuth::Builder do
-  provider :twitter, Rails.application.secrets.omniauth_provider_key, Rails.application.secrets.omniauth_provider_secret
+  provider :yahoo_oauth2, Rails.application.secrets.yahoo_client_id, Rails.application.secrets.yahoo_secret,
+    name: 'yahoo'
 end
+
+# OmniAuth.config.logger = Rails.logger
+# HttpLog.options[:logger] = Rails.logger
+# puts "Client ID #{Rails.application.secrets.yahoo_client_id}"

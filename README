@@ -49,7 +49,7 @@ Preferences:
 * templates: erb
 * continuous_testing: none
 * frontend: simple
-* omniauth_provider: twitter
+* omniauth_provider: yahoo
 * form_builder: none
 * rvmrc: true
 
