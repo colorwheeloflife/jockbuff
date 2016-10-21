@@ -13,6 +13,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'nokogiri'
 gem 'rack', '~>2.0'
 gem 'bcrypt'
+gem 'bootstrap-sass'
 
 group :development, :test do
   gem 'byebug', platform: :mri
@@ -24,7 +25,6 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-  gem 'bootstrap-sass'
   gem 'high_voltage'
   gem 'omniauth'
   gem 'omniauth-yahoo-oauth2', git: 'https://github.com/sarahveness/omniauth-yahoo-oauth2.git'
