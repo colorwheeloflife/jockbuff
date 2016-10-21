@@ -21,4 +21,8 @@ Things you may want to cover:
 
 * Deployment instructions
 
-* ...
+1. Clone the repo
+2. gem install bundler (if you don't already have it installed)
+3. Run `bundle install` command
+4. Run bin/rails db:migrate
+5. bin/rails s -b 0.0.0.0

@@ -22,8 +22,9 @@ Rails.application.routes.draw do
   resources :owners, only: [:show]
   resources :players, only: [:index, :show]
 
-  get '/login' => 'sessions#new'
-  post '/login' => 'sessions#create'
-  get '/logout' => 'sessions#destroy'
+  get '/auth/:provider/callback' => 'sessions#create'
+  get '/signin' => 'sessions#new', :as => :signin
+  get '/signout' => 'sessions#destroy', :as => :signout
+  get '/auth/failure' => 'sessions#failure'
 
 end
