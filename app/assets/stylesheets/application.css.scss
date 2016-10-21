@@ -13,3 +13,36 @@
  *= require_tree .
  *= require_self
  */
+
+
+html,body {
+  height:100%;
+}
+
+.logo {
+  font-family: 'Bungee Inline', cursive;
+  font-size: 100px;
+  color: #000000;
+}
+
+.lead {
+  color:#000000;
+}
+
+.container-full {
+  margin: 0 auto;
+  width: 100%;
+  min-height:100%;
+  background-color:#E5E5E5;
+  color:#eee;
+  overflow:hidden;
+}
+
+.container-full a {
+  color:#E5E5E5;
+  text-decoration:none;
+}
+
+.v-center {
+  margin-top:7%;
+}
