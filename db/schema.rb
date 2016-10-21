@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20161021194150) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "leagues", force: :cascade do |t|
     t.string   "name"
     t.string   "sport"
@@ -38,6 +41,10 @@ ActiveRecord::Schema.define(version: 20161021194150) do
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
+    t.string   "uid"
+    t.string   "provider"
+    t.string   "token"
+    t.string   "secret"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
