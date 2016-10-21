@@ -50,6 +50,7 @@ GEM
     arel (7.1.4)
     autoprefixer-rails (6.5.1)
       execjs
+    bcrypt (3.1.11)
     better_errors (2.1.1)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
@@ -76,7 +77,6 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.10.0)
-    colorize (0.8.1)
     concurrent-ruby (1.0.2)
     database_cleaner (1.5.3)
     diff-lcs (1.2.5)
@@ -96,8 +96,6 @@ GEM
       activesupport (>= 4.1.0)
     hashie (3.4.6)
     high_voltage (3.0.0)
-    httplog (0.3.2)
-      colorize
     i18n (0.7.0)
     jbuilder (2.6.0)
       activesupport (>= 3.0.0, < 5.1)
@@ -237,6 +235,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bcrypt
   better_errors
   bootstrap-sass
   byebug
@@ -246,7 +245,6 @@ DEPENDENCIES
   factory_girl_rails
   faker
   high_voltage
-  httplog
   jbuilder (~> 2.5)
   jquery-rails
   launchy
