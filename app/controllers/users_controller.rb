@@ -9,13 +9,13 @@ class UsersController < ApplicationController
 
     if User.where(:email => user.email).exists?
       raise 'You have entered an email already in the system.'
-      redirect_to '/signup'
+      redirect_to '/league'
     else
       if user.save
         session[:user_id] = user.id
-        redirect_to '/'
+        redirect_to '/league'
       else
-        redirect_to '/signup'
+        redirect_to '/league'
       end
     end
 
