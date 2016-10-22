@@ -1,2 +1,306 @@
-<h1>Leagues#show</h1>
-<p>Find me in app/views/leagues/show.html.erb</p>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <script src="https://www.atlasestateagents.co.uk/javascript/tether.min.js"></script><!-- Tether for Bootstrap -->
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="favicon.ico">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>JockBuff Fantasy Analytics</title>
+    <meta name="description" content="Fantasy Analytics"/>
+    <link href="https://fonts.googleapis.com/css?family=Bungee+Inline" rel="stylesheet">
+  </head>
+
+  <body>
+  <header>
+    <%= render 'layouts/top_nav' %>
+  </header>
+  <br>
+  <br>
+  <br>
+  <br>
+    <body>
+      <div class="container-fluid">
+         <div class="row">
+             <div class="col-md-6">
+                 <h1 class="text-center">League Rankings</h1>
+             </div>
+             <div class="col-md-6">
+                 <h1 class="text-center">Top Free Agents</h1>
+             </div>
+         </div>
+         <div class="row">
+             <div class="col-md-6">
+                 <table class="table table-bordered table-striped table-responsive">
+                     <thead>
+                         <tr>
+                             <th>Rank</th>
+                             <th>Team Name</th>
+                             <th>JBR</th>
+                         </tr>
+                     </thead>
+                     <tbody>
+                         <tr>
+                             <td>1</td>
+                             <td>Mark</td>
+                             <td>1000</td>
+                         </tr>
+                         <tr>
+                             <td>2</td>
+                             <td>Jacob</td>
+                             <td>900</td>
+                         </tr>
+                         <tr>
+                             <td>3</td>
+                             <td>Larry</td>
+                             <td>900</td>
+                         </tr>
+                         <tr>
+                             <td>4</td>
+                             <td>Bob</td>
+                             <td>800</td>
+                         </tr>
+                         <tr>
+                             <td>5</td>
+                             <td>Derek</td>
+                             <td>700</td>
+                         </tr>
+                         <tr>
+                             <td>6</td>
+                             <td>Chris</td>
+                             <td>600</td>
+                         </tr>
+                         <tr>
+                             <td>7</td>
+                             <td>Daniel</td>
+                             <td>600</td>
+                         </tr>
+                         <tr>
+                             <td>8</td>
+                             <td>Sarah</td>
+                             <td>500</td>
+                         </tr>
+                         <tr>
+                             <td>9</td>
+                             <td>Taylor</td>
+                             <td>400</td>
+                         </tr>
+                         <tr>
+                             <td>10</td>
+                             <td>Mitch</td>
+                             <td>300</td>
+                         </tr>
+                         <tr>
+                             <td>11</td>
+                             <td>Alex</td>
+                             <td>200</td>
+                         </tr>
+                         <tr>
+                             <td>12</td>
+                             <td>Devin</td>
+                             <td>100</td>
+                         </tr>
+                     </tbody></table>
+             </div>
+             <div class="col-md-6">
+                 <table class="table table-bordered table-striped table-hover table-responsive">
+                     <thead>
+                         <tr>
+                             <th>Player</th>
+                             <th>Position</th>
+                             <th>G</th>
+                             <th>A</th>
+                             <th>Points</th>
+                             <th>PPP</th>
+                             <th>+/-</th>
+                             <th>PIMS</th>
+                             <th>SOG</th>
+                             <th>HITS</th>
+                             <th>BLKS</th>
+                             <th>JBR</th>
+                         </tr>
+                     </thead>
+                     <tbody>
+                         <tr>
+                             <td>Sidney Crosby</td>
+                             <td>Centre</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                         </tr>
+                         <tr>
+                             <td>Brent Burns</td>
+                             <td>Defense</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                         </tr>
+                         <tr>
+                             <td>Conor McDavid</td>
+                             <td>Centre</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                         </tr>
+                         <tr>
+                             <td>Conor McDavid</td>
+                             <td>Centre</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                         </tr>
+                         <tr>
+                             <td>Conor McDavid</td>
+                             <td>Centre</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                         </tr>
+                         <tr>
+                             <td>Conor McDavid</td>
+                             <td>Centre</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                         </tr>
+                         <tr>
+                             <td>Conor McDavid</td>
+                             <td>Centre</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                         </tr>
+                         <tr>
+                             <td>Conor McDavid</td>
+                             <td>Centre</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                         </tr>
+                         <tr>
+                             <td>Conor McDavid</td>
+                             <td>Centre</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                         </tr>
+                         <tr>
+                             <td>Conor McDavid</td>
+                             <td>Centre</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                         </tr>
+                         <tr>
+                             <td>Conor McDavid</td>
+                             <td>Centre</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                         </tr>
+                         <tr>
+                             <td>Conor McDavid</td>
+                             <td>Centre</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                             <td>155</td>
+                         </tr>
+                      </tbody></table>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-md-6"><img src="http://www.nullhypothesishockey.com/wp-content/uploads/2015/01/corsi-foragainst.png?w=540" width="800px" height="400px"></div>
+              <div class="col-md-6"><img src="http://i1.wp.com/3rdlinegrind.com/wp-content/uploads/2015/06/scatter.png" width="800px" height="700px"></div>
+          </div>
+      </div>
+    <script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script type='text/javascript' src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+</body></html>
