@@ -15,7 +15,9 @@
                       </li>
                       </ul>
                       <ul class="nav navbar-nav navbar-right">
-                      <li class="usernav"><a href='#'>Logged in as Current User</a></li>
+                      <% if logged_in? %>
+                      <li class="usernav"><a href='#'>Logged in as USER</a></li>
+                      <% end %>
                       </ul>
 
 
