@@ -1,17 +1,11 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get 'compares/show'
-
   get 'owners/show'
-
   get 'players/show'
-
   get 'players/index'
-
   get 'leagues/new'
-
   get 'leagues/index'
-
   get 'leagues/show'
 
 
