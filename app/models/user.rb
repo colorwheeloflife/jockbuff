@@ -15,7 +15,7 @@ class User < ApplicationRecord
       user.uid = auth['uid']
       if auth['info']
          user.name = auth['info']['name'] || ""
-         user.email = auth['info']['email']
+         user.image = auth['info']['urls']['image']
         if auth['credentials']
           user.token = auth['credentials']['token']
           user.secret = auth['credentials']['secret']
