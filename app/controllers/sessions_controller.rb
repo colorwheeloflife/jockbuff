@@ -14,9 +14,17 @@ class SessionsController < ApplicationController
     redirect_to leagues_path, :notice => 'Signed in!'
   end
 
+  # def destroy
+  #   session[:user_id] = nil
+  #   redirect_to '/'
+  # end
+
   def destroy
-    session[:user_id] = nil
-    redirect_to '/'
+  if current_user
+    session.delete(:user_id)
+    flash[:success] = 'See you!'
   end
+  redirect_to root_path
+end
 
 end
