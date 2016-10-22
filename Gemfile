@@ -31,6 +31,8 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'dotenv-rails'
 
+gem "highcharts-rails"
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
