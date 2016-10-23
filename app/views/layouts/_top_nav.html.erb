@@ -7,6 +7,7 @@
                   </a>
                   <a class="navbar-brand" href="/">JockBuff</a></div>
                   <div class="collapse navbar-collapse">
+                      <% if logged_in? %>
                       <ul class="nav navbar-nav">
                       <li><%= link_to 'Leagues', :leagues %></li>
                       <li><%= link_to 'Player Ranks', :players %></li>
@@ -15,9 +16,12 @@
                       </li>
                       </ul>
                       <ul class="nav navbar-nav navbar-right">
-                      <% if logged_in? %>
                       <li class="usernav"><li><%= link_to "Log out #{current_user.name}", :signout, :method => :delete %></li>
                       <%= image_tag "#{current_user.image}", :id => 'nav-useravatar' %>
+
+                      <% else %>
+                      <ul class="nav navbar-nav navbar-right">
+                      <li class="usernav"><li><%= link_to 'Log in to Yahoo Fantasy Sports', :signin %></li>
                       <% end %>
                       </ul>
                   </div><!--/.nav-collapse -->
