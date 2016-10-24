@@ -1,13 +1,5 @@
-# class User < ActiveRecord::Base
-#   has_secure_password
-#   has_many :reviews
-
-#   before_save { self.email = email.downcase.strip }
-
-
-# end
-
 class User < ApplicationRecord
+    has_many :leagues
 
   def self.create_with_omniauth(auth)
     create! do |user|
