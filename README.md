@@ -1,6 +1,6 @@
 
 # Welcome
-JockBuff is a fantasy sports analysis tool to improve your chances to have a championship team.
+JockBuff is a fantasy sports analysis tool to improve your chances to have a championship team. 
 Created by Taylor Aucoin, Chad Bruhaug, Mitch O'Neill & Sarah Veness
 
 
