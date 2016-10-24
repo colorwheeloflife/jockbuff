@@ -14,7 +14,7 @@ class OwnersController < ApplicationController
       })
       owner = {}
       owner_info = owner_info["fantasy_content"]["team"]
-      owner[:team_name] = owner_info["name"],
+      owner.merge!(team_name: owner_info["name"])
       team_id = owner_info["team_id"].to_i
       player_info = owner_info["roster"]["players"]["player"]
       players = playerr_info.map do |t|
@@ -23,7 +23,7 @@ class OwnersController < ApplicationController
         current_position: t["selected_position"]["position"]
         }
       end
-      owner[:players] = players
+      owner.merge!(players: players)
       @owner = Owner.create(owner)
     end
   end
