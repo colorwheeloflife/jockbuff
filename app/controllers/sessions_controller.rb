@@ -1,3 +1,5 @@
+require 'byebug'
+
 class SessionsController < ApplicationController
 
   def new
@@ -11,14 +13,13 @@ class SessionsController < ApplicationController
                       :image => auth['info']['urls']['image'],
                       :uid => auth['uid'].to_s).first || User.create_with_omniauth(auth)
     # reset_session
+    user.update(token: auth['credentials']['token'])
     session[:user_id] = user.id
-    redirect_to leagues_path, :notice => 'Signed in!'
+    null = nil
+    @league = League.new()
+    redirect_to '/users/:user_id/leagues', :notice => 'Signed in!'
   end
 
-  # def destroy
-  #   session[:user_id] = nil
-  #   redirect_to '/'
-  # end
 
   def destroy
   if current_user

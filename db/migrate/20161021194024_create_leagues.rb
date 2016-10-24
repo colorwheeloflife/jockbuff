@@ -3,11 +3,12 @@ class CreateLeagues < ActiveRecord::Migration[5.0]
 
     create_table :leagues do |t|
       t.string :name
-      t.belongs_to :user_id, index: true
+      t.belongs_to :user, index: true
       t.string :sport
       t.string :user_team
       t.string :user_logo
       t.string :league_name
+      t.string :league_key
       t.timestamps
     end
   end
