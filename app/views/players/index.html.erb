@@ -1,53 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-    <script src="https://www.atlasestateagents.co.uk/javascript/tether.min.js"></script><!-- Tether for Bootstrap -->
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="favicon.ico">
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <title>JockBuff Fantasy Analytics - Player Rankings</title>
-    <meta name="description" content="Fantasy Analytics"/>
-    <link href="https://fonts.googleapis.com/css?family=Bungee+Inline" rel="stylesheet">
-    <script src="http://code.highcharts.com/highcharts.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script>
-        $(function () {
-            var myChart = Highcharts.chart('graph-container', {
-                chart: {
-                    type: 'bar'
-                },
-                title: {
-                    text: 'Fruit Consumption'
-                },
-                xAxis: {
-                    categories: ['Apples', 'Bananas', 'Oranges']
-                },
-                yAxis: {
-                    title: {
-                        text: 'Fruit eaten'
-                    }
-                },
-                series: [{
-                    name: 'Jane',
-                    data: [1, 0, 4]
-                }, {
-                    name: 'John',
-                    data: [5, 7, 3]
-                }]
-            });
-        });
-    </script>
-  </head>
-
-  <body>
-  <header>
-    <%= render 'layouts/top_nav' %>
-  </header>
-    <body>
     <br>
         <br>
         <br>
@@ -375,4 +325,3 @@
             <div class="col-md-6" id="graph-container" style="width:100%; height:400px;">HI</div>
         </div>
         </div>
-    </body></html>

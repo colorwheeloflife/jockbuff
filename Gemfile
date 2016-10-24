@@ -33,6 +33,8 @@ gem 'dotenv-rails'
 
 gem "highcharts-rails"
 
+gem 'foundation-rails'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
