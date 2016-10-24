@@ -10,7 +10,7 @@
      <div class="collapse navbar-collapse">
        <% if logged_in? %>
        <ul class="nav navbar-nav">
-         <li><%= link_to 'Leagues', :leagues %></li>
+         <li><%= link_to 'Leagues', '/users/:user_id/leagues' %></li>
          <li><%= link_to 'Player Ranks', :players %></li>
          <li><%= link_to 'Trade Calculator', :compares %></li>
          <li><%= link_to 'Statistical Analysis', :analysis_index %></li>
