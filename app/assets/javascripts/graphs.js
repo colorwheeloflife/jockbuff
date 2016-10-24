@@ -1,11 +1,10 @@
-// Column with Negative Values
-// Stacked Area
+// Basic Column √
+// Column with Negative Values √
 // Basic Line √
 // Spider Web √
 
-
+//READY FOR DATA
 $(function () {
-    // Set up the chart
     var column_with_neg = Highcharts.chart('rank_colume-container', {
         chart: {
             type: 'column',
@@ -39,10 +38,7 @@ $(function () {
 
 
 
-
-
-
-// //READY FOR DATA
+//READY FOR DATA
 $(function () {
     var column_with_neg = Highcharts.chart('colume_neg-container', {
         chart: {
@@ -88,7 +84,6 @@ $(function () {
         ]
     });
 });
-
 
 
 
@@ -146,9 +141,7 @@ $(function () {
 
 
 
-
-
-//
+//READY FOR DATA
 $(function () {
     var myLineGraph = Highcharts.chart('line_graph-container', {
         title: {
@@ -197,9 +190,6 @@ $(function () {
         }]
     });
 });
-
-
-
 
 
 
@@ -264,6 +254,3 @@ $(function () {
 
     });
 });
-
-
-
