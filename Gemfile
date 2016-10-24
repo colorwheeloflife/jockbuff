@@ -32,7 +32,13 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'dotenv-rails'
 
+
 gem 'omniauth'
+
+gem "highcharts-rails"
+
+gem 'foundation-rails'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'omniauth-yahoo-oauth2', git: 'https://github.com/sarahveness/omniauth-yahoo-oauth2.git'
