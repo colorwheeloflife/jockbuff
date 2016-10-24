@@ -3,68 +3,6 @@
 // Basic Line √
 // Spider Web √
 
-$(function () {
-    var testing = Highcharts.chart('testing-container', {
-        chart: {
-            type: 'column',
-            options3d: {
-                enabled: true,
-                alpha: 15,
-                beta: 15,
-                viewDistance: 25,
-                depth: 40
-            }
-        },
-
-        title: {
-            text: 'Total fruit consumption, grouped by gender'
-        },
-
-        xAxis: {
-            categories: ['Apples', 'Oranges', 'Pears', 'Grapes', 'Bananas']
-        },
-
-        yAxis: {
-            allowDecimals: false,
-            min: 0,
-            title: {
-                text: 'Number of fruits'
-            }
-        },
-
-        tooltip: {
-            headerFormat: '<b>{point.key}</b><br>',
-            pointFormat: '<span style="color:{series.color}">\u25CF</span> {series.name}: {point.y} / {point.stackTotal}'
-        },
-
-        plotOptions: {
-            column: {
-                stacking: 'normal',
-                depth: 40
-            }
-        },
-
-        series: [{
-            name: 'John',
-            data: [5, 3, 4, 7, 2],
-            stack: 'male'
-        }, {
-            name: 'Joe',
-            data: [3, 4, 4, 2, 5],
-            stack: 'male'
-        }, {
-            name: 'Jane',
-            data: [2, 5, 6, 2, 1],
-            stack: 'female'
-        }, {
-            name: 'Janet',
-            data: [3, 0, 4, 4, 3],
-            stack: 'female'
-        }]
-    });
-});
-
-
 
 $(function () {
     // Set up the chart
@@ -99,38 +37,6 @@ $(function () {
     });
 });
 
-$(function () {
-    // Set up the chart
-    var column_with_neg = Highcharts.chart('rnd_colume-container', {
-        chart: {
-            type: 'column',
-            options3d: {
-                enabled: true,
-                alpha: 15,
-                beta: 15,
-                depth: 50,
-                viewDistance: 25
-            }
-        },
-        title: {
-            text: 'Category Leaderboard'
-        },
-        subtitle: {
-            text: 'Category: Total Overall'
-        },
-        plotOptions: {
-            column: {
-                depth: 25
-            }
-        },
-        xAxis: {
-            categories: ['John', 'Jane', 'Joe', 'Jane', 'Jeffrey', 'Jack', 'James', 'Joseph']
-        },
-        series: [{
-            data: [5000, 8000, 6500, 4000, 7000, 5000, 10000, 3000]
-        }]
-    });
-});
 
 
 
@@ -188,18 +94,15 @@ $(function () {
 
 // //
 // $(function () {
-//     var column_with_neg = Highcharts.chart('stacked_area-container', {
+//     var stacked_area = Highcharts.chart('stacked_area-container', {
 //         chart: {
 //             type: 'area'
 //         },
 //         title: {
-//             text: 'Category Leaderboard with Average as Equator'
-//         },
-//         subtitle: {
-//             text: 'Category: Total Overall'
+//             text: 'Season Race'
 //         },
 //         xAxis: {
-//             categories: ['5000', '1800', '1850', '1900', '1950', '1999', '2050'],
+//             categories: ['Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'June'],
 //             tickmarkPlacement: 'on',
 //             title: {
 //                 enabled: false
@@ -207,13 +110,8 @@ $(function () {
 //         },
 //         yAxis: {
 //             title: {
-//                 text: 'Billions'
+//                 text: 'Goals'
 //             },
-//             labels: {
-//                 formatter: function () {
-//                     return this.value / 1000;
-//                 }
-//             }
 //         },
 //         tooltip: {
 //             split: true,
@@ -231,20 +129,17 @@ $(function () {
 //             }
 //         },
 //         series: [{
-//             name: 'Asia',
-//             data: [502, 635, 809, 947, 1402, 3634, 5268]
+//             name: 'P.Kane',
+//             data: [7, 13, 17, 26, 33, 37, 44]
 //         }, {
-//             name: 'Africa',
-//             data: [106, 107, 111, 133, 221, 767, 1766]
+//             name: 'S.Crosby',
+//             data: [10, 16, 24, 27, 31, 36, 50]
 //         }, {
-//             name: 'Europe',
-//             data: [163, 203, 276, 408, 547, 729, 628]
+//             name: 'A.Ovenchkin',
+//             data: [4, 12, 19, 23, 28, 33, 39]
 //         }, {
-//             name: 'America',
-//             data: [18, 31, 54, 156, 339, 818, 1201]
-//         }, {
-//             name: 'Oceania',
-//             data: [2, 2, 2, 6, 13, 30, 46]
+//             name: 'D. Sedin',
+//             data: [6, 13, 21, 24, 28, 31, 34]
 //         }]
 //     });
 // });
