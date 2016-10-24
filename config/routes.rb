@@ -3,10 +3,15 @@ Rails.application.routes.draw do
 
   root to: 'welcome#welcome'
 
-  resources :users
-  resources :leagues, only: [:index, :show]
-  resources :owners, only: [:show]
-  resources :players, only: [:index, :show]
+  resources :users do
+    resources :leagues do
+        resources :owners, only: [:index, :show] do
+          resources :players, only: [:index]
+       end
+    end
+  end
+
+  resources :players
   resources :compares, only: [:index, :show]
   resources :analysis, only: [:index, :show]
 
