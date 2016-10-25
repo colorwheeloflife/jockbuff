@@ -1,6 +1,6 @@
 class PlayerPassportController < ApplicationController
 
-  def create (leauge_id)
+  def create (league_id)
     @team_info_arr = league_call(league_id)
     @current_user = current_user
     @team_info_arr.map do |team|
