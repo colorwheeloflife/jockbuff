@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   helper_method :user_signed_in?
   helper_method :correct_user?
   helper_method :yahoo_root
+  helper_method :league_call
 
   private
     def current_user
@@ -18,7 +19,25 @@ class ApplicationController < ActionController::Base
     end
 
     def yahoo_root
-      @yahoo_root = "https://fantasysports.yahooapis.com/fantasy/v2/"
+      return @yahoo_root = "https://fantasysports.yahooapis.com/fantasy/v2/"
+    end
+
+    def league_call(league_info)
+      @current_user = current_user
+      @yahoo_root = yahoo_root
+      @league_id = params[:league_id]
+      @league_key = League.where(id: @league_id).select(:league_key).first
+      league_full = HTTParty.get("#{@yahoo_root}league/#{@league_key}/settings", headers:{
+        "Authorization" => "Bearer #{@current_user.token}"
+      })
+      num_teams = league_full["fantasy_content"]["league"]["num_teams"]
+      team_arr = (1..num_teams).to_a
+      team_info_arr = team_arr.map do |team|
+        team_info = HTTParty.get("#{@yahoo_root}team/#{@league_key}.t.#{team}/roster/players", headers:{
+        "Authorization" => "Bearer #{token}"
+        })
+      end
+      return team_info_arr
     end
 
     def user_signed_in?

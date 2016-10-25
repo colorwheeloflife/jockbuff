@@ -55,8 +55,18 @@ html, body {
   border-radius: 10px;
 }
 
+#profilepic {
+  width:100px;
+  height:100px;
+  margin-top: 20px;
+}
+
+.needborder {
+  border: 1px solid;
+}
+
 .topfix {
-  margin-top: 50px;
+  margin-top: 60px;
 }
 
 .goaliebtn {

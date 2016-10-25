@@ -1,30 +1,25 @@
 class OwnersController < ApplicationController
 
   def create
-    @current_user = current_user
-
-    league_full = HTTParty.get("#{@yahoo_root}league/#{league_key}/settings", headers:{
-      "Authorization" => "Bearer #{token}"
-    })
-    num_teams = league_full["fantasy_content"]["league"]["num_teams"]
-    team_arr = (1..num_teams).to_a
-    team_arr.each do |team|
-      owner_info = HTTParty.get("#{@yahoo_root}team/#{league_key}.t.#{team}/roster/players", headers:{
-      "Authorization" => "Bearer #{token}"
-      })
-      owner = {}
-      owner_info = owner_info["fantasy_content"]["team"]
-      owner.merge!(team_name: owner_info["name"])
-      team_id = owner_info["team_id"].to_i
-      player_info = owner_info["roster"]["players"]["player"]
-      players = playerr_info.map do |t|
-        players = {
-        player_id: t["player_id"],
-        current_position: t["selected_position"]["position"]
-        }
+    league_id = params[:id]
+    @owner_info_arr = league_call(league_id)
+    @owner_info_arr.map do |owner|
+      owner_info = {}
+      owner_info.merge!(league_id: league_id)
+      onwer_info.merge!(team_key: owner["team_key"])
+      owner_info.merge!(team_name: owner["name"])
+      owner_info.merge!(team_key:  owner["team_id"].to_i)
+      user_team = League.where(id: params[:id]).select(:user_team)
+      if user_team = onwer["name"]
+        ownership = true
+      else
+        ownership = false
       end
-      owner.merge!(players: players)
-      @owner = Owner.create(owner)
+      owner_info.merge!(ownership_status: ownership)
+
+      @owner = Owner.create(owner_info)
+      @player_passport = PlayerPassport.create(owner_info[:league_id])
     end
+    redirect_to user_league_path
   end
 end
