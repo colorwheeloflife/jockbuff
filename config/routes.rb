@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :analysis, only: [:index, :show]
 
   get '/users/:user_id/leagues' => 'leagues#create'
+  get '/users/:user_id/leagues/:league_id/owners' => 'owners#index'
   post '/users/:user_id/leagues/:league_id/owners' => 'owners#create'
   get '/auth/:provider/callback' => 'sessions#create'
   get '/signin' => 'sessions#new', :as => :signin
