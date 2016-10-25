@@ -16,7 +16,7 @@
           <% @leagues.each do |league| %>
           <tr>
           <td><%= league.id %></td>
-          <td><%= league.name %></td>
+          <td><%= link_to "#{league.name}",user_league_path(@current_user, league.id) %></td>
           <td><%= league.user_team %></td>
           </tr>
           <% end %>
