@@ -7,6 +7,7 @@ class SessionsController < ApplicationController
   end
 
   def create
+    @current_user = current_user
     auth = request.env["omniauth.auth"]
     puts "\n\n\n\nAUTH: #{auth}\n\n\n"
     user = User.where(:provider => auth['provider'],
@@ -17,7 +18,7 @@ class SessionsController < ApplicationController
     session[:user_id] = user.id
     null = nil
     @league = League.new()
-    redirect_to "/users/#{user.id}/leagues", :notice => 'Signed in!'
+    redirect_to user_leagues_path(current_user), :notice => 'Signed in!'
   end
 
 
