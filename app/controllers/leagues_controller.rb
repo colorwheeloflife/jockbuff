@@ -33,6 +33,8 @@ end
       league_info.merge!(name: league_name)
       unless League.where(league_info).exists?
       @league = League.create(league_info)
+      @goalie_categories = GoalieCategory.create(league_info[:league_key])
+      @player_categories = PlayerCategory.create(league_info[:league_key])
       end
     end
     redirect_to user_leagues_path(current_user)
