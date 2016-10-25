@@ -15,7 +15,8 @@ Rails.application.routes.draw do
   resources :compares, only: [:index, :show]
   resources :analysis, only: [:index, :show]
 
-  post '/users/:user_id/leagues' => 'leagues#create'
+  get '/users/:user_id/leagues' => 'leagues#create'
+  post '/users/:user_id/leagues/:league_id/owners' => 'owners#create'
   get '/auth/:provider/callback' => 'sessions#create'
   get '/signin' => 'sessions#new', :as => :signin
   get '/auth/failure' => 'sessions#failure'

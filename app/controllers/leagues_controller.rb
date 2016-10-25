@@ -35,9 +35,7 @@ end
       unless League.where(league_info).exists?
       @league = League.create(league_info)
       end
-
     end
     redirect_to "/users/#{@current_user.id}/leagues"
   end
-
 end
