@@ -1,61 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <script src="https://www.atlasestateagents.co.uk/javascript/tether.min.js"></script><!-- Tether for Bootstrap -->
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="favicon.ico">
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <title>JockBuff Fantasy Analytics</title>
-    <meta name="description" content="Fantasy Analytics"/>
-    <link href="https://fonts.googleapis.com/css?family=Bungee+Inline" rel="stylesheet">
-  </head>
-
-  <body>
-    <header>
-      <%= render 'layouts/top_nav' %>
-    </header>
-  <body>
-    <br>
-    <br>
-    <br>
-    <br>
-    <div class="row">
-      <div class="col-md-8">
-        <h1 class="text-center">Your Fantasy Hockey Leagues</h1>
-      </div>
+<div class="row topfix">
+  <div class="col-md-8">
+    <h1 class="text-center">Your Fantasy Hockey Leagues</h1>
+  </div>
+  <div class="container-fluid">
+    <div class="container">
+      <table class="table table-striped table-bordered">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>League Name</th>
+            <th>Team Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @leagues.each do |league| %>
+          <tr>
+          <td>1</td>
+          <td><%= league.name %></td>
+          <td><%= league.user_team %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%= form_tag(user_leagues_path(@current_user), method: "post") do %>
+      <button type= "submit" class= "btn btn-primary btn-lg">
+      Click to Update Your Teams
+      </button>
+      <% end %>
     </div>
-    <div class="container-fluid">
-      <div class="container">
-        <table class="table table-striped table-bordered">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>League Name</th>
-              <th>Team Name</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @leagues.each do |league| %>
-              <tr>
-                <td>1</td>
-                <td><%= league.name %></td>
-                <td><%= league.user_team %></td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-      </div>
-    </div>
-    <%= form_tag(user_leagues_path, method: "post") do %>
-    <button type= "submit" class= "btn btn-primary btn-lg">
-     Click to Update Your Teams
-  </button>
-  <% end %>
-    <script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script type='text/javascript' src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-  </body>
-</html>
+  </div>
+</div>

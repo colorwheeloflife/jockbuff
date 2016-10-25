@@ -63,13 +63,15 @@ ActiveRecord::Schema.define(version: 20161025012955) do
     t.index ["user_id"], name: "index_leagues_on_user_id", using: :btree
   end
 
-  create_table "owners", force: :cascade do |t|
+  create_table "owners", id: false, force: :cascade do |t|
+    t.string   "team_id",    null: false
     t.string   "name"
     t.integer  "league_id"
     t.string   "players",                 array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["league_id"], name: "index_owners_on_league_id", using: :btree
+    t.index ["team_id"], name: "index_owners_on_team_id", unique: true, using: :btree
   end
 
   create_table "player_categories", force: :cascade do |t|
@@ -136,14 +138,14 @@ ActiveRecord::Schema.define(version: 20161025012955) do
   end
 
   create_table "players", id: false, force: :cascade do |t|
-    t.string   "player_key", null: false
+    t.string   "player_id",  null: false
     t.string   "name"
     t.string   "positions",               array: true
     t.string   "pro_team"
     t.integer  "owner_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["player_key"], name: "index_players_on_player_key", unique: true, using: :btree
+    t.index ["player_id"], name: "index_players_on_player_id", unique: true, using: :btree
   end
 
   create_table "users", force: :cascade do |t|
