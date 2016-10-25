@@ -8,7 +8,7 @@ $(function () {
         },
 
         title: {
-            text: 'Profile Outlook',
+            text: 'Click An Available Free Agent To Populate Graph',
             x: -80
         },
 
@@ -42,17 +42,17 @@ $(function () {
         },
 
         series: [{
-            name: 'Jock #1',
-            data: [43000, 19000, 60000, 35000, 17000, 10000],
+            name: 'Best Player In League',
+            data: [43, 19, 60, 35, 17, 100],
             pointPlacement: 'on'
         }, {
-            name: 'Jock #2',
-            data: [50000, 39000, 42000, 31000, 26000, 14000],
+            name: 'Average Player In League',
+            data: [30, 15, 42, 31, 26, 90],
             pointPlacement: 'on'
         },
         {
-            name: 'Jock #3',
-            data: [50000, 39000, 42000, 31000, 26000, 14000],
+            name: 'Player Selected',
+            data: [31, 17, 29, 31, 20, 140],
             pointPlacement: 'on'
         }]
 
