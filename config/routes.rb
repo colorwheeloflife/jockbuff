@@ -21,6 +21,9 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback' => 'sessions#create'
   get '/signin' => 'sessions#new', :as => :signin
   get '/auth/failure' => 'sessions#failure'
+  get '/update_players_table' => 'players#create'
+  post '/users/:user_id/leagues/:id' => 'owners#create'
+
 
   delete '/signout' => 'sessions#destroy'
 

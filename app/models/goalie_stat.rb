@@ -1,0 +1,2 @@
+class GoalieStat < ApplicationRecord
+end
