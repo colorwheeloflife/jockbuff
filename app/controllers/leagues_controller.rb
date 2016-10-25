@@ -36,6 +36,12 @@ end
       @league = League.create(league_info)
       end
     end
-    redirect_to "/users/#{@current_user.id}/leagues"
+    redirect_to user_leagues_path(current_user)
   end
+
+  def show
+    @current_user = current_user
+  end
+
+
 end

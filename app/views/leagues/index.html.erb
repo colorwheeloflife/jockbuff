@@ -50,7 +50,7 @@
         </table>
       </div>
     </div>
-    <%= form_tag(user_leagues_path, method: "post") do %>
+    <%= form_tag(user_leagues_path(@current_user), method: "post") do %>
     <button type= "submit" class= "btn btn-primary btn-lg">
      Click to Update Your Teams
   </button>
