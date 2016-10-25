@@ -28,10 +28,10 @@ $(function () {
             }
         },
         xAxis: {
-            categories: ['John', 'Jane', 'Joe', 'Jane', 'Jeffrey', 'Jack', 'James', 'Joseph']
+            categories: ['Mark', 'Jacob', 'Larry', 'Bob', 'Derek', 'Chris', 'Daniel', 'Sarah', 'Taylor', 'Mitch', 'Alex', 'Devin']
         },
         series: [{
-            data: [10000, 8000, 7000, 6500, 5000, 5000, 4000, 3000]
+            data: [1000, 900, 900, 800, 700, 600, 600, 500, 400, 300, 200, 100]
         }]
     });
 });
