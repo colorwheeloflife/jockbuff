@@ -3,16 +3,23 @@ Rails.application.routes.draw do
 
   root to: 'welcome#welcome'
 
-  resources :users
-  resources :leagues, only: [:index, :show]
-  resources :owners, only: [:show]
-  resources :players, only: [:index, :show]
+  resources :users do
+    resources :leagues do
+      resources :owners, only: [:index, :show] do
+        resources :players, only: [:index]
+      end
+    end
+  end
+
+  resources :players
   resources :compares, only: [:index, :show]
   resources :analysis, only: [:index, :show]
 
+  post '/users/:user_id/leagues' => 'leagues#create'
   get '/auth/:provider/callback' => 'sessions#create'
   get '/signin' => 'sessions#new', :as => :signin
-  get '/signout' => 'sessions#destroy', :as => :signout
   get '/auth/failure' => 'sessions#failure'
+
+  delete '/signout' => 'sessions#destroy'
 
 end

@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
   helper_method :user_signed_in?
   helper_method :correct_user?
+  helper_method :yahoo_root
 
   private
     def current_user
@@ -14,6 +15,10 @@ class ApplicationController < ActionController::Base
       rescue Exception => e
         nil
       end
+    end
+
+    def yahoo_root
+      @yahoo_root = "https://fantasysports.yahooapis.com/fantasy/v2/"
     end
 
     def user_signed_in?
