@@ -103,7 +103,7 @@ ActiveRecord::Schema.define(version: 20161025012955) do
 
   create_table "player_passports", force: :cascade do |t|
     t.integer  "owner_id"
-    t.string   "player_id"
+    t.string   "player_key"
     t.string   "position"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -142,7 +142,7 @@ ActiveRecord::Schema.define(version: 20161025012955) do
     t.string   "name"
     t.string   "positions",               array: true
     t.string   "pro_team"
-    t.integer  "owner_id"
+    t.string   "type_p"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["player_id"], name: "index_players_on_player_id", unique: true, using: :btree

@@ -7,7 +7,6 @@
       <table class="table table-striped table-bordered">
         <thead>
           <tr>
-            <th>#</th>
             <th>League Name</th>
             <th>Team Name</th>
           </tr>
@@ -15,16 +14,8 @@
         <tbody>
           <% @leagues.each do |league| %>
           <tr>
-          <td>1</td>
-          <td><%= league.name %></td>
+          <td><%= link_to "#{league.name}",user_league_path(@current_user, league.id) %></td>
           <td><%= league.user_team %></td>
-          <td>
-            <%= form_tag("/users/#{league.user}/leagues/#{league.id}", method: "post") do %>
-            <button type= "submit" class= "btn btn-primary btn-lg">
-            Go to League
-            </button>
-            <% end %>
-          </td>
           </tr>
           <% end %>
         </tbody>

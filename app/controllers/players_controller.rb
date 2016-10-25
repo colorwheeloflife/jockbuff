@@ -15,11 +15,11 @@ class PlayersController < ApplicationController
       player_arr = players["fantasy_content"]["league"]["players"]["player"]
       player_arr.map do |player|
         player_details = {
-          id: player["player_id"],
+          player_id: player["player_id"],
           name: player["name"]["full"],
           pro_team: player["editorial_team_abbr"],
-          eligible_positions: player["eligible_positions"]["position"],
-          type: player["position_type"]
+          positions: player["eligible_positions"]["position"],
+          type_p: player["position_type"]
         }
         @player = Player.create(player_details)
       end
