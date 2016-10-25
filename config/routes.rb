@@ -4,8 +4,10 @@ Rails.application.routes.draw do
   root to: 'welcome#welcome'
 
   resources :users do
-    resources :leagues, except: [:index] do
-        resources :owners, only: [:index, :show]
+    resources :leagues do
+      resources :owners, only: [:index, :show] do
+        resources :players, only: [:index]
+      end
     end
   end
 
@@ -13,8 +15,7 @@ Rails.application.routes.draw do
   resources :compares, only: [:index, :show]
   resources :analysis, only: [:index, :show]
 
-  get '/users/:user_id/leagues' => 'leagues#create'
-  post '/users/:user_id/leagues/:league_id/owners' => 'owners#create'
+  post '/users/:user_id/leagues' => 'leagues#create'
   get '/auth/:provider/callback' => 'sessions#create'
   get '/signin' => 'sessions#new', :as => :signin
   get '/auth/failure' => 'sessions#failure'
