@@ -2,8 +2,10 @@ require "httparty"
 
 class LeaguesController < ApplicationController
 
+
 def index
-  @leagues = League.all
+  @current_user = current_user
+  @leagues = League.where(user_id: @current_user.id)
 end
 
   def create
