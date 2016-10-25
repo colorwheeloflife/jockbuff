@@ -39,7 +39,7 @@ end
       league_name = league_settings["fantasy_content"]["league"]["name"]
       league_info.merge!(name: league_name)
       unless League.where(league_info).exists?
-      @league = League.create(league_info).after_create
+      @league = League.create(league_info)
       end
 
 
