@@ -1,0 +1,2 @@
+module PlayerCategoriesHelper
+end

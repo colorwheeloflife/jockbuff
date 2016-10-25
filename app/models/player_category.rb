@@ -1,0 +1,2 @@
+class PlayerCategory < ApplicationRecord
+end

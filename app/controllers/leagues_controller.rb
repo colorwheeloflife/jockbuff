@@ -28,12 +28,13 @@ end
       league_keys = league["team_key"].split('.t')[0]
       league_settings =  HTTParty.get("#{yahoo_root}league/#{league_keys}/settings", headers:{
         "Authorization" => "Bearer #{@current_user.token}"
-        })
+      })
       league_name = league_settings["fantasy_content"]["league"]["name"]
       league_info.merge!(name: league_name)
-
       unless League.where(league_info).exists?
       @league = League.create(league_info)
+      @goalie_categories = GoalieCategory.create(league_info[:league_key])
+      @player_categories = PlayerCategory.create(league_info[:league_key])
       end
     end
     redirect_to user_leagues_path(current_user)
@@ -42,6 +43,5 @@ end
   def show
     @current_user = current_user
   end
-
 
 end
