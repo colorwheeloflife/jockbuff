@@ -39,24 +39,22 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1</td>
-              <td>lolhockeyaments</td>
-              <td>Cherm &amp; The Squirms</td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>Work Hockey Pool</td>
-              <td>DONT TOEWS ME BRO</td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>School Hockey Pool</td>
-              <td>The Ninja Hertls</td>
-            </tr>
-          </tbody></table>
-        </div>
+            <% @leagues.each do |league| %>
+              <tr>
+                <td>1</td>
+                <td><%= league.name %></td>
+                <td><%= league.user_team %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
       </div>
+    </div>
+    <%= form_tag(user_leagues_path, method: "post") do %>
+    <button type= "submit" class= "btn btn-primary btn-lg">
+     Click to Update Your Teams
+  </button>
+  <% end %>
     <script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script type='text/javascript' src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
   </body>
