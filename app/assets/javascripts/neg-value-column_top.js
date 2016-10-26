@@ -1,17 +1,5 @@
 $(function () {
-  var triggered = false;
-
-  $('#column_neg').waypoint(function(direction) {
-      if(triggered) { return; }
-      if (direction === 'down') {
-        $('#column_neg').highcharts(graph);
-        triggered = true;
-      }
-    }, {
-      offset: 'bottom-in-view'
-    });
-
-  var graph = {
+  $('#column_neg-top').highcharts({
     chart: {
       type: 'column'
     },
@@ -53,5 +41,5 @@ $(function () {
       data: [-3062.5]
     },
     ]
-  };
+  });
 });

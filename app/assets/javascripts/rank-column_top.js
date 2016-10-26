@@ -1,17 +1,5 @@
 $(function () {
-  var triggered = false;
-
-  $('#rank_column').waypoint(function(direction) {
-      if(triggered) { return; }
-      if (direction === 'down') {
-        $('#rank_column').highcharts(graph);
-        triggered = true;
-      }
-    }, {
-      offset: 'bottom-in-view'
-    });
-
-  var graph = {
+  $('#rank_column-top').highcharts({
       chart: {
           type: 'column',
           options3d: {
@@ -39,5 +27,5 @@ $(function () {
       series: [{
           data: [1000, 900, 900, 800, 700, 600, 600, 500, 400, 300, 200, 100]
       }]
-  };
+  });
 });

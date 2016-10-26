@@ -1,5 +1,17 @@
 $(function () {
-  $('#spider_graph').highcharts({
+  var triggered = false;
+
+  $('#spider_graph-top').waypoint(function(direction) {
+      if(triggered) { return; }
+      if (direction === 'down') {
+        $('#spider_graph-top').highcharts(graph);
+        triggered = true;
+      }
+    }, {
+      offset: 'bottom-in-view'
+    });
+
+  var graph = {
     chart: {
       polar: true,
       type: 'line'
@@ -40,17 +52,18 @@ $(function () {
     },
 
     series: [{
-      name: 'Best Player In League',
-      data: [43, 19, 60, 35, 17, 100],
+      name: 'Jock #1',
+      data: [43000, 19000, 60000, 35000, 17000, 10000],
       pointPlacement: 'on'
     }, {
-      name: 'Average Player In League',
-      data: [30, 15, 42, 31, 26, 90],
+      name: 'Jock #2',
+      data: [50000, 39000, 42000, 31000, 26000, 14000],
       pointPlacement: 'on'
-    }, {
-      name: 'Player Selected',
-      data: [31, 17, 29, 31, 20, 140],
+    },
+    {
+      name: 'Jock #3',
+      data: [50000, 39000, 42000, 31000, 26000, 14000],
       pointPlacement: 'on'
     }]
-  });
+  };
 });
