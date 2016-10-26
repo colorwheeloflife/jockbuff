@@ -1,3 +1,4 @@
+// function drawRankColChart_top (chartData) {
 $(function () {
   $('#rank_column-top').highcharts({
       chart: {

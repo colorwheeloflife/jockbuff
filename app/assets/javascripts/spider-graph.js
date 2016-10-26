@@ -1,3 +1,4 @@
+// function drawSpiderChart (chartData) {
 $(function () {
   var triggered = false;
 
