@@ -13,7 +13,6 @@ class PlayerPassportController < ApplicationController
         team_key: team_key
         }
         @player = PlayerPassport.create(entry)
-        end
      end
   end
 end
