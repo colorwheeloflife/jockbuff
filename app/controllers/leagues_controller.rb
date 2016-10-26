@@ -43,11 +43,11 @@ end
       unless League.where(league_info).exists?
       @league = League.create(league_info)
       end
-
-
+    league_key = league_info[:league_key]
+    puts league_key
+    @player_passport = create_passport_entry(league_key)
     @goalie_category = create_goalie_categories(league_settings, league_info)
     @player_category = create_player_categories(league_settings, league_info)
-    @player_category = create_passport_entry(league_info)
 
     end
     redirect_to user_leagues_path(current_user)
