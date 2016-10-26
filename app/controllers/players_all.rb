@@ -10,7 +10,7 @@ require 'byebug'
     players_full = full_player_arr.map do |start|
       players = HTTParty.get("https://fantasysports.yahooapis.com/fantasy/v2/league/363.l.91004/players;start=#{start}", headers:{
           "Authorization" => "Bearer #{@current_user.token}"})
-      # byebug
+
       player_arr = players["fantasy_content"]["league"]["players"]["player"]
       player_arr.map do |player|
         player_details = {
