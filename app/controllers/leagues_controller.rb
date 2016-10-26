@@ -11,6 +11,7 @@ class LeaguesController < ApplicationController
 def index
   @current_user = current_user
   @leagues = League.where(user_id: @current_user.id)
+  # @teams = Team.where(league_id: league_id).where(ownership: true)
 end
 
   def create
