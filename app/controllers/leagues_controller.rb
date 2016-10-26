@@ -6,6 +6,7 @@ require "byebug"
 class LeaguesController < ApplicationController
   include GoalieCategoriesHelper
   include PlayerCategoriesHelper
+  include PlayerPassportHelper
 
 
 def index
@@ -46,6 +47,7 @@ end
 
     @goalie_category = create_goalie_categories(league_settings, league_info)
     @player_category = create_player_categories(league_settings, league_info)
+    @player_category = create_passport_entry(league_info)
 
     end
     redirect_to user_leagues_path(current_user)
