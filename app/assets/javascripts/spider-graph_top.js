@@ -1,17 +1,5 @@
 $(function () {
-  var triggered = false;
-
-  $('#spider_graph-top').waypoint(function(direction) {
-      if(triggered) { return; }
-      if (direction === 'down') {
-        $('#spider_graph-top').highcharts(graph);
-        triggered = true;
-      }
-    }, {
-      offset: 'bottom-in-view'
-    });
-
-  var graph = {
+  $('#spider_graph').highcharts({
     chart: {
       polar: true,
       type: 'line'
@@ -65,5 +53,5 @@ $(function () {
       data: [50000, 39000, 42000, 31000, 26000, 14000],
       pointPlacement: 'on'
     }]
-  };
+  });
 });
