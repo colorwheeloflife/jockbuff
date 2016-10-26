@@ -7,6 +7,8 @@ class LeaguesController < ApplicationController
   include GoalieCategoriesHelper
   include PlayerCategoriesHelper
   include PlayerPassportHelper
+  include TeamsHelper
+
 
 
 def index
@@ -45,9 +47,11 @@ end
       end
     league_key = league_info[:league_key]
     puts league_key
-    @player_passport = create_passport_entry(league_key)
+    @teams = create_teams(league_info)
     @goalie_category = create_goalie_categories(league_settings, league_info)
     @player_category = create_player_categories(league_settings, league_info)
+    @player_passport = create_passport_entry(league_info)
+
 
     end
     redirect_to user_leagues_path(current_user)
