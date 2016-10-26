@@ -15,7 +15,7 @@ module TeamsHelper
         ownership = false
       end
       owner_info.merge!(ownership: ownership)
-      Team.create(owner_info).valid?
+      Team.create(owner_info)
       end
-  end
+    end
 end

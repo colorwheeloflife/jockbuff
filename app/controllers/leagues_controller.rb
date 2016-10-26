@@ -2,13 +2,11 @@ require "httparty"
 require "byebug"
 
 
-
 class LeaguesController < ApplicationController
   include GoalieCategoriesHelper
   include PlayerCategoriesHelper
   include PlayerPassportHelper
   include TeamsHelper
-
 
 
 def index

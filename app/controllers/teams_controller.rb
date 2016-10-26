@@ -1,4 +1,4 @@
-# class TeamsController < ApplicationController
+class TeamsController < ApplicationController
 
 #   def create
 #     league_id = params[:id]
@@ -21,3 +21,11 @@
 #     redirect_to user_league_path
 #   end
 # end
+
+def show
+  @current_user = current_user
+  @player_passport = PlayerPassport.where(user_id: current_user)
+end
+
+end
+
