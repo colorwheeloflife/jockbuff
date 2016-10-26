@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161026161953) do
+ActiveRecord::Schema.define(version: 20161026000934) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20161026161953) do
     t.boolean  "sv"
     t.boolean  "svpercent"
     t.boolean  "sho"
-    t.boolean  "total"
+    t.float    "total"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["league_id"], name: "index_goalie_categories_on_league_id", using: :btree
@@ -84,7 +84,7 @@ ActiveRecord::Schema.define(version: 20161026161953) do
     t.boolean  "fl"
     t.boolean  "hit"
     t.boolean  "blk"
-    t.boolean  "total"
+    t.float    "total"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["league_id"], name: "index_player_categories_on_league_id", using: :btree
@@ -109,6 +109,7 @@ ActiveRecord::Schema.define(version: 20161026161953) do
     t.integer  "pim"
     t.integer  "ppg"
     t.integer  "ppp"
+    t.integer  "ppa"
     t.integer  "shg"
     t.integer  "sha"
     t.integer  "shp"
@@ -132,6 +133,7 @@ ActiveRecord::Schema.define(version: 20161026161953) do
     t.string   "name"
     t.string   "positions",               array: true
     t.string   "pro_team"
+    t.string   "type_p"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["player_id"], name: "index_players_on_player_id", unique: true, using: :btree

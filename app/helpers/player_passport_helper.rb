@@ -14,21 +14,25 @@ module PlayerPassportHelper
         entry = {
         player_id: t["player_id"],
         position: t["selected_position"]["position"],
-        team_id: team_id
+        team_id: team_id,
         league_id: league_id
         }
         PlayerPassport.create(entry)
       end
     end
+    league_id = League.where(league_info).pluck(:id)[0]
     owned_players = PlayerPassport.where(league_id: league_id).pluck('player_id')
-    all_players = PlayerPassport.where.not(id: player_id).pluck('player_id')
-    all_players.map do |p|
+    all_players = Player.all.pluck('player_id')
+    available_players = all_players - owned_players
+    available_players.map do |p|
       entry = {
-        player_id = p
-        position = 'WW'
-        team_id = nil
+        player_id: p,
+        position: 'WW',
+        team_id: 9999999,
         league_id: league_id
       }
+      puts "ENTRY KJDSJKDJKDSJKNDSJKNDSJKDS ******** #{entry}"
+      PlayerPassport.create(entry)
     end
   end
 end
