@@ -56,14 +56,14 @@ player_stat.each do |row|
   t.ppa = (row['PPP'] * (1 - goalpercentage)).round
   t.ppp = row['PPP']
   t.shg = row['SHG']
-  t.sha = row[]
+  t.sha = row['SHP'] - row['SHG']
   t.shp = row['SHP']
   t.gwg = row['GWG']
   t.gtg = row['GWG']
-  t.sog = row[]
+  t.sog = row['SOG']
   t.shpercent = row['G'] / row['SOG']
   t.fw = row['FOW']
-  t.fl = row[]
+  t.fl = row['FOW']
   t.hit = row['HITS']
   t.blk = row['BKS']
 end
