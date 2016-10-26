@@ -1,5 +1,17 @@
 $(function () {
-  $('#spider_graph').highcharts({
+  var triggered = false;
+
+  $('#spider_graph-top').waypoint(function(direction) {
+      if(triggered) { return; }
+      if (direction === 'down') {
+        $('#spider_graph-top').highcharts(graph);
+        triggered = true;
+      }
+    }, {
+      offset: 'bottom-in-view'
+    });
+
+  var graph = {
     chart: {
       polar: true,
       type: 'line'
@@ -52,5 +64,5 @@ $(function () {
       data: [31, 17, 29, 31, 20, 140],
       pointPlacement: 'on'
     }]
-  });
+  };
 });
