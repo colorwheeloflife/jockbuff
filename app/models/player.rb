@@ -3,5 +3,4 @@ class Player < ApplicationRecord
   has_many :owners,:through => :player_passports
   has_many :player_passports
   validates :positions, presence: true
-
 end
