@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class OwnerTest < ActiveSupport::TestCase
+class PlayerPredictionTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
