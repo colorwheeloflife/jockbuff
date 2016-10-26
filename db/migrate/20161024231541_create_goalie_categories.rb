@@ -12,7 +12,7 @@ class CreateGoalieCategories < ActiveRecord::Migration[5.0]
       t.boolean :sv
       t.boolean :svpercent
       t.boolean :sho
-      t.boolean :total
+      t.float :total
 
       t.timestamps
     end

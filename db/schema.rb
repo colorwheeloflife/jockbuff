@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161025012955) do
+ActiveRecord::Schema.define(version: 20161026000934) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20161025012955) do
     t.boolean  "sv"
     t.boolean  "svpercent"
     t.boolean  "sho"
-    t.boolean  "total"
+    t.float    "total"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["league_id"], name: "index_goalie_categories_on_league_id", using: :btree
@@ -57,13 +57,6 @@ ActiveRecord::Schema.define(version: 20161025012955) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "owners", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "league_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "player_categories", force: :cascade do |t|
     t.integer  "league_id"
     t.boolean  "g"
@@ -85,18 +78,19 @@ ActiveRecord::Schema.define(version: 20161025012955) do
     t.boolean  "fl"
     t.boolean  "hit"
     t.boolean  "blk"
-    t.boolean  "total"
+    t.float    "total"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["league_id"], name: "index_player_categories_on_league_id", using: :btree
   end
 
   create_table "player_passports", force: :cascade do |t|
-    t.integer  "owner_id"
-    t.string   "player_key"
+    t.string   "player_id"
     t.string   "position"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "team_id"
+    t.string   "league_id"
   end
 
   create_table "player_stats", force: :cascade do |t|
@@ -109,6 +103,7 @@ ActiveRecord::Schema.define(version: 20161025012955) do
     t.integer  "pim"
     t.integer  "ppg"
     t.integer  "ppp"
+    t.integer  "ppa"
     t.integer  "shg"
     t.integer  "sha"
     t.integer  "shp"
@@ -134,6 +129,14 @@ ActiveRecord::Schema.define(version: 20161025012955) do
     t.integer  "owner_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "teams", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean  "ownership"
+    t.string   "league_id"
+    t.string   "name"
   end
 
   create_table "users", force: :cascade do |t|

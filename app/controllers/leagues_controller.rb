@@ -6,11 +6,15 @@ require "byebug"
 class LeaguesController < ApplicationController
   include GoalieCategoriesHelper
   include PlayerCategoriesHelper
+  include PlayerPassportHelper
+  include TeamsHelper
+
 
 
 def index
   @current_user = current_user
   @leagues = League.where(user_id: @current_user.id)
+  # @teams = Team.where(league_id: league_id).where(ownership: true)
 end
 
   def create
@@ -41,10 +45,13 @@ end
       unless League.where(league_info).exists?
       @league = League.create(league_info)
       end
-
-
+    league_key = league_info[:league_key]
+    puts league_key
+    @teams = create_teams(league_info)
     @goalie_category = create_goalie_categories(league_settings, league_info)
     @player_category = create_player_categories(league_settings, league_info)
+    @player_passport = create_passport_entry(league_info)
+
 
     end
     redirect_to user_leagues_path(current_user)

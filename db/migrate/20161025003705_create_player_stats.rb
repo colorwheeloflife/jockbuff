@@ -9,6 +9,7 @@ class CreatePlayerStats < ActiveRecord::Migration[5.0]
       t.integer :pim
       t.integer :ppg
       t.integer :ppp
+      t.integer :ppa
       t.integer :shg
       t.integer :sha
       t.integer :shp
@@ -21,6 +22,7 @@ class CreatePlayerStats < ActiveRecord::Migration[5.0]
       t.integer :hit
       t.integer :blk
       t.float :total
+
       t.timestamps
     end
   end
