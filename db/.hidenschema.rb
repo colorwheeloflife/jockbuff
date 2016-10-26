@@ -52,15 +52,9 @@ ActiveRecord::Schema.define(version: 20161026000934) do
 
   create_table "leagues", force: :cascade do |t|
     t.string   "name"
-    t.integer  "user_id"
     t.string   "sport"
-    t.string   "user_team"
-    t.string   "user_logo"
-    t.string   "league_name"
-    t.string   "league_key"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.index ["user_id"], name: "index_leagues_on_user_id", using: :btree
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "player_categories", force: :cascade do |t|
@@ -128,15 +122,13 @@ ActiveRecord::Schema.define(version: 20161026000934) do
     t.index ["true_id"], name: "index_player_stats_on_true_id", using: :btree
   end
 
-  create_table "players", id: false, force: :cascade do |t|
-    t.string   "player_id",  null: false
+  create_table "players", force: :cascade do |t|
     t.string   "name"
-    t.string   "positions",               array: true
+    t.string   "position"
     t.string   "pro_team"
-    t.string   "type_p"
+    t.integer  "owner_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["player_id"], name: "index_players_on_player_id", unique: true, using: :btree
   end
 
   create_table "teams", force: :cascade do |t|
@@ -150,7 +142,6 @@ ActiveRecord::Schema.define(version: 20161026000934) do
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
-    t.string   "image"
     t.string   "uid"
     t.string   "provider"
     t.string   "token"

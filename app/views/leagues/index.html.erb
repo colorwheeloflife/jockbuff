@@ -21,8 +21,8 @@
         </tbody>
       </table>
       <%= form_tag(user_leagues_path(@current_user), method: "post") do %>
-      <button type= "submit" class= "btn btn-primary btn-lg">
-      Click to Update Your Teams
+      <button type= "submit" class= "btn btn-danger btn-lg" id="spinner">
+      Click to Update Your Leagues - This May Take Several Minutes
       </button>
       <% end %>
     </div>
