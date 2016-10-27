@@ -111,7 +111,52 @@ $(function () {
   });
 
 
-// click options
+
+// drag n drop option — - -
+
+  $(function () {
+    $('#player-draggable').draggable();
+
+    $('#player-droppable_1').droppable({
+        drop: function (event, ui) {
+            selectedPlayer1 = (ui.draggable.attr('id'));
+
+            // more magic goes here
+            $.ajax({
+                url: "URL",
+                method: "GET",
+                data: {DATA},
+                success: function (data) {
+                    drawSpiderChart_top(data);
+                }
+            });
+        }
+    })
+  });
+
+  $(function () {
+    $('#player-draggable').draggable();
+
+    $('#player-droppable_2').droppable({
+        drop: function (event, ui) {
+            selectedPlayer2 = (ui.draggable.attr('id'));
+
+            // more magic goes here
+            $.ajax({
+                url: "URL",
+                method: "GET",
+                data: {DATA},
+                success: function (data) {
+                    drawSpiderChart_top(data);
+                }
+            });
+        }
+    })
+  });
+
+
+
+// click options — — — .select()
 
   $("#button").click(function() {
     $.ajax({
