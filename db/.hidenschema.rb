@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161027012048) do
+ActiveRecord::Schema.define(version: 20161026000934) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,23 +33,6 @@ ActiveRecord::Schema.define(version: 20161027012048) do
     t.index ["league_id"], name: "index_goalie_categories_on_league_id", using: :btree
   end
 
-  create_table "goalie_predictions", force: :cascade do |t|
-    t.integer  "player_id"
-    t.integer  "gs"
-    t.integer  "w"
-    t.integer  "l"
-    t.integer  "ga"
-    t.float    "gaa"
-    t.integer  "sa"
-    t.integer  "sv"
-    t.float    "svpercent"
-    t.integer  "sho"
-    t.float    "total"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["player_id"], name: "index_goalie_predictions_on_player_id", using: :btree
-  end
-
   create_table "goalie_stats", force: :cascade do |t|
     t.integer  "player_id"
     t.integer  "gs"
@@ -69,15 +52,9 @@ ActiveRecord::Schema.define(version: 20161027012048) do
 
   create_table "leagues", force: :cascade do |t|
     t.string   "name"
-    t.integer  "user_id"
     t.string   "sport"
-    t.string   "user_team"
-    t.string   "user_logo"
-    t.string   "league_name"
-    t.string   "league_key"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.index ["user_id"], name: "index_leagues_on_user_id", using: :btree
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "player_categories", force: :cascade do |t|
@@ -116,35 +93,6 @@ ActiveRecord::Schema.define(version: 20161027012048) do
     t.string   "league_id"
   end
 
-  create_table "player_predictions", force: :cascade do |t|
-    t.integer  "player_id"
-    t.integer  "true_id"
-    t.integer  "g"
-    t.integer  "a"
-    t.integer  "p"
-    t.integer  "plusminus"
-    t.integer  "pim"
-    t.integer  "ppg"
-    t.integer  "ppp"
-    t.integer  "shg"
-    t.integer  "sha"
-    t.integer  "shp"
-    t.integer  "gwg"
-    t.integer  "gtg"
-    t.integer  "sog"
-    t.float    "shpercent"
-    t.integer  "fw"
-    t.integer  "fl"
-    t.integer  "hit"
-    t.integer  "blk"
-    t.float    "total"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "ppa"
-    t.index ["player_id"], name: "index_player_predictions_on_player_id", using: :btree
-    t.index ["true_id"], name: "index_player_predictions_on_true_id", using: :btree
-  end
-
   create_table "player_stats", force: :cascade do |t|
     t.integer  "player_id"
     t.integer  "true_id"
@@ -174,15 +122,13 @@ ActiveRecord::Schema.define(version: 20161027012048) do
     t.index ["true_id"], name: "index_player_stats_on_true_id", using: :btree
   end
 
-  create_table "players", id: false, force: :cascade do |t|
-    t.string   "player_id",  null: false
+  create_table "players", force: :cascade do |t|
     t.string   "name"
+    t.string   "position"
     t.string   "pro_team"
-    t.string   "type_p"
+    t.integer  "owner_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string   "positions",               array: true
-    t.index ["player_id"], name: "index_players_on_player_id", unique: true, using: :btree
   end
 
   create_table "teams", force: :cascade do |t|
@@ -196,7 +142,6 @@ ActiveRecord::Schema.define(version: 20161027012048) do
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
-    t.string   "image"
     t.string   "uid"
     t.string   "provider"
     t.string   "token"

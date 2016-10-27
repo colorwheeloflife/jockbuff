@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
+  require 'byebug'
+
   protect_from_forgery with: :exception
 
   helper_method :current_user
@@ -8,6 +10,10 @@ class ApplicationController < ActionController::Base
   helper_method :correct_user?
   helper_method :yahoo_root
   helper_method :league_call
+
+  def test_app_controller
+    "COREY"
+  end
 
   private
     def current_user
@@ -20,21 +26,20 @@ class ApplicationController < ActionController::Base
 
     def yahoo_root
       return @yahoo_root = "https://fantasysports.yahooapis.com/fantasy/v2/"
+      # "https://fantasysports.yahooapis.com/fantasy/v2/"
     end
 
-    def league_call(league_info)
+    def league_call(league_key)
       @current_user = current_user
       @yahoo_root = yahoo_root
-      @league_id = params[:league_id]
-      @league_key = League.where(id: @league_id).select(:league_key).first
-      league_full = HTTParty.get("#{@yahoo_root}league/#{@league_key}/settings", headers:{
+      league_full = HTTParty.get("#{@yahoo_root}league/#{league_key}/settings", headers:{
         "Authorization" => "Bearer #{@current_user.token}"
       })
-      num_teams = league_full["fantasy_content"]["league"]["num_teams"]
+      num_teams = league_full["fantasy_content"]["league"]["num_teams"].to_i
       team_arr = (1..num_teams).to_a
       team_info_arr = team_arr.map do |team|
-        team_info = HTTParty.get("#{@yahoo_root}team/#{@league_key}.t.#{team}/roster/players", headers:{
-        "Authorization" => "Bearer #{token}"
+        team_info = HTTParty.get("#{@yahoo_root}team/#{league_key}.t.#{team}/roster/players", headers:{
+        "Authorization" => "Bearer #{@current_user.token}"
         })
       end
       return team_info_arr

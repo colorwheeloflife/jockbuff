@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class OwnersControllerTest < ActionDispatch::IntegrationTest
+class PlayerPredictionTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

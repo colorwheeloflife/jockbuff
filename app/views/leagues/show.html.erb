@@ -1,92 +1,39 @@
-
-<div class="container-fluid topfix">
-    <div class="row">
-        <div class="col-md-3">
-            <h1>League Rankings</h1>
-        </div>
+<div class="container-fluid topfix container-space">
+  <div class="row">
+    <div class="col-md-3">
+      <h1>League Rankings</h1>
     </div>
+  </div>
+<div class="row">
+  <div class="col-md-3">
     <div class="row">
-        <div class="col-md-3">
-            <div class="row">
-                <div class="col-md-10">
-                    <table class="table table-bordered table-striped table-responsive">
-                        <thead>
-                            <tr>
-                                <th class="col-md-1">Rank</th>
-                                <th>Team Name</th>
-                                <th>JBR</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>1</td>
-                            <td>Mark long ass team name</td>
-                            <td>1000</td>
-                          </tr>
-                          <tr>
-                            <td>2</td>
-                            <td>Jacob</td>
-                            <td>900</td>
-                          </tr>
-                          <tr>
-                            <td>3</td>
-                            <td>Larry</td>
-                            <td>900</td>
-                          </tr>
-                          <tr>
-                            <td>4</td>
-                            <td>Bob</td>
-                            <td>800</td>
-                          </tr>
-                          <tr>
-                            <td>5</td>
-                            <td>Derek</td>
-                            <td>700</td>
-                          </tr>
-                          <tr>
-                            <td>6</td>
-                            <td>Chris</td>
-                            <td>600</td>
-                          </tr>
-                          <tr>
-                            <td>7</td>
-                            <td>Daniel</td>
-                            <td>600</td>
-                          </tr>
-                          <tr>
-                            <td>8</td>
-                            <td>Sarah</td>
-                            <td>500</td>
-                          </tr>
-                          <tr>
-                            <td>9</td>
-                            <td>Taylor</td>
-                            <td>400</td>
-                          </tr>
-                          <tr>
-                            <td>10</td>
-                            <td>Mitch</td>
-                            <td>300</td>
-                          </tr>
-                          <tr>
-                            <td>11</td>
-                            <td>Alex</td>
-                            <td>200</td>
-                          </tr>
-                          <tr>
-                            <td>12</td>
-                            <td>Devin</td>
-                            <td>100</td>
-                          </tr>
-                        </tbody></table>
-                </div>
-            </div>
-        </div>
-        <!-- Graph space -->
-        <div class="col-md-9">
-          <div id="rank_column-top" class="col-md-6" style="width:100%; height:400px;">If You See This The Graph Had An Error</div>
-        </div>
+      <div class="col-md-10">
+        <table class="table table-bordered table-striped table-responsive ">
+          <thead>
+            <tr>
+              <th class="col-md-1">Rank</th>
+              <th>Team Name</th>
+              <th>JBR</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @teams.each do |team| %>
+            <tr>
+              <td><%= 1 %></td>
+              <td><%= link_to "#{team.name}", user_league_team_path(@current_user, @league_id, team) %></td>
+              <td>900</td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
     </div>
+  </div>
+  <!-- Graph space -->
+  <div class="col-md-9">
+  <div id="rank_column-top" class="col-md-6 graph" style="width:100%; height:400px;">If You See This The Graph Had An Error</div>
+  </div>
+</div>
     <div class="row">
     <div class="col-md-12">
       <h1>Top Players By JBR</h1>
@@ -312,5 +259,3 @@
     </div>
     </div>
 </div>
-
-

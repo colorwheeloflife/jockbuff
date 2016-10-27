@@ -1,6 +1,6 @@
-class CreatePlayerStats < ActiveRecord::Migration[5.0]
+class CreatePlayerPredictions < ActiveRecord::Migration[5.0]
   def change
-    create_table :player_stats do |t|
+    create_table :player_predictions do |t|
       t.belongs_to :player, index = true
       t.integer :g
       t.integer :a
@@ -9,7 +9,6 @@ class CreatePlayerStats < ActiveRecord::Migration[5.0]
       t.integer :pim
       t.integer :ppg
       t.integer :ppp
-      t.integer :ppa
       t.integer :shg
       t.integer :sha
       t.integer :shp

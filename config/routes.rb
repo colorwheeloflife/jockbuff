@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :leagues do
-      resources :owners, only: [:index, :show] do
+      resources :teams, only: [:index, :show, :create] do
         resources :players, only: [:index]
       end
     end
@@ -16,13 +16,18 @@ Rails.application.routes.draw do
   resources :analysis, only: [:index, :show]
 
   get '/users/:user_id/leagues' => 'leagues#create'
-  get '/users/:user_id/leagues/:league_id/owners' => 'owners#index'
-  post '/users/:user_id/leagues/:league_id/owners' => 'owners#create'
+
+  get '/users/:user_id/leagues/:league_id/teams' => 'teams#index'
+  post '/users/:user_id/leagues/:league_id/teams' => 'teams#create'
+  post '/users/:user_id/leagues/:id' => 'teams#create'
+
   get '/auth/:provider/callback' => 'sessions#create'
+
   get '/signin' => 'sessions#new', :as => :signin
+
   get '/auth/failure' => 'sessions#failure'
+
   get '/update_players_table' => 'players#create'
-  post '/users/:user_id/leagues/:id' => 'owners#create'
 
 
   delete '/signout' => 'sessions#destroy'

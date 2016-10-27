@@ -1,0 +1,2 @@
+class PlayerPrediction < ApplicationRecord
+end

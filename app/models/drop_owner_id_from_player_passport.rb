@@ -1,0 +1,2 @@
+class DropOwnerIdFromPlayerPassport < ApplicationRecord
+end
