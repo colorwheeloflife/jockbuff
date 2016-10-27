@@ -1,8 +1,32 @@
+@import url('https://fonts.googleapis.com/css?family=Bungee+Inline|Sanchez:400,400i|Ubuntu:300i,400,700');
+@import url('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css');
+
+/* font-family: 'Bungee Inline', cursive;
+font-family: 'Ubuntu', sans-serif;
+font-family: 'Sanchez', serif; */
 
 
-html, body {
-  height:100%;
+html {
+  font-family: 'Ubuntu', sans-serif;
 }
+
+table {
+  font-family: 'Ubuntu', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: 'Sanchez', serif;
+}
+
+.container,
+.container-fluid {
+  font-family: 'Ubuntu', sans-serif;
+}
+
 
 .logo {
   font-family: 'Bungee Inline', cursive;
@@ -21,12 +45,14 @@ html, body {
   margin-top: -9px;
 }
 
-.logbtn {
+.login {
+  font-family: 'Ubuntu', sans-serif;
   text-decoration: none;
 }
 
 .lead {
   color:#000000;
+  font-family: 'Ubuntu', sans-serif;
 }
 
 .container-full {
