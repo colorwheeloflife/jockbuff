@@ -2,9 +2,12 @@
 @import url('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css');
 @import url('/assets/favicon.ico');
 
-/* font-family: 'Bungee Inline', cursive;
+/*
+Fonts
+font-family: 'Bungee Inline', cursive;
 font-family: 'Ubuntu', sans-serif;
-font-family: 'Sanchez', serif; */
+font-family: 'Sanchez', serif;
+*/
 
 /* Variables*/
 
@@ -25,6 +28,7 @@ $base-font-color: $brand-color-dark;
 html {
   font-family: 'Ubuntu', sans-serif;
 }
+
 body {
   font-family: 'Ubuntu', sans-serif;
   color: $base-font-color;
@@ -32,9 +36,6 @@ body {
   line-height: $base-line-height;
 }
 
-table {
-
-}
 
 h1 {
   font-family: 'Sanchez', serif;
@@ -130,8 +131,10 @@ h5 {
 }
 
 .goaliebtn {
-  margin-top: 68px;
+  margin: $spacing-unit, 0;
+
 }
+
 
 .graph {
   margin-top: $base-line-height;
