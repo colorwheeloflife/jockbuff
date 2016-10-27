@@ -1,7 +1,4 @@
 require "httparty"
-require "byebug"
-
-
 
 class LeaguesController < ApplicationController
   include GoalieCategoriesHelper
@@ -9,12 +6,9 @@ class LeaguesController < ApplicationController
   include PlayerPassportHelper
   include TeamsHelper
 
-
-
 def index
   @current_user = current_user
   @leagues = League.where(user_id: @current_user.id)
-  # @teams = Team.where(league_id: league_id).where(ownership: true)
 end
 
   def create
@@ -52,13 +46,15 @@ end
     @player_category = create_player_categories(league_settings, league_info)
     @player_passport = create_passport_entry(league_info)
 
-
     end
     redirect_to user_leagues_path(current_user)
   end
 
   def show
     @current_user = current_user
+    @leagues = League.where(user_id: @current_user.id)
+    league_id = params[:id]
+    @teams = Team.where(league_id: league_id).pluck(:name)
   end
 
 end
