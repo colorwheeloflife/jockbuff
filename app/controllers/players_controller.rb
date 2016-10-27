@@ -1,3 +1,4 @@
+require 'byebug'
 class PlayersController < ApplicationController
 
   def create
@@ -14,11 +15,15 @@ class PlayersController < ApplicationController
         })
       player_arr = players["fantasy_content"]["league"]["players"]["player"]
       player_arr.map do |player|
+        positions = player["eligible_positions"]["position"]
+        positions = positions.gsub(/[\[\]'"\/]+/, '').split(",") if positions.include?(" ")
+        byebug
+        positions = positions = positions.split(" ") unless positions.include?(" ")
         player_details = {
           player_id: player["player_id"],
           name: player["name"]["full"],
           pro_team: player["editorial_team_abbr"],
-          positions: player["eligible_positions"]["position"],
+          positions: positions,
           type_p: player["position_type"]
         }
         @player = Player.create(player_details)
