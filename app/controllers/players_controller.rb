@@ -17,9 +17,9 @@ class PlayersController < ApplicationController
       player_arr.map do |player|
         positions = player["eligible_positions"]["position"]
         positions = positions.gsub(/[\[\]'"\/]+/, '').split(",") if positions.include?(" ")
-        byebug
         positions = positions = positions.split(" ") unless positions.include?(" ")
-        player_details = {
+        player_
+        details = {
           player_id: player["player_id"],
           name: player["name"]["full"],
           pro_team: player["editorial_team_abbr"],
