@@ -1,39 +1,41 @@
 
 <div class="container-fluid topfix">
-    <div class="row">
-        <div class="col-md-3">
-            <h1>League Rankings</h1>
-        </div>
+  <div class="row">
+    <div class="col-md-3">
+      <h1>League Rankings</h1>
     </div>
+  </div>
+<div class="row">
+  <div class="col-md-3">
     <div class="row">
-        <div class="col-md-3">
-            <div class="row">
-                <div class="col-md-10">
-                    <table class="table table-bordered table-striped table-responsive">
-                        <thead>
-                            <tr>
-                                <th class="col-md-1">Rank</th>
-                                <th>Team Name</th>
-                                <th>JBR</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                          <% @teams.each do |team| %>
-                    <tr>
-                    <td><%= 1 %></td>
-                    <td><%= team %></td>
-                    <td>900</td>
-                    </tr>
-                    <% end %>
-                  </table>
-                </div>
-            </div>
-        </div>
-        <!-- Graph space -->
-        <div class="col-md-9">
-          <div id="rank_column" class="col-md-6" style="width:100%; height:400px;">If You See This The Graph Had An Error</div>
-        </div>
+      <div class="col-md-10">
+        <table class="table table-bordered table-striped table-responsive">
+          <thead>
+            <tr>
+              <th class="col-md-1">Rank</th>
+              <th>Team Name</th>
+              <th>JBR</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @teams.each do |team| %>
+            <tr>
+              <td><%= 1 %></td>
+              <td><%= link_to "#{team.name}", user_league_team_path(@current_user, @league_id, team) %></td>
+              <td>900</td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
     </div>
+  </div>
+
+  <!-- Graph space -->
+  <div class="col-md-9">
+  <div id="rank_column" class="col-md-6" style="width:100%; height:400px;">If You See This The Graph Had An Error</div>
+  </div>
+</div>
     <div class="row">
     <div class="col-md-12">
       <h1>Top Players By JBR</h1>
