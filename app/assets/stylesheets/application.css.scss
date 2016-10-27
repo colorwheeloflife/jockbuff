@@ -6,7 +6,6 @@
 font-family: 'Ubuntu', sans-serif;
 font-family: 'Sanchez', serif; */
 
-
 /* Variables*/
 
 $base-font-size: 16px;
@@ -23,33 +22,36 @@ $base-font-color: $brand-color-dark;
 
 /* Styling */
 
-
 html {
   font-family: 'Ubuntu', sans-serif;
 }
 body {
+  font-family: 'Ubuntu', sans-serif;
   color: $base-font-color;
   font-size: $base-font-size;
   line-height: $base-line-height;
 }
 
 table {
-  font-family: 'Ubuntu', sans-serif;
+
 }
 
-h1,
+h1 {
+  font-family: 'Sanchez', serif;
+  margin: $spacing-unit;
+}
+
 h2,
 h3,
 h4,
 h5 {
   font-family: 'Sanchez', serif;
+  margin: $spacing-unit;
 }
 
-.container,
-.container-fluid {
-  font-family: 'Ubuntu', sans-serif;
+.container-space {
+  margin: $spacing-unit;
 }
-
 
 .logo {
   font-family: 'Bungee Inline', cursive;
@@ -69,13 +71,14 @@ h5 {
 }
 
 .login {
-  font-family: 'Ubuntu', sans-serif;
-  text-decoration: none;
+  background-color: $brand-color-middark;
+  margin-top: 20px;
+  margin-bottom: 0;
 }
 
 .lead {
+  margin-top:$base-line-height;
   color: $brand-color-dark;
-  font-family: 'Ubuntu', sans-serif;
 }
 
 .container-full {
@@ -115,9 +118,18 @@ h5 {
 }
 
 .topfix {
-  margin-top: 60px;
+  margin-top: ($spacing-unit * 1.7);
+}
+
+.topfix-welcome {
+  margin-top: $base-line-height;
 }
 
 .goaliebtn {
   margin-top: 68px;
+}
+
+.graph {
+  margin-top: $base-line-height;
+  margin-bottom: $base-line-height;
 }
