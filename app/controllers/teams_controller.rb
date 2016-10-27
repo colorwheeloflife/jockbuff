@@ -9,9 +9,7 @@ class TeamsController < ApplicationController
     team_id = params[:id]
     @team = Team.find(team_id)
 
-    puts @team.inspect
-    puts "TEAM ID: #{team_id}"
-    puts "PARAMS: #{params.inspect}"
+
     # player_object = PlayerPassport.where(team_id: team_id).pluck(:player_id, :position)
 
     # @players = player_object.map do |player|
