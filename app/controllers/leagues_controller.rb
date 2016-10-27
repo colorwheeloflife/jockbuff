@@ -18,6 +18,9 @@ end
     user_leagues_full = HTTParty.get("#{@yahoo_root}users;use_login=1/games;game_keys=363/teams", headers:{
     "Authorization" => "Bearer #{@current_user.token}"
     })
+    return redirect_to(:signin) if(user_leagues_full["error"])
+    # puts user_leagues_full
+    # binding.pry
     user_leagues_arr = user_leagues_full["fantasy_content"]["users"]["user"]["games"]["game"]["teams"]["team"]
 
     user_leagues_arr.map do |league|
@@ -52,8 +55,11 @@ end
   def show
     @current_user = current_user
     @leagues = League.where(user_id: @current_user.id)
-    league_id = params[:id]
-    @teams = Team.where(league_id: league_id).pluck(:name)
+    @league_id = params[:id]
+    puts @league_id.inspect
+    @teams = Team.where(league_id: @league_id)
+    # @teams_id = Team.where(league_id: league_id).pluck(:id)
+    # @league_id = League.where(user_id: @current_user.id).pluck(:id)
   end
 
 end

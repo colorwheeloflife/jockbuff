@@ -78,11 +78,11 @@
                  </tr>
              </thead>
              <tbody>
-                    <% @players.each do |player| %>
+                    <% @players.each do |player_passport| %>
                     <tr>
-                    <td><%= player[:name] %></td>
-                    <td><%= player[:pro_team] %></td>
-                    <td><%= player[:position] %></td>
+                    <td><%= player_passport.player.name %></td>
+                    <td><%= player_passport.player.pro_team %></td>
+                    <td><%= player_passport.position %></td>
                     <td>155</td>
                     <td>155</td>
                     <td>155</td>
