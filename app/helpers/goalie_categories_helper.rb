@@ -1,10 +1,9 @@
 module GoalieCategoriesHelper
 
 def create_goalie_categories(league_settings, league_info)
+
 stat_cats = league_settings["fantasy_content"]["league"]["settings"]["stat_categories"]["stats"]["stat"]
-
     goalie_cats = stat_cats.select {|cat| cat["stat_position_types"]["stat_position_type"]["position_type"] == "G"}
-
     goalie_cats = goalie_cats.map do |cat|
        cat["name"]
     end
@@ -28,9 +27,6 @@ stat_cats = league_settings["fantasy_content"]["league"]["settings"]["stat_categ
       sho: goalie_cats.include?('Shutouts'),
       total: goalie_cats.include?('Total Standard Deviation')
     }
-
     GoalieCategory.create(goalie_cats_save)
   end
-
-
 end
