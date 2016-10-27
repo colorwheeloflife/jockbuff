@@ -1,0 +1,2 @@
+class GoaliePrediction < ApplicationRecord
+end
