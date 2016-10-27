@@ -1,3 +1,4 @@
+// function drawSpiderChart_top (chartData) {
 $(function () {
   $('#spider_graph').highcharts({
     chart: {

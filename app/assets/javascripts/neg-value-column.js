@@ -1,3 +1,4 @@
+// function drawNegColChart (chartData) {
 $(function () {
   var triggered = false;
 
