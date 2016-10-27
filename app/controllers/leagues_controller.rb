@@ -1,5 +1,4 @@
 require "httparty"
-require "byebug"
 
 class LeaguesController < ApplicationController
   include GoalieCategoriesHelper
@@ -20,7 +19,6 @@ end
     "Authorization" => "Bearer #{@current_user.token}"
     })
     user_leagues_arr = user_leagues_full["fantasy_content"]["users"]["user"]["games"]["game"]["teams"]["team"]
-
 
     user_leagues_arr.map do |league|
       league_info =
