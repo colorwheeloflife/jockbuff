@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161027002136) do
+ActiveRecord::Schema.define(version: 20161027012048) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -140,6 +140,7 @@ ActiveRecord::Schema.define(version: 20161027002136) do
     t.float    "total"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "ppa"
     t.index ["player_id"], name: "index_player_predictions_on_player_id", using: :btree
     t.index ["true_id"], name: "index_player_predictions_on_true_id", using: :btree
   end
