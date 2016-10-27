@@ -2,9 +2,12 @@
 @import url('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css');
 @import url('/assets/favicon.ico');
 
-/* font-family: 'Bungee Inline', cursive;
+/*
+Fonts
+font-family: 'Bungee Inline', cursive;
 font-family: 'Ubuntu', sans-serif;
-font-family: 'Sanchez', serif; */
+font-family: 'Sanchez', serif;
+*/
 
 /* Variables*/
 
@@ -25,15 +28,12 @@ $base-font-color: $brand-color-dark;
 html {
   font-family: 'Ubuntu', sans-serif;
 }
+
 body {
   font-family: 'Ubuntu', sans-serif;
   color: $base-font-color;
   font-size: $base-font-size;
   line-height: $base-line-height;
-}
-
-table {
-
 }
 
 h1 {
@@ -50,13 +50,15 @@ h5 {
 }
 
 .container-space {
-  margin: $spacing-unit;
+  margin-top: $spacing-unit;
+  margin-bottom: $spacing-unit;
 }
 
 .logo {
   font-family: 'Bungee Inline', cursive;
   font-size: 100px;
   color: $brand-color-dark;
+  margin-bottom: $spacing-unit;
 }
 
 #welcomelogo {
@@ -72,8 +74,9 @@ h5 {
 
 .login {
   background-color: $brand-color-middark;
-  margin-top: 20px;
-  margin-bottom: 0;
+  border-color: $brand-color-middark;
+  margin-bottom: ($spacing-unit * 2);
+  margin-top: $spacing-unit;
 }
 
 .lead {
@@ -122,12 +125,15 @@ h5 {
 }
 
 .topfix-welcome {
-  margin-top: $base-line-height;
+  margin-top: $spacing-unit;
+  margin-bottom: $spacing-unit;
 }
 
 .goaliebtn {
-  margin-top: 68px;
+  margin: $spacing-unit, 0;
+
 }
+
 
 .graph {
   margin-top: $base-line-height;
