@@ -1,37 +1,62 @@
 @import url('https://fonts.googleapis.com/css?family=Bungee+Inline|Sanchez:400,400i|Ubuntu:300i,400,700');
 @import url('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css');
+@import url('/assets/favicon.ico');
 
 /* font-family: 'Bungee Inline', cursive;
 font-family: 'Ubuntu', sans-serif;
 font-family: 'Sanchez', serif; */
 
+/* Variables*/
+
+$base-font-size: 16px;
+$base-line-height: ($base-font-size * 2);
+$spacing-unit: $base-line-height;
+
+$brand-color-middark: #14213d;
+$brand-color-mid: #fca311;
+$brand-color-light: #ffffff;
+$brand-color-dark: #000000;
+$brand-color-midlight: #e5e5e5;
+
+$base-font-color: $brand-color-dark;
+
+/* Styling */
 
 html {
   font-family: 'Ubuntu', sans-serif;
 }
-
-table {
+body {
   font-family: 'Ubuntu', sans-serif;
+  color: $base-font-color;
+  font-size: $base-font-size;
+  line-height: $base-line-height;
 }
 
-h1,
+table {
+
+}
+
+h1 {
+  font-family: 'Sanchez', serif;
+  margin: $spacing-unit;
+}
+
 h2,
 h3,
 h4,
 h5 {
   font-family: 'Sanchez', serif;
+  margin: $spacing-unit;
 }
 
-.container,
-.container-fluid {
-  font-family: 'Ubuntu', sans-serif;
+.container-space {
+  margin: $spacing-unit;
 }
-
 
 .logo {
   font-family: 'Bungee Inline', cursive;
   font-size: 100px;
-  color: #000000;
+  color: $brand-color-dark;
 }
 
 #welcomelogo {
@@ -46,26 +71,27 @@ h5 {
 }
 
 .login {
-  font-family: 'Ubuntu', sans-serif;
-  text-decoration: none;
+  background-color: $brand-color-middark;
+  margin-top: 20px;
+  margin-bottom: 0;
 }
 
 .lead {
-  color:#000000;
-  font-family: 'Ubuntu', sans-serif;
+  margin-top:$base-line-height;
+  color: $brand-color-dark;
 }
 
 .container-full {
   margin: 0 auto;
   width: 100%;
   min-height:100%;
-  background-color:#E5E5E5;
+  background-color: $brand-color-midlight;
   color:#eee;
   overflow:hidden;
 }
 
 .container-full a {
-  color:#E5E5E5;
+  color:$brand-color-midlight;
   text-decoration:none;
 }
 
@@ -92,9 +118,18 @@ h5 {
 }
 
 .topfix {
-  margin-top: 60px;
+  margin-top: ($spacing-unit * 1.7);
+}
+
+.topfix-welcome {
+  margin-top: $base-line-height;
 }
 
 .goaliebtn {
   margin-top: 68px;
+}
+
+.graph {
+  margin-top: $base-line-height;
+  margin-bottom: $base-line-height;
 }
