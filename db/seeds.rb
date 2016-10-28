@@ -8,7 +8,6 @@
 require 'byebug'
 require 'csv'
 
-
   def players_to_seed
     full_player_arr = []
     i = 0
@@ -18,7 +17,7 @@ require 'csv'
     end
     players_full = full_player_arr.map do |start|
       players = HTTParty.get("https://fantasysports.yahooapis.com/fantasy/v2/league/363.l.91004/players;start=#{start}", headers:{
-          "Authorization" => "0K1aVlWQo11eVO1rLfGOC0Ge6V7wpTvpuSpa1NGOzIwXP4GAgUK6DUfjea0gubhwV4G8PCZ8om0qG2tpqFVfQBLg7Pr9U1XxwrXcL2KPPtKjUbfTfEfT7FBVjvPktH7Q0t3vYHcqG4a_uXxSNueH6lgieqi.vibTrrw3JUkoimsKUv3wGrDi0TJ7yNB2vaKpwQVB.PTTD4JX1fOxQaCWcApHcmH2WCkgh0yvbjZObThrYcoPSFvIQ0xrNb7iGPDcpMN2UinrTVfbGiuvmyGU.cOjkqk0K44Sc.Ry94nNl.r_uiDOjOQuMquDyqTkK9syXTd79yYjXSr9znByafaLoaLrl6nPsfaJzwZYVh4pV_8s2bc7njrg.SelpVjUOg5AuADe_qIMzepmJFAu5UrHQfejSdueF2vYh.Ng4riMJMux.Ydhz30PPIQuRH60og3rrRHRaI0vJxjFQdUbAM6KyJtM3bdmjWDQcU0NfT_TCX71DVy2qSg3AbdwvRFpWHI4Ku1KYY7.eWQ8KH27PNerwivPKd0ekBva8pNCHBOsTwFl79jLHBDQUY3nUQhBYb9oQVu.Pg3C_CODpo4q97HHVbVnr3mOFw2U5tXXtEiqrFc1swCYTMH3j_9KfE4knx336eQO8SFOlL6zjcL_CsFm1dHGwN2.gKsmo.2GM6jG2zzOlzWM36wYlbAm5XcEWFI1rHplml3CTIHRqXwnjrLHDRYuTXnWOfbRBMupzi_tgxTmZhW8D58dNOGfqjz59.tKmwl1TUEaEKB5rcKci7U0w6ivLdnb7PJd5HNDGOc3RecOiaaZ47sR7wPWMjqHFVAJdhW93fhKqkXnbQOs60pKG36Aas5iXnv_6XGKG9nj0Okvd.zGe1dZfl3VOte7"
+          "Authorization" => "Bearer #{User.first.token}"
         })
       player_arr = players["fantasy_content"]["league"]["players"]["player"]
       player_arr.map do |player|

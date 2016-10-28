@@ -13,11 +13,11 @@ module TeamsHelper
       ownership = false unless  user_team == owner["fantasy_content"]["team"]["name"]
       team_info.merge!(ownership: ownership)
       team_info
-      end
-      waiver_team = {league_id: league_id, ownership: false, name: 'Waiver'}
-      team_info.push(waiver_team)
-      Team.create(team_info)
-      return team_info_arr
     end
+    waiver_team = {league_id: league_id, ownership: false, name: 'Waiver'}
+    team_info.push(waiver_team)
+    Team.create(team_info)
+    return team_info_arr
+  end
 
 end
