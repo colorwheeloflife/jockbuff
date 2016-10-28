@@ -69,7 +69,7 @@ Rank,Player,Owned?,Team,Position,FHG Value,Games Played,SV%,GAA,W,SO,,G,A,P,+/-,
 68,Dion Phaneuf,&nbsp,OTT,D,94,73, , , , ,,5,29,34,10,97,142,0,14,1,0,189,123,0
 69,Jack Eichel,&nbsp,BUF,C,94,81, , , , ,,30,42,72,0,24,298,6,25,0,0,49,32,402
 70,Nikita Kucherov,&nbsp,TBL,RW,93,80, , , , ,,31,39,70,20,32,229,4,25,0,0,63,28,0
-71,Artemy Panarin,&nbsp,CHI,LW,93,79, , , , ,,28,46,74,20,34,175,7,26,0,0,51,16,0
+71,Artemi Panarin,&nbsp,CHI,LW,93,79, , , , ,,28,46,74,20,34,175,7,26,0,0,51,16,0
 72,Rick Nash,&nbsp,NYR,LW,93,75, , , , ,,30,28,58,10,36,271,8,20,3,2,62,30,1
 73,Victor Hedman,&nbsp,TBL,D,92,71, , , , ,,11,37,48,20,46,155,1,19,2,0,58,124,0
 74,Jakub Voracek,&nbsp,PHI,LW/RW,91,79, , , , ,,21,47,68,0,42,251,3,24,0,0,55,37,4
@@ -102,7 +102,7 @@ Rank,Player,Owned?,Team,Position,FHG Value,Games Played,SV%,GAA,W,SO,,G,A,P,+/-,
 101,Scott Hartnell,&nbsp,CBJ,LW,72,78, , , , ,,24,25,49,-10,108,190,2,17,0,0,162,39,4
 102,Boone Jenner,&nbsp,CBJ,C/LW,71,73, , , , ,,25,21,46,-10,73,198,5,12,0,0,208,64,127
 103,Ryan O'Reilly,&nbsp,BUF,C/LW,71,79, , , , ,,23,41,64,0,10,184,3,16,1,1,28,45,654
-104,Jean-gabriel Pageau,&nbsp,OTT,C,71,79, , , , ,,20,26,46,20,26,168,3,12,8,4,160,44,527
+104,Jean-Gabriel Pageau,&nbsp,OTT,C,71,79, , , , ,,20,26,46,20,26,168,3,12,8,4,160,44,527
 105,Sergei Bobrovsky,&nbsp,CBJ,G,70,52,0.923,2.4,28,2,, , , , , , , , , , , , ,
 106,Alexander Radulov,&nbsp,MTL,RW,70,74, , , , ,,22,40,62,0,63,183,2,25,0,0,44,34,0
 107,Daniel Sedin,&nbsp,VAN,LW,70,79, , , , ,,26,37,63,-10,34,288,6,22,0,0,19,17,5
@@ -134,7 +134,7 @@ Rank,Player,Owned?,Team,Position,FHG Value,Games Played,SV%,GAA,W,SO,,G,A,P,+/-,
 133,David Savard,&nbsp,CBJ,D,62,73, , , , ,,9,27,36,-10,58,134,2,11,0,0,145,125,1
 134,Matt Niskanen,&nbsp,WSH,D,61,81, , , , ,,5,29,34,20,42,112,2,10,0,0,155,143,0
 135,Logan Couture,&nbsp,SJS,C,60,68, , , , ,,23,33,56,20,20,224,5,20,2,1,42,63,419
-136,TJ Brodie,&nbsp,CGY,D,58,77, , , , ,,7,37,44,20,24,105,2,13,3,0,22,145,0
+136,T.J. Brodie,&nbsp,CGY,D,58,77, , , , ,,7,37,44,20,24,105,2,13,3,0,22,145,0
 137,Jaden Schwartz,&nbsp,STL,LW,58,70, , , , ,,25,34,59,20,18,178,2,21,2,1,53,38,47
 138,Vincent Trocheck,&nbsp,FLA,C,58,75, , , , ,,24,30,54,20,42,195,3,14,1,1,132,37,486
 139,Anton Stralman,&nbsp,TBL,D,57,79, , , , ,,9,31,40,20,26,174,0,16,0,0,100,77,0
@@ -162,7 +162,7 @@ Rank,Player,Owned?,Team,Position,FHG Value,Games Played,SV%,GAA,W,SO,,G,A,P,+/-,
 161,Jonathan Huberdeau,&nbsp,FLA,LW,49,67, , , , ,,17,41,58,20,36,174,1,20,0,0,62,35,4
 162,Adam Henrique,&nbsp,NJD,C,49,77, , , , ,,25,30,55,20,28,145,5,14,4,2,69,51,429
 163,Mike Green,&nbsp,DET,D,48,73, , , , ,,8,31,39,-10,42,140,1,16,0,0,104,70,0
-164,JT Miller,&nbsp,NYR,C/LW,48,80, , , , ,,21,27,48,10,45,164,5,12,0,0,160,43,88
+164,J.T. Miller,&nbsp,NYR,C/LW,48,80, , , , ,,21,27,48,10,45,164,5,12,0,0,160,43,88
 165,David Krejci,&nbsp,BOS,C,47,70, , , , ,,21,35,56,10,28,187,5,20,1,0,42,53,526
 166,Marc-Andre Fleury,&nbsp,PIT,G,47,55,0.918,2.4,30,2,, , , , , , , , , , , , ,
 167,David Perron,&nbsp,STL,LW/RW,46,77, , , , ,,20,27,47,20,50,198,2,12,0,0,161,25,6
@@ -291,16 +291,16 @@ Rank,Player,Owned?,Team,Position,FHG Value,Games Played,SV%,GAA,W,SO,,G,A,P,+/-,
 290,Damon Severson,&nbsp,NJD,D,5,73, , , , ,,7,22,29,0,38,218,0,0,0,0,67,55,0
 291,Leo Komarov,&nbsp,TOR,C/RW,4,68, , , , ,,14,15,29,0,42,111,2,0,2,1,281,27,83
 292,Dylan McIlrath,&nbsp,NYR,D,4,74, , , , ,,2,8,10,10,135,28,0,0,0,0,194,78,0
-293,Mitch Marner,&nbsp,TOR,C,4,75, , , , ,,21,35,56,0,38,175,2,17,0,0,38,19,0
+293,Mitchell Marner,&nbsp,TOR,C,4,75, , , , ,,21,35,56,0,38,175,2,17,0,0,38,19,0
 294,Jonathan Drouin,&nbsp,TBL,LW,4,72, , , , ,,14,30,44,20,34,177,2,11,0,0,58,14,16
 295,Brett Ritchie,&nbsp,DAL,RW,3,74, , , , ,,16,14,30,10,24,248,3,8,0,0,169,14,2
 296,Nick Bjugstad,&nbsp,FLA,C,3,69, , , , ,,19,21,40,10,38,194,3,10,1,0,92,26,476
 297,Michael Matheson,&nbsp,FLA,D,3,78, , , , ,,9,24,33,0,38,180,1,0,0,0,31,70,0
-298,PA Parenteau,&nbsp,NJD,RW,3,67, , , , ,,18,24,42,0,62,161,2,11,0,0,56,20,6
+298,P.A. Parenteau,&nbsp,NJD,RW,3,67, , , , ,,18,24,42,0,62,161,2,11,0,0,56,20,6
 299,Mark Borowiecki,&nbsp,OTT,D,3,63, , , , ,,1,7,8,10,107,21,0,0,0,0,246,94,0
 300,Luke Schenn,&nbsp,ARI,D,2,69, , , , ,,3,15,18,-10,63,60,0,0,0,0,200,115,0
 301,Zach Werenski,&nbsp,CBJ,D,2,76, , , , ,,9,21,30,0,31,180,1,0,0,0,61,76,0
-302,Danny Dekeyser,&nbsp,DET,D,2,75, , , , ,,6,22,28,0,42,105,2,0,0,0,75,113,0
+302,Danny DeKeyser,&nbsp,DET,D,2,75, , , , ,,6,22,28,0,42,105,2,0,0,0,75,113,0
 303,Ryan Callahan,&nbsp,TBL,RW,2,64, , , , ,,14,19,33,20,45,140,2,8,0,0,144,50,15
 304,Nick Bonino,&nbsp,PIT,C,1,72, , , , ,,13,34,47,20,28,114,2,12,0,0,27,77,548
 305,Antti Niemi,&nbsp,DAL,G,1,46,0.918,2.5,24,2,, , , , , , , , , , , , ,
@@ -337,7 +337,7 @@ Rank,Player,Owned?,Team,Position,FHG Value,Games Played,SV%,GAA,W,SO,,G,A,P,+/-,
 336,Sebastian Aho,&nbsp,CAR,RW,-6,74, , , , ,,17,28,45,0,10,142,1,18,0,0,56,19,0
 337,Brendan Smith,&nbsp,DET,D,-7,70, , , , ,,4,17,21,0,64,87,0,6,0,0,104,61,0
 338,Patrick Maroon,&nbsp,EDM,LW,-8,73, , , , ,,12,25,37,0,85,119,2,0,0,0,139,15,11
-339,Jake Mccabe,&nbsp,BUF,D,-8,76, , , , ,,4,19,23,0,58,65,0,0,0,0,108,106,0
+339,Jake McCabe,&nbsp,BUF,D,-8,76, , , , ,,4,19,23,0,58,65,0,0,0,0,108,106,0
 340,Calvin de Haan,&nbsp,NYI,D,-8,69, , , , ,,2,16,18,10,24,88,0,0,0,0,123,158,0
 341,Lee Stempniak,&nbsp,CAR,LW/RW,-9,75, , , , ,,18,22,40,-10,38,172,3,0,2,1,90,26,8
 342,Josh Anderson,&nbsp,CBJ,RW,-9,70, , , , ,,10,12,22,0,78,210,0,0,0,0,210,23,0
@@ -359,7 +359,7 @@ Rank,Player,Owned?,Team,Position,FHG Value,Games Played,SV%,GAA,W,SO,,G,A,P,+/-,
 358,Patrick Wiercioch,&nbsp,COL,D,-14,66, , , , ,,5,18,23,-10,30,166,1,7,0,0,53,50,0
 359,Antoine Vermette,&nbsp,ANA,C,-14,79, , , , ,,14,24,38,0,50,102,2,0,1,1,58,60,866
 360,Brett Connolly,&nbsp,WSH,RW,-14,68, , , , ,,16,16,32,10,24,138,4,8,0,0,131,35,28
-361,Alexander Killorn,&nbsp,TBL,C,-14,78, , , , ,,16,26,42,20,42,159,3,11,1,0,73,22,47
+361,Alex Killorn,&nbsp,TBL,C,-14,78, , , , ,,16,26,42,20,42,159,3,11,1,0,73,22,47
 362,Jiri Hudler,&nbsp,DAL,C/RW,-15,75, , , , ,,18,32,50,0,18,106,2,13,0,0,30,5,12
 363,Connor Carrick,&nbsp,TOR,D,-15,71, , , , ,,5,18,23,0,28,78,2,7,0,0,84,71,0
 364,Chris Wideman,&nbsp,OTT,D,-16,68, , , , ,,8,14,22,10,42,116,3,0,0,0,61,75,0
@@ -386,7 +386,7 @@ Rank,Player,Owned?,Team,Position,FHG Value,Games Played,SV%,GAA,W,SO,,G,A,P,+/-,
 385,Ryan Murphy,&nbsp,CAR,D,-21,63, , , , ,,4,24,28,-10,16,123,1,8,0,0,38,42,0
 386,Dalton Prout,&nbsp,CBJ,D,-21,65, , , , ,,2,6,8,-10,98,76,0,0,0,0,143,82,0
 387,Brad Richardson,&nbsp,ARI,RW,-21,76, , , , ,,12,19,31,-10,44,107,2,0,2,1,53,49,506
-388,Tobias Enstrom,&nbsp,WPG,D,-22,71, , , , ,,4,18,22,0,40,54,1,7,0,0,29,108,0
+388,Toby Enstrom,&nbsp,WPG,D,-22,71, , , , ,,4,18,22,0,40,54,1,7,0,0,29,108,0
 389,Nikita Tryamkin,&nbsp,VAN,D,-22,66, , , , ,,2,14,16,-10,63,22,0,0,0,0,157,99,0
 390,Vladislav Namestnikov,&nbsp,TBL,C,-22,79, , , , ,,16,27,43,20,40,109,3,11,0,0,58,32,160
 391,Johnny Oduya,&nbsp,DAL,D,-23,78, , , , ,,2,16,18,10,30,49,0,0,1,0,69,156,0
@@ -403,14 +403,14 @@ Rank,Player,Owned?,Team,Position,FHG Value,Games Played,SV%,GAA,W,SO,,G,A,P,+/-,
 402,Jonathan Marchessault,&nbsp,FLA,C,-24,73, , , , ,,17,28,45,10,38,179,2,0,0,0,99,29,61
 403,Robin Lehner,&nbsp,BUF,G,-24,45,0.919,2.63,21,3,, , , , , , , , , , , , ,
 404,Radim Vrbata,&nbsp,ARI,RW,-24,73, , , , ,,17,23,40,0,18,194,2,10,0,0,15,10,9
-405,Trevor Van Riemsdyk,&nbsp,CHI,D,-25,80, , , , ,,3,13,16,0,32,106,1,0,1,0,48,136,0
+405,Trevor van Riemsdyk,&nbsp,CHI,D,-25,80, , , , ,,3,13,16,0,32,106,1,0,1,0,48,136,0
 406,Brandon Manning,&nbsp,PHI,D,-25,65, , , , ,,3,11,14,0,82,60,0,0,0,0,114,66,0
 407,William Nylander,&nbsp,TOR,C/RW,-25,64, , , , ,,15,25,40,0,10,108,3,10,0,0,15,15,416
 408,Valtteri Filppula,&nbsp,TBL,C/LW,-25,78, , , , ,,11,26,37,20,38,79,1,0,0,0,32,27,651
 409,Jason Chimera,&nbsp,NYI,LW,-26,80, , , , ,,13,17,30,10,38,132,2,0,1,1,137,22,30
 410,Sven Andrighetto,&nbsp,MTL,RW,-26,70, , , , ,,12,20,32,10,40,115,0,8,0,0,113,27,8
 411,Tyler Motte,&nbsp,CHI,LW,-26,69, , , , ,,19,19,38,0,36,158,2,0,0,0,86,35,0
-412,Michael Ferland,&nbsp,CGY,LW,-26,73, , , , ,,6,16,22,0,59,156,1,0,0,0,204,24,5
+412,Micheal Ferland,&nbsp,CGY,LW,-26,73, , , , ,,6,16,22,0,59,156,1,0,0,0,204,24,5
 413,Jay Bouwmeester,&nbsp,STL,D,-26,75, , , , ,,3,16,19,20,20,116,0,0,0,0,58,104,1
 414,Niklas Hjalmarsson,&nbsp,CHI,D,-26,80, , , , ,,2,16,18,0,34,60,0,0,2,0,41,151,0
 415,Yohann Auvitu,&nbsp,NJD,D,-26,65, , , , ,,7,15,22,0,12,140,1,0,0,0,70,80,0
@@ -460,7 +460,7 @@ Rank,Player,Owned?,Team,Position,FHG Value,Games Played,SV%,GAA,W,SO,,G,A,P,+/-,
 459,Kevin Gravel,&nbsp,LAK,D,-41,63, , , , ,,6,15,21,0,22,120,0,0,0,0,50,50,0
 460,Mike Fisher,&nbsp,NSH,C,-41,68, , , , ,,12,16,28,-10,35,89,2,0,1,0,129,71,622
 461,Ben Lovejoy,&nbsp,NJD,D,-42,68, , , , ,,2,6,8,-10,25,51,0,0,1,0,160,109,0
-462,JT Brown,&nbsp,TBL,RW,-42,69, , , , ,,9,10,19,20,50,196,0,0,1,0,91,35,13
+462,J.T. Brown,&nbsp,TBL,RW,-42,69, , , , ,,9,10,19,20,50,196,0,0,1,0,91,35,13
 463,Carl Gunnarsson,&nbsp,STL,D,-42,71, , , , ,,3,10,13,10,35,57,0,0,0,0,66,117,0
 464,Nikita Nesterov,&nbsp,TBL,D,-42,53, , , , ,,3,11,14,10,32,61,0,4,0,0,103,47,0
 465,Matt Hunwick,&nbsp,TOR,D,-42,65, , , , ,,2,10,12,0,30,74,1,0,0,0,83,106,0
@@ -468,7 +468,7 @@ Rank,Player,Owned?,Team,Position,FHG Value,Games Played,SV%,GAA,W,SO,,G,A,P,+/-,
 467,Brett Pesce,&nbsp,CAR,D,-42,73, , , , ,,4,16,20,-10,35,85,1,0,0,0,31,80,0
 468,Josh Bailey,&nbsp,NYI,RW,-43,76, , , , ,,11,27,38,10,22,108,1,0,0,0,54,33,52
 469,Dale Weise,&nbsp,PHI,RW,-43,70, , , , ,,9,19,28,0,61,80,1,0,0,0,126,27,7
-470,Alexander Burmistrov,&nbsp,WPG,C/LW,-44,77, , , , ,,8,16,24,0,34,117,2,0,1,0,119,33,195
+470,Alex Burmistrov,&nbsp,WPG,C/LW,-44,77, , , , ,,8,16,24,0,34,117,2,0,1,0,119,33,195
 471,Sven Baertschi,&nbsp,VAN,LW,-44,69, , , , ,,16,19,35,-10,18,129,1,9,0,0,39,36,0
 472,Daniel Winnik,&nbsp,WSH,C/LW,-44,77, , , , ,,6,19,25,20,30,89,1,0,2,1,84,56,67
 473,Nate Schmidt,&nbsp,WSH,D,-45,70, , , , ,,2,14,16,20,18,64,0,0,0,0,61,90,0
@@ -502,7 +502,7 @@ Rank,Player,Owned?,Team,Position,FHG Value,Games Played,SV%,GAA,W,SO,,G,A,P,+/-,
 501,Cedric Paquette,&nbsp,TBL,C,-54,69, , , , ,,9,11,20,10,51,71,2,0,2,2,150,52,152
 502,Joel Armia,&nbsp,WPG,RW,-54,64, , , , ,,9,11,20,0,40,117,2,0,4,0,92,29,0
 503,Miikka Salomaki,&nbsp,NSH,RW,-54,66, , , , ,,8,9,17,10,32,87,1,0,2,0,178,33,2
-504,Steve Santini,&nbsp,NJD,D,-55,38, , , , ,,1,6,7,0,32,20,0,0,0,0,156,78,0
+504,Steven Santini,&nbsp,NJD,D,-55,38, , , , ,,1,6,7,0,32,20,0,0,0,0,156,78,0
 505,Joe Morrow,&nbsp,BOS,D,-55,50, , , , ,,2,13,15,10,14,64,0,5,0,0,48,53,0
 506,Colton Sceviour,&nbsp,FLA,C/RW,-55,71, , , , ,,11,15,26,10,26,121,2,0,0,0,71,46,24
 507,Patrick Eaves,&nbsp,DAL,RW,-55,57, , , , ,,11,16,27,10,18,94,2,7,0,0,76,22,5
@@ -522,7 +522,7 @@ Rank,Player,Owned?,Team,Position,FHG Value,Games Played,SV%,GAA,W,SO,,G,A,P,+/-,
 521,Radek Faksa,&nbsp,DAL,C,-59,69, , , , ,,10,18,28,10,26,134,2,0,0,0,86,50,302
 522,Bryan Rust,&nbsp,PIT,RW,-59,58, , , , ,,7,18,25,10,16,143,1,0,0,0,88,28,1
 523,Xavier Ouellet,&nbsp,DET,D,-59,66, , , , ,,2,14,16,0,32,35,0,0,0,0,66,50,0
-524,Alex Burrows,&nbsp,VAN,LW/RW,-60,66, , , , ,,11,11,22,-10,54,132,1,0,1,0,68,30,13
+524,Alexandre Burrows,&nbsp,VAN,LW/RW,-60,66, , , , ,,11,11,22,-10,54,132,1,0,1,0,68,30,13
 525,Kyle Quincey,&nbsp,NJD,D,-60,67, , , , ,,3,14,17,0,69,70,1,0,0,0,0,0,0
 526,Phillip Danault,&nbsp,MTL,LW,-60,67, , , , ,,6,15,21,10,28,111,2,0,0,0,60,35,320
 527,Jon Merrill,&nbsp,NJD,D,-60,62, , , , ,,2,12,14,-10,26,49,1,0,0,0,63,69,0
@@ -538,7 +538,7 @@ Rank,Player,Owned?,Team,Position,FHG Value,Games Played,SV%,GAA,W,SO,,G,A,P,+/-,
 537,J.T. Compher,&nbsp,COL,RW,-64,55, , , , ,,8,19,27,0,14,67,1,8,0,0,69,33,0
 538,Jimmy Howard,&nbsp,DET,G,-64,34,0.915,2.44,13,1,, , , , , , , , , , , , ,
 539,Jamie Oleksiak,&nbsp,DAL,D,-64,38, , , , ,,1,7,8,10,30,54,0,0,0,0,89,52,0
-540,Matthew Nieto,&nbsp,SJS,LW,-64,69, , , , ,,10,14,24,20,18,125,1,0,1,1,34,39,2
+540,Matt Nieto,&nbsp,SJS,LW,-64,69, , , , ,,10,14,24,20,18,125,1,0,1,1,34,39,2
 541,Ryan Garbutt,&nbsp,DAL,C,-65,74, , , , ,,9,10,19,0,57,125,2,0,1,1,152,26,7
 542,Jhonas Enroth,&nbsp,TOR,G,-65,26,0.921,2.58,10,1,, , , , , , , , , , , , ,
 543,Frank Corrado,&nbsp,TOR,D,-65,58, , , , ,,2,9,11,0,30,49,0,0,0,0,67,61,0
@@ -573,7 +573,7 @@ Rank,Player,Owned?,Team,Position,FHG Value,Games Played,SV%,GAA,W,SO,,G,A,P,+/-,
 572,Michael McCarron,&nbsp,MTL,RW,-74,38, , , , ,,5,5,10,0,45,42,0,0,0,0,191,31,154
 573,Andrew Hammond,&nbsp,OTT,G,-74,24,0.922,2.64,9,1,, , , , , , , , , , , , ,
 574,Andrew MacDonald,&nbsp,PHI,D,-74,40, , , , ,,2,9,11,10,14,50,1,0,0,0,20,70,0
-575,Pierre-edouard Bellemare,&nbsp,PHI,LW,-74,77, , , , ,,7,8,15,0,30,58,1,0,0,0,92,61,312
+575,Pierre-Edouard Bellemare,&nbsp,PHI,LW,-74,77, , , , ,,7,8,15,0,30,58,1,0,0,0,92,61,312
 576,Andy Andreoff,&nbsp,LAK,LW,-74,66, , , , ,,8,6,14,0,78,48,2,0,0,0,98,12,140
 577,Brandon Pirri,&nbsp,NYR,C,-74,64, , , , ,,19,14,33,0,26,136,3,8,0,0,0,0,143
 578,Jay Beagle,&nbsp,WSH,RW,-74,60, , , , ,,7,12,19,10,22,69,1,0,0,0,76,30,293
@@ -616,7 +616,7 @@ Rank,Player,Owned?,Team,Position,FHG Value,Games Played,SV%,GAA,W,SO,,G,A,P,+/-,
 615,Zach Trotman,&nbsp,LAK,D,-86,19, , , , ,,1,3,4,0,8,37,0,0,0,0,85,60,0
 616,Derek Forbort,&nbsp,LAK,D,-86,51, , , , ,,1,5,6,0,43,14,0,0,0,0,36,46,0
 617,Matt Puempel,&nbsp,OTT,LW,-86,68, , , , ,,9,11,20,10,21,90,2,0,0,0,48,26,2
-618,Matthew Carle,&nbsp,TBL,D,-86,67, , , , ,,2,12,14,0,26,61,0,0,0,0,0,0,0
+618,Matt Carle,&nbsp,TBL,D,-86,67, , , , ,,2,12,14,0,26,61,0,0,0,0,0,0,0
 619,Jonas Gustavsson,&nbsp,EDM,G,-87,23,0.918,2.52,7,1,, , , , , , , , , , , , ,
 620,Andreas Athanasiou,&nbsp,DET,C,-87,63, , , , ,,14,17,31,-10,16,82,2,0,2,2,29,14,90
 621,Dominic Moore,&nbsp,BOS,C/LW,-88,78, , , , ,,6,10,16,0,22,83,2,0,1,1,0,0,470
@@ -627,7 +627,7 @@ Rank,Player,Owned?,Team,Position,FHG Value,Games Played,SV%,GAA,W,SO,,G,A,P,+/-,
 626,Sergey Kalinin,&nbsp,NJD,C,-90,77, , , , ,,7,12,19,-10,41,61,2,0,0,0,144,29,132
 627,Anton Lander,&nbsp,EDM,C,-90,64, , , , ,,6,16,22,0,20,114,2,0,0,0,61,18,343
 628,Brandon Bollig,&nbsp,CGY,LW,-91,51, , , , ,,1,5,6,0,99,23,0,0,0,0,110,17,2
-629,Tyler Chorney,&nbsp,WSH,D,-91,41, , , , ,,2,4,6,0,18,40,0,0,0,0,42,43,0
+629,Taylor Chorney,&nbsp,WSH,D,-91,41, , , , ,,2,4,6,0,18,40,0,0,0,0,42,43,0
 630,Matt Cullen,&nbsp,PIT,C,-91,74, , , , ,,11,14,25,0,18,114,2,0,2,1,0,0,393
 631,Adam Clendening,&nbsp,NYR,D,-91,30, , , , ,,2,5,7,0,12,60,0,2,0,0,17,34,0
 632,Chris Higgins,&nbsp,VAN,LW,-92,70, , , , ,,11,17,28,0,20,92,1,0,0,0,0,0,0
@@ -651,7 +651,7 @@ Rank,Player,Owned?,Team,Position,FHG Value,Games Played,SV%,GAA,W,SO,,G,A,P,+/-,
 650,Petter Granberg,&nbsp,NSH,D,-97,20, , , , ,,0,4,4,0,6,0,0,0,0,0,86,44,0
 651,Tyler Wotherspoon,&nbsp,CGY,D,-98,40, , , , ,,0,8,8,0,6,0,0,0,0,0,34,54,0
 652,Madison Bowey,&nbsp,WSH,D,-98,23, , , , ,,2,5,7,0,10,40,0,0,0,0,35,23,0
-653,Curtis Mckenzie,&nbsp,DAL,LW,-99,46, , , , ,,6,10,16,0,57,66,0,0,0,0,34,5,4
+653,Curtis McKenzie,&nbsp,DAL,LW,-99,46, , , , ,,6,10,16,0,57,66,0,0,0,0,34,5,4
 654,Colton Sissons,&nbsp,NSH,C,-99,74, , , , ,,7,13,20,0,30,53,0,0,0,0,76,44,306
 655,Gregory Campbell,&nbsp,CBJ,C,-99,79, , , , ,,3,7,10,-10,56,36,1,0,1,1,96,49,313
 656,Jared Boll,&nbsp,ANA,RW,-99,50, , , , ,,1,5,6,0,92,17,0,0,0,0,89,13,1
@@ -693,7 +693,6 @@ Rank,Player,Owned?,Team,Position,FHG Value,Games Played,SV%,GAA,W,SO,,G,A,P,+/-,
 692,Jayce Hawryluk,&nbsp,FLA,RW,-119,19, , , , ,,5,6,11,0,18,42,0,0,0,0,70,10,0
 693,Carter Hutton,&nbsp,STL,G,-119,23,0.911,2.52,10,1,, , , , , , , , , , , , ,
 694,Daniel Carr,&nbsp,MTL,LW,-119,35, , , , ,,7,9,16,0,8,46,1,0,0,0,38,8,0
-695,Jared Cowen,&nbsp,TOR,D,-119,0, , , , ,,0,0,0,0,0,0,0,0,0,0,53,23,0
 696,Dennis Rasmussen,&nbsp,CHI,C,-120,55, , , , ,,7,8,15,0,22,74,2,0,0,0,45,25,180
 697,Brandon Mashinter,&nbsp,CHI,LW,-120,50, , , , ,,3,5,8,0,44,21,0,0,0,0,72,5,0
 698,Lars Johansson,&nbsp,CHI,G,-120,15,0.917,2.69,8,1,, , , , , , , , , , , , ,
@@ -723,7 +722,6 @@ Rank,Player,Owned?,Team,Position,FHG Value,Games Played,SV%,GAA,W,SO,,G,A,P,+/-,
 722,Matt Bartkowski,&nbsp,OTT,D,-136,0, , , , ,,0,0,0,0,0,0,0,0,0,0,0,0,0
 723,Korbinian Holzer,&nbsp,ANA,D,-136,0, , , , ,,0,0,0,0,0,0,0,0,0,0,0,0,0
 724,Eric Gryba,&nbsp,EDM,D,-136,0, , , , ,,0,0,0,0,0,0,0,0,0,0,0,0,0
-725,Barret Jackman,&nbsp,NSH,D,-136,0, , , , ,,0,0,0,0,0,0,0,0,0,0,0,0,0
 726,Seth Griffith,&nbsp,TOR,C/RW,-141,29, , , , ,,3,7,10,0,8,18,1,0,0,0,7,5,3
 727,Anthony Peluso,&nbsp,WPG,RW,-143,26, , , , ,,0,2,2,0,35,0,0,0,0,0,50,2,0
 728,Anthony Mantha,&nbsp,DET,RW,-144,18, , , , ,,3,4,7,0,6,27,2,0,0,0,9,5,0
@@ -732,7 +730,6 @@ Rank,Player,Owned?,Team,Position,FHG Value,Games Played,SV%,GAA,W,SO,,G,A,P,+/-,
 731,David Clarkson,&nbsp,CBJ,RW,-145,18, , , , ,,2,2,4,-10,20,26,0,0,0,0,35,6,4
 732,Borna Rendulic,&nbsp,VAN,RW,-146,23, , , , ,,2,3,5,0,8,14,0,0,0,0,38,10,0
 733,Marek Mazanec,&nbsp,NSH,G,-147,17,0.913,2.67,7,1,, , , , , , , , , , , , ,
-734,Joe Vitale,&nbsp,DET,C/RW,-148,20, , , , ,,1,2,3,-10,8,24,0,0,0,0,31,13,88
 735,Chris Terry,&nbsp,MTL,LW/RW,-149,7, , , , ,,0,2,2,10,0,0,0,0,0,0,56,19,0
 736,Jakub Vrana,&nbsp,WSH,RW,-149,15, , , , ,,2,4,6,0,4,17,0,2,0,0,11,4,0
 737,Dave Bolland,&nbsp,ARI,C,-150,26, , , , ,,2,6,8,0,18,18,0,0,0,1,32,12,186
@@ -747,16 +744,14 @@ Rank,Player,Owned?,Team,Position,FHG Value,Games Played,SV%,GAA,W,SO,,G,A,P,+/-,
 746,Sonny Milano,&nbsp,CBJ,LW,-158,15, , , , ,,2,4,6,0,2,0,0,0,0,0,8,5,0
 747,Nicklas Jensen,&nbsp,NYR,LW/RW,-159,8, , , , ,,1,1,2,0,0,8,0,0,0,0,19,14,0
 748,Anton Slepyshev,&nbsp,EDM,LW,-159,18, , , , ,,0,4,4,0,2,0,0,0,0,0,21,2,2
-749,Martin Reway,&nbsp,MTL,LW,-159,0, , , , ,,0,0,0,0,0,0,0,0,0,0,48,15,0
 750,Matthew Tkachuk,&nbsp,CGY,LW,-162,9, , , , ,,1,2,3,0,6,8,0,1,0,0,0,0,0
-751,Mitchell Moroz,&nbsp,EDM,LW,-164,8, , , , ,,0,1,1,0,7,0,0,0,0,0,20,2,0
+751,Mitch Moroz,&nbsp,EDM,LW,-164,8, , , , ,,0,1,1,0,7,0,0,0,0,0,20,2,0
 752,Jordan Schroeder,&nbsp,MIN,C,-165,30, , , , ,,3,5,8,0,2,39,0,0,0,0,20,11,45
 753,Joonas Korpisalo,&nbsp,CBJ,G,-166,12,0.919,2.9,6,1,, , , , , , , , , , , , ,
 754,Nick Schmaltz,&nbsp,CHI,C,-167,20, , , , ,,2,7,9,0,6,17,0,0,0,0,14,5,81
 755,Tuomo Ruutu,&nbsp,VAN,LW/RW,-169,0, , , , ,,0,0,0,0,8,0,0,0,0,0,0,0,0
 756,Noel Acciari,&nbsp,BOS,C,-169,22, , , , ,,1,3,4,0,10,0,0,0,0,0,60,5,69
 757,Kalle Kossila,&nbsp,ANA,C,-169,20, , , , ,,3,5,8,0,4,25,0,0,0,0,10,5,81
-758,Cody Hodgson,&nbsp,BUF,C/RW,-170,0, , , , ,,0,0,0,0,0,0,0,0,0,0,5,5,0
 759,Valeri Nichushkin,&nbsp,DAL,RW,-172,0, , , , ,,0,0,0,0,0,0,0,0,0,0,0,0,0
 760,Steve Bernier,&nbsp,NYI,RW,-172,0, , , , ,,0,0,0,0,0,0,0,0,0,0,0,0,0
 761,Stephen Gionta,&nbsp,NYI,C/RW,-172,0, , , , ,,0,0,0,0,0,0,0,0,0,0,0,0,0
@@ -765,11 +760,9 @@ Rank,Player,Owned?,Team,Position,FHG Value,Games Played,SV%,GAA,W,SO,,G,A,P,+/-,
 764,Gabriel Bourque,&nbsp,COL,LW/RW,-172,0, , , , ,,0,0,0,0,0,0,0,0,0,0,0,0,0
 765,Eric Nystrom,&nbsp,NSH,LW/RW,-172,0, , , , ,,0,0,0,0,0,0,0,0,0,0,0,0,0
 766,David Jones,&nbsp,ANA,RW,-172,0, , , , ,,0,0,0,0,0,0,0,0,0,0,0,0,0
-767,Cody McCormick,&nbsp,BUF,C/LW/RW,-172,0, , , , ,,0,0,0,0,0,0,0,0,0,0,0,0,0
 768,Brad Boyes,&nbsp,FLA,C/RW,-172,0, , , , ,,0,0,0,0,0,0,0,0,0,0,0,0,0
 769,Tomas Fleischmann,&nbsp,MIN,LW,-173,0, , , , ,,0,0,0,0,0,0,0,0,0,0,0,0,0
 770,Ryan Carter,&nbsp,MIN,C/LW,-173,0, , , , ,,0,0,0,0,0,0,0,0,0,0,0,0,0
-771,Paul Gaustad,&nbsp,NSH,C/LW,-173,0, , , , ,,0,0,0,0,0,0,0,0,0,0,0,0,0
 772,Patrik Elias,&nbsp,NJD,C/LW,-173,0, , , , ,,0,0,0,0,0,0,0,0,0,0,0,0,0
 773,Lucas Lessio,&nbsp,LAK,LW,-173,0, , , , ,,0,0,0,0,0,0,0,0,0,0,0,0,0
 774,Jiri Tlusty,&nbsp,COL,LW,-173,0, , , , ,,0,0,0,0,0,0,0,0,0,0,0,0,0
@@ -782,10 +775,8 @@ Rank,Player,Owned?,Team,Position,FHG Value,Games Played,SV%,GAA,W,SO,,G,A,P,+/-,
 781,Travis Konecny,&nbsp,PHI,C,-187,9, , , , ,,0,3,3,0,2,0,0,1,0,0,0,0,36
 782,Josh Jooris,&nbsp,NYR,C,-189,3, , , , ,,0,1,1,0,0,0,0,0,0,0,18,9,10
 783,Tyler Graovac,&nbsp,MIN,C,-189,10, , , , ,,0,2,2,0,0,0,0,0,0,0,10,2,41
-784,Pierre-Luc Dubois,&nbsp,CBJ,C,-193,2, , , , ,,0,1,1,0,2,0,0,0,0,0,3,1,8
+784,PL Dubois,&nbsp,CBJ,C,-193,2, , , , ,,0,1,1,0,2,0,0,0,0,0,3,1,8
 785,Vladimir Sobotka,&nbsp,STL,C,-197,0, , , , ,,0,0,0,0,0,0,0,0,0,0,0,0,0
-786,Shawn Horcoff,&nbsp,ANA,C,-197,0, , , , ,,0,0,0,0,0,0,0,0,0,0,0,0,0
-787,Kyle Chipchura,&nbsp,ARI,C,-197,0, , , , ,,0,0,0,0,0,0,0,0,0,0,0,0,0
 788,Jarret Stoll,&nbsp,MIN,C,-197,0, , , , ,,0,0,0,0,0,0,0,0,0,0,0,0,0
 789,David Legwand,&nbsp,BUF,C,-197,0, , , , ,,0,0,0,0,0,0,0,0,0,0,0,0,0
 790,Scott Wedgewood,&nbsp,NJD,G,-198,7,0.921,3,3,1,, , , , , , , , , , , , ,
