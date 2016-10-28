@@ -1,4 +1,5 @@
 require "httparty"
+require "byebug"
 
 class LeaguesController < ApplicationController
   include GoalieCategoriesHelper
@@ -12,11 +13,11 @@ class LeaguesController < ApplicationController
   end
 
   def create
+    all_users_leagues = fetch_all_users_leagues
     if current_user.token.nil?
+      raise "no token"
       redirect_to(:signin) and return
     end
-
-    all_users_leagues = fetch_all_users_leagues
 
     leagues = all_users_leagues["fantasy_content"]["users"]["user"]["games"]["game"]["teams"]["team"]
 
@@ -25,9 +26,9 @@ class LeaguesController < ApplicationController
       league_keys     = parse_league_keys(league)
       league_settings = get_player_categories(league_keys)
 
-      league_info.merge!(name: league_name)
+      league_info.merge!(name: league_name(league_settings))
 
-      League.first_or_create(league_info)
+      League.where(league_info).first_or_create
 
       team_info_arr    = create_teams(league_info)
 
@@ -37,24 +38,23 @@ class LeaguesController < ApplicationController
       @player_passport = create_passport_entry(team_info_arr, league_info)
     end
 
-
     redirect_to user_leagues_path(current_user)
   end
 
   def fetch_all_users_leagues
-    HTTParty.get("#{@yahoo_root}users;use_login=1/games;game_keys=363/teams", headers:{
-      "Authorization" => "Bearer #{@current_user.token}"
+    HTTParty.get(yahoo_root + "users;use_login=1/games;game_keys=363/teams", headers:{
+      "Authorization" => "Bearer #{current_user.token}"
     })
   end
 
   def get_player_categories(league_keys)
-    @player_categories ||= HTTParty.get("#{yahoo_root}league/#{league_keys}/settings", headers:{
+    @player_categories ||= HTTParty.get(yahoo_root + "league/#{league_keys}/settings", headers:{
       "Authorization" => "Bearer #{@current_user.token}"
     })
   end
 
-  def league_name
-    get_player_categories["fantasy_content"]["league"]["name"]
+  def league_name(categories)
+    categories["fantasy_content"]["league"]["name"]
   end
 
   def parse_league_keys(league)
