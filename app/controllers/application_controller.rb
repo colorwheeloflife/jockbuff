@@ -11,6 +11,10 @@ class ApplicationController < ActionController::Base
   helper_method :yahoo_root
   helper_method :league_call
 
+  def test_app_controller
+    "COREY"
+  end
+
   private
     def current_user
       begin
@@ -22,6 +26,7 @@ class ApplicationController < ActionController::Base
 
     def yahoo_root
       return @yahoo_root = "https://fantasysports.yahooapis.com/fantasy/v2/"
+      # "https://fantasysports.yahooapis.com/fantasy/v2/"
     end
 
     def league_call(league_key)

@@ -1,3 +1,4 @@
+// function drawLineChart (chartData) {
 $(function () {
   var triggered = false;
 
