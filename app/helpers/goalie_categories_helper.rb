@@ -8,7 +8,6 @@ stat_cats = league_settings["fantasy_content"]["league"]["settings"]["stat_categ
        cat["name"]
     end
 
-    puts "do we get here???"
     league_id = League.where(:league_key => league_info[:league_key]).where(:user_id => @current_user.id).pluck(:id)
     league_id = league_id[0]
 
@@ -25,7 +24,6 @@ stat_cats = league_settings["fantasy_content"]["league"]["settings"]["stat_categ
       sv: goalie_cats.include?('Saves'),
       svpercent: goalie_cats.include?('Save Percentage'),
       sho: goalie_cats.include?('Shutouts'),
-      total: goalie_cats.include?('Total Standard Deviation')
     }
     GoalieCategory.create(goalie_cats_save)
   end

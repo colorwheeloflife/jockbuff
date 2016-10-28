@@ -19,8 +19,7 @@ end
     "Authorization" => "Bearer #{@current_user.token}"
     })
     return redirect_to(:signin) if(user_leagues_full["error"])
-    # puts user_leagues_full
-    # binding.pry
+
     user_leagues_arr = user_leagues_full["fantasy_content"]["users"]["user"]["games"]["game"]["teams"]["team"]
 
     user_leagues_arr.map do |league|
@@ -29,6 +28,7 @@ end
           user_team: league["name"],
           user_logo: league["team_logos"]["team_logo"]["url"],
           sport: 'Hockey',
+          # type: league["league_scoring_type"],
           user_id: @current_user.id,
           league_key: league["team_key"].split('.t')[0]
         }
@@ -42,7 +42,6 @@ end
       @league = League.create(league_info)
       end
       team_info_arr = create_teams(league_info)
-      @goalie_category = create_goalie_categories(league_settings, league_info)
       @player_category = create_player_categories(league_settings, league_info)
       @player_passport = create_passport_entry(team_info_arr, league_info)
     end
@@ -55,8 +54,6 @@ end
     @league_id = params[:id]
     puts @league_id.inspect
     @teams = Team.where(league_id: @league_id)
-    # @teams_id = Team.where(league_id: league_id).pluck(:id)
-    # @league_id = League.where(user_id: @current_user.id).pluck(:id)
   end
 
 end

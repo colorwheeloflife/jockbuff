@@ -34,14 +34,7 @@ module PlayerCategoriesHelper
       fl: player_cats.include?('Faceoffs Lost'),
       hit: player_cats.include?('Hits'),
       blk: player_cats.include?('Blocks'),
-      total: player_cats.include?('Total Standard Deviation')
     }
     @player_category = PlayerCategory.create(player_cats_save)
-    puts @player_category
-
-
-
-
-
     end
 end

@@ -1,2 +1,0 @@
-class Compare < ApplicationRecord
-end
