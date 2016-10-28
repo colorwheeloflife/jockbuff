@@ -1,3 +1,4 @@
+// function drawLineChart_top (chartData) {
 $(function () {
   $('#line_graph-top').highcharts({
     title: {

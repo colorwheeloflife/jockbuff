@@ -1,3 +1,4 @@
+// function drawNegColChart_top (chartData) {
 $(function () {
   $('#column_neg-top').highcharts({
     chart: {

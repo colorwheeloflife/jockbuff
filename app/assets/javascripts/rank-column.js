@@ -1,3 +1,4 @@
+// function drawRankColChart (chartData) {
 $(function () {
   var triggered = false;
 

@@ -1,2 +1,0 @@
-class GoalieStat < ApplicationRecord
-end
