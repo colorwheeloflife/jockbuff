@@ -31,6 +31,7 @@ class CreatePlayerPredictions < ActiveRecord::Migration[5.0]
       t.float :svpercent
       t.integer :sho
       t.float :total
+      t.integer :player_id
 
       t.timestamps
     end

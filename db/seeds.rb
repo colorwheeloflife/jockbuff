@@ -12,7 +12,6 @@ def players_to_seed
         "Authorization" => "Bearer #{User.first.token}"
       })
     player_arr = players["fantasy_content"]["league"]["players"]["player"]
-   byebug
     player_arr.map do |player|
       positions = player["eligible_positions"]["position"]
       positions = positions.gsub(/[\[\]'"\/]+/, '').split(",") if positions.include?(" ")
@@ -65,7 +64,6 @@ goalie_stat.each do |row|
   t.sv = ((row['Games Played'].to_i *  team_shots) - (row['Games Played'].to_i * row['GAA'].to_i)).round
   t.svpercent = row['SV%'].to_f
   t.sho = row['SO'].to_i
-  puts "\n\n\n\n\n #{t.valid?} \n\n\n"
   t.save
 end
 
