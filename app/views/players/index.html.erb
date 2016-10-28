@@ -12,7 +12,7 @@
   <table class="table table-bordered table-striped table-hover table-responsive">
   <thead>
     <tr>
-      <th><%= sortable "player" %></th>
+      <th><%= sortable "name" %></th>
       <th><%= sortable "position" %></th>
       <th><%= sortable "g" %></th>
       <th><%= sortable "a" %></th>
@@ -44,11 +44,45 @@
       </tr>
     <% end %>
   </tbody>
+</table>
+
+<table>
+    <thead>
+      <tr>
+        <th><%= sortable "name" %></th>
+        <th><%= sortable "team" %></th>
+        <th><%= sortable "wins" %></th>
+        <th><%= sortable "loses" %></th>
+        <th><%= sortable "gaa" %></th>
+        <th><%= sortable "sv %" %></th>
+        <th><%= sortable "shutouts" %></th>
+        <th><%= sortable "saves" %></th>
+        <th><%= sortable "jbr" %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @players.each do |player| %>
+        <tr>
+          <td>goalie.name</td>
+          <td>goalie.team</td>
+          <td>goalie.wins</td>
+          <td>goalie.loses</td>
+          <td>goalie.gaa</td>
+          <td>goalie.sv%</td>
+          <td>goalie.shutouts</td>
+          <td>goalie.saves</td>
+          <td>goalie.jbr</td>
+        </tr>
+      <% end %>
+    </tbody>
   </table>
 
+</div>
+<div class="col-md-6" id="rank_column" style="width:100%; height:400px;"></div>
 
 
-    <!-- GOALIE TABLE FORMAT -->
+
+
   <!-- <table>
     <thead>
       <tr>
@@ -77,9 +111,6 @@
       </tr>
     </tbody>
   </table> -->
-</div>
-<div class="col-md-6" id="rank_column" style="width:100%; height:400px;"></div>
-
 
 
 <!-- <table class="table table-bordered table-striped table-hover table-responsive">
