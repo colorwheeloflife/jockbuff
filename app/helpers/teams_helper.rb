@@ -1,4 +1,4 @@
-require 'byebug'
+
 module TeamsHelper
   def create_teams (league_info)
     league_key = league_info[:league_key]
@@ -19,4 +19,15 @@ module TeamsHelper
       Team.create(team_info)
       return team_info_arr
     end
+
+  # def is_goalie?
+  #   player_passport.player.positions.join("/").include?("G")
+  # end
+
+  # def is_not_goalie?
+  #   player_passport.player.positions.join("/").exclude?("G")
+  # end
+
+
+
 end

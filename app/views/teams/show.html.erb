@@ -64,7 +64,7 @@
       <table class="table table-bordered table-striped table-hover table-responsive">
         <thead>
           <tr>
-            <th>Player</th>
+            <th>Players</th>
             <th>Pro Team</th>
             <th>Position</th>
             <th>G</th>
@@ -81,11 +81,12 @@
         </thead>
         <tbody>
           <% @players.each do |player_passport| %>
+          <% next if player_passport.player.positions.join("/").include?("G") %>
             <tr>
               <td><%= player_passport.player.name %></td>
               <td><%= player_passport.player.pro_team %></td>
-              <td><%= player_passport.position %></td>
-              <td>155</td>
+              <td><%= player_passport.player.positions.join("/") %></td>
+              <td>50</td>
               <td>155</td>
               <td>155</td>
               <td>155</td>
@@ -100,7 +101,7 @@
         </tbody>
         <thead>
           <tr>
-            <th>Goalie</th>
+            <th>Goalies</th>
             <th>Team</th>
             <th>Wins</th>
             <th>Loses</th>
@@ -112,10 +113,12 @@
           </tr>
         </thead>
         <tbody>
+        <% @players.each do |player_passport| %>
+        <% next if player_passport.player.positions.join("/").exclude?("G") %>
           <tr>
-            <td>Ryan Miller</td>
-            <td>Van</td>
-            <td>25</td>
+              <td><%= player_passport.player.name %></td>
+              <td><%= player_passport.player.pro_team %></td>
+              <td><%= player_passport.player.positions.join("/") %></td>
             <td>25</td>
             <td>3.46</td>
             <td>.890</td>
@@ -123,6 +126,7 @@
             <td>1550</td>
             <td>155</td>
           </tr>
+          <% end %>
         </tbody>
       </table>
     </div>

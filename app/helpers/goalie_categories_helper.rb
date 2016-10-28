@@ -9,7 +9,6 @@ stat_cats = league_settings["fantasy_content"]["league"]["settings"]["stat_categ
        cat["name"]
     end
 
-    puts "do we get here???"
     league_id = League.where(:league_key => league_info[:league_key]).where(:user_id => @current_user.id).pluck(:id)
     league_id = league_id[0]
 
