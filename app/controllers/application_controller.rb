@@ -11,10 +11,6 @@ class ApplicationController < ActionController::Base
   helper_method :yahoo_root
   helper_method :league_call
 
-  def test_app_controller
-    "COREY"
-  end
-
   private
     def current_user
       begin
