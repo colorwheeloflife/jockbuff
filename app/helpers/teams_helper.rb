@@ -20,14 +20,4 @@ module TeamsHelper
       return team_info_arr
     end
 
-  # def is_goalie?
-  #   player_passport.player.positions.join("/").include?("G")
-  # end
-
-  # def is_not_goalie?
-  #   player_passport.player.positions.join("/").exclude?("G")
-  # end
-
-
-
 end

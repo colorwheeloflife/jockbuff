@@ -3,7 +3,7 @@ class PlayersController < ApplicationController
   helper_method :sort_column, :sort_direction
 
   def index
-    @players = Player.order(sort_column + " " + sort_direction)
+    @players = PlayerPassport.where(team_id: true)
   end
 
   def create
