@@ -10,11 +10,14 @@ class ApplicationController < ActionController::Base
   helper_method :yahoo_root
   helper_method :league_call
 
-  def current_user
-    begin
-      @current_user ||= User.find(session[:user_id]) if session[:user_id]
-    rescue Exception => e
-      nil
+
+  private
+    def current_user
+      begin
+        @current_user ||= User.find(session[:user_id]) if session[:user_id]
+      rescue Exception => e
+        nil
+      end
     end
   end
 
