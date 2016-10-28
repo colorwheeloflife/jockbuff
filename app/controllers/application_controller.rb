@@ -19,7 +19,6 @@ class ApplicationController < ActionController::Base
         nil
       end
     end
-  end
 
   def yahoo_root
     return @yahoo_root = "https://fantasysports.yahooapis.com/fantasy/v2/"
@@ -58,5 +57,4 @@ class ApplicationController < ActionController::Base
       redirect_to root_url, :alert => 'You need to sign in for access to this page.'
     end
   end
-
 end
