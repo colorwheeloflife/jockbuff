@@ -1,6 +1,10 @@
 require 'byebug'
 class PlayersController < ApplicationController
 
+def index
+  team = Team.where(user_id: current_user.id)
+end
+
   def create
     @current_user = current_user
     full_player_arr = []

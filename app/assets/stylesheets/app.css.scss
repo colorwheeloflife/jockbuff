@@ -66,12 +66,6 @@ h5 {
   height: 450px;
 }
 
-#tinylogo {
-  width: 40px;
-  height: 40px;
-  margin-top: -9px;
-}
-
 .login {
   background-color: $brand-color-middark;
   border-color: $brand-color-middark;
@@ -102,20 +96,6 @@ h5 {
   margin-top:7%;
 }
 
-#nav-useravatar {
-  width: 40px;
-  height: 40px;
-  margin-top: 5px;
-  margin-right: 10px;
-  border-radius: 10px;
-}
-
-#profilepic {
-  width:100px;
-  height:100px;
-  margin-top: 20px;
-}
-
 .needborder {
   border: 1px solid;
 }
@@ -134,12 +114,11 @@ h5 {
 
 }
 
-
 .graph {
   margin-top: $base-line-height;
   margin-bottom: $base-line-height;
 }
 
 .divider {
-  
+
 }

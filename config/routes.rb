@@ -4,20 +4,23 @@ Rails.application.routes.draw do
   root to: 'welcome#welcome'
 
   resources :users do
-    resources :leagues do
+    resources :leagues, only: [:index, :show] do
       resources :teams, only: [:index, :show, :create] do
         resources :players, only: [:index]
+          resources :compares, only: [:index]
       end
     end
   end
 
-  resources :players
-  resources :compares, only: [:index, :show]
+
   resources :analysis, only: [:index, :show]
 
   get '/users/:user_id/leagues' => 'leagues#create'
 
-  get '/users/:user_id/leagues/:league_id/teams' => 'teams#index'
+  get '/users/:user_id/leagues/:leagueid/players' => 'players#index', :as => :players
+  get '/users/:user_id/leagues/:leagueid/compares' => 'compares#index', :as => :compares
+
+
   post '/users/:user_id/leagues/:league_id/teams' => 'teams#create'
   post '/users/:user_id/leagues/:id' => 'teams#create'
 
