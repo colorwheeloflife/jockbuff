@@ -18,7 +18,7 @@ require 'csv'
     end
     players_full = full_player_arr.map do |start|
       players = HTTParty.get("https://fantasysports.yahooapis.com/fantasy/v2/league/363.l.91004/players;start=#{start}", headers:{
-          "Authorization" => "Bearer gr0iRDOQo13wH4clsppS.XnmzgAyXAZhDTwYmbioXggl4GxeoE4C3wUGJLELSspmDTwXRgvIwI7qY1Ixz7fUhdv4xOYVvSGqs5hh85xYkVDv.FOlCnUP1W_jNZJ93CQNFSyvSouSuRXzkwvpbaO_SCfTx6t71.y4JF52it6qLvj5_ImKyUtN9xUpeJXN8x0JrujSHXQgAtA.PUXCJAvHLCNNC9JFVra1syJOO60LJfi...SqMHI2_.djUc0p3l8ra3s6R5fxl3pSXi7licOkeiNaGhSocLBSVCxHJJ1z6F1hmDPLgs.4NwUgoWlKfjF1SR5SCM3Tky8bmT7I.0czavSXZ_J4jioeydEaF9wL22qp8B.VFvkxDpuhQrvoC7AJCXIVDtYasueZxIjI64RKUOOVT.AANlxHxA_dQRXSCGMHfpZY6TwPbF5.nvEItpapbphYMNF___cv.S0Zf8HuMc8DYRZyBYI2q8PtFrAYAgsWqOljYs5oZQaCCjctGMQU9a7lQt._PpNAlE5pnEiJIm3_DxMP7YaGXMFteF.tYTVtpCIuy67FX.7TRKnMRBAzy9eWT4p_0s1LyJPifW9ZA0qd6aCQqdgajGLFm5.f7pis0XNikXgJXoqV6EwR2u10A_VG_9KXOD3EDI8gS0s81WI8zyagoFIPXYf7xPf9Vz_Jut4ePIJAfUmKyNod4sDrliJO0ThwY4_bMjym_kJGa1AdVDygy8nZSF_RJ3.Rbs32no0GhwzqcBn2fyx7M.VEFQxOAZRYiiRrMWjWxHzO.hbmb6MhiohSkisYWJXlo0uhxKMtGXFQDP2GbiULObdqd.GhKQHRk4hIqvcDYruFiCAU4TkOQOxt6DOchIxwCRIdTEJ3W1sItT8MSPgW4A--"
+          "Authorization" => "Bearer #{User.first.token}"
         })
       player_arr = players["fantasy_content"]["league"]["players"]["player"]
       player_arr.map do |player|
