@@ -3,7 +3,12 @@ class PlayersController < ApplicationController
   helper_method :sort_column, :sort_direction
 
   def index
-    @players = PlayerPassport.where(team_id: true)
+    # .order(sort_column + " " + sort_direction)
+    @players = PlayerPassport.includes(:player).order(sort_column + " " + sort_direction)
+    # byebug
+  end
+
+  def show
   end
 
 def index
@@ -44,7 +49,7 @@ end
   private
 
   def sort_column
-    Player.column_names.include?(params[:sort]) ? params[:sort] : "name"
+    Player.column_names.include?(params[:sort]) ? params[:sort] : "id"
   end
 
   def sort_direction
