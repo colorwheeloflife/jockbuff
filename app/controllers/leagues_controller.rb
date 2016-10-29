@@ -20,7 +20,7 @@ end
 
   def show
     @league_id = params[:id]
-    @player_passport = create_passport_entry(params[:id]) unless PlayerPassport.where(league_id: @league_id)
+    @player_passport = create_passport_entry(params[:id]) unless PlayerPassport.find_by(league_id: @league_id)
     @leagues = League.where(user_id: current_user.id)
     @teams = Team.where(league_id: @league_id)
   end

@@ -20,6 +20,7 @@ module PlayerPassportHelper
     ActiveRecord::Base.transaction do
       PlayerPassport.import(full_league_owned_players.flatten)
     end
+  end
 
     owned_players = PlayerPassport.where(league_id: league_id).pluck('player_id')
     all_players = Player.all.pluck('player_id')

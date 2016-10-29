@@ -31,7 +31,7 @@ module LeaguesHelper
       })
       league_name = league_settings["fantasy_content"]["league"]["name"]
       league_info.merge!(name: league_name)
-      @league = League.create(league_info)
+      @league = League.create(league_info) if league_settings["fantasy_content"]["league"]["draft_status"] == "postdraft"
       @player_category = create_player_categories(league_settings, league_info)
       @goalie_category = create_goalie_categories(league_settings, league_info)
     end

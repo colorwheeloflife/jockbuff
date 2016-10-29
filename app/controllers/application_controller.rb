@@ -20,7 +20,6 @@ class ApplicationController < ActionController::Base
 
   def yahoo_root
     return @yahoo_root = "https://fantasysports.yahooapis.com/fantasy/v2/"
-    # "https://fantasysports.yahooapis.com/fantasy/v2/"
   end
 
   def league_call(league_key)
