@@ -1,6 +1,6 @@
 <div class="row container-fluid topfix container-space">
   <div class="col-md-12">
-    <h1><%= @team_name %></h1>
+    <h1><%= @user_team_name %></h1>
 
     <table class="table table-bordered table-striped table-hover table-responsive">
       <thead>
@@ -88,11 +88,11 @@
 
     <h1>Team B</h1>
     <div class="dropdown">
-      <button class="btn dropdown-toggle text-center btn-default btn-lg" type="button" id="dropdownMenu1" data-toggle="dropdown">Team Name <span class="caret"></span></button>
+      <button class="btn dropdown-toggle text-center btn-default btn-lg" type="button" id="dropdownMenu1" data-toggle="dropdown">Select Team <span class="caret"></span></button>
       <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-        <li><a href="#">Other Team name</a></li>
-        <li><a href="#">Other Team name</a></li>
-        <li><a href="#">Other Team name</a></li>
+        <% current_user_leagues(current_user.id).each do |league_team| %>
+        <li><%= "#{league_team.name}" %></li>
+        <% end %>
       </ul>
     </div>
     <table class="table table-bordered table-striped table-hover table-responsive">
