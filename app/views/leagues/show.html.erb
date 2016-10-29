@@ -18,6 +18,7 @@
           </thead>
           <tbody>
             <% @teams.each do |team| %>
+            <% next if team.name.include?("Waiver") %>
             <tr>
               <td><%= 1 %></td>
               <td><%= link_to "#{team.name}", user_league_team_path(@current_user, @league_id, team) %></td>
