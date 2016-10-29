@@ -18,6 +18,7 @@ class ApplicationController < ActionController::Base
     rescue Exception => e
       nil
     end
+  end
 
   def yahoo_root
     return @yahoo_root = "https://fantasysports.yahooapis.com/fantasy/v2/"
