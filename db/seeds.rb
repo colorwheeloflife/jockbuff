@@ -1,65 +1,57 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-require 'byebug'
 require 'csv'
 
-
-  def players_to_seed
-    full_player_arr = []
-    i = 0
-    while i < 1888 do
-      full_player_arr.push(i)
-      i = i + 25
-    end
-    players_full = full_player_arr.map do |start|
-      players = HTTParty.get("https://fantasysports.yahooapis.com/fantasy/v2/league/363.l.91004/players;start=#{start}", headers:{
-          "Authorization" => "Bearer odc3zseQo13Zbuk2U6cTz008n68wR9BMfDHeCmAbgdhT4y6T2SfuZ4RH3e6k5Urpj8ZOvXP5m84SFEcb4.LZMlTj.crJTY6.eFTacL8ivaILVw3F_0DWOeRese4bMZxue4xBtPNacly1ivuWxX20P3CVYOGYKtPYweI0j9EBghkjOOcV_otbqsj58tkBFGOo_hXh4GoZDb231bN35Z0eL.hlK26Rdv1rXQOZBrKWCT1_1enuEvmOBWpvMU37SGfUfzFIv7MrJe1XXzE6kxZ48gDWkB5DPxZGYW9QX30kGv2tN.upQ9e0XGDMgePbwaQ1KVnPIHfR0KKmbdPtflwHCvHCrVoD2darueljJ27qpfbYHDVeWqOmlVhRhN.BXhvz3q8iIJ4x7pvigSIhFRKY7RfRhiHgy3Wd1n93MKdystvIdtIrETazlpcTYvBCOIYMsQyjvwLR58FJc6ixHEIdomghAfI_cJUFA.GzC.Wl.PE3TFqn.xLs0byVm4syHTOCRT48m1SzCHMLYdWxWX4qlqoHQJ1RUVBWShXFcgKvmedK9fONhGfOO6emGstWCZUb15YUY5wmJlLzH9NXOHZKpSiBDzDIOn7B4jrXK7spKxhGFOtFkGz25YyqGjr1cLoRQxiWndYHjiely8CcRdq88fZPjIvwzmeIKBEUBbtmIQWRk9ZAFrLmH59wVbARV0IjpSFY3vx3c6Lc1IoLRsGTH01kgmN6O_GM5LL6SGPm6giEkf2Z3mgzlZqcdzXIKFWWSQMCqZHjgJsqxVTil1SS4HxIN7qFOoUO3fopnXZFrVV5eLrZfsGx8vJEIpzAPi3.bqp_S8agAS0FalOEU7VVV5vPSC1Ho.hTWNDrkOyQ8M1hqRhn7VUYGvPUQo0b"
-        })
-      player_arr = players["fantasy_content"]["league"]["players"]["player"]
-      player_arr.map do |player|
-        positions = player["eligible_positions"]["position"]
-        positions = positions.gsub(/[\[\]'"\/]+/, '').split(",") if positions.include?(" ")
-        positions = positions = positions.split(" ") unless positions.include?(" ")
-        player_details = {
-          player_id: player["player_id"],
-          name: player["name"]["full"],
-          pro_team: player["editorial_team_abbr"],
-          positions: positions,
-          type_p: player["position_type"]
-        }
-      end
+def players_to_seed
+  full_player_arr = []
+  i = 0
+  while i < 1888 do
+    full_player_arr.push(i)
+    i = i + 25
+  end
+  players_full = full_player_arr.map do |start|
+    players = HTTParty.get("https://fantasysports.yahooapis.com/fantasy/v2/league/363.l.91004/players;start=#{start}", headers:{
+        "Authorization" => "Bearer #{User.first.token}"
+      })
+    player_arr = players["fantasy_content"]["league"]["players"]["player"]
+    player_arr.map do |player|
+      positions = player["eligible_positions"]["position"]
+      positions = positions.gsub(/[\[\]'"\/]+/, '').split(",") if positions.include?(" ")
+      positions = positions = positions.split(" ") unless positions.include?(" ")
+      player_details = {
+        player_id: player["player_id"],
+        name: player["name"]["full"],
+        pro_team: player["editorial_team_abbr"],
+        positions: positions,
+        type_p: player["position_type"]
+      }
     end
   end
-    player_details = players_to_seed
-    Player.create(player_details)
+end
 
+player_details = players_to_seed
+Player.create(player_details)
 
-csv_text2 = File.read(Rails.root.join('lib', 'seeds', 'teamstats_2015.csv'))
-csv2 = CSV.parse(csv_text2, :headers => true, :encoding => 'ISO-8859-1')
-team_stat = csv2.map do |row|
+teamstats = File.read(Rails.root.join('lib', 'seeds', 'teamstats_2015.csv'))
+teamstats_parse = CSV.parse(teamstats, :headers => true, :encoding => 'ISO-8859-1')
+team_stat = teamstats_parse.map do |row|
   row.to_hash
 end
 
-csv_text = File.read(Rails.root.join('lib', 'seeds', 'predictions.csv'))
-csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
-full_stat = csv.map do |row|
+predictions = File.read(Rails.root.join('lib', 'seeds', 'predictions.csv'))
+predictions_parsed = CSV.parse(predictions, :headers => true, :encoding => 'ISO-8859-1')
+full_stat = predictions_parsed.map do |row|
   row = row.to_hash
   player_id = Player.where(name: row['Player']).pluck(:player_id).first
+  puts row['Player'] if player_id == nil
   row['player_id'] = player_id
   row
 end
 
-goalie_stat = full_stat.select { |row| row['Position'] == "G" }
 
+goalie_stat = full_stat.select { |row| row['Position'] == "G" }
 player_stat = (full_stat - goalie_stat)
 
 goalie_stat.each do |row|
-  t = GoaliePrediction.new
+  t = PlayerPrediction.new
   t.player_id = row['player_id'].to_i
   t.gs = row['Games Played'].to_i
   t.w = row['W'].to_i
@@ -76,7 +68,6 @@ goalie_stat.each do |row|
 end
 
 player_stat.each do |row|
-
   goalpercentage = (row['G'].to_f / row['P'].to_f) if row['P'].to_i > 0
   goalpercentage = 0 if row['P'].to_i == 0
   shpercent = (row['G'].to_f / row['SOG'].to_f) if row['SOG'].to_i > 0
@@ -102,5 +93,6 @@ player_stat.each do |row|
   t.fl = row['FOW'].to_i
   t.hit = row['HITS'].to_i
   t.blk = row['BKS'].to_i
+  puts "\n\n\n\n\n #{t.errors.full_messages} \n\n\n"
   t.save
 end

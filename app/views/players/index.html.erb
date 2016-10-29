@@ -14,12 +14,13 @@
   <thead>
     <tr>
       <th><%= sortable "name" %></th>
+      <th><%= sortable "pro_team", "Pro Team" %></th>
       <th><%= sortable "position" %></th>
       <th><%= sortable "g" %></th>
       <th><%= sortable "a" %></th>
       <th><%= sortable "points" %></th>
       <th><%= sortable "ppp" %></th>
-      <th><%= sortable "+/-" %></th>
+      <th><%= sortable "plusminus", "+/-" %></th>
       <th><%= sortable "pims" %></th>
       <th><%= sortable "sog" %></th>
       <th><%= sortable "hits" %></th>
@@ -28,21 +29,22 @@
     </tr>
   </thead>
   <tbody>
-    <% @players.first(250).each do |player| %>
+    <% @players.each do |player_passport| %>
+    <% next if player_passport.player.positions.join("/").include?("G") %>
       <tr>
-        <td> <%= player.name %> </td>
-        <td> <%= player.positions.join("/") %> </td>
-
-        <td> <%= player %> </td>
-        <td> <%= player[:a] %> </td>
-        <td> <%= player[:points] %> </td>
-        <td> <%= player[:ppp] %> </td>
-        <td> <%= player[:plusminus] %> </td>
-        <td> <%= player[:pims] %> </td>
-        <td> <%= player[:sog] %> </td>
-        <td> <%= player[:hits] %> </td>
-        <td> <%= player[:blks] %> </td>
-        <td> <%= player[:jbr] %> </td>
+        <td> <%= player_passport.player.name %> </td>
+        <td> <%= player_passport.player.pro_team.upcase %></td>
+        <td> <%= player_passport.player.positions.join("/") %> </td>
+        <td> <%= player_passport.player.player_prediction.g %> </td>
+        <td> <%= player_passport.player.player_prediction.a %> </td>
+        <td> <%= player_passport.player.player_prediction.p %> </td>
+        <td> <%= player_passport.player.player_prediction.ppp %> </td>
+        <td> <%= player_passport.player.player_prediction.plusminus %> </td>
+        <td> <%= player_passport.player.player_prediction.pim %> </td>
+        <td> <%= player_passport.player.player_prediction.sog %> </td>
+        <td> <%= player_passport.player.player_prediction.hit %> </td>
+        <td> <%= player_passport.player.player_prediction.blk %> </td>
+        <td> 999 </td>
       </tr>
     <% end %>
   </tbody>
