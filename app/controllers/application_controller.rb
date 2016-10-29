@@ -2,6 +2,8 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
 
+  require 'table-for'
+
   protect_from_forgery with: :exception
 
   helper_method :current_user
@@ -10,14 +12,11 @@ class ApplicationController < ActionController::Base
   helper_method :yahoo_root
   helper_method :league_call
 
-
-  private
-    def current_user
-      begin
-        @current_user ||= User.find(session[:user_id]) if session[:user_id]
-      rescue Exception => e
-        nil
-      end
+  def current_user
+    begin
+      @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    rescue Exception => e
+      nil
     end
 
   def yahoo_root

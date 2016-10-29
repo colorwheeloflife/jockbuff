@@ -1,9 +1,13 @@
-require 'byebug'
 class PlayersController < ApplicationController
   helper_method :sort_column, :sort_direction
 
+include LeaguesHelper
+include ApplicationHelper
+
   def index
-    @players = PlayerPassport.where(team_id: true)
+    league_id = params[:league_id]
+    @players = PlayerPassport.where(league_id: true)
+    team = Team.where(user_id: current_user.id)
   end
 
   def create

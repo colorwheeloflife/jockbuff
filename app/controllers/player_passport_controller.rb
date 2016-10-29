@@ -5,4 +5,3 @@ class PlayerPassportController < ApplicationController
   end
 
 end
-

@@ -43,6 +43,8 @@ gem "highcharts-rails"
 
 gem 'foundation-rails'
 
+gem "table-for"
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'omniauth-yahoo-oauth2', git: 'https://github.com/sarahveness/omniauth-yahoo-oauth2.git'
