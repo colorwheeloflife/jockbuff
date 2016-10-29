@@ -21,7 +21,9 @@ gem 'coffee-rails', '~> 4.2'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 gem 'waypoints-rails', '~> 0.1'
+
 # gem 'jquery-waypoints-rails', '~> 2.0', '>= 2.0.5'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'

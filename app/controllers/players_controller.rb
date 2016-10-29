@@ -3,13 +3,8 @@ class PlayersController < ApplicationController
   helper_method :sort_column, :sort_direction
 
   def index
-    # .order(sort_column + " " + sort_direction)
     @player_passports = PlayerPassport.includes(:player, :player_predictions).order(sort_column + " " + sort_direction)
-    # byebug
   end
-
-
-@player_passports = PlayerPassport.includes(:player).order("players.name asc")
 
   def show
   end
