@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css?family=Bungee+Inline|Sanchez:400,400i|Ubuntu:300i,400,700');
+@import url('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css');
+@import url('/assets/favicon.ico');
+
+/*
+Fonts
+font-family: 'Bungee Inline', cursive;
+font-family: 'Ubuntu', sans-serif;
+font-family: 'Sanchez', serif;
+*/
+
+/* Variables*/
+
+$base-font-size: 16px;
+$base-line-height: ($base-font-size * 2);
+$spacing-unit: $base-line-height;
+
+$brand-color-middark: #14213d;
+$brand-color-mid: #fca311;
+$brand-color-light: #ffffff;
+$brand-color-dark: #000000;
+$brand-color-midlight: #e5e5e5;
+
+$base-font-color: $brand-color-dark;
+
+/* Styling */
+
+html {
+  font-family: 'Ubuntu', sans-serif;
+}
+
+body {
+  font-family: 'Ubuntu', sans-serif;
+  color: $base-font-color;
+  font-size: $base-font-size;
+  line-height: $base-line-height;
+}
+
+h1 {
+  font-family: 'Sanchez', serif;
+  margin-top: $spacing-unit;
+  margin-bottom: $spacing-unit;
+}
+
+h2,
+h3,
+h4,
+h5 {
+  font-family: 'Sanchez', serif;
+  margin: $spacing-unit;
+}
+
+.container-space {
+  margin: $spacing-unit;
+}
+
+.logo {
+  font-family: 'Bungee Inline', cursive;
+  font-size: 100px;
+  color: $brand-color-dark;
+  margin-bottom: $spacing-unit;
+}
+
+.teamlogo {
+  border-radius: ($spacing-unit * 2);
+  margin: $spacing-unit;
+  width:110px;
+  height:110px;
+}
+
+#welcomelogo {
+  width: 400px;
+  height: 450px;
+}
+
+.login {
+  background-color: $brand-color-middark;
+  border-color: $brand-color-middark;
+  margin-bottom: ($spacing-unit * 2);
+  margin-top: $spacing-unit;
+}
+
+.lead {
+  margin-top:$base-line-height;
+  color: $brand-color-dark;
+}
+
+.container-full {
+  margin: 0 auto;
+  width: 100%;
+  min-height:100%;
+  background-color: $brand-color-midlight;
+  color:#eee;
+  overflow:hidden;
+}
+
+.container-full a {
+  color:$brand-color-midlight;
+  text-decoration:none;
+}
+
+.v-center {
+  margin-top:7%;
+}
+
+.needborder {
+  border: 1px solid;
+}
+
+.goaliebtn {
+  margin-top: $spacing-unit;
+}
+
+.searchfield {
+  margin-bottom: $spacing-unit;
+}
+
+.graph {
+  margin-top: $base-line-height;
+  margin-bottom: $base-line-height;
+}

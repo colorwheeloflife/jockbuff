@@ -2,6 +2,8 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
 
+  require 'table-for'
+
   protect_from_forgery with: :exception
 
   helper_method :current_user
@@ -54,5 +56,4 @@ class ApplicationController < ActionController::Base
       redirect_to root_url, :alert => 'You need to sign in for access to this page.'
     end
   end
-
 end

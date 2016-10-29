@@ -14,14 +14,14 @@ class TeamsController < ApplicationController
     @players = PlayerPassport.where(team_id: team_id).includes(:player)
   end
 
-  private
+  # private
 
-  def sort_column
-    Player.column_names.include?(params[:sort]) ? params[:sort] : "name"
-  end
+  # def sort_column
+  #   Team.column_names.include?(params[:sort]) ? params[:sort] : "name"
+  # end
 
-  def sort_direction
-    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
-  end
+  # def sort_direction
+  #   %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+  # end
 
 end

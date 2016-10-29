@@ -43,6 +43,8 @@ gem "highcharts-rails"
 
 gem 'foundation-rails'
 
+gem "table-for"
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'omniauth-yahoo-oauth2', git: 'https://github.com/sarahveness/omniauth-yahoo-oauth2.git'
@@ -60,6 +62,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
 gem 'byebug', platform: :mri
 gem 'web-console'
+gem 'pry'
 end
 
 group :development do

@@ -1,11 +1,10 @@
 <div class="container-fluid topfix container-space">
   <div class="row">
     <div class="col-md-1">
-      <%= image_tag "JockLogoTiny.png", :id => 'profilepic' %>
+      <%= image_tag "#{@team.image}" , :class => 'teamlogo' %>
     </div>
       <div class="col-md-4">
         <h1><%= @team.name %></h1>
-
         <table class="table table-bordered table-striped table-hover table-responsive">
           <h3>Team Needs</h3>
           <thead>
@@ -56,7 +55,7 @@
 <div class="container-fluid container-space">
   <div class="row">
     <div class="col-md-6">
-      <h1><%= @team.name %>'s Roster</h1>
+      <h1><%= @team.name %> Roster</h1>
     </div>
   </div>
   <div class="row">
@@ -88,18 +87,24 @@
               <td><%= player_passport.player.positions.join("/") %>
               </td>
               <td><%= player_passport.player.player_prediction.g %></td>
-              <td>155</td>
-              <td>155</td>
-              <td>155</td>
-              <td>155</td>
-              <td>155</td>
-              <td>155</td>
-              <td>155</td>
-              <td>155</td>
-              <td>155</td>
+              <td><%= player_passport.player.player_prediction.a %></td>
+              <td><%= player_passport.player.player_prediction.p %></td>
+              <td><%= player_passport.player.player_prediction.ppp %></td>
+              <td><%= player_passport.player.player_prediction.plusminus %></td>
+              <td><%= player_passport.player.player_prediction.pim %></td>
+              <td><%= player_passport.player.player_prediction.sog %></td>
+              <td><%= player_passport.player.player_prediction.hit %></td>
+              <td><%= player_passport.player.player_prediction.blk %></td>
+              <td>150</td>
             </tr>
           <% end %>
         </tbody>
+        </table>
+     </div>
+     </div>
+<div class="row">
+    <div class="col-md-12">
+      <table class="table table-bordered table-striped table-hover table-responsive">
         <thead>
           <tr>
             <th>Goalies</th>
@@ -117,15 +122,15 @@
         <% @players.each do |player_passport| %>
         <% next if player_passport.player.positions.join("/").exclude?("G") %>
           <tr>
-              <td><%= player_passport.player.name %></td>
-              <td><%= player_passport.player.pro_team %></td>
-              <td><%= player_passport.player.positions.join("/") %></td>
-            <td>22</td>
-            <td>3.46</td>
-            <td>.890</td>
-            <td>5</td>
-            <td>1550</td>
-            <td>155</td>
+            <td><%= player_passport.player.name %></td>
+            <td><%= player_passport.player.pro_team %></td>
+            <td><%= player_passport.player.player_prediction.w %></td>
+            <td><%= player_passport.player.player_prediction.l %></td>
+            <td><%= player_passport.player.player_prediction.gaa %></td>
+            <td><%= player_passport.player.player_prediction.svpercent %></td>
+            <td><%= player_passport.player.player_prediction.sho %></td>
+            <td><%= player_passport.player.player_prediction.sv %></td>
+            <td>100</td>
           </tr>
           <% end %>
         </tbody>
