@@ -12,7 +12,6 @@ class ApplicationController < ActionController::Base
   helper_method :yahoo_root
   helper_method :league_call
 
-
   def current_user
     begin
       @current_user ||= User.find(session[:user_id]) if session[:user_id]
@@ -58,5 +57,4 @@ class ApplicationController < ActionController::Base
       redirect_to root_url, :alert => 'You need to sign in for access to this page.'
     end
   end
-
 end
