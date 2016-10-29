@@ -1,15 +1,15 @@
 $(function () {
+    alert(gon.player_passports);
+  });
+
+$(function () {
     $('table.table tr td.player_name').draggable().data("mydata");
 
     $('.dropspace').droppable({
         drop: function (event, ui) {
             selectedPlayer1 = (ui.draggable.attr('id'));
-            // alert('you have dropped something!')
             alert(selectedPlayer1);
-            // alert(ui.draggable).data('pp');
-            // alert(<%= @players %>);
 
-            // console.log(selectedPlayer1);
             // more magic goes here
             $.ajax({
                 url: "/players/",

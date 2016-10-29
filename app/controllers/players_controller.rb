@@ -4,6 +4,7 @@ class PlayersController < ApplicationController
 
   def index
     @player_passports = PlayerPassport.includes(:player, :player_predictions).order(sort_column + " " + sort_direction)
+    gon.player_passports = PlayerPassport.includes(:player, :player_predictions).order(sort_column + " " + sort_direction)
   end
 
   def show
