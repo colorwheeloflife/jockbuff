@@ -1,10 +1,11 @@
 <div class="container-fluid topfix container-space">
   <div class="col-md-6 graph" id="line_graph-top" style="width:100%; height:400px;">HI</div>
   <div class="col-md-6 graph" id="ajax-line_graph-top" style="width:100%; height:400px;">HI</div>
-  <div class='dropspace' id="player-droppable_1"> DROP HERE </div>
-  <div class='dropspace' id="player-droppable_2"> DROP HERE </div>
-
 </div>
+
+<div class='dropspace' id="player-droppable_1"> DROP HERE </div>
+<div class='dropspace' id="player-droppable_2"> DROP HERE </div>
+
 <div class="container-fluid container-space">
   <div class="row">
     <div class="col-md-3">
@@ -42,7 +43,8 @@
     <% @player_passports.each do |player_passport| %>
     <% next if player_passport.player.positions.join("/").include?("G") %>
       <tr class="draggable">
-        <td class="player_name"> <%= player_passport.player.name %> </td>
+        <% playerID = player_passport.id %>
+        <td class="player_name" id=<%= "#{playerID}" %> > <%= player_passport.player.name %> </td>
         <td> <%= player_passport.player.pro_team.upcase %></td>
         <td> <%= player_passport.player.positions.join("/") %> </td>
         <td> <%= player_passport.player.player_prediction.g %> </td>

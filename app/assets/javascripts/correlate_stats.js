@@ -1,24 +1,27 @@
 $(function () {
-    // $('#draggable td').draggable();
-    $('table.table tr td.player_name').draggable({
-        // #todo - look at draggable options
-    });
+    $('table.table tr td.player_name').draggable().data("mydata");
 
-    $('.droppable').droppable({
+    $('.dropspace').droppable({
         drop: function (event, ui) {
             selectedPlayer1 = (ui.draggable.attr('id'));
+            // alert('you have dropped something!')
+            alert(selectedPlayer1);
+            // alert(ui.draggable).data('pp');
+            // alert(<%= @players %>);
 
+            // console.log(selectedPlayer1);
             // more magic goes here
-            // $.ajax({
-            //     url: "URL",
-            //     method: "GET",
-            //     data: {DATA},
-            //     success: function (data) {
-            //         drawSpiderChart_top(data);
-            //     }
-            // });
+            $.ajax({
+                url: "/players/",
+                method: "GET",
+                data: {DATA},
+                success: function (data) {
+                    drawSpiderChart_top(data);
+                }
+            });
         }
     })
+
   });
 
 
