@@ -45,7 +45,8 @@ class PlayersController < ApplicationController
   private
 
   def sort_column
-    Player.column_names.include?(params[:sort]) ? params[:sort] : "id"
+    byebug
+    Player.column_names.include?(params[:sort]) ? params[:sort] : "name"
   end
 
   def sort_direction

@@ -96,3 +96,6 @@ player_stat.each do |row|
   puts "\n\n\n\n\n #{t.errors.full_messages} \n\n\n"
   t.save
 end
+
+all_predictions = PlayerPrediction.all.pluck('player_id')
+Player.where.not(player_id: all_predictions).destroy_all
