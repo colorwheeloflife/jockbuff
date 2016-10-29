@@ -4,9 +4,12 @@ class PlayersController < ApplicationController
 
   def index
     # .order(sort_column + " " + sort_direction)
-    @players = PlayerPassport.includes(:player).order(sort_column + " " + sort_direction)
+    @player_passports = PlayerPassport.includes(:player, :player_predictions).order(sort_column + " " + sort_direction)
     # byebug
   end
+
+
+@player_passports = PlayerPassport.includes(:player).order("players.name asc")
 
   def show
   end
@@ -45,8 +48,13 @@ class PlayersController < ApplicationController
   private
 
   def sort_column
-    byebug
-    Player.column_names.include?(params[:sort]) ? params[:sort] : "name"
+    if Player.column_names.include?(params[:sort])
+      "players." + params[:sort]
+    elsif PlayerPrediction.column_names.include?(params[:sort])
+      "player_predictions." + params[:sort]
+    else
+      "players.name"
+    end
   end
 
   def sort_direction

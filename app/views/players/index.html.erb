@@ -15,21 +15,21 @@
     <tr>
       <th><%= sortable "name" %></th>
       <th><%= sortable "pro_team", "Pro Team" %></th>
-      <th><%= sortable "position" %></th>
+      <th><%= sortable "positions" %></th>
       <th><%= sortable "g" %></th>
       <th><%= sortable "a" %></th>
-      <th><%= sortable "points" %></th>
+      <th><%= sortable "p", "Points" %></th>
       <th><%= sortable "ppp" %></th>
       <th><%= sortable "plusminus", "+/-" %></th>
       <th><%= sortable "pims" %></th>
       <th><%= sortable "sog" %></th>
-      <th><%= sortable "hits" %></th>
-      <th><%= sortable "blks" %></th>
+      <th><%= sortable "hit", "Hits" %></th>
+      <th><%= sortable "blk", "Blk" %></th>
       <th><%= sortable "jbr" %></th>
     </tr>
   </thead>
   <tbody>
-    <% @players.each do |player_passport| %>
+    <% @player_passports.each do |player_passport| %>
     <% next if player_passport.player.positions.join("/").include?("G") %>
       <tr>
         <td> <%= player_passport.player.name %> </td>
@@ -65,7 +65,7 @@
       </tr>
     </thead>
     <tbody>
-      <% @players.first(50).each do |player| %>
+      <% @player_passports.first(50).each do |player| %>
         <tr>
           <td>goalie.name</td>
           <td>goalie.team</td>
