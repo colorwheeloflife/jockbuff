@@ -21,7 +21,6 @@ class CreatePlayerCategories < ActiveRecord::Migration[5.0]
       t.boolean :fl
       t.boolean :hit
       t.boolean :blk
-      t.boolean :total
 
       t.timestamps
     end
