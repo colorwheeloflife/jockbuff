@@ -1,7 +1,6 @@
-class CreatePlayerStats < ActiveRecord::Migration[5.0]
+class CreatePlayerPredictions < ActiveRecord::Migration[5.0]
   def change
-    create_table :player_stats do |t|
-      t.belongs_to :player, index = true
+    create_table :player_predictions, id:false, force: true do |t|
       t.integer :g
       t.integer :a
       t.integer :p
@@ -21,6 +20,7 @@ class CreatePlayerStats < ActiveRecord::Migration[5.0]
       t.integer :fl
       t.integer :hit
       t.integer :blk
+      t.float :total
       t.integer :gs
       t.integer :w
       t.integer :l
@@ -30,8 +30,11 @@ class CreatePlayerStats < ActiveRecord::Migration[5.0]
       t.integer :sv
       t.float :svpercent
       t.integer :sho
+      t.float :total
+      t.integer :player_id
 
       t.timestamps
     end
   end
 end
+

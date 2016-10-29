@@ -2,7 +2,7 @@
   <div class="col-md-8">
     <h1 class="text-center">Your Fantasy Hockey Leagues</h1>
   </div>
-  <div class="container-fluid">
+  <div class="container-fluid container-space">
     <div class="container">
       <table class="table table-striped table-bordered">
         <thead>
@@ -21,8 +21,8 @@
         </tbody>
       </table>
       <%= form_tag(user_leagues_path(@current_user), method: "post") do %>
-      <button type= "submit" class= "btn btn-primary btn-lg">
-      Click to Update Your Teams
+      <button type= "submit" class= "btn btn-primary btn-lg" id="spinner">
+      Click to Update Your Leagues
       </button>
       <% end %>
     </div>

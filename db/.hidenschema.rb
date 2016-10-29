@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161026163405) do
+ActiveRecord::Schema.define(version: 20161026000934) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,22 +27,34 @@ ActiveRecord::Schema.define(version: 20161026163405) do
     t.boolean  "sv"
     t.boolean  "svpercent"
     t.boolean  "sho"
+    t.float    "total"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["league_id"], name: "index_goalie_categories_on_league_id", using: :btree
   end
 
+  create_table "goalie_stats", force: :cascade do |t|
+    t.integer  "player_id"
+    t.integer  "gs"
+    t.integer  "w"
+    t.integer  "l"
+    t.integer  "ga"
+    t.float    "gaa"
+    t.integer  "sa"
+    t.integer  "sv"
+    t.float    "svpercent"
+    t.integer  "sho"
+    t.float    "total"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["player_id"], name: "index_goalie_stats_on_player_id", using: :btree
+  end
+
   create_table "leagues", force: :cascade do |t|
-    t.integer  "user_id"
     t.string   "name"
     t.string   "sport"
-    t.string   "user_team"
-    t.string   "user_logo"
-    t.string   "league_name"
-    t.string   "league_key"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.index ["user_id"], name: "index_leagues_on_user_id", using: :btree
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "player_categories", force: :cascade do |t|
@@ -66,56 +78,19 @@ ActiveRecord::Schema.define(version: 20161026163405) do
     t.boolean  "fl"
     t.boolean  "hit"
     t.boolean  "blk"
+    t.float    "total"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["league_id"], name: "index_player_categories_on_league_id", using: :btree
   end
 
   create_table "player_passports", force: :cascade do |t|
-    t.integer  "player_id"
+    t.string   "player_id"
     t.string   "position"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "team_id"
-    t.integer  "league_id"
-    t.index ["league_id"], name: "index_player_passports_on_league_id", using: :btree
-    t.index ["player_id"], name: "index_player_passports_on_player_id", using: :btree
-    t.index ["team_id"], name: "index_player_passports_on_team_id", using: :btree
-  end
-
-  create_table "player_predictions", id: false, force: :cascade do |t|
-    t.integer  "g"
-    t.integer  "a"
-    t.integer  "p"
-    t.integer  "plusminus"
-    t.integer  "pim"
-    t.integer  "ppg"
-    t.integer  "ppp"
-    t.integer  "ppa"
-    t.integer  "shg"
-    t.integer  "sha"
-    t.integer  "shp"
-    t.integer  "gwg"
-    t.integer  "gtg"
-    t.integer  "sog"
-    t.float    "shpercent"
-    t.integer  "fw"
-    t.integer  "fl"
-    t.integer  "hit"
-    t.integer  "blk"
-    t.float    "total"
-    t.integer  "gs"
-    t.integer  "w"
-    t.integer  "l"
-    t.integer  "ga"
-    t.float    "gaa"
-    t.integer  "sa"
-    t.integer  "sv"
-    t.float    "svpercent"
-    t.integer  "sho"
-    t.integer  "player_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "league_id"
   end
 
   create_table "player_stats", force: :cascade do |t|
@@ -140,47 +115,33 @@ ActiveRecord::Schema.define(version: 20161026163405) do
     t.integer  "fl"
     t.integer  "hit"
     t.integer  "blk"
-    t.integer  "gs"
-    t.integer  "w"
-    t.integer  "l"
-    t.integer  "ga"
-    t.float    "gaa"
-    t.integer  "sa"
-    t.integer  "sv"
-    t.float    "svpercent"
-    t.integer  "sho"
+    t.float    "total"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["player_id"], name: "index_player_stats_on_player_id", using: :btree
     t.index ["true_id"], name: "index_player_stats_on_true_id", using: :btree
   end
 
-  create_table "players", id: false, force: :cascade do |t|
-    t.integer  "player_id",  null: false
+  create_table "players", force: :cascade do |t|
     t.string   "name"
-    t.string   "positions",               array: true
+    t.string   "position"
     t.string   "pro_team"
-    t.string   "type_p"
+    t.integer  "owner_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["player_id"], name: "index_players_on_player_id", unique: true, using: :btree
   end
 
   create_table "teams", force: :cascade do |t|
-    t.integer  "league_id",  null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean  "ownership"
+    t.string   "league_id"
     t.string   "name"
-    t.string   "image"
-    t.string   "nickname"
-    t.string   "url"
-    t.index ["league_id"], name: "index_teams_on_league_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
-    t.string   "image"
+    t.string   "email"
     t.string   "uid"
     t.string   "provider"
     t.string   "token"

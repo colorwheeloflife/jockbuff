@@ -4,7 +4,7 @@ module PlayerCategoriesHelper
 
   def create_player_categories(league_settings, league_info)
 
-     league_id = League.where(:league_key => league_info[:league_key]).where(:user_id => @current_user.id).pluck(:id)
+    league_id = League.where(:league_key => league_info[:league_key]).where(:user_id => @current_user.id).pluck(:id)
     league_id = league_id[0]
 
     stat_cats = league_settings["fantasy_content"]["league"]["settings"]["stat_categories"]["stats"]["stat"]
@@ -34,14 +34,7 @@ module PlayerCategoriesHelper
       fl: player_cats.include?('Faceoffs Lost'),
       hit: player_cats.include?('Hits'),
       blk: player_cats.include?('Blocks'),
-      total: player_cats.include?('Total Standard Deviation')
     }
     @player_category = PlayerCategory.create(player_cats_save)
-    puts @player_category
-
-
-
-
-
     end
 end
