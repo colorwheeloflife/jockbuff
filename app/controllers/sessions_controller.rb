@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  include LeaguesHelper
 
   def new
     redirect_to '/auth/yahoo'
@@ -15,7 +16,7 @@ class SessionsController < ApplicationController
     user.update(token: auth['credentials']['token'])
     session[:user_id] = user.id
     null = nil
-    @league = League.new()
+    @create_league = create_leagues unless League.where(user_id: @current_user.id).exists?
     redirect_to user_leagues_path(current_user), :notice => 'Signed in!'
   end
 

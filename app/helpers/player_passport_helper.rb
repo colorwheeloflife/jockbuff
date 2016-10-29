@@ -1,12 +1,11 @@
 
 module PlayerPassportHelper
 
-  def create_passport_entry (team_info_arr, league_info)
-    league_key = league_info[:league_key]
-    @current_user = current_user
+  def create_passport_entry (league_id)
+    league_key = League.find_by(id: league_id.to_i).league_key
+    team_info_arr = league_call(league_key)
     full_league_owned_players = team_info_arr.map do |team|
       player_info = team["fantasy_content"]["team"]["roster"]["players"]["player"]
-      league_id = League.find_by(league_info).id
       team_id = Team.find_by(league_id: league_id, name: team['fantasy_content']['team']['name']).id
       player_info.map do |t|
         PlayerPassport.new(
@@ -22,7 +21,6 @@ module PlayerPassportHelper
       PlayerPassport.import(full_league_owned_players.flatten)
     end
 
-    league_id = League.where(league_info).pluck(:id)[0]
     owned_players = PlayerPassport.where(league_id: league_id).pluck('player_id')
     all_players = Player.all.pluck('player_id')
     available_players = all_players - owned_players
@@ -34,6 +32,7 @@ module PlayerPassportHelper
         league_id: league_id
       )
     end
+
     ActiveRecord::Base.transaction do
       PlayerPassport.import(create_waivers)
     end

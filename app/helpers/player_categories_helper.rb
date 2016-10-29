@@ -36,5 +36,6 @@ module PlayerCategoriesHelper
       blk: player_cats.include?('Blocks'),
     }
     @player_category = PlayerCategory.create(player_cats_save)
+
     end
 end

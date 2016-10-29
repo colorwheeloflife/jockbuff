@@ -11,7 +11,6 @@ stat_cats = league_settings["fantasy_content"]["league"]["settings"]["stat_categ
     league_id = League.where(:league_key => league_info[:league_key]).where(:user_id => @current_user.id).pluck(:id)
     league_id = league_id[0]
 
-
     goalie_cats_save = {
       league_id: league_id,
       gs: goalie_cats.include?('Games Started'),
