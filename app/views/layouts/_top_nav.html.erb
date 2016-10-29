@@ -17,7 +17,7 @@
               <% current_user_leagues(current_user.id).each do |league| %>
               <li><%= link_to "#{league.name}",user_league_path(current_user, league) %></li>
               <li class="dropdown-submenu">
-                <li><%= link_to 'Player Ranks', players_path(current_user, league) %></li>
+                <li><%= link_to 'Player Ranks', players_path(current_user, league, league.teams.find_by(ownership: true).id) %></li>
                 <li><%= link_to 'Trade Calculator', compares_path(current_user, league) %></li>
                 <li role="separator" class="divider"></li>
               <% end %>
