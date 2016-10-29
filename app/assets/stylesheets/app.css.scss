@@ -38,7 +38,8 @@ body {
 
 h1 {
   font-family: 'Sanchez', serif;
-  margin: $spacing-unit;
+  margin-top: $spacing-unit;
+  margin-bottom: $spacing-unit;
 }
 
 h2,
@@ -111,7 +112,7 @@ h5 {
 }
 
 .searchfield {
-  margin-left: $spacing-unit;
+  margin-bottom: $spacing-unit;
 }
 
 .graph {
