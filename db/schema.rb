@@ -187,5 +187,6 @@ ActiveRecord::Schema.define(version: 20161026163405) do
     t.string   "secret"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  ends
+  end
+
 end

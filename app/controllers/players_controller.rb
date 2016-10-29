@@ -1,19 +1,14 @@
-require 'byebug'
 class PlayersController < ApplicationController
   helper_method :sort_column, :sort_direction
 
+include LeaguesHelper
+include ApplicationHelper
+
   def index
-    # .order(sort_column + " " + sort_direction)
-    @players = PlayerPassport.includes(:player).order(sort_column + " " + sort_direction)
-    # byebug
+    league_id = params[:league_id]
+    @players = PlayerPassport.where(league_id: true)
+    team = Team.where(user_id: current_user.id)
   end
-
-  def show
-  end
-
-def index
-  team = Team.where(user_id: current_user.id)
-end
 
   def create
     @current_user = current_user
@@ -49,7 +44,6 @@ end
   private
 
   def sort_column
-    byebug
     Player.column_names.include?(params[:sort]) ? params[:sort] : "name"
   end
 
