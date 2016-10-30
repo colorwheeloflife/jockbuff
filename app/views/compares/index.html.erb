@@ -88,17 +88,20 @@
     </table>
 
 
-    <h1>Team B</h1>
-      <select class="form-control team-selector" placeholder="Select Team">
-        <% @team_info.each do |team_info| %>
-        <% next if team_info[0].include?("Waiver") %>
-        <option value="<%= team_info[1] %>"><%= team_info[0] %></option>
-        <% end %>
-      </select>
-    <div class="render_trade_table">
-
+    <h1>Trading Team</h1>
+    <div class="row">
+      <div class="col-md-2">
+        <select class="form-control team-selector searchfield" placeholder="Select Team">
+          <% @team_info.each do |team_info| %>
+          <% next if team_info[0].include?("Waiver") %>
+          <option value="<%= team_info[1] %>"><%= team_info[0] %></option>
+          <% end %>
+        </select>
+      </div>
     </div>
-<!-- RENDER THE TABLE HERE -->
+    <div class="render_trade_table">
+      <!-- RENDER THE TABLE HERE -->
+    </div>
 
     <h1>Players To Be Traded</h1>
     <table class="table table-bordered table-striped table-hover table-responsive">
@@ -252,73 +255,78 @@
       </tbody>
     </table>
 
-      <h1>Players To Be Traded</h1>
-      <table class="table table-bordered table-striped table-hover table-responsive">
-        <thead>
-          <tr>
-            <th>Player</th>
-            <th>Team</th>
-            <th>Position</th>
-            <th>G</th>
-            <th>A</th>
-            <th>Points</th>
-            <th>PPP</th>
-            <th>+/-</th>
-            <th>PIMS</th>
-            <th>SOG</th>
-            <th>HITS</th>
-            <th>BLKS</th>
-            <th>JBR</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Sidney Crosby</td>
-            <td>PIT</td>
-            <td>Centre</td>
-            <td>155</td>
-            <td>155</td>
-            <td>155</td>
-            <td>155</td>
-            <td>155</td>
-            <td>155</td>
-            <td>155</td>
-            <td>155</td>
-            <td>155</td>
-            <td>255</td>
-          </tr>
-      </tbody>
-    </table>
+    <h1>Players To Be Traded</h1>
     <table class="table table-bordered table-striped table-hover table-responsive">
-        <thead>
-          <tr>
-            <th>Goalie</th>
-            <th>Team</th>
-            <th>Wins</th>
-            <th>Loses</th>
-            <th>GAA</th>
-            <th>SV %</th>
-            <th>SO</th>
-            <th>Saves</th>
-            <th>JBR</th>
-          </tr>
+      <thead>
+        <tr>
+          <th>Player</th>
+          <th>Team</th>
+          <th>Position</th>
+          <th>G</th>
+          <th>A</th>
+          <th>Points</th>
+          <th>PPP</th>
+          <th>+/-</th>
+          <th>PIMS</th>
+          <th>SOG</th>
+          <th>HITS</th>
+          <th>BLKS</th>
+          <th>JBR</th>
+        </tr>
       </thead>
       <tbody>
         <tr>
-          <td>Ryan Miller</td>
-          <td>Van</td>
-          <td>25</td>
-          <td>25</td>
-          <td>3.46</td>
-          <td>.890</td>
-          <td>5</td>
-          <td>1550</td>
+          <td>Sidney Crosby</td>
+          <td>PIT</td>
+          <td>Centre</td>
           <td>155</td>
+          <td>155</td>
+          <td>155</td>
+          <td>155</td>
+          <td>155</td>
+          <td>155</td>
+          <td>155</td>
+          <td>155</td>
+          <td>155</td>
+          <td>255</td>
         </tr>
-      </tbody>
-    </table>
+    </tbody>
+  </table>
+  <table class="table table-bordered table-striped table-hover table-responsive">
+      <thead>
+        <tr>
+          <th>Goalie</th>
+          <th>Team</th>
+          <th>Wins</th>
+          <th>Loses</th>
+          <th>GAA</th>
+          <th>SV %</th>
+          <th>SO</th>
+          <th>Saves</th>
+          <th>JBR</th>
+        </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Ryan Miller</td>
+        <td>Van</td>
+        <td>25</td>
+        <td>25</td>
+        <td>3.46</td>
+        <td>.890</td>
+        <td>5</td>
+        <td>1550</td>
+        <td>155</td>
+      </tr>
+    </tbody>
+  </table>
+  <h1>Team Stat Impact</h1>
+</div>
 
-    <h1>Team Stat Impact</h1>
+
+<div class="row container-fluid container-space-no-top">
+  <div class="col-md-6">
+
     <table class="table table-bordered table-striped table-hover table-responsive">
       <thead>
         <tr>
@@ -349,6 +357,8 @@
         </tr>
       </tbody>
       </table>
+    </div>
+  <div class="col-md-6">
     <table class="table table-bordered table-striped table-hover table-responsive">
       <thead>
         <tr>
