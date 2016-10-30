@@ -27,7 +27,7 @@
         </label>
         </td>
         <td><%= player_passport.player.name %></td>
-        <td><%= player_passport.player.pro_team %></td>
+        <td><%= player_passport.player.pro_team.upcase %></td>
         <td><%= player_passport.player.positions.join("/") %></td>
         <td><%= player_passport.player.player_prediction.g %></td>
         <td><%= player_passport.player.player_prediction.a %></td>
@@ -68,7 +68,7 @@
         </label>
         </td>
         <td><%= player_passport.player.name %></td>
-        <td><%= player_passport.player.pro_team %></td>
+        <td><%= player_passport.player.pro_team.upcase %></td>
         <td><%= player_passport.player.player_prediction.w %></td>
         <td><%= player_passport.player.player_prediction.l %></td>
         <td><%= player_passport.player.player_prediction.gaa %></td>
