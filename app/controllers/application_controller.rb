@@ -3,6 +3,9 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
 
   require 'table-for'
+  include PlayerPassportHelper
+  include TeamsHelper
+
 
   protect_from_forgery with: :exception
 
@@ -56,4 +59,11 @@ class ApplicationController < ActionController::Base
       redirect_to root_url, :alert => 'You need to sign in for access to this page.'
     end
   end
+
+  def create
+    @create_league = create_leagues
+    league_ids = League.where(user_id: @current_user.id).pluck('id')
+    @player_passport = create_passport_entry(league_ids)
+  end
+
 end

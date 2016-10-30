@@ -12,18 +12,36 @@
           </tr>
         </thead>
         <tbody>
+         <% unless passport_exist(@current_user.id) %>
+          <% @leagues.each do |league| %>
+          <tr>
+          <td><%= league.name %></td>
+          <td><%= league.user_team %></td>
+          </tr>
+          <% end %>
+          <% else %>
           <% @leagues.each do |league| %>
           <tr>
           <td><%= link_to "#{league.name}",user_league_path(@current_user, league.id) %></td>
           <td><%= league.user_team %></td>
           </tr>
           <% end %>
+          <% end %>
+
         </tbody>
       </table>
+      <% unless passport_exist(@current_user.id) %>
       <%= form_tag(user_leagues_path(@current_user), method: "post") do %>
       <button type= "submit" class= "btn btn-primary btn-lg" id="spinner">
-      Click to Update Your Leagues
+      Download Your Teams
       </button>
+      <% end %>
+      <% else %>
+      <%= form_tag(new_user_league_path(@current_user.id), method: "get") do %>
+      <button type= "submit" class= "btn btn-primary btn-lg" id="spinner">
+      Update ALL leagues
+      </button>
+      <% end %>
       <% end %>
     </div>
   </div>

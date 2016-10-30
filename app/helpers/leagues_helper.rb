@@ -6,6 +6,12 @@ module LeaguesHelper
     League.where(user_id: user_id)
   end
 
+  def passport_exist(user_id)
+    league_ids = current_user_leagues(user_id).pluck('id')
+    PlayerPassport.find_by(league_id: league_ids)
+  end
+
+
   def create_leagues
     @yahoo_root = yahoo_root
     @current_user = current_user
@@ -14,7 +20,6 @@ module LeaguesHelper
     "Authorization" => "Bearer #{@current_user.token}"
     })
     # return redirect_to(:signin) if(user_leagues_full["error"])
-
     user_leagues_arr = user_leagues_full["fantasy_content"]["users"]["user"]["games"]["game"]["teams"]["team"]
 
     user_leagues_arr.map do |league|
@@ -31,9 +36,11 @@ module LeaguesHelper
       })
       league_name = league_settings["fantasy_content"]["league"]["name"]
       league_info.merge!(name: league_name)
-      @league = League.create(league_info) if league_settings["fantasy_content"]["league"]["draft_status"] == "postdraft"
-      @player_category = create_player_categories(league_settings, league_info)
-      @goalie_category = create_goalie_categories(league_settings, league_info)
+      if league_settings["fantasy_content"]["league"]["draft_status"] == "postdraft" && League.find_by(league_info) == nil
+        @league = League.create(league_info)
+        @player_category = create_player_categories(league_settings, league_info)
+        @goalie_category = create_goalie_categories(league_settings, league_info)
+      end
     end
   end
 
