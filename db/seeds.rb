@@ -49,6 +49,12 @@ end
 
   goalie_stat = full_stat.select { |row| row['Position'] == "G" }
   player_stat = (full_stat - goalie_stat)
+
+  player_stat.each do |row|
+
+  end
+
+
   goalie_stat.each do |row|
     t = PlayerPrediction.new
     t.player_id = row['player_id'].to_i
@@ -147,10 +153,25 @@ def player_stats_current
   end
 end
 
-####
-Player.create(players_to_seed)
-all_predictions = PlayerPrediction.all.pluck(:player_id)
-Player.where.not(player_id: all_predictions).destroy_all
-player_predictions
-player_stats_current
-####
+def jbr_ranks
+  prediction_arr = PlayerPrediction.all.map do |row|
+    row.attributes
+  end
+  byebug
+end
+
+jbr_ranks
+
+
+
+
+
+end
+
+# ####
+# Player.create(players_to_seed)
+# all_predictions = PlayerPrediction.all.pluck(:player_id)
+# Player.where.not(player_id: all_predictions).destroy_all
+# player_predictions
+# player_stats_current
+# ####
