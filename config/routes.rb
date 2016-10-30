@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
  get '/users/:user_id/leagues' => 'leagues#create'
 
- get '/users/:user_id/leagues/:league_id/players' => 'players#index', :as => :players
+ get '/users/:user_id/leagues/:league_id/teams/:team_id/players' => 'players#index', :as => :players
  get '/users/:user_id/leagues/:league_id/compares' => 'compares#index', :as => :compares
  get '/ajax/users/:user_id/leagues/:league_id/teams/:team_id' => 'compares#render_trade_table', :as => :render_table
 

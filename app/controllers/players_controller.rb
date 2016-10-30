@@ -7,7 +7,7 @@ include ApplicationHelper
   def index
     league_id = params[:league_id]
     @players = PlayerPassport.where(league_id: true)
-    team = Team.where(user_id: current_user.id)
+    @team = Team.where(league_id: league_id, ownership: true).pluck(:id)
   end
 
   def create

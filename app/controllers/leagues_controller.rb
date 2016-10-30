@@ -1,4 +1,5 @@
 require "httparty"
+require "byebug"
 
 class LeaguesController < ApplicationController
   include GoalieCategoriesHelper
