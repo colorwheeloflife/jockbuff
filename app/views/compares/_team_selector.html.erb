@@ -1,0 +1,6 @@
+<select class="form-control team-selector searchfield selectpicker" placeholder="Select Team">
+  <% @team_info.each do |team_info| %>
+  <% next if team_info[0].include?("Waiver") %>
+  <option value="<%= team_info[1] %>"><%= team_info[0] %></option>
+  <% end %>
+</select>
