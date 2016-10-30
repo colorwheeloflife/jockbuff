@@ -50,6 +50,11 @@ h5 {
   margin: $spacing-unit;
 }
 
+th,
+td {
+  text-align: center;
+}
+
 .container-space {
   margin: $spacing-unit;
 }
@@ -111,6 +116,14 @@ h5 {
   margin-top: $spacing-unit;
 }
 
+.teamselect {
+  margin-bottom: ($spacing-unit / 2);
+}
+
+.selectteamlist {
+  margin:($spacing-unit / 2);
+}
+
 .searchfield {
   margin-bottom: $spacing-unit;
 }
@@ -119,3 +132,7 @@ h5 {
   margin-top: $base-line-height;
   margin-bottom: $base-line-height;
 }
+/*
+#inlineCheckbox1 {
+  margin: 0;
+}*/
