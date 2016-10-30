@@ -1,6 +1,28 @@
-$(function () {
-    alert(gon.player_passports);
-  });
+// $(function () {
+//     var pp = gon.player_passports;
+//     // alert(gon.player_passports.length);
+//     alert(gon.player_passports.first);
+
+//     // for (var i; i < pp.length; i++) {
+
+//     //     if (i.id == 5777) {
+//     //            alert(i.id);
+//     //         }
+
+//     //     else {
+//     //         alert('nope');
+//     //     }
+
+
+//         // hasValue(prop, id, 5777)
+
+//         // function hasValue(obj, id, value) {
+//         //     return obj.hasOwnProperty(id) && obj[id] === value;
+//         // }
+
+//     // }
+
+//   });
 
 $(function () {
     $('table.table tr td.player_name').draggable().data("mydata");
@@ -8,17 +30,18 @@ $(function () {
     $('.dropspace').droppable({
         drop: function (event, ui) {
             selectedPlayer1 = (ui.draggable.attr('id'));
+            // selectedPlayer1 = (ui.draggable).data;
             alert(selectedPlayer1);
 
             // more magic goes here
-            $.ajax({
-                url: "/players/",
-                method: "GET",
-                data: {DATA},
-                success: function (data) {
-                    drawSpiderChart_top(data);
-                }
-            });
+            // $.ajax({
+            //     url: "/players/",
+            //     method: "GET",
+            //     data: {DATA},
+            //     success: function (data) {
+            //         drawSpiderChart_top(data);
+            //     }
+            // });
         }
     })
 

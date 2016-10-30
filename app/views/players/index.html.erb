@@ -15,6 +15,14 @@
     </div>
   </div>
 
+<select name"player[name]">
+  <% @player_passports.each do |player_passport| %>
+  <% next if player_passport.player.positions.join("/").include?("G") %>
+
+  <option value="<%= player_passport.player.name %>" </option>
+  <% end %>
+</select>
+
 <ul id="draggable" class="ui-widget-header">
     <li id="list_1">List item 1</li>
     <li id="list_2">List item 2</li>
@@ -43,8 +51,11 @@
     <% @player_passports.each do |player_passport| %>
     <% next if player_passport.player.positions.join("/").include?("G") %>
       <tr class="draggable">
-        <% playerID = player_passport.id %>
-        <td class="player_name" id=<%= "#{playerID}" %> > <%= player_passport.player.name %> </td>
+        <% playerID = player_passport %>
+
+        <%= content_tag :td, class: "player_name", data: {pp: player_passport} do %>
+        <%= player_passport.player.name %>
+        <% end %>
         <td> <%= player_passport.player.pro_team.upcase %></td>
         <td> <%= player_passport.player.positions.join("/") %> </td>
         <td> <%= player_passport.player.player_prediction.g %> </td>
