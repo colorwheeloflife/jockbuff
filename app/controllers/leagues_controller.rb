@@ -6,9 +6,12 @@ class LeaguesController < ApplicationController
   include PlayerPassportHelper
   include TeamsHelper
 
+
 def index
   @current_user = current_user
   @leagues = League.where(user_id: @current_user.id)
+  @team_id = Team.where(ownership: true).pluck(:id)
+  # @team_id = GetCurrentUserTeamInfo.new.get_roster(@leagues)
 end
 
   def create
