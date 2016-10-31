@@ -1,12 +1,27 @@
-<table class="table table-bordered table-striped table-hover table-responsive table-players">
+<table class="table table-bordered table-striped table-hover table-responsive table-players"
+       id="userTable"
+       data-toggle="table"
+       data-pagination="true"
+       data-show-toggle="true"
+       data-show-columns="true">
   <thead>
     <tr>
-      <th>Trade</th>
-      <th>Player</th>
-      <th>Team</th>
-      <th>Pos</th>
-      <th>Y!</th>
-      <th>JBR</th>
+      <th data-field="state" data-checkbox="true">Trade</th>
+      <th data-field="name">Player</th>
+      <th data-field="pro_team">Team</th>
+      <th data-field="positions">Pos</th>
+      <th data-field="g">Y!</th>
+      <th data-field="g">JBR</th>
+      <th data-field="g" class="hidden">G</th>
+      <th data-field="a" class="hidden">A</th>
+      <th data-field="p" class="hidden">P</th>
+      <th data-field="ppp" class="hidden">PPP</th>
+      <th data-field="plusminus" class="hidden">+/-</th>
+      <th data-field="pim" class="hidden">PIM</th>
+      <th data-field="sog" class="hidden">SOG</th>
+      <th data-field="fow" class="hidden">FOW</th>
+      <th data-field="hit" class="hidden">HIT</th>
+      <th data-field="blk" class="hidden">BLK</th>
     </tr>
   </thead>
   <tbody>
@@ -30,6 +45,7 @@
         <td class="hidden"> <%= player_passport.player.player_prediction.plusminus %> </td>
         <td class="hidden"> <%= player_passport.player.player_prediction.pim %> </td>
         <td class="hidden"> <%= player_passport.player.player_prediction.sog %> </td>
+        <td class="hidden"> <%= player_passport.player.player_prediction.fw %> </td>
         <td class="hidden"> <%= player_passport.player.player_prediction.hit %> </td>
         <td class="hidden"> <%= player_passport.player.player_prediction.blk %> </td>
       </tr>
