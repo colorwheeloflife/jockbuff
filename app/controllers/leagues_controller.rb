@@ -56,8 +56,8 @@ end
     @current_user = current_user
     @leagues = League.where(user_id: @current_user.id)
     @league_id = params[:id]
-    puts @league_id.inspect
     @teams = Team.where(league_id: @league_id)
+    @players = PlayerPassport.where(league_id: true)
   end
 
 end
