@@ -1,9 +1,9 @@
-$(function() {
+ $(function() {
 
-  var userCheckedRows = [];
+  var otherCheckedRowsSkaters = [];
 
-  $('#userTable').on('check.bs.table', function (e, row) {
-    userCheckedRows.push({
+  $('#otherTable').on('check.bs.table', function (e, row) {
+    otherCheckedRowsSkaters.push({
       name: row.name,
       pro_team: row.pro_team,
       positions: row.positions,
@@ -20,24 +20,28 @@ $(function() {
       hit: row.hit,
       blk: row.blk
     });
-    console.log(userCheckedRows);
+    console.log(otherCheckedRowsSkaters);
   });
 
-  $('#userTable').on('uncheck.bs.table', function (e, row) {
-    $.each(userCheckedRows, function(index, value) {
+  $('#otherTable').on('uncheck.bs.table', function (e, row) {
+    $.each(otherCheckedRowsSkaters, function(index, value) {
       if (value.id === row.id) {
-        userCheckedRows.splice(index,1);
+        otherCheckedRowsSkaters.splice(index,1);
       }
     });
-    console.log(userCheckedRows);
+    console.log(otherCheckedRowsSkaters);
   });
 
-  $("#add_cart").click(function() {
-    $("#user-output").empty();
+  $('#otherTable').on('uncheck.bs.table', function() {
+    $("#other-output").empty();
+  });
 
-    $.each(userCheckedRows, function(index, value) {
+  $('#otherTable').on('check.bs.table', function() {
+    $("#other-output").empty();
+
+    $.each(otherCheckedRowsSkaters, function(index, value) {
         var row = $('<tr>');
-        $('#user-output').append(row);
+        $('#other-output').append(row);
         row.append($('<td>').text(value.name));
         row.append($('<td>').text(value.pro_team));
         row.append($('<td>').text(value.positions));
@@ -56,10 +60,10 @@ $(function() {
     });
   });
 
-  var checkedRows = [];
+  var otherCheckedRowsGoalies = [];
 
-  $('#userGoalieTable').on('check.bs.table', function (e, row) {
-    checkedRows.push({
+  $('#otherGoalieTable').on('check.bs.table', function (e, row) {
+    otherCheckedRowsGoalies.push({
       name: row.name,
       pro_team: row.pro_team,
       positions: row.positions,
@@ -72,24 +76,28 @@ $(function() {
       sho: row.sho,
       sv: row.sv,
     });
-    console.log(checkedRows);
+    console.log(otherCheckedRowsGoalies);
   });
 
-  $('#userGoalieTable').on('uncheck.bs.table', function (e, row) {
-    $.each(checkedRows, function(index, value) {
+  $('#otherGoalieTable').on('uncheck.bs.table', function (e, row) {
+    $.each(otherCheckedRowsGoalies, function(index, value) {
       if (value.id === row.id) {
-        checkedRows.splice(index,1);
+        otherCheckedRowsGoalies.splice(index,1);
       }
     });
-    console.log(checkedRows);
+    console.log(otherCheckedRowsGoalies);
   });
 
-  $("#add_cart").click(function() {
-    $("#user-output-goalies").empty();
+    $('#otherGoalieTable').on('uncheck.bs.table', function() {
+    $("#other-output-goalies").empty();
+  });
 
-    $.each(checkedRows, function(index, value) {
+    $('#otherGoalieTable').on('check.bs.table',function() {
+    $("#other-output-goalies").empty();
+
+    $.each(otherCheckedRowsGoalies, function(index, value) {
       var row = $('<tr>');
-      $('#user-output-goalies').append(row);
+      $('#other-output-goalies').append(row);
       row.append($('<td>').text(value.name));
       row.append($('<td>').text(value.pro_team));
       row.append($('<td>').text(value.yahoo_rank));
@@ -102,6 +110,4 @@ $(function() {
       row.append($('<td>').text(value.sv));
     });
   });
-
-
 });
