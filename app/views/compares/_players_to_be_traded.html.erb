@@ -1,56 +1,63 @@
 <table class="table table-bordered table-striped table-hover table-responsive table-players">
   <thead>
     <tr>
-      <th>Trade</th>
       <th>Player</th>
       <th>Team</th>
-      <th>Pos</th>
+      <th>Position</th>
       <th>G</th>
+      <th>A</th>
+      <th>Points</th>
+      <th>PPP</th>
+      <th>+/-</th>
+      <th>PIMS</th>
+      <th>SOG</th>
+      <th>HITS</th>
+      <th>BLKS</th>
       <th>JBR</th>
     </tr>
   </thead>
   <tbody>
-    <% @trade_team.each do |player_passport| %>
+    <tr>
+    <% @players.each do |player_passport| %>
     <% next if player_passport.player.positions.join("/").include?("G") %>
       <tr>
-        <td>
-        <label>
-          <input type="checkbox" id="inlineCheckbox1" value="<%= player_passport.player.id %>">
-        </label>
-        </td>
         <td><%= player_passport.player.name %></td>
         <td><%= player_passport.player.pro_team.upcase %></td>
         <td><%= player_passport.player.positions.join("/") %></td>
         <td><%= player_passport.player.player_prediction.g %></td>
-        <td>150</td>
+        <td><%= player_passport.player.player_prediction.a %></td>
+        <td><%= player_passport.player.player_prediction.p %></td>
+        <td>255</td>
       </tr>
     <% end %>
+    </tr>
   </tbody>
 </table>
 <table class="table table-bordered table-striped table-hover table-responsive table-players">
   <thead>
     <tr>
-      <th>Trade</th>
-      <th>Name</th>
+      <th>Goalie</th>
       <th>Team</th>
       <th>Wins</th>
+      <th>Loses</th>
+      <th>GAA</th>
+      <th>SV %</th>
+      <th>SO</th>
+      <th>Saves</th>
       <th>JBR</th>
     </tr>
   </thead>
   <tbody>
-    <% @trade_team.each do |player_passport| %>
-    <% next if player_passport.player.positions.join("/").exclude?("G") %>
     <tr>
-      <td>
-      <label>
-        <input type="checkbox" id="inlineCheckbox1" value="<%= player_passport.player.id %>">
-      </label>
-      </td>
-      <td><%= player_passport.player.name %></td>
-      <td><%= player_passport.player.pro_team.upcase %></td>
-      <td><%= player_passport.player.player_prediction.w %></td>
-      <td>100</td>
+      <td>Ryan Miller</td>
+      <td>Van</td>
+      <td>25</td>
+      <td>25</td>
+      <td>3.46</td>
+      <td>.890</td>
+      <td>5</td>
+      <td>1550</td>
+      <td>155</td>
     </tr>
-    <% end %>
   </tbody>
 </table>

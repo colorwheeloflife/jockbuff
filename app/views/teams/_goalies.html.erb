@@ -1,0 +1,31 @@
+<table class="table table-bordered table-striped table-hover table-responsive table-players ">
+  <thead>
+    <tr>
+      <th>Goalies</th>
+      <th>Team</th>
+      <th>JBR</th>
+      <th>Wins</th>
+      <th>Loses</th>
+      <th>GAA</th>
+      <th>SV %</th>
+      <th>SO</th>
+      <th>Saves</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @players.each do |player_passport| %>
+  <% next if player_passport.player.positions.join("/").exclude?("G") %>
+    <tr>
+      <td><%= player_passport.player.name %></td>
+      <td><%= player_passport.player.pro_team.upcase %></td>
+      <td>100</td>
+      <td><%= player_passport.player.player_prediction.w %></td>
+      <td><%= player_passport.player.player_prediction.l %></td>
+      <td><%= player_passport.player.player_prediction.gaa %></td>
+      <td><%= player_passport.player.player_prediction.svpercent %></td>
+      <td><%= player_passport.player.player_prediction.sho %></td>
+      <td><%= player_passport.player.player_prediction.sv %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

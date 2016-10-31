@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Bungee+Inline|Sanchez:400,400i|Ubuntu:300i,400,700');
 @import url('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css');
 @import url('/assets/favicon.ico');
-
+@import url('https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/css/bootstrap-select.min.css');
 /*
 Fonts
 font-family: 'Bungee Inline', cursive;
@@ -39,7 +39,7 @@ body {
 h1 {
   font-family: 'Sanchez', serif;
   margin-top: $spacing-unit;
-  margin-bottom: $spacing-unit;
+  margin-bottom:($spacing-unit / 2);
 }
 
 h2,
@@ -50,13 +50,20 @@ h5 {
   margin: $spacing-unit;
 }
 
-th,
-td {
+th,{
+  text-align: center;
+}
+
+.table-players {
   text-align: center;
 }
 
 .container-space {
   margin: $spacing-unit;
+}
+
+.container-space-no-top {
+  margin-bottom: $spacing-unit;
 }
 
 .logo {
@@ -68,7 +75,7 @@ td {
 
 .teamlogo {
   border-radius: ($spacing-unit * 2);
-  margin: $spacing-unit;
+  margin-right: ($spacing-unit * 1.5);
   width:110px;
   height:110px;
 }
@@ -116,12 +123,12 @@ td {
   margin-top: $spacing-unit;
 }
 
-.teamselect {
-  margin-bottom: ($spacing-unit / 2);
+.team-selector  {
+  margin-top: $spacing-unit;
 }
 
 .selectteamlist {
-  margin:($spacing-unit / 2);
+  margin: ($spacing-unit / 2);
 }
 
 .searchfield {
@@ -132,7 +139,7 @@ td {
   margin-top: $base-line-height;
   margin-bottom: $base-line-height;
 }
-/*
-#inlineCheckbox1 {
-  margin: 0;
-}*/
+
+.spinner {
+  margin-top: ($spacing-unit * 3);
+}

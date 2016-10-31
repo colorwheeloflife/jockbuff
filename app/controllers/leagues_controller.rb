@@ -10,7 +10,6 @@ class LeaguesController < ApplicationController
       break if Team.where(league_id: league_info["id"]).exists?
       create_teams(league_info.attributes)
     end
-
   end
 
   def new
@@ -34,6 +33,7 @@ class LeaguesController < ApplicationController
     @league_id = params[:id]
     @leagues = League.where(user_id: current_user.id)
     @teams = Team.where(league_id: @league_id)
+    @players = PlayerPassport.where(league_id: true)
   end
 
 end

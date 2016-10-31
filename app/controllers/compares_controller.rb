@@ -12,5 +12,10 @@ class ComparesController < ApplicationController
     render :partial => 'render_trade_table'
   end
 
+  def players_to_be_traded
+    @players = PlayerPassport.where(team_id: team_id).includes(:player)
+    render :partial => 'players_to_be_traded'
+  end
+
 end
 
