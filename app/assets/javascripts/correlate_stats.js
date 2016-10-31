@@ -25,7 +25,15 @@
 //   });
 
 $(function () {
-    $('table.table tr td.player_name').draggable();
+    $('table.table tr td.player_name').draggable({
+        revert : function(event, ui) {
+            $(this).data("uiDraggable").originalPosition = {
+                top : 0,
+                left : 0
+            };
+            return !event;
+        }
+    });
 
     $('.dropspace').droppable({
         drop: function (event, ui) {
