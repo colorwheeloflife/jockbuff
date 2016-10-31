@@ -1,29 +1,36 @@
-<table class="table table-bordered table-striped table-hover table-responsive">
+<table class="table table-bordered table-striped table-hover table-responsive"
+       data-toggle="table"
+       data-search="true">
+
   <thead>
     <tr>
-      <th><%= sortable "name" %></th>
-      <th><%= sortable "pro_team", "Pro Team" %></th>
-      <th><%= sortable "position" %></th>
-      <% if @player_passports[0].league.player_category.g == true %> <th><%= sortable "g" %></th> <% end %>
-      <% if @player_passports[0].league.player_category.a == true %> <th><%= sortable "a" %></th> <% end %>
-      <% if @player_passports[0].league.player_category.p == true %> <th><%= sortable "points" %></th> <% end %>
-      <% if @player_passports[0].league.player_category.ppg == true %> <th><%= sortable "ppg" %></th> <% end %>
-      <% if @player_passports[0].league.player_category.ppa == true %> <th><%= sortable "ppa" %></th> <% end %>
-      <% if @player_passports[0].league.player_category.ppp == true %> <th><%= sortable "ppp" %></th> <% end %>
-      <% if @player_passports[0].league.player_category.plusminus == true %> <th><%= sortable "plusminus", "+/-" %></th> <% end %>
-      <% if @player_passports[0].league.player_category.shg == true %> <th><%= sortable "shg" %></th> <% end %>
-      <% if @player_passports[0].league.player_category.sha == true %> <th><%= sortable "sha" %></th> <% end %>
-      <% if @player_passports[0].league.player_category.shp == true %> <th><%= sortable "shp" %></th> <% end %>
-      <% if @player_passports[0].league.player_category.gwg == true %> <th><%= sortable "gwg" %></th> <% end %>
-      <% if @player_passports[0].league.player_category.gtg == true %> <th><%= sortable "gtg" %></th> <% end %>
-      <% if @player_passports[0].league.player_category.pim == true %> <th><%= sortable "pims" %></th> <% end %>
-      <% if @player_passports[0].league.player_category.sog == true %> <th><%= sortable "sog" %></th> <% end %>
-      <% if @player_passports[0].league.player_category.shpercent == true %> <th><%= sortable "shpercent" %></th> <% end %>
-      <% if @player_passports[0].league.player_category.fw == true %> <th><%= sortable "fw" %></th> <% end %>
-      <% if @player_passports[0].league.player_category.fl == true %> <th><%= sortable "fl" %></th> <% end %>
-      <% if @player_passports[0].league.player_category.hit == true %> <th><%= sortable "hits" %></th> <% end %>
-      <% if @player_passports[0].league.player_category.blk == true %> <th><%= sortable "blks" %></th> <% end %>
-      <th><%= sortable "jbr" %></th>
+      <th data-field="state" data-checkbox="true"> Choose</th>
+      <th data-field="name" data-sortable="true">Player</th>
+      <th data-field="pro_team" data-sortable="true">Team</th>
+      <th data-field="positions" data-sortable="true">Pos</th>
+      <th data-field="yahoo_rank"
+          data-sortable="true">Y!</th>
+      <th data-field="jbr"
+          data-sortable="true">JBR</th>
+      <% if @player_passports[0].league.player_category.g == true %> <th data-field="g" data-sortable="true">G</th> <% end %>
+      <% if @player_passports[0].league.player_category.a == true %> <th data-field="a" data-sortable="true">A</th> <% end %>
+      <% if @player_passports[0].league.player_category.p == true %> <th data-field="p" data-sortable="true">P</th> <% end %>
+      <% if @player_passports[0].league.player_category.ppg == true %> <th data-field="ppg" data-sortable="true">PPG</th> <% end %>
+      <% if @player_passports[0].league.player_category.ppa == true %> <th data-field="ppa" data-sortable="true">PPA</th> <% end %>
+      <% if @player_passports[0].league.player_category.ppp == true %> <th data-field="ppp" data-sortable="true">PPP</th> <% end %>
+      <% if @player_passports[0].league.player_category.plusminus == true %> <th data-field="plusminus" data-sortable="true">+/-</th> <% end %>
+      <% if @player_passports[0].league.player_category.shg == true %> <th data-field="shg" data-sortable="true">SHG</th> <% end %>
+      <% if @player_passports[0].league.player_category.sha == true %> <th data-field="sha" data-sortable="true">SHA</th> <% end %>
+      <% if @player_passports[0].league.player_category.shp == true %> <th data-field="shp" data-sortable="true">SHP</th> <% end %>
+      <% if @player_passports[0].league.player_category.gwg == true %> <th data-field="gwg" data-sortable="true">GWG</th> <% end %>
+      <% if @player_passports[0].league.player_category.gtg == true %> <th data-field="gtg" data-sortable="true">GTG</th> <% end %>
+      <% if @player_passports[0].league.player_category.pim == true %> <th data-field="pim" data-sortable="true">PIM</th> <% end %>
+      <% if @player_passports[0].league.player_category.sog == true %> <th data-field="sog" data-sortable="true">SOG</th> <% end %>
+      <% if @player_passports[0].league.player_category.shpercent == true %> <th data-field="shpercent" data-sortable="true">SH%</th> <% end %>
+      <% if @player_passports[0].league.player_category.fw == true %> <th data-field="fw" data-sortable="true">FW</th> <% end %>
+      <% if @player_passports[0].league.player_category.fl == true %> <th data-field="fl" data-sortable="true">FL</th> <% end %>
+      <% if @player_passports[0].league.player_category.hit == true %> <th data-field="hit" data-sortable="true">HIT</th> <% end %>
+      <% if @player_passports[0].league.player_category.blk == true %> <th data-field="blk" data-sortable="true">BLK</th> <% end %>
     </tr>
   </thead>
 
@@ -32,9 +39,16 @@
     <% next if player_passport.player.positions.join("/").include?("G") %>
     <% playerID = player_passport.id %>
       <tr>
-        <td class="player_name" id=<%= "#{playerID}" %> > <%= player_passport.player.name %> </td>
+        <td>
+          <label>
+            <input type="checkbox" class="inlineCheckbox1" value="<%= player_passport.player.id %>">
+          </label>
+        </td>
+        <td> <%= player_passport.player.name %> </td>
         <td> <%= player_passport.player.pro_team.upcase %></td>
         <td> <%= player_passport.player.positions.join("/") %> </td>
+        <td> 888 </td>
+        <td> 999 </td>
         <% if player_passport.league.player_category.g == true %> <td> <%= player_passport.player.player_prediction.g %> </td> <% end %>
         <% if player_passport.league.player_category.a == true %> <td> <%= player_passport.player.player_prediction.a %> </td> <% end %>
         <% if player_passport.league.player_category.p == true %> <td> <%= player_passport.player.player_prediction.p %> </td> <% end %>
@@ -54,8 +68,9 @@
         <% if player_passport.league.player_category.fl == true %> <td> <%= player_passport.player.player_prediction.fl %> </td> <% end %>
         <% if player_passport.league.player_category.hit == true %> <td> <%= player_passport.player.player_prediction.hit %> </td> <% end %>
         <% if player_passport.league.player_category.blk == true %> <td> <%= player_passport.player.player_prediction.blk %> </td> <% end %>
-        <td> 999 </td>
       </tr>
     <% end %>
   </tbody>
 </table>
+
+

@@ -1,4 +1,3 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/js/bootstrap-select.min.js"></script>
 <script>
   var PageData = {
     league_id: <%= params[:league_id].to_i %>,
@@ -21,15 +20,18 @@
     </div>
 
     <div class="col-md-6">
-      <div class="render_trade_table">
+      <div class="render_trade_table" id="#otherTeamTable">
       <!-- RENDER THE AJAX TABLE HERE -->
       </div>
     </div>
   </div>
   <div class="row container-fluid topfix container-space">
     <div class="col-md-12">
-      <h1>Players To Be Traded</h1>
-      <%= render 'players_to_be_traded' %>
+      <!-- Players to be traded table -->
+
+  <button id="add_cart" class="btn btn-default btn-lg">Select Players To Trade</button>
+    <%= render 'players_to_be_traded' %>
+
     </div>
   </div>
   <div class="row container-fluid topfix container-space">
@@ -39,3 +41,5 @@
     </div>
   </div>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/js/bootstrap-select.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.8.1/bootstrap-table.min.js"></script>

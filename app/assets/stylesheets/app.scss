@@ -2,6 +2,7 @@
 @import url('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css');
 @import url('/assets/favicon.ico');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/css/bootstrap-select.min.css');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.8.1/bootstrap-table.min.css');
 /*
 Fonts
 font-family: 'Bungee Inline', cursive;
@@ -144,6 +145,7 @@ th,{
   margin-top: ($spacing-unit * 3);
 }
 
+
 .dropspace {
    padding: 5px;
    background-color: blue;
@@ -164,3 +166,8 @@ th,{
  .dropspace #player-droppable_2 {
    float: right;
   }
+
+.hidden {
+  display: none;
+}
+
