@@ -153,14 +153,6 @@ def player_stats_current
   end
 end
 
-def jbr_ranks
-  prediction_arr = PlayerPrediction.all.map do |row|
-    row.attributes
-  end
-  byebug
-end
-
-jbr_ranks
 
 
 
