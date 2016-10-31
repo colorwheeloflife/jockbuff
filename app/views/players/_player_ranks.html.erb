@@ -1,40 +1,38 @@
-
-
-
 <table class="table table-bordered table-striped table-hover table-responsive">
   <thead>
     <tr>
       <th><%= sortable "name" %></th>
       <th><%= sortable "pro_team", "Pro Team" %></th>
       <th><%= sortable "position" %></th>
-      <% if @players[0].league.player_category.g == true %> <th><%= sortable "g" %></th> <% end %>
-      <% if @players[0].league.player_category.a == true %> <th><%= sortable "a" %></th> <% end %>
-      <% if @players[0].league.player_category.p == true %> <th><%= sortable "points" %></th> <% end %>
-      <% if @players[0].league.player_category.ppg == true %> <th><%= sortable "ppg" %></th> <% end %>
-      <% if @players[0].league.player_category.ppa == true %> <th><%= sortable "ppa" %></th> <% end %>
-      <% if @players[0].league.player_category.ppp == true %> <th><%= sortable "ppp" %></th> <% end %>
-      <% if @players[0].league.player_category.plusminus == true %> <th><%= sortable "plusminus", "+/-" %></th> <% end %>
-      <% if @players[0].league.player_category.shg == true %> <th><%= sortable "shg" %></th> <% end %>
-      <% if @players[0].league.player_category.sha == true %> <th><%= sortable "sha" %></th> <% end %>
-      <% if @players[0].league.player_category.shp == true %> <th><%= sortable "shp" %></th> <% end %>
-      <% if @players[0].league.player_category.gwg == true %> <th><%= sortable "gwg" %></th> <% end %>
-      <% if @players[0].league.player_category.gtg == true %> <th><%= sortable "gtg" %></th> <% end %>
-      <% if @players[0].league.player_category.pim == true %> <th><%= sortable "pims" %></th> <% end %>
-      <% if @players[0].league.player_category.sog == true %> <th><%= sortable "sog" %></th> <% end %>
-      <% if @players[0].league.player_category.shpercent == true %> <th><%= sortable "shpercent" %></th> <% end %>
-      <% if @players[0].league.player_category.fw == true %> <th><%= sortable "fw" %></th> <% end %>
-      <% if @players[0].league.player_category.fl == true %> <th><%= sortable "fl" %></th> <% end %>
-      <% if @players[0].league.player_category.hit == true %> <th><%= sortable "hits" %></th> <% end %>
-      <% if @players[0].league.player_category.blk == true %> <th><%= sortable "blks" %></th> <% end %>
+      <% if @player_passports[0].league.player_category.g == true %> <th><%= sortable "g" %></th> <% end %>
+      <% if @player_passports[0].league.player_category.a == true %> <th><%= sortable "a" %></th> <% end %>
+      <% if @player_passports[0].league.player_category.p == true %> <th><%= sortable "points" %></th> <% end %>
+      <% if @player_passports[0].league.player_category.ppg == true %> <th><%= sortable "ppg" %></th> <% end %>
+      <% if @player_passports[0].league.player_category.ppa == true %> <th><%= sortable "ppa" %></th> <% end %>
+      <% if @player_passports[0].league.player_category.ppp == true %> <th><%= sortable "ppp" %></th> <% end %>
+      <% if @player_passports[0].league.player_category.plusminus == true %> <th><%= sortable "plusminus", "+/-" %></th> <% end %>
+      <% if @player_passports[0].league.player_category.shg == true %> <th><%= sortable "shg" %></th> <% end %>
+      <% if @player_passports[0].league.player_category.sha == true %> <th><%= sortable "sha" %></th> <% end %>
+      <% if @player_passports[0].league.player_category.shp == true %> <th><%= sortable "shp" %></th> <% end %>
+      <% if @player_passports[0].league.player_category.gwg == true %> <th><%= sortable "gwg" %></th> <% end %>
+      <% if @player_passports[0].league.player_category.gtg == true %> <th><%= sortable "gtg" %></th> <% end %>
+      <% if @player_passports[0].league.player_category.pim == true %> <th><%= sortable "pims" %></th> <% end %>
+      <% if @player_passports[0].league.player_category.sog == true %> <th><%= sortable "sog" %></th> <% end %>
+      <% if @player_passports[0].league.player_category.shpercent == true %> <th><%= sortable "shpercent" %></th> <% end %>
+      <% if @player_passports[0].league.player_category.fw == true %> <th><%= sortable "fw" %></th> <% end %>
+      <% if @player_passports[0].league.player_category.fl == true %> <th><%= sortable "fl" %></th> <% end %>
+      <% if @player_passports[0].league.player_category.hit == true %> <th><%= sortable "hits" %></th> <% end %>
+      <% if @player_passports[0].league.player_category.blk == true %> <th><%= sortable "blks" %></th> <% end %>
       <th><%= sortable "jbr" %></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @players.first(50).each do |player_passport| %>
+    <% @player_passports.first(50).each do |player_passport| %>
     <% next if player_passport.player.positions.join("/").include?("G") %>
+    <% playerID = player_passport.id %>
       <tr>
-        <td> <%= player_passport.player.name %> </td>
+        <td class="player_name" id=<%= "#{playerID}" %> > <%= player_passport.player.name %> </td>
         <td> <%= player_passport.player.pro_team.upcase %></td>
         <td> <%= player_passport.player.positions.join("/") %> </td>
         <% if player_passport.league.player_category.g == true %> <td> <%= player_passport.player.player_prediction.g %> </td> <% end %>
@@ -60,42 +58,4 @@
       </tr>
     <% end %>
   </tbody>
-</table>
-
-<table class="table table-bordered table-striped table-hover table-responsive">
-    <thead>
-      <tr>
-        <th><%= sortable "name" %></th>
-        <th><%= sortable "team" %></th>
-        <th><%= sortable "gs", "games started" %></th>
-        <% if @players[0].league.goalie_category.w == true %> <th><%= sortable "w", "wins" %></th> <% end %>
-        <% if @players[0].league.goalie_category.l == true %> <th><%= sortable "l", "loses" %></th> <% end %>
-        <% if @players[0].league.goalie_category.gaa == true %> <th><%= sortable "gaa" %></th> <% end %>
-        <% if @players[0].league.goalie_category.svpercent == true %> <th><%= sortable "sv %" %></th> <% end %>
-        <% if @players[0].league.goalie_category.sho == true %> <th><%= sortable "shutouts" %></th> <% end %>
-        <% if @players[0].league.goalie_category.sv == true %> <th><%= sortable "saves" %></th> <% end %>
-        <% if @players[0].league.goalie_category.sa == true %> <th><%= sortable "shots against" %></th> <% end %>
-        <% if @players[0].league.goalie_category.sec == true %> <th><%= sortable "seconds played" %></th> <% end %>
-        <th><%= sortable "jbr" %></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @players.first(50).each do |player_passport| %>
-      <% next if player_passport.player.positions.join("/").exclude?("G") %>
-        <tr>
-          <td><%= player_passport.player.name %></td>
-          <td><%= player_passport.player.pro_team.upcase %></td>
-          <td><%= player_passport.player.player_prediction.gs %></td>
-          <% if player_passport.league.goalie_category.w == true %> <td><%= player_passport.player.player_prediction.w %></td> <% end %>
-          <% if player_passport.league.goalie_category.l == true %> <td><%= player_passport.player.player_prediction.l %></td> <% end %>
-          <% if player_passport.league.goalie_category.gaa == true %> <td><%= player_passport.player.player_prediction.gaa %></td> <% end %>
-          <% if player_passport.league.goalie_category.svpercent == true %> <td><%= player_passport.player.player_prediction.svpercent %></td> <% end %>
-          <% if player_passport.league.goalie_category.sho == true %> <td><%= player_passport.player.player_prediction.sho %></td> <% end %>
-          <% if player_passport.league.goalie_category.sv == true %> <td><%= player_passport.player.player_prediction.sv %></td> <% end %>
-          <% if player_passport.league.goalie_category.sa == true %> <td><%= player_passport.player.player_prediction.sv %></td> <% end %>
-          <% if player_passport.league.goalie_category.sec == true %> <td><%= player_passport.player.player_prediction.sv %></td> <% end %>
-          <td>jbr</td>
-        </tr>
-      <% end %>
-    </tbody>
 </table>

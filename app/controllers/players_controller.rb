@@ -18,7 +18,8 @@ include ApplicationHelper
 
   def index
     league_id = params[:league_id]
-    @players = PlayerPassport.where(league_id: true)
+    # @players = PlayerPassport.where(league_id: true)
+    @player_passports = PlayerPassport.includes(:player, :player_predictions).order(sort_column + " " + sort_direction)
     @team = Team.where(league_id: league_id, ownership: true).pluck(:id)
   end
 

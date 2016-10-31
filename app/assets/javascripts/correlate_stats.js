@@ -25,7 +25,7 @@
 //   });
 
 $(function () {
-    $('table.table tr td.player_name').draggable().data("mydata");
+    $('table.table tr td.player_name').draggable();
 
     $('.dropspace').droppable({
         drop: function (event, ui) {
@@ -49,15 +49,15 @@ $(function () {
 
 
 $(function () {
-    // $('#draggable li').draggable();
+    $('#draggable li').draggable();
 
-    // $("#droppable").droppable({
-    //     drop: function (event, ui) {
+    $("#droppable").droppable({
+        drop: function (event, ui) {
 
-    //         alert(ui.draggable.attr('id'));
-    //     }
+            alert(ui.draggable.attr('id'));
+        }
 
-    // });
+    });
 
 });
 
