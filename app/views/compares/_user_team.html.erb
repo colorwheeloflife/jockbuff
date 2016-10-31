@@ -52,14 +52,23 @@
     <% end %>
   </tbody>
 </table>
-  <table class="table table-bordered table-striped table-hover table-responsive table-players">
+  <table class="table table-bordered table-striped table-hover table-responsive table-players"
+  id="userGoalieTable"
+  data-toggle="table"">
   <thead>
     <tr>
-      <th>Trade</th>
-      <th>Name</th>
-      <th>Team</th>
-      <th>Wins</th>
-      <th>JBR</th>
+      <th data-field="state" data-checkbox="true">Trade</th>
+      <th data-field="name">Goalie Name</th>
+      <th data-field="pro_team">Team</th>
+      <th data-field="yahoo_rank">Y!</th>
+      <th data-field="jbr">JBR</th>
+      <th data-field="w" class="hidden">Wins</th>
+      <th data-field="l" class="hidden">Losses</th>
+      <th data-field="gaa" class="hidden">GAA</th>
+      <th data-field="ga" class="hidden">GA</th>
+      <th data-field="svpercent" class="hidden">SV%</th>
+      <th data-field="sv" class="hidden">Saves</th>
+      <th data-field="sho" class="hidden">SO</th>
     </tr>
   </thead>
   <tbody>
@@ -67,14 +76,21 @@
     <% next if player_passport.player.positions.join("/").exclude?("G") %>
     <tr>
       <td>
-      <label>
-        <input type="checkbox" class="inlineCheckbox1" value="<%= player_passport.player.id %>">
-      </label>
+        <label>
+          <input type="checkbox" class="inlineCheckbox1" value="<%= player_passport.player.id %>">
+        </label>
       </td>
       <td><%= player_passport.player.name %></td>
       <td><%= player_passport.player.pro_team.upcase %></td>
-      <td><%= player_passport.player.player_prediction.w %></td>
-      <td>100</td>
+      <td> 150 </td>
+      <td> 220 </td>
+      <td class="hidden"> <%= player_passport.player.player_prediction.w %> </td>
+      <td class="hidden"> <%= player_passport.player.player_prediction.l %> </td>
+      <td class="hidden"> <%= player_passport.player.player_prediction.gaa %> </td>
+      <td class="hidden"> <%= player_passport.player.player_prediction.ga %> </td>
+      <td class="hidden"> <%= player_passport.player.player_prediction.svpercent %> </td>
+      <td class="hidden"> <%= player_passport.player.player_prediction.sv %> </td>
+      <td class="hidden"> <%= player_passport.player.player_prediction.sho %> </td>
     </tr>
     <% end %>
   </tbody>
