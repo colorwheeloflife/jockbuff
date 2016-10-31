@@ -7,6 +7,8 @@ $(function() {
       name: row.name,
       pro_team: row.pro_team,
       positions: row.positions,
+      yahoo_rank: row.yahoo_rank,
+      jbr: row.jbr,
       g: row.g,
       a: row.a,
       p: row.p,
@@ -31,30 +33,31 @@ $(function() {
   });
 
   $("#add_cart").click(function() {
-    $("#output").empty();
+    $("#user-output").empty();
+
     $.each(checkedRows, function(index, value) {
-      $('#output').append($('<td></td>').text(value.name));
-      $('#output').append($('<td></td>').text(value.pro_team));
-      $('#output').append($('<td></td>').text(value.positions));
-      $('#output').append($('<td></td>').text(value.g));
-      $('#output').append($('<td></td>').text(value.a));
-      $('#output').append($('<td></td>').text(value.p));
-      $('#output').append($('<td></td>').text(value.ppp));
-      $('#output').append($('<td></td>').text(value.plusminus));
-      $('#output').append($('<td></td>').text(value.pim));
-      $('#output').append($('<td></td>').text(value.sog));
-      $('#output').append($('<td></td>').text(value.fow));
-      $('#output').append($('<td></td>').text(value.hit));
-      $('#output').append($('<td></td>').text(value.blk));
+        $('#user-output').append($('<td></td>').text(value.name));
+        $('#user-output').append($('<td></td>').text(value.pro_team));
+        $('#user-output').append($('<td></td>').text(value.positions));
+        $('#user-output').append($('<td></td>').text(value.yahoo_rank));
+        $('#user-output').append($('<td></td>').text(value.jbr));
+        $('#user-output').append($('<td></td>').text(value.g));
+        $('#user-output').append($('<td></td>').text(value.a));
+        $('#user-output').append($('<td></td>').text(value.p));
+        $('#user-output').append($('<td></td>').text(value.ppp));
+        $('#user-output').append($('<td></td>').text(value.plusminus));
+        $('#user-output').append($('<td></td>').text(value.pim));
+        $('#user-output').append($('<td></td>').text(value.sog));
+        $('#user-output').append($('<td></td>').text(value.fow));
+        $('#user-output').append($('<td></td>').text(value.hit));
+        $('#user-output').append($('<td></td>').text(value.blk));
     });
+    var td = $(".selected-players td");                    // Getting all td
+    td.each(function(i){                         // Looping the td
+      if (i % 15 == 0) {                        // Splitting td as multiple of 3
+          td.slice(i, i+15).wrapAll('<tr/>')    // Wrapping it inside tr
+      }
+    }).parent('tr').unwrap();
   });
 
-
-  // $('body').on('click', '.inlineCheckbox1', function(e) {
-  //   var player_id = $(e.target).val();
-  //   if (this.checked) {
-  //     console.log("IS GETTING CLICKED: " + player_id);
-
-  //   }
-  // });
 });
