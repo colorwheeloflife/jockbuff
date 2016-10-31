@@ -1,3 +1,4 @@
+<h1>Players To Be Traded</h1>
 <table class="table table-bordered table-striped table-hover table-responsive table-players">
   <thead>
     <tr>
@@ -17,20 +18,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-    <% @players.each do |player_passport| %>
-    <% next if player_passport.player.positions.join("/").include?("G") %>
-      <tr>
-        <td><%= player_passport.player.name %></td>
-        <td><%= player_passport.player.pro_team.upcase %></td>
-        <td><%= player_passport.player.positions.join("/") %></td>
-        <td><%= player_passport.player.player_prediction.g %></td>
-        <td><%= player_passport.player.player_prediction.a %></td>
-        <td><%= player_passport.player.player_prediction.p %></td>
-        <td>255</td>
-      </tr>
-    <% end %>
-    </tr>
+
   </tbody>
 </table>
 <table class="table table-bordered table-striped table-hover table-responsive table-players">
@@ -48,16 +36,6 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>Ryan Miller</td>
-      <td>Van</td>
-      <td>25</td>
-      <td>25</td>
-      <td>3.46</td>
-      <td>.890</td>
-      <td>5</td>
-      <td>1550</td>
-      <td>155</td>
-    </tr>
+
   </tbody>
 </table>
