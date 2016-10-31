@@ -16,7 +16,7 @@ class JBR
     jock_buff_ranks.merge!({goalie: create_jbr_goalies(goalie_all_arr, goalie_categories)})
     byebug
     return jock_buff_ranks
-end
+  end
 
 
   private
