@@ -1,0 +1,35 @@
+#tinylogo {
+  width: 40px;
+  height: 40px;
+  margin-top: -9px;
+}
+
+#nav-useravatar {
+  width: 40px;
+  height: 40px;
+  margin-top: 5px;
+  margin-right: 10px;
+  border-radius: 10px;
+}
+
+#profilepic {
+  width:100px;
+  height:100px;
+  margin-top: 20px;
+}
+
+.navbar navbar-inverse navbar-fixed-top {
+  color: #E5E5E5;
+}
+
+.divider:last-child {
+  display: none;
+}
+
+.navbarheader {
+  text-align: center;
+}
+
+.userteamheader {
+  text-decoration: underline;
+}

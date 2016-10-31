@@ -1,42 +1,41 @@
 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-   <div class="container-fluid">
-     <div class="navbar-header">
-       <a class="navbar-brand" href="#">
-       <%= image_tag "JockLogoTiny.png", :id => 'tinylogo' %>
-       </a>
-     <a class="navbar-brand" href="/">JockBuff</a>
-     </div>
-     <div class="collapse navbar-collapse">
-      <% if logged_in? %>
-        <ul class="nav navbar-nav">
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Leagues <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><%= link_to 'League Management', user_leagues_path(current_user) %></li>
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">
+      <%= image_tag "JockLogoTiny.png", :id => 'tinylogo' %>
+      </a>
+      <a class="navbar-brand" href="/">JockBuff</a>
+    </div>
+    <div class="collapse navbar-collapse">
+    <% if logged_in? %>
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Leagues<b class="caret"></b></a>
+            <ul class="dropdown-menu multi-level">
+              <li class="navbarheader"><%= link_to 'League Management', user_leagues_path(current_user) %></li>
               <li role="separator" class="divider"></li>
               <% current_user_leagues(current_user.id).each do |league| %>
-                <li><%= link_to "#{league.name}",user_league_path(current_user, league) %></li>
+              <li class="userteamheader"><%= link_to "#{league.name}",user_league_path(current_user, league) %></li>
+              <li class="dropdown-submenu">
+                <li><%= link_to 'Player Ranks', players_path(current_user, league, league.teams.find_by(ownership: true).id) %></li>
+                <li><%= link_to 'Trade Calculator', compares_path(current_user, league) %></li>
                 <li role="separator" class="divider"></li>
               <% end %>
+              </li>
             </ul>
-          </li>
-          <li><%= link_to 'Player Ranks', :players %></li>
-          <li><%= link_to 'Trade Calculator', :compares %></li>
-          <li><%= link_to 'Statistical Analysis', :analysis_index %></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <!-- <li class="usernav"> -->
-           <li><%= link_to "Log out #{current_user.name}", :signout, :method => :delete %></li>
-           <%= image_tag "#{current_user.image}", :id => 'nav-useravatar' %>
-         </ul>
-       <% else %>
-        <ul class="nav navbar-nav navbar-right">
-         <!-- <li class="usernav"> -->
-           <li><%= link_to 'Log in to Yahoo Fantasy Sports', :signin %>
-           </li>
-         <!-- </li> -->
-        </ul>
-       <% end %>
-     </div>
- </div>
- </div>
+          </a>
+        </li>
+        <li><%= link_to 'Statistical Analysis', :analysis_index %></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "Log out #{current_user.name}", :signout, :method => :delete %></li>
+        <%= image_tag "#{current_user.image}", :id => 'nav-useravatar' %>
+      </ul>
+      <% else %>
+      <ul class="nav navbar-nav navbar-right">
+      <li><%= link_to 'Log in to Yahoo Fantasy Sports', :signin %></li>
+      </ul>
+      <% end %>
+    </div>
+  </div>
+</div>

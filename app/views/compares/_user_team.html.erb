@@ -1,0 +1,56 @@
+<table class="table table-bordered table-striped table-hover table-responsive table-players">
+  <thead>
+    <tr>
+      <th>Trade</th>
+      <th>Player</th>
+      <th>Team</th>
+      <th>Pos</th>
+      <th>G</th>
+      <th>JBR</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @current_user_players.each do |player_passport| %>
+    <% next if player_passport.player.positions.join("/").include?("G") %>
+      <tr>
+        <td>
+        <label>
+          <input type="checkbox" id="inlineCheckbox1" value="option1">
+        </label>
+        </td>
+        <td><%= player_passport.player.name %></td>
+        <td><%= player_passport.player.pro_team.upcase %></td>
+        <td><%= player_passport.player.positions.join("/") %></td>
+        <td><%= player_passport.player.player_prediction.g %></td>
+        <td>150</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+  <table class="table table-bordered table-striped table-hover table-responsive table-players">
+  <thead>
+    <tr>
+      <th>Trade</th>
+      <th>Name</th>
+      <th>Team</th>
+      <th>Wins</th>
+      <th>JBR</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @current_user_players.each do |player_passport| %>
+    <% next if player_passport.player.positions.join("/").exclude?("G") %>
+    <tr>
+      <td>
+      <label>
+        <input type="checkbox" id="inlineCheckbox1" value="option1">
+      </label>
+      </td>
+      <td><%= player_passport.player.name %></td>
+      <td><%= player_passport.player.pro_team.upcase %></td>
+      <td><%= player_passport.player.player_prediction.w %></td>
+      <td>100</td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

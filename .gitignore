@@ -6,11 +6,12 @@
 
 # Ignore bundler config.
 /.bundle
-
+/public/assets/*
 # Ignore the default SQLite database.
 /db/*.sqlite3
 /db/*.sqlite3-journal
 
+*/.DS_Store
 .DS_Store
 
 # Ignore all logfiles and tempfiles.

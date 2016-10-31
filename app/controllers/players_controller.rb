@@ -1,20 +1,25 @@
-require 'byebug'
 class PlayersController < ApplicationController
   helper_method :sort_column, :sort_direction
 
+  # def index
+  #   @current_user = current_user
+
+  #   leagues = League.where(user_id: @current_user.id).first
+
+  #   @player_passports = PlayerPassport.includes(:player, :player_predictions).order(sort_column + " " + sort_direction)
+  #   # gon.player_passports = PlayerPassport.where(league_id: leagues.id).includes(:player, :player_predictions)
+  #   player_passports = PlayerPassport.where(league_id: leagues.id).includes(:player, :player_predictions)
+  #   gon.player_passports = player_passports.as_json
+
+  # end
+
+include LeaguesHelper
+include ApplicationHelper
+
   def index
-    @current_user = current_user
-
-    leagues = League.where(user_id: @current_user.id).first
-
-    @player_passports = PlayerPassport.includes(:player, :player_predictions).order(sort_column + " " + sort_direction)
-    # gon.player_passports = PlayerPassport.where(league_id: leagues.id).includes(:player, :player_predictions)
-    player_passports = PlayerPassport.where(league_id: leagues.id).includes(:player, :player_predictions)
-    gon.player_passports = player_passports.as_json
-
-  end
-
-  def show
+    league_id = params[:league_id]
+    @players = PlayerPassport.where(league_id: true)
+    @team = Team.where(league_id: league_id, ownership: true).pluck(:id)
   end
 
   def create
@@ -51,6 +56,7 @@ class PlayersController < ApplicationController
   private
 
   def sort_column
+
     if Player.column_names.include?(params[:sort])
       "players." + params[:sort]
     elsif PlayerPrediction.column_names.include?(params[:sort])
