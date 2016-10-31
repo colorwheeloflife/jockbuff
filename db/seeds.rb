@@ -1,7 +1,8 @@
 require 'csv'
+require 'byebug'
 
 def players_to_seed
-
+  token = "8GjOy4GbvwjoM_V1RPshaZy7i9L6ZEMFqNZjADBwbzTxDde1.bXHS4wqakno7VI7sVCDI.QzLl5rsyE7DorL5mIH5TQl_kpwf3UxACAySwP_dPOYH8HBA1bEeVaBcFRrs__C9VEjb0nEIsYRp8CbEEv0o_cK3V6FVYiNmut1xRyzlic0EAIpr7X7scsFAIg6n4My0w7sw.XRjiiNcDc3K2v.fsfMb_IXu3hoZ7UTyHgJHjZrmQLiddpLaf5L4OgKyJgOYaF3u5aVnEoqdlVObp5i8d0Y_9CJwZjetjgwOr0UfGd1q4Wit8Dgu5Hs.JvU.xO9Dh5mdUILyAUpLTH5FpJPeW__qa8LmZDi9CU3FI_PSsenr1w8GbLX0r.LOKCAbIZEsvswOI5Erxi9j1Zn30fp4uKmCRI.o7naezHAuwSCS1QJq.FQSeAcgii594Wlw_AMuvzEd0r2psiLgSVIpUJ473z2hJCzPNpmKUzb0aJCYsZKKQg3taq2g5LrDvaHsp3aH07gb3aFP5LOt59myhIfPlixwnQLUJb1oJO8Fty.XRF4S.bfjZVQ.VxxS5nFgAJsNuAxWd1B5d5j.R_Blrg7oud9hG_pmb9uduirt53qgcLsVBXJLIktOiOsSB5zX61pxOu.r4YfAGLcwdXBPqyAklJpoFh2aSeQDlJhckUwvvzZ27UYrDIvHOUZdxTCtflomZB3EwZQx3e1yT4rO5UbEt.deIrSxYwVe_jiHGwqmnoCL_YNgEhj3n76X8KvOTWqdovkLzzngQ--"
   full_player_arr = []
   i = 0
   while i < 1888 do
@@ -9,8 +10,10 @@ def players_to_seed
     i = i + 25
   end
   players_full = full_player_arr.map do |start|
+    sleep(2)
+    p start
     players = HTTParty.get("https://fantasysports.yahooapis.com/fantasy/v2/league/363.l.91004/players;start=#{start}", headers:{
-        "Authorization" => "Bearer #{User.first.token}"
+        "Authorization" => "Bearer #{token}"
       })
     player_arr = players["fantasy_content"]["league"]["players"]["player"]
     player_arr.map do |player|
@@ -25,7 +28,6 @@ def players_to_seed
         type_p: player["position_type"]
       }
     end
-    sleep(0.1)
   end
 end
 
@@ -37,15 +39,15 @@ def player_predictions
     row.to_hash
   end
 
-predictions = File.read(Rails.root.join('lib', 'seeds', 'predictions.csv'))
-predictions_parsed = CSV.parse(predictions, :headers => true, :encoding => 'ISO-8859-1')
-full_stat = predictions_parsed.map do |row|
-  row = row.to_hash
-  player_id = Player.where(name: row['Player']).pluck(:player_id).first
-  puts row['Player'] if player_id == nil
-  row['player_id'] = player_id
-  row
-end
+  predictions = File.read(Rails.root.join('lib', 'seeds', 'predictions.csv'))
+  predictions_parsed = CSV.parse(predictions, :headers => true, :encoding => 'ISO-8859-1')
+  full_stat = predictions_parsed.map do |row|
+    row = row.to_hash
+    player_id = Player.where(name: row['Player']).pluck(:player_id).first
+    puts row['Player'] if player_id == nil
+    row['player_id'] = player_id
+    row
+  end
 
   goalie_stat = full_stat.select { |row| row['Position'] == "G" }
   player_stat = (full_stat - goalie_stat)
@@ -54,10 +56,10 @@ end
 
   end
 
-
   goalie_stat.each do |row|
     t = PlayerPrediction.new
     t.player_id = row['player_id'].to_i
+    t.gp = row['Games Played'].to_i
     t.gs = row['Games Played'].to_i
     t.w = row['W'].to_i
     t.l = (row['Games Played'].to_i - row['W'].to_i)
@@ -79,6 +81,7 @@ end
     shpercent = 0 if row['SOG'].to_i == 0
     t = PlayerPrediction.new
     t.player_id = row['player_id'].to_i
+    t.gp = row['Games Played'].to_i
     t.g = row['G'].to_i
     t.p = row['P'].to_i
     t.a = row['A'].to_i
@@ -102,14 +105,14 @@ end
   end
 end
 
-
 def player_stats_current
+  token ="8GjOy4GbvwjoM_V1RPshaZy7i9L6ZEMFqNZjADBwbzTxDde1.bXHS4wqakno7VI7sVCDI.QzLl5rsyE7DorL5mIH5TQl_kpwf3UxACAySwP_dPOYH8HBA1bEeVaBcFRrs__C9VEjb0nEIsYRp8CbEEv0o_cK3V6FVYiNmut1xRyzlic0EAIpr7X7scsFAIg6n4My0w7sw.XRjiiNcDc3K2v.fsfMb_IXu3hoZ7UTyHgJHjZrmQLiddpLaf5L4OgKyJgOYaF3u5aVnEoqdlVObp5i8d0Y_9CJwZjetjgwOr0UfGd1q4Wit8Dgu5Hs.JvU.xO9Dh5mdUILyAUpLTH5FpJPeW__qa8LmZDi9CU3FI_PSsenr1w8GbLX0r.LOKCAbIZEsvswOI5Erxi9j1Zn30fp4uKmCRI.o7naezHAuwSCS1QJq.FQSeAcgii594Wlw_AMuvzEd0r2psiLgSVIpUJ473z2hJCzPNpmKUzb0aJCYsZKKQg3taq2g5LrDvaHsp3aH07gb3aFP5LOt59myhIfPlixwnQLUJb1oJO8Fty.XRF4S.bfjZVQ.VxxS5nFgAJsNuAxWd1B5d5j.R_Blrg7oud9hG_pmb9uduirt53qgcLsVBXJLIktOiOsSB5zX61pxOu.r4YfAGLcwdXBPqyAklJpoFh2aSeQDlJhckUwvvzZ27UYrDIvHOUZdxTCtflomZB3EwZQx3e1yT4rO5UbEt.deIrSxYwVe_jiHGwqmnoCL_YNgEhj3n76X8KvOTWqdovkLzzngQ--"
   player_ids = Player.all.pluck(:player_id)
   # index = player_ids.index(3982)
   # player_ids = player_ids.slice(index, player_ids.length)
   player_ids.each do |player_id|
     player = HTTParty.get("https://fantasysports.yahooapis.com/fantasy/v2/player/363.p.#{player_id}/stats", headers:{
-          "Authorization" => "Bearer #{User.first.token}"
+          "Authorization" => "Bearer #{token}"
         })
     player_stats = {player_id: player_id}
     player_full_stats = player["fantasy_content"]["player"]["player_stats"]["stats"]["stat"]
@@ -154,16 +157,10 @@ def player_stats_current
 end
 
 
-
-
-
-
-end
-
 # ####
-# Player.create(players_to_seed)
-# all_predictions = PlayerPrediction.all.pluck(:player_id)
-# Player.where.not(player_id: all_predictions).destroy_all
-# player_predictions
+Player.create(players_to_seed)
+player_predictions
+all_predictions = PlayerPrediction.all.pluck(:player_id)
+Player.where.not(player_id: all_predictions).destroy_all
 # player_stats_current
 # ####

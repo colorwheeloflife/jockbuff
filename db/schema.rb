@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161030022124) do
+ActiveRecord::Schema.define(version: 20161030021444) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,8 +74,10 @@ ActiveRecord::Schema.define(version: 20161030022124) do
   create_table "player_passports", force: :cascade do |t|
     t.integer  "player_id"
     t.string   "position"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "draft_position"
+    t.integer  "yahoo_rank"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.integer  "team_id"
     t.integer  "league_id"
     t.index ["league_id"], name: "index_player_passports_on_league_id", using: :btree
@@ -84,6 +86,7 @@ ActiveRecord::Schema.define(version: 20161030022124) do
   end
 
   create_table "player_predictions", id: false, force: :cascade do |t|
+    t.integer  "gp"
     t.integer  "g"
     t.integer  "a"
     t.integer  "p"
@@ -111,14 +114,17 @@ ActiveRecord::Schema.define(version: 20161030022124) do
     t.float    "gaa"
     t.integer  "sa"
     t.integer  "sv"
+    t.integer  "sec"
     t.float    "svpercent"
     t.integer  "sho"
+    t.integer  "player_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "player_id"
   end
 
   create_table "player_stats", id: false, force: :cascade do |t|
+    t.integer  "player_id"
+    t.integer  "gp"
     t.integer  "g"
     t.integer  "a"
     t.integer  "p"
@@ -131,6 +137,7 @@ ActiveRecord::Schema.define(version: 20161030022124) do
     t.integer  "sha"
     t.integer  "shp"
     t.integer  "gwg"
+    t.integer  "gtg"
     t.integer  "sog"
     t.float    "shpercent"
     t.integer  "fw"
@@ -144,13 +151,11 @@ ActiveRecord::Schema.define(version: 20161030022124) do
     t.float    "gaa"
     t.integer  "sa"
     t.integer  "sv"
+    t.integer  "sec"
     t.float    "svpercent"
     t.integer  "sho"
-    t.integer  "player_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "gp"
-    t.integer  "sec"
   end
 
   create_table "players", id: false, force: :cascade do |t|

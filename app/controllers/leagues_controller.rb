@@ -10,6 +10,7 @@ class LeaguesController < ApplicationController
       break if Team.where(league_id: league_info["id"]).exists?
       create_teams(league_info.attributes)
     end
+     @team_id = Team.where(ownership: true).pluck(:id)
   end
 
   def new

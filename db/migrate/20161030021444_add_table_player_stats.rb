@@ -1,6 +1,8 @@
 class AddTablePlayerStats < ActiveRecord::Migration[5.0]
   def change
     create_table :player_stats, id:false, force: true do |t|
+      t.integer :player_id
+      t.integer :gp
       t.integer :g
       t.integer :a
       t.integer :p
@@ -30,7 +32,6 @@ class AddTablePlayerStats < ActiveRecord::Migration[5.0]
       t.integer :sec
       t.float :svpercent
       t.integer :sho
-      t.integer :player_id
 
       t.timestamps
     end
