@@ -2,7 +2,7 @@
 
   var otherCheckedRowsSkaters = [];
 
-  $('#otherTable').on('check.bs.table', function (e, row) {
+  $('.trading-teams').on('check.bs.table', '#otherTable', function (e, row) {
     otherCheckedRowsSkaters.push({
       name: row.name,
       pro_team: row.pro_team,
@@ -23,7 +23,7 @@
     console.log(otherCheckedRowsSkaters);
   });
 
-  $('#otherTable').on('uncheck.bs.table', function (e, row) {
+  $('.trading-teams').on('uncheck.bs.table', '#otherTable', function (e, row) {
     $.each(otherCheckedRowsSkaters, function(index, value) {
       if (value.id === row.id) {
         otherCheckedRowsSkaters.splice(index,1);
@@ -32,11 +32,11 @@
     console.log(otherCheckedRowsSkaters);
   });
 
-  $('#otherTable').on('uncheck.bs.table', function() {
+  $('.trading-teams').on('uncheck.bs.table', '#otherTable', function() {
     $("#other-output").empty();
   });
 
-  $('#otherTable').on('check.bs.table', function() {
+  $('.trading-teams').on('check.bs.table', '#otherTable', function() {
     $("#other-output").empty();
 
     $.each(otherCheckedRowsSkaters, function(index, value) {
@@ -62,7 +62,7 @@
 
   var otherCheckedRowsGoalies = [];
 
-  $('#otherGoalieTable').on('check.bs.table', function (e, row) {
+  $('.trading-teams').on('check.bs.table', '#otherGoalieTable', function (e, row) {
     otherCheckedRowsGoalies.push({
       name: row.name,
       pro_team: row.pro_team,
@@ -79,7 +79,7 @@
     console.log(otherCheckedRowsGoalies);
   });
 
-  $('#otherGoalieTable').on('uncheck.bs.table', function (e, row) {
+  $('.trading-teams').on('uncheck.bs.table', '#otherGoalieTable', function (e, row) {
     $.each(otherCheckedRowsGoalies, function(index, value) {
       if (value.id === row.id) {
         otherCheckedRowsGoalies.splice(index,1);
@@ -88,11 +88,11 @@
     console.log(otherCheckedRowsGoalies);
   });
 
-    $('#otherGoalieTable').on('uncheck.bs.table', function() {
+    $('.trading-teams').on('uncheck.bs.table', '#otherGoalieTable', function() {
     $("#other-output-goalies").empty();
   });
 
-    $('#otherGoalieTable').on('check.bs.table',function() {
+    $('.trading-teams').on('check.bs.table', '#otherGoalieTable', function() {
     $("#other-output-goalies").empty();
 
     $.each(otherCheckedRowsGoalies, function(index, value) {
