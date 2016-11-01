@@ -17,36 +17,10 @@ $(function() {
   }
 
 
-  $('#playersTable').on('check.bs.table', function (e, row) {
-    selectedPlayers.push({
-      id: row.id,
-      name: row.name,
-      pro_team: row.pro_team,
-      positions: row.positions,
-      jbr: row.jbr,
-      g: row.g,
-      a: row.a,
-      p: row.p,
-      ppg: row.ppg,
-      ppa: row.ppa,
-      ppp: row.ppp,
-      plusminus: row.plusminus,
-      shg: row.shg,
-      sha: row.sha,
-      shp: row.shp,
-      gwg: row.gwg,
-      gtg: row.gtg,
-      pim: row.pim,
-      sog: row.sog,
-      shpercent: row.shpercent,
-      fw: row.fw,
-      fl: row.fl,
-      hit: row.hit,
-      blk: row.blk
-    });
-    // console.log(selectedPlayers);
-  });
 
+  $('#playersTable').on('check.bs.table', function (e, row) {
+    selectedPlayers.push(row);
+  });
 
   $('#playersTable').on('uncheck.bs.table', function (e, row) {
     $.each(selectedPlayers, function(index, value) {
@@ -55,11 +29,7 @@ $(function() {
         console.log(index);
       }
     });
-    // console.log(selectedPlayers);
   });
-
-
-
 
   $("#add_player").click(function() {
     $("#selection-output").empty();
@@ -190,25 +160,3 @@ $(function() {
   }
 
 });
-
-
-
-
-
-
- // $.each(selectedPlayers, function(index, value) {
-    //   var row = $('<tr>');
-    //   var pp = gon.player_passports;
-    //   $('#selection-output').append(row);
-    //   row.append($('<td>').text(value.name));
-    //   row.append($('<td>').text(value.pro_team));
-    //   row.append($('<td>').text(value.positions));
-    //   row.append($('<td>').text(value.yahoo_rank));
-    //   row.append($('<td>').text(value.jbr));
-    //   console.log(index);
-    //   for each (var cat in index) {
-    //     if (cat == true) {
-    //       row.append($('<td>').text(cat));
-    //     }
-    //   }
-    // });

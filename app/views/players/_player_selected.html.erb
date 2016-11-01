@@ -5,7 +5,6 @@
     <th>Player</th>
     <th>Team</th>
     <th>Pos</th>
-    <th>Y!</th>
     <th>JBR</th>
     <% if @player_passports[0].league.player_category.g == true %> <th>G</th> <% end %>
     <% if @player_passports[0].league.player_category.a == true %> <th>A</th> <% end %>
@@ -28,10 +27,30 @@
     <% if @player_passports[0].league.player_category.blk == true %> <th>BLK</th> <% end %>
   </thead>
   <tbody class="selected-players" id="selection-output">
-
   </tbody>
 </table>
 
 
 
-
+<table class="table table-bordered table-striped table-hover table-responsive table-players">
+  <thead>
+    <th data-field="state" data-checkbox="true"> Selected </th>
+    <th>Player</th>
+    <th>Team</th>
+    <th>Pos</th>
+    <th>JBR</th>
+      <% if @players[0].league.goalie_category.gs == true %> <th>GS</th> <% end %>
+      <% if @players[0].league.goalie_category.w == true %> <th>W</th> <% end %>
+      <% if @players[0].league.goalie_category.l == true %> <th>L</th> <% end %>
+      <% if @players[0].league.goalie_category.ga == true %> <th>GA</th> <% end %>
+      <% if @players[0].league.goalie_category.gaa == true %> <th>GAA</th> <% end %>
+      <% if @players[0].league.goalie_category.sa == true %> <th>SA</th> <% end %>
+      <% if @players[0].league.goalie_category.sec == true %> <th>SEC</th> <% end %>
+      <% if @players[0].league.goalie_category.sv == true %> <th>SV</th> <% end %>
+      <% if @players[0].league.goalie_category.svpercent == true %> <th>SV%</th> <% end %>
+      <% if @players[0].league.goalie_category.sho == true %> <th>SHO</th> <% end %>
+      </tr>
+  </thead>
+  <tbody class="selected-players" id="selection-output">
+  </tbody>
+</table>

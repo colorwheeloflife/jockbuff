@@ -25,6 +25,6 @@ stat_cats = league_settings["fantasy_content"]["league"]["settings"]["stat_categ
       svpercent: goalie_cats.include?('Save Percentage'),
       sho: goalie_cats.include?('Shutouts'),
     }
-    GoalieCategory.create(goalie_cats_save)
+    @goalie_category = GoalieCategory.create(goalie_cats_save)
   end
 end
