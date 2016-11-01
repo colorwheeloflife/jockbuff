@@ -13,6 +13,7 @@ $(function() {
       url: "/ajax/users/" + PageData.user_id + "/leagues/" + PageData.league_id + "/teams/" + team_id,
       success: function(data){
         $('.render_trade_table').html(data).find('table').bootstrapTable();
+        $('#otherTeamTable').trigger('contentchanged');
         spinner.stop();
       },
       error: function() {
