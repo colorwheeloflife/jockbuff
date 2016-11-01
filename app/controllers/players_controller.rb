@@ -1,12 +1,11 @@
 class PlayersController < ApplicationController
-  helper_method :sort_column, :sort_direction
-
 include LeaguesHelper
 include ApplicationHelper
 
   def index
     league_id = params[:league_id]
-    @players = PlayerPassport.where(league_id: true)
+    @player_passports = PlayerPassport.includes(:player, :player_predictions)
+    gon.player_passports = @player_passports
     @team = Team.where(league_id: league_id, ownership: true).pluck(:id)
   end
 
@@ -45,7 +44,14 @@ include ApplicationHelper
   private
 
   def sort_column
-    Player.column_names.include?(params[:sort]) ? params[:sort] : "name"
+
+    if Player.column_names.include?(params[:sort])
+      "players." + params[:sort]
+    elsif PlayerPrediction.column_names.include?(params[:sort])
+      "player_predictions." + params[:sort]
+    else
+      "players.name"
+    end
   end
 
   def sort_direction

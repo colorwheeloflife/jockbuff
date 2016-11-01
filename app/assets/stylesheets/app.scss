@@ -144,6 +144,29 @@ th,{
   margin-top: ($spacing-unit * 3);
 }
 
+
+.dropspace {
+   padding: 5px;
+   background-color: blue;
+   width: 200px;
+   height: 80px;
+   border-radius: 5px;
+   text-align: center;
+   display: inline-block;
+   margin: 0px 100px;
+
+ }
+
+ .dropspace #player-droppable_1 {
+   float: left;
+
+ }
+
+ .dropspace #player-droppable_2 {
+   float: right;
+  }
+
 .hidden {
   display: none;
 }
+
