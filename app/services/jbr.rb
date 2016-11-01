@@ -31,7 +31,7 @@ class JBR
           next if p.is_a? String
           cat_jbr = p[1] if p[0] == player_id
         end
-      cat_jbr =  [category[0], cat_jbr[0][1]]
+      cat_jbr = [category[0], cat_jbr[0][1]]
       end
       player_jbr_hash = Hash[player_jbr.group_by(&:first).map{ |k,a| [k,a.map(&:last)[0]] } ]
       overall_jbr = 0
