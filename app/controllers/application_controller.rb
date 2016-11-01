@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
   helper_method :correct_user?
   helper_method :yahoo_root
   helper_method :league_call
-  helper_method :player_jbr
+  helper_method :jbr_by_cat
 
   def current_user
     begin
@@ -67,13 +67,15 @@ class ApplicationController < ActionController::Base
     @player_passport = create_passport_entry(league_ids)
   end
 
-  # def player_jbr(player_bool, player_ids)
-  #   player_ids.select do |player_id|
-  #     jbr = @jock_buff_ranks[player_bool].select do |jbr|
-  #        if jbr[:player_id] == player_id}.first[:jbr]
-  # end
-
-  # def stat_jbr(player_bool, stat_cats)
-
-
+  def jbr_by_cat(player_bool, player_ids, category)
+    player_ids = [player_ids] unless player_ids.is_a? Array
+    rank_by_cat = []
+    jbr_cat_arr = player_ids.each do |player_id|
+      jbr_cat = @jock_buff_ranks[player_bool].select do |stat|
+        jbr_cat = stat[category] if stat[:player_id] == player_id.to_i
+    end
+    rank_by_cat.push([player_id.to_i, jbr_cat[0][category]])
+    end
+    rank_by_cat.to_h
+  end
 end
