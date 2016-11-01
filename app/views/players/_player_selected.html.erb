@@ -1,3 +1,5 @@
+<% require 'byebug' %>
+
 <h3>Selected Players</h3>
 <table class="table table-bordered table-striped table-hover table-responsive table-players">
   <thead>
@@ -6,6 +8,7 @@
     <th>Pos</th>
     <th>Y!</th>
     <th>JBR</th>
+    <% byebug %>
     <% if @player_passports[0].league.player_category.g == true %> <th>G</th> <% end %>
     <% if @player_passports[0].league.player_category.a == true %> <th>A</th> <% end %>
     <% if @player_passports[0].league.player_category.p == true %> <th>P</th> <% end %>
