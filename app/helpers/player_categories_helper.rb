@@ -35,6 +35,7 @@ module PlayerCategoriesHelper
       hit: player_cats.include?('Hits'),
       blk: player_cats.include?('Blocks'),
     }
+
     @player_category = PlayerCategory.create(player_cats_save)
 
     end

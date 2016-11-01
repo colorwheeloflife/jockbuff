@@ -67,8 +67,13 @@ class ApplicationController < ActionController::Base
     @player_passport = create_passport_entry(league_ids)
   end
 
-    def player_jbr(x, player_id)
-    jbr = @jock_buff_ranks[x].select { |pl| pl[:player_id] == player_id}.first[:jbr]
-  end
+  # def player_jbr(player_bool, player_ids)
+  #   player_ids.select do |player_id|
+  #     jbr = @jock_buff_ranks[player_bool].select do |jbr|
+  #        if jbr[:player_id] == player_id}.first[:jbr]
+  # end
+
+  # def stat_jbr(player_bool, stat_cats)
+
 
 end

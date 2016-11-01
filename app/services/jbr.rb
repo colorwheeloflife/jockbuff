@@ -70,6 +70,18 @@
        return jbr_skater_full
     end
 
+      def jbr_by_cat(player_bool, player_ids, category)
+        player_ids = [player_ids] unless player_ids.is_a? Array
+        rank_by_cat = []
+        jbr_cat_arr = player_ids.each do |player_id|
+          jbr_cat = @jock_buff_ranks[player_bool].select do |stat|
+            jbr_cat = stat[category] if stat[:player_id] == player_id.to_i
+        end
+        rank_by_cat.push([player_id, jbr_cat[0][category]])
+        end
+        rank_by_cat
+        end
+
     def create_jbr_goalies(goalie_all_arr, goalie_categories)
       jbr_goalie_full = {}
       p goalie_categories
