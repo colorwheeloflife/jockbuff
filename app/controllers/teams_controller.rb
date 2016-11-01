@@ -12,7 +12,6 @@ class TeamsController < ApplicationController
     team_id = params[:id]
     @team = Team.find(team_id)
     @players = PlayerPassport.includes(:player).where(team_id: team_id)
-    byebug
   end
 
   # private
