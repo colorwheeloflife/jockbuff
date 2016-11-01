@@ -4,7 +4,7 @@ module PlayerPassportHelper
   def create_passport_entry (league_ids)
     @current_user = current_user
     league_ids.each do |league_id|
-    draft_full = HTTParty.get("https://fantasysports.yahooapis.com/fantasy/v2/league/363.l.91006/draftresults", headers:{
+    draft_full = HTTParty.get("https://fantasysports.yahooapis.com/fantasy/v2/league/363.l.#{league_id}/draftresults", headers:{
     "Authorization" => "Bearer #{@current_user.token}"
     })
     draft_players = draft_full["fantasy_content"]["league"]["draft_results"]["draft_result"]
@@ -16,7 +16,7 @@ module PlayerPassportHelper
     owned_players = team_info_arr.map do |team|
       player_info = team["fantasy_content"]["team"]["roster"]["players"]["player"]
       team_id = Team.find_by(league_id: league_id, name: team['fantasy_content']['team']['name']).id
-      player_info.map do |t|
+      owned_players = player_info.map do |t|
         if draft_positions.flatten.values_at(* draft_positions.flatten.each_index.select{|i| i.odd?}).include?(t["player_id"])
           draft_position = draft_positions.select{ |pick, id| id == t["player_id"] }[0][0].to_i
         end
@@ -29,10 +29,8 @@ module PlayerPassportHelper
         )
       end
     end
-
-      owned_players = PlayerPassport.where(league_id: league_id).pluck('player_id')
-      all_players = Player.all.pluck('player_id')
-      available_players = all_players - owned_players
+      all_players_id = Player.all.pluck('player_id')
+      available_players = all_players_id - owned_players.map {|rec| rec.pluck(:player_id) }
       waiver_players = available_players.map do |p|
         if draft_positions.flatten.values_at(* draft_positions.flatten.each_index.select{|i| i.odd?}).include?(p)
           draft_position = draft_positions.select{ |pick, id| id == p}[0][0]
@@ -45,11 +43,11 @@ module PlayerPassportHelper
           draft_position: draft_position
         )
       end
-      # full_league = owned_players.push(waiver_players)
+
       ActiveRecord::Base.transaction do
-        PlayerPassport.import(owned_players)
+        PlayerPassport.import(owned_players.flatten)
       end
-      p waiver_players
+
       ActiveRecord::Base.transaction do
           PlayerPassport.import(waiver_players)
       end
