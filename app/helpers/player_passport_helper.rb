@@ -1,4 +1,4 @@
-require 'byebug'
+
 module PlayerPassportHelper
 
   def create_passport_entry (league_ids)
@@ -8,7 +8,6 @@ module PlayerPassportHelper
     draft_full = HTTParty.get("https://fantasysports.yahooapis.com/fantasy/v2/league/#{league_key}/draftresults", headers:{
     "Authorization" => "Bearer #{@current_user.token}"
     })
-    byebug
     draft_players = draft_full["fantasy_content"]["league"]["draft_results"]["draft_result"]
     draft_positions = draft_players.map do |player|
       draft_info = [player["pick"], player["player_key"].split('p.')[1]]

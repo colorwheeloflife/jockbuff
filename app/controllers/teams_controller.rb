@@ -2,7 +2,6 @@ class TeamsController < ApplicationController
 
   include TeamsHelper
   include ApplicationHelper
-  require byebug
 
   def create
   end

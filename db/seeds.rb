@@ -1,5 +1,4 @@
 require 'csv'
-require 'byebug'
 
 def players_to_seed
   token = User.first.token
@@ -105,56 +104,56 @@ def player_predictions
   end
 end
 
-# def player_stats_current
-#   token = User.first.token
-#   player_ids = Player.all.pluck(:player_id)
-#   # index = player_ids.index(3982)
-#   # player_ids = player_ids.slice(index, player_ids.length)
-#   player_ids.each do |player_id|
-#     player = HTTParty.get("https://fantasysports.yahooapis.com/fantasy/v2/player/363.p.#{player_id}/stats", headers:{
-#           "Authorization" => "Bearer #{token}"
-#         })
-#     player_stats = {player_id: player_id}
-#     player_full_stats = player["fantasy_content"]["player"]["player_stats"]["stats"]["stat"]
-#     player_full_stats.select do |stat|
-#       # byebug
-#       player_stats.merge!({ gp: stat['value'] }) if stat['stat_id'] == "30"
-#       ## gp for players is a different code than goalie
-#       player_stats.merge!({ gp: stat['value'] }) if stat['stat_id'] == "29"
-#       player_stats.merge!({ g: stat['value'] }) if stat['stat_id'] == "1"
-#       player_stats.merge!({ a: stat['value'] }) if stat['stat_id'] == "2"
-#       player_stats.merge!({ p: stat['value'] })if stat['stat_id'] == "3"
-#       player_stats.merge!({ plusminus:  stat['value'] }) if stat['stat_id'] == "4"
-#       player_stats.merge!({ pim: stat['value'] }) if stat['stat_id'] == "5"
-#       player_stats.merge!({ ppg: stat['value'] }) if stat['stat_id'] == "6"
-#       player_stats.merge!({ ppa: stat['value'] }) if stat['stat_id'] == "7"
-#       player_stats.merge!({ ppp: stat['value'] }) if stat['stat_id'] == "8"
-#       player_stats.merge!({ shg: stat['value'] }) if stat['stat_id'] == "9"
-#       player_stats.merge!({ sha: stat['value'] }) if stat['stat_id'] == "10"
-#       player_stats.merge!({ shp: stat['value'] }) if stat['stat_id'] == "11"
-#       player_stats.merge!({ gwg: stat['value'] }) if stat['stat_id'] == "12"
-#       player_stats.merge!({ gwg: stat['value'] }) if stat['stat_id'] == "13"
-#       player_stats.merge!({ sog: stat['value'] }) if stat['stat_id'] == "14"
-#       player_stats.merge!({ shpercent: stat['value'] }) if stat['stat_id'] == "15"
-#       player_stats.merge!({ fw: stat['value'] }) if stat['stat_id'] == "16"
-#       player_stats.merge!({ fl: stat['value'] }) if stat['stat_id'] == "17"
-#       player_stats.merge!({ hit: stat['value'] }) if stat['stat_id'] == "31"
-#       player_stats.merge!({ blk: stat['value'] }) if stat['stat_id'] == "32"
-#       player_stats.merge!({ gs: stat['value'] }) if stat['stat_id'] == "18"
-#       player_stats.merge!({ w: stat['value'] }) if stat['stat_id'] == "19"
-#       player_stats.merge!({ l: stat['value'] }) if stat['stat_id'] == "20"
-#       player_stats.merge!({ ga: stat['value'] }) if stat['stat_id'] == "22"
-#       player_stats.merge!({ gaa: stat['value'] }) if stat['stat_id'] == "23"
-#       player_stats.merge!({ sa: stat['value'] }) if stat['stat_id'] == "24"
-#       player_stats.merge!({ sec: (stat['value'].to_i * 60) }) if stat['stat_id'] == "28"
-#       player_stats.merge!({ sv: stat['value'] }) if stat['stat_id'] == "25"
-#       player_stats.merge!({ svpercent: stat['value'] }) if stat['stat_id'] == "26"
-#       player_stats.merge!({ sho: stat['value'] }) if stat['stat_id'] == "27"
-#     end
-#   sleep(1)
-#   PlayerStat.create(player_stats)
-#   end
-# end
+def player_stats_current
+  token = User.first.token
+  player_ids = Player.all.pluck(:player_id)
+  # index = player_ids.index(3982)
+  # player_ids = player_ids.slice(index, player_ids.length)
+  player_ids.each do |player_id|
+    player = HTTParty.get("https://fantasysports.yahooapis.com/fantasy/v2/player/363.p.#{player_id}/stats", headers:{
+          "Authorization" => "Bearer #{token}"
+        })
+    player_stats = {player_id: player_id}
+    player_full_stats = player["fantasy_content"]["player"]["player_stats"]["stats"]["stat"]
+    player_full_stats.select do |stat|
+      # byebug
+      player_stats.merge!({ gp: stat['value'] }) if stat['stat_id'] == "30"
+      ## gp for players is a different code than goalie
+      player_stats.merge!({ gp: stat['value'] }) if stat['stat_id'] == "29"
+      player_stats.merge!({ g: stat['value'] }) if stat['stat_id'] == "1"
+      player_stats.merge!({ a: stat['value'] }) if stat['stat_id'] == "2"
+      player_stats.merge!({ p: stat['value'] })if stat['stat_id'] == "3"
+      player_stats.merge!({ plusminus:  stat['value'] }) if stat['stat_id'] == "4"
+      player_stats.merge!({ pim: stat['value'] }) if stat['stat_id'] == "5"
+      player_stats.merge!({ ppg: stat['value'] }) if stat['stat_id'] == "6"
+      player_stats.merge!({ ppa: stat['value'] }) if stat['stat_id'] == "7"
+      player_stats.merge!({ ppp: stat['value'] }) if stat['stat_id'] == "8"
+      player_stats.merge!({ shg: stat['value'] }) if stat['stat_id'] == "9"
+      player_stats.merge!({ sha: stat['value'] }) if stat['stat_id'] == "10"
+      player_stats.merge!({ shp: stat['value'] }) if stat['stat_id'] == "11"
+      player_stats.merge!({ gwg: stat['value'] }) if stat['stat_id'] == "12"
+      player_stats.merge!({ gwg: stat['value'] }) if stat['stat_id'] == "13"
+      player_stats.merge!({ sog: stat['value'] }) if stat['stat_id'] == "14"
+      player_stats.merge!({ shpercent: stat['value'] }) if stat['stat_id'] == "15"
+      player_stats.merge!({ fw: stat['value'] }) if stat['stat_id'] == "16"
+      player_stats.merge!({ fl: stat['value'] }) if stat['stat_id'] == "17"
+      player_stats.merge!({ hit: stat['value'] }) if stat['stat_id'] == "31"
+      player_stats.merge!({ blk: stat['value'] }) if stat['stat_id'] == "32"
+      player_stats.merge!({ gs: stat['value'] }) if stat['stat_id'] == "18"
+      player_stats.merge!({ w: stat['value'] }) if stat['stat_id'] == "19"
+      player_stats.merge!({ l: stat['value'] }) if stat['stat_id'] == "20"
+      player_stats.merge!({ ga: stat['value'] }) if stat['stat_id'] == "22"
+      player_stats.merge!({ gaa: stat['value'] }) if stat['stat_id'] == "23"
+      player_stats.merge!({ sa: stat['value'] }) if stat['stat_id'] == "24"
+      player_stats.merge!({ sec: (stat['value'].to_i * 60) }) if stat['stat_id'] == "28"
+      player_stats.merge!({ sv: stat['value'] }) if stat['stat_id'] == "25"
+      player_stats.merge!({ svpercent: stat['value'] }) if stat['stat_id'] == "26"
+      player_stats.merge!({ sho: stat['value'] }) if stat['stat_id'] == "27"
+    end
+  sleep(1)
+  PlayerStat.create(player_stats)
+  end
+end
 
 
 # ####
@@ -162,5 +161,5 @@ Player.create(players_to_seed)
 player_predictions
 all_predictions = PlayerPrediction.all.pluck(:player_id)
 Player.where.not(player_id: all_predictions).destroy_all
-# player_stats_current
+player_stats_current
 # ####
