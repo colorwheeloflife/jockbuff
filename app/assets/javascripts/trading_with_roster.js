@@ -1,6 +1,5 @@
 $(function() {
 
-
   $(".team-selector").on("change", function(e) {
     var team_id = $(e.target).val();
     $('.render_trade_table').html("");

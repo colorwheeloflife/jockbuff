@@ -15,6 +15,7 @@ $(function() {
   });
 
   $('#add-to-trade').on('click', function() {
+    $("#hidden-trades").removeClass('hidden');
     $("#user-output").empty();
     $.each(userCheckedRowsSkaters, function(index, value) {
       var row = $('<tr>');

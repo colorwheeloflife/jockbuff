@@ -25,27 +25,27 @@
   <tbody id="each-other-player">
     <% @trade_team.each do |player_passport| %>
     <% next if player_passport.player.positions.join("/").include?("G") %>
-          <tr>
-        <td>
-        <label>
-          <input type="checkbox" class="inlineCheckbox1" value="<%= player_passport.player.id %>">
-        </label>
-        </td>
-        <td> <%= player_passport.player.name %> </td>
-        <td> <%= player_passport.player.pro_team.upcase %></td>
-        <td> <%= player_passport.player.positions.join("/") %> </td>
-        <td class="jbr-stat"> 150 </td>
-        <td class="hidden goals"> <%= player_passport.player.player_prediction.g %> </td>
-        <td class="hidden assists"> <%= player_passport.player.player_prediction.a %> </td>
-        <td class="hidden points"> <%= player_passport.player.player_prediction.p %> </td>
-        <td class="hidden powerplay"> <%= player_passport.player.player_prediction.ppp %> </td>
-        <td class="hidden plusminus"> <%= player_passport.player.player_prediction.plusminus %> </td>
-        <td class="hidden pims"> <%= player_passport.player.player_prediction.pim %> </td>
-        <td class="hidden sog"> <%= player_passport.player.player_prediction.sog %> </td>
-        <td class="hidden fow"> <%= player_passport.player.player_prediction.fw %> </td>
-        <td class="hidden hit"> <%= player_passport.player.player_prediction.hit %> </td>
-        <td class="hidden blk"> <%= player_passport.player.player_prediction.blk %> </td>
-      </tr>
+    <tr>
+      <td>
+      <label>
+        <input type="checkbox" class="inlineCheckbox1" value="<%= player_passport.player.id %>">
+      </label>
+      </td>
+      <td> <%= player_passport.player.name %> </td>
+      <td> <%= player_passport.player.pro_team.upcase %></td>
+      <td> <%= player_passport.player.positions.join("/") %> </td>
+      <td class="jbr-stat"> 150 </td>
+      <td class="hidden goals"> <%= player_passport.player.player_prediction.g %> </td>
+      <td class="hidden assists"> <%= player_passport.player.player_prediction.a %> </td>
+      <td class="hidden points"> <%= player_passport.player.player_prediction.p %> </td>
+      <td class="hidden powerplay"> <%= player_passport.player.player_prediction.ppp %> </td>
+      <td class="hidden plusminus"> <%= player_passport.player.player_prediction.plusminus %> </td>
+      <td class="hidden pims"> <%= player_passport.player.player_prediction.pim %> </td>
+      <td class="hidden sog"> <%= player_passport.player.player_prediction.sog %> </td>
+      <td class="hidden fow"> <%= player_passport.player.player_prediction.fw %> </td>
+      <td class="hidden hit"> <%= player_passport.player.player_prediction.hit %> </td>
+      <td class="hidden blk"> <%= player_passport.player.player_prediction.blk %> </td>
+    </tr>
     <% end %>
   </tbody>
 </table>
