@@ -75,37 +75,45 @@
   <thead>
     <tr>
       <th data-field="state" data-checkbox="true">Trade</th>
-      <th data-field="name">Goalie</th>
-      <th data-field="pro_team">Team</th>
-      <th data-field="jbr">JBR</th>
-      <th data-field="w" class="hidden">Wins</th>
-      <th data-field="l" class="hidden">Losses</th>
-      <th data-field="gaa" class="hidden">GAA</th>
-      <th data-field="ga" class="hidden">GA</th>
-      <th data-field="svpercent" class="hidden">SV%</th>
-      <th data-field="sv" class="hidden">Saves</th>
-      <th data-field="sho" class="hidden">SO</th>
-    </tr>
+      <th data-field="name" data-sortable="true" >Goalie</th>
+      <th data-field="pro_team" data-sortable="true">Team</th>
+      <th data-field="jbr" data-sortable="true">JBR</th>
+      <% if @players[0].league.goalie_category.gs == true %> <th data-field="gs" data-sortable="true" class="hidden">GS</th> <% end %>
+      <% if @players[0].league.goalie_category.w == true %> <th data-field="w" data-sortable="true" class="hidden">W</th> <% end %>
+      <% if @players[0].league.goalie_category.l == true %> <th data-field="l" data-sortable="true" class="hidden">L</th> <% end %>
+      <% if @players[0].league.goalie_category.ga == true %> <th data-field="ga" data-sortable="true" class="hidden">GA</th> <% end %>
+      <% if @players[0].league.goalie_category.gaa == true %> <th data-field="gaa" data-sortable="true" class="hidden">GAA</th> <% end %>
+      <% if @players[0].league.goalie_category.sa == true %> <th data-field="sa" data-sortable="true" class="hidden">SA</th> <% end %>
+      <% if @players[0].league.goalie_category.sec == true %> <th data-field="sec" data-sortable="true" class="hidden">SEC</th> <% end %>
+      <% if @players[0].league.goalie_category.sv == true %> <th data-field="sv" data-sortable="true" class="hidden">SV</th> <% end %>
+      <% if @players[0].league.goalie_category.svpercent == true %> <th data-field="svpercent" data-sortable="true" class="hidden">SV%</th> <% end %>
+      <% if @players[0].league.goalie_category.sho == true %> <th data-field="sho" data-sortable="true" class="hidden">SHO</th> <% end %>
+      </tr>
   </thead>
-
-
   <tbody>
-  <tbody id="each-other-goalie">
     <% @trade_team.each do |player_passport| %>
-    <% next if player_passport.player.positions.join(" / ").exclude?("G") %>
-    <tr>
-      <td><label><input type="checkbox" class="inlineCheckbox1" value="<%= player_passport.player.id %>"></label></td>
-      <td><%= player_passport.player.name %></td>
-      <td><%= player_passport.player.pro_team.upcase %></td>
-      <td class="goalie-jbr-stat"> 150 </td>
-      <td class="hidden wins"> <%= player_passport.player.player_prediction.w %> </td>
-      <td class="hidden losses"> <%= player_passport.player.player_prediction.l %> </td>
-      <td class="hidden gaa"> <%= player_passport.player.player_prediction.gaa %> </td>
-      <td class="hidden ga"> <%= player_passport.player.player_prediction.ga %> </td>
-      <td class="hidden svpercent"> <%= player_passport.player.player_prediction.svpercent %> </td>
-      <td class="hidden saves"> <%= player_passport.player.player_prediction.sv %> </td>
-      <td class="hidden shutouts"> <%= player_passport.player.player_prediction.sho %> </td>
-    </tr>
+    <% next if player_passport.player.positions.join("/").exclude?("G") %>
+      <tr>
+        <td>
+          <label>
+            <input type="checkbox" class="inlineCheckbox1" value="<%= player_passport.player.id %>">
+          </label>
+        </td>
+        <td class="other-team-goalies"><%= player_passport.player.name %></td>
+        <td class="other-team-goalies"><%= player_passport.player.pro_team.upcase %></td>
+        <td class="other-team-goalies"><%= player_passport.player.player_prediction.gs %></td>
+        <td class="other-team-goalies">jbr</td>
+        <% if player_passport.league.goalie_category.gs == true %> <th data-field="gs" data-sortable="true" class="hidden other-team-goalies gs">GS</th> <% end %>
+        <% if player_passport.league.goalie_category.w == true %> <th data-field="w" data-sortable="true" class="hidden other-team-goalies w">W</th> <% end %>
+        <% if player_passport.league.goalie_category.l == true %> <th data-field="l" data-sortable="true" class="hidden other-team-goalies l">L</th> <% end %>
+        <% if player_passport.league.goalie_category.ga == true %> <th data-field="ga" data-sortable="true" class="hidden other-team-goalies ga">GA</th> <% end %>
+        <% if player_passport.league.goalie_category.gaa == true %> <th data-field="gaa" data-sortable="true" class="hidden other-team-goalies gaa">GAA</th> <% end %>
+        <% if player_passport.league.goalie_category.sa == true %> <th data-field="sa" data-sortable="true" class="hidden other-team-goalies sa">SA</th> <% end %>
+        <% if player_passport.league.goalie_category.sec == true %> <th data-field="sec" data-sortable="true" class="hidden other-team-goalies sec">SEC</th> <% end %>
+        <% if player_passport.league.goalie_category.sv == true %> <th data-field="sv" data-sortable="true" class="hidden other-team-goalies sv">SV</th> <% end %>
+        <% if player_passport.league.goalie_category.svpercent == true %> <th data-field="svpercent" data-sortable="true" class="hidden other-team-goalies svpercent">SV%</th> <% end %>
+        <% if player_passport.league.goalie_category.sho == true %> <th data-field="sho" data-sortable="true" class="hidden other-team-goalies sho">SHO</th> <% end %>
+      </tr>
     <% end %>
   </tbody>
 </table>
