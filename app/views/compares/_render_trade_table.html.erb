@@ -24,14 +24,15 @@
       <th data-field="blk" class="hidden">BLK</th>
     </tr>
   </thead>
+
   <tbody>
     <% @trade_team.each do |player_passport| %>
     <% next if player_passport.player.positions.join(" / ").include?("G") %>
-          <tr>
-        <td>
-        <label>
-          <input type="checkbox" class="inlineCheckbox1" value="<%= player_passport.player.id %>">
-        </label>
+      <tr>
+      <td>
+      <label>
+        <input type="checkbox" class="inlineCheckbox1" value="<%= player_passport.player.id %>">
+      </label>
         </td>
         <td> <%= player_passport.player.name %> </td>
         <td> <%= player_passport.player.pro_team.upcase %></td>
@@ -52,9 +53,10 @@
     <% end %>
   </tbody>
 </table>
-  <table class="table table-bordered table-striped table-hover table-responsive table-players"
-  id="otherGoalieTable"
-  data-toggle="table"">
+
+<table class="table table-bordered table-striped table-hover table-responsive table-players"
+       id="otherGoalieTable"
+       data-toggle="table">
   <thead>
     <tr>
       <th data-field="state" data-checkbox="true">Trade</th>
@@ -71,15 +73,12 @@
       <th data-field="sho" class="hidden">SO</th>
     </tr>
   </thead>
+
   <tbody>
     <% @trade_team.each do |player_passport| %>
     <% next if player_passport.player.positions.join(" / ").exclude?("G") %>
     <tr>
-      <td>
-        <label>
-          <input type="checkbox" class="inlineCheckbox1" value="<%= player_passport.player.id %>">
-        </label>
-      </td>
+      <td><label><input type="checkbox" class="inlineCheckbox1" value="<%= player_passport.player.id %>"></label></td>
       <td><%= player_passport.player.name %></td>
       <td><%= player_passport.player.pro_team.upcase %></td>
       <td> 150 </td>
@@ -95,4 +94,3 @@
     <% end %>
   </tbody>
 </table>
-<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.8.1/bootstrap-table.min.js"></script>
