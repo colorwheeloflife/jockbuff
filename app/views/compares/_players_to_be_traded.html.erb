@@ -5,18 +5,26 @@
       <th>Player</th>
       <th>Team</th>
       <th>Position</th>
-      <th>Y!</th>
       <th>JBR</th>
-      <th>G</th>
-      <th>A</th>
-      <th>Points</th>
-      <th>PPP</th>
-      <th>+/-</th>
-      <th>PIMS</th>
-      <th>SOG</th>
-      <th>FOW</th>
-      <th>HIT</th>
-      <th>BLKS</th>
+      <% if @player_passports[0].league.player_category.g == true %> <th>G</th> <% end %>
+      <% if @player_passports[0].league.player_category.a == true %> <th>A</th> <% end %>
+      <% if @player_passports[0].league.player_category.p == true %> <th>P</th> <% end %>
+      <% if @player_passports[0].league.player_category.ppg == true %> <th>PPG</th> <% end %>
+      <% if @player_passports[0].league.player_category.ppa == true %> <th>PPA</th> <% end %>
+      <% if @player_passports[0].league.player_category.ppp == true %> <th>PPP</th> <% end %>
+      <% if @player_passports[0].league.player_category.plusminus == true %> <th>+/-</th> <% end %>
+      <% if @player_passports[0].league.player_category.shg == true %> <th>SHG</th> <% end %>
+      <% if @player_passports[0].league.player_category.sha == true %> <th>SHA</th> <% end %>
+      <% if @player_passports[0].league.player_category.shp == true %> <th>SHP</th> <% end %>
+      <% if @player_passports[0].league.player_category.gwg == true %> <th>GWG</th> <% end %>
+      <% if @player_passports[0].league.player_category.gtg == true %> <th>GTG</th> <% end %>
+      <% if @player_passports[0].league.player_category.pim == true %> <th>PIM</th> <% end %>
+      <% if @player_passports[0].league.player_category.sog == true %> <th>SOG</th> <% end %>
+      <% if @player_passports[0].league.player_category.shpercent == true %> <th>SH%</th> <% end %>
+      <% if @player_passports[0].league.player_category.fw == true %> <th>FW</th> <% end %>
+      <% if @player_passports[0].league.player_category.fl == true %> <th>FL</th> <% end %>
+      <% if @player_passports[0].league.player_category.hit == true %> <th>HIT</th> <% end %>
+      <% if @player_passports[0].league.player_category.blk == true %> <th>BLK</th> <% end %>
     </tr>
   </thead>
   <tbody class="selected-players" id="user-output">
@@ -53,18 +61,26 @@
       <th>Player</th>
       <th>Team</th>
       <th>Position</th>
-      <th>Y!</th>
       <th>JBR</th>
-      <th>G</th>
-      <th>A</th>
-      <th>Points</th>
-      <th>PPP</th>
-      <th>+/-</th>
-      <th>PIMS</th>
-      <th>SOG</th>
-      <th>FOW</th>
-      <th>HIT</th>
-      <th>BLKS</th>
+      <% if @player_passports[0].league.player_category.g == true %> <th>G</th> <% end %>
+      <% if @player_passports[0].league.player_category.a == true %> <th>A</th> <% end %>
+      <% if @player_passports[0].league.player_category.p == true %> <th>P</th> <% end %>
+      <% if @player_passports[0].league.player_category.ppg == true %> <th>PPG</th> <% end %>
+      <% if @player_passports[0].league.player_category.ppa == true %> <th>PPA</th> <% end %>
+      <% if @player_passports[0].league.player_category.ppp == true %> <th>PPP</th> <% end %>
+      <% if @player_passports[0].league.player_category.plusminus == true %> <th>+/-</th> <% end %>
+      <% if @player_passports[0].league.player_category.shg == true %> <th>SHG</th> <% end %>
+      <% if @player_passports[0].league.player_category.sha == true %> <th>SHA</th> <% end %>
+      <% if @player_passports[0].league.player_category.shp == true %> <th>SHP</th> <% end %>
+      <% if @player_passports[0].league.player_category.gwg == true %> <th>GWG</th> <% end %>
+      <% if @player_passports[0].league.player_category.gtg == true %> <th>GTG</th> <% end %>
+      <% if @player_passports[0].league.player_category.pim == true %> <th>PIM</th> <% end %>
+      <% if @player_passports[0].league.player_category.sog == true %> <th>SOG</th> <% end %>
+      <% if @player_passports[0].league.player_category.shpercent == true %> <th>SH%</th> <% end %>
+      <% if @player_passports[0].league.player_category.fw == true %> <th>FW</th> <% end %>
+      <% if @player_passports[0].league.player_category.fl == true %> <th>FL</th> <% end %>
+      <% if @player_passports[0].league.player_category.hit == true %> <th>HIT</th> <% end %>
+      <% if @player_passports[0].league.player_category.blk == true %> <th>BLK</th> <% end %>
     </tr>
   </thead>
   <tbody class="selected-players" id="other-output">

@@ -4,10 +4,10 @@ $(function() {
 
   var graph_data = [{
       name: 'P.Kane',
-      data: [90, 100, 82, 46, 60, 106, 17, 30, 37, 21, 11, 40, .216, 17, 20, 0, 0, 9, 287, .160]
+      data: [100, 82, 46, 60, 106, 17, 30, 37, 21, 11, 40, .216, 17, 20, 0, 0, 9, 287, .160]
     }];
 
-  var graph_categories = ['Y!', 'JBR', 'G', 'A', 'P', 'PPG', 'PPA', 'PPP', '+/-', 'SHG', 'SHA', 'SHP', 'GWG', 'GTG', 'SOG', 'SH%', 'FW', 'FL', 'HIT', 'BLK', 'TOTAL'];
+  var graph_categories = ['JBR', 'G', 'A', 'P', 'PPG', 'PPA', 'PPP', '+/-', 'SHG', 'SHA', 'SHP', 'GWG', 'GTG', 'SOG', 'SH%', 'FW', 'FL', 'HIT', 'BLK', 'TOTAL'];
 
   var graph_colors = ["#000000", "#23395B", "#008DD5", "#8EB1C7", "#5AFF15", "#FFBC42", "#EB4511", "#F45866", "#EE0000", "#9932CD"];
 
@@ -23,7 +23,6 @@ $(function() {
       name: row.name,
       pro_team: row.pro_team,
       positions: row.positions,
-      yahoo_rank: row.yahoo_rank,
       jbr: row.jbr,
       g: row.g,
       a: row.a,
@@ -71,7 +70,6 @@ $(function() {
       row.append($('<td>').text(value.name));
       row.append($('<td>').text(value.pro_team));
       row.append($('<td>').text(value.positions));
-      row.append($('<td>').text(value.yahoo_rank));
       row.append($('<td>').text(value.jbr));
       if (value.g != undefined) { row.append($('<td>').text(value.g)); }
       if (value.a != undefined) { row.append($('<td>').text(value.a)); }
@@ -99,7 +97,6 @@ $(function() {
         name: value.name,
         data: data
       };
-      data.push(parseInt(value.yahoo_rank));
       data.push(parseInt(value.jbr));
       if (value.g != undefined) { data.push(parseInt(value.g)); }
       if (value.a != undefined) { data.push(parseInt(value.a)); }
@@ -136,8 +133,7 @@ $(function() {
         x: -20
       },
       xAxis: {
-        categories: [
-        'Y!', 'JBR', 'G', 'A', 'P', 'PPG', 'PPA', 'PPP', '+/-', 'SHG', 'SHA', 'SHP', 'GWG', 'GTG', 'SOG', 'SH%', 'FW', 'FL', 'HIT', 'BLK', 'TOTAL']
+        categories: graph_categories
       },
       yAxis: {
         title: {

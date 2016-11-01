@@ -1,27 +1,39 @@
- $(function() {
-
+$(function() {
   var otherCheckedRowsSkaters = [];
+
+
+/* TAKES OTHER TEAM SELECTED PLAYERS STATS AND PUTS THEM IN OBJECT, THEN PUSH TO ARRAY FOR FUTURE USE */
 
   $('.trading-teams').on('check.bs.table', '#otherTable', function (e, row) {
     otherCheckedRowsSkaters.push({
+      id: row.id,
       name: row.name,
       pro_team: row.pro_team,
       positions: row.positions,
-      yahoo_rank: row.yahoo_rank,
       jbr: row.jbr,
       g: row.g,
       a: row.a,
       p: row.p,
+      ppg: row.ppg,
+      ppa: row.ppa,
       ppp: row.ppp,
       plusminus: row.plusminus,
+      shg: row.shg,
+      sha: row.sha,
+      shp: row.shp,
+      gwg: row.gwg,
+      gtg: row.gtg,
       pim: row.pim,
       sog: row.sog,
-      fow: row.fow,
+      shpercent: row.shpercent,
+      fw: row.fw,
+      fl: row.fl,
       hit: row.hit,
       blk: row.blk
     });
-    console.log(otherCheckedRowsSkaters);
   });
+
+/* Unchecks selected other team players (ONLY SLICES, NEEDS IMPROVEMENT) */
 
   $('.trading-teams').on('uncheck.bs.table', '#otherTable', function (e, row) {
     $.each(otherCheckedRowsSkaters, function(index, value) {
@@ -29,77 +41,92 @@
         otherCheckedRowsSkaters.splice(index,1);
       }
     });
-    console.log(otherCheckedRowsSkaters);
   });
+
+
+/* ON CLICK, ADDS EACH OTHER TEAM SELECTED PLAYERS STATLINE TO A ROW, AND SENDIN THAT ROW TO THE HTML */
 
   $('#add-to-trade').on('click', function() {
     $("#other-output").empty();
-
     $.each(otherCheckedRowsSkaters, function(index, value) {
         var row = $('<tr>');
         $('#other-output').append(row);
         row.append($('<td>').text(value.name));
         row.append($('<td>').text(value.pro_team));
         row.append($('<td>').text(value.positions));
-        row.append($('<td>').text(value.yahoo_rank));
         row.append($('<td>').text(value.jbr));
-        row.append($('<td>').text(value.g));
-        row.append($('<td>').text(value.a));
-        row.append($('<td>').text(value.p));
-        row.append($('<td>').text(value.ppp));
-        row.append($('<td>').text(value.plusminus));
-        row.append($('<td>').text(value.pim));
-        row.append($('<td>').text(value.sog));
-        row.append($('<td>').text(value.fow));
-        row.append($('<td>').text(value.hit));
-        row.append($('<td>').text(value.blk));
+
+        console.log(value);
+
+        if (value.g != undefined) { row.append($('<td>').text(value.g)); }
+        if (value.a != undefined) { row.append($('<td>').text(value.a)); }
+        if (value.p != undefined) { row.append($('<td>').text(value.p)); }
+        if (value.ppg != undefined) { row.append($('<td>').text(value.ppg)); }
+        if (value.ppa != undefined) { row.append($('<td>').text(value.ppa)); }
+        if (value.ppp != undefined) { row.append($('<td>').text(value.ppp)); }
+        if (value.plusminus != undefined) { row.append($('<td>').text(value.plusminus)); }
+        if (value.shg != undefined) { row.append($('<td>').text(value.shg)); }
+        if (value.sha != undefined) { row.append($('<td>').text(value.sha)); }
+        if (value.shp != undefined) { row.append($('<td>').text(value.shp)); }
+        if (value.gwg != undefined) { row.append($('<td>').text(value.gwg)); }
+        if (value.gtg != undefined) { row.append($('<td>').text(value.gtg)); }
+        if (value.pim != undefined) { row.append($('<td>').text(value.pim)); }
+        if (value.sog != undefined) { row.append($('<td>').text(value.sog)); }
+        if (value.shpercent != undefined) { row.append($('<td>').text(value.shpercent)); }
+        if (value.fw != undefined) { row.append($('<td>').text(value.fw)); }
+        if (value.fl != undefined) { row.append($('<td>').text(value.fl)); }
+        if (value.hit != undefined) { row.append($('<td>').text(value.hit)); }
+        if (value.blk != undefined) { row.append($('<td>').text(value.blk)); }
     });
   });
 
-  var otherCheckedRowsGoalies = [];
 
-  $('.trading-teams').on('check.bs.table', '#otherGoalieTable', function (e, row) {
-    otherCheckedRowsGoalies.push({
-      name: row.name,
-      pro_team: row.pro_team,
-      positions: row.positions,
-      yahoo_rank: row.yahoo_rank,
-      jbr: row.jbr,
-      w: row.w,
-      l: row.l,
-      gaa: row.gaa,
-      svpercent: row.svpercent,
-      sho: row.sho,
-      sv: row.sv,
-    });
-    console.log(otherCheckedRowsGoalies);
-  });
+/* OTHER TEAM GOALIES GOALIES GOALIES */
 
-  $('.trading-teams').on('uncheck.bs.table', '#otherGoalieTable', function (e, row) {
-    $.each(otherCheckedRowsGoalies, function(index, value) {
-      if (value.id === row.id) {
-        otherCheckedRowsGoalies.splice(index,1);
-      }
-    });
-    console.log(otherCheckedRowsGoalies);
-  });
+  // var otherCheckedRowsGoalies = [];
 
-    $('#add-to-trade').on('click', function() {
-    $("#other-output-goalies").empty();
+  // $('.trading-teams').on('check.bs.table', '#otherGoalieTable', function (e, row) {
+  //   otherCheckedRowsGoalies.push({
+  //     name: row.name,
+  //     pro_team: row.pro_team,
+  //     positions: row.positions,
+  //     yahoo_rank: row.yahoo_rank,
+  //     jbr: row.jbr,
+  //     w: row.w,
+  //     l: row.l,
+  //     gaa: row.gaa,
+  //     svpercent: row.svpercent,
+  //     sho: row.sho,
+  //     sv: row.sv,
+  //   });
+  //   console.log(otherCheckedRowsGoalies);
+  // });
 
-    $.each(otherCheckedRowsGoalies, function(index, value) {
-      var row = $('<tr>');
-      $('#other-output-goalies').append(row);
-      row.append($('<td>').text(value.name));
-      row.append($('<td>').text(value.pro_team));
-      row.append($('<td>').text(value.yahoo_rank));
-      row.append($('<td>').text(value.jbr));
-      row.append($('<td>').text(value.w));
-      row.append($('<td>').text(value.l));
-      row.append($('<td>').text(value.gaa));
-      row.append($('<td>').text(value.svpercent));
-      row.append($('<td>').text(value.sho));
-      row.append($('<td>').text(value.sv));
-    });
-  });
+  // $('.trading-teams').on('uncheck.bs.table', '#otherGoalieTable', function (e, row) {
+  //   $.each(otherCheckedRowsGoalies, function(index, value) {
+  //     if (value.id === row.id) {
+  //       otherCheckedRowsGoalies.splice(index,1);
+  //     }
+  //   });
+  //   console.log(otherCheckedRowsGoalies);
+  // });
+
+  //   $('#add-to-trade').on('click', function() {
+  //   $("#other-output-goalies").empty();
+
+  //   $.each(otherCheckedRowsGoalies, function(index, value) {
+  //     var row = $('<tr>');
+  //     $('#other-output-goalies').append(row);
+  //     row.append($('<td>').text(value.name));
+  //     row.append($('<td>').text(value.pro_team));
+  //     row.append($('<td>').text(value.yahoo_rank));
+  //     row.append($('<td>').text(value.jbr));
+  //     row.append($('<td>').text(value.w));
+  //     row.append($('<td>').text(value.l));
+  //     row.append($('<td>').text(value.gaa));
+  //     row.append($('<td>').text(value.svpercent));
+  //     row.append($('<td>').text(value.sho));
+  //     row.append($('<td>').text(value.sv));
+  //   });
+  // });
 });

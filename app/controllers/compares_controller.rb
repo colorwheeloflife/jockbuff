@@ -9,6 +9,7 @@ class ComparesController < ApplicationController
 
   def render_trade_table
     @trade_team = TradingWithRoster.new.get_roster(params[:team_id])
+    @player_passports = PlayerPassport.includes(:player, :player_predictions)
     render :partial => 'render_trade_table'
   end
 
