@@ -20,7 +20,6 @@
       hit: row.hit,
       blk: row.blk
     });
-    console.log(otherCheckedRowsSkaters);
   });
 
   $('.trading-teams').on('uncheck.bs.table', '#otherTable', function (e, row) {
