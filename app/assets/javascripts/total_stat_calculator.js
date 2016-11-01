@@ -10,6 +10,16 @@ $(document).ready(function () {
     });
   };
 
+  totalCalcPercentage = function (tableTarget, statsTarget, renderTarget) {
+    $(tableTarget).each(function () {
+      var sum = 0
+      $(this).find(statsTarget).each(function () {
+          sum += +$(this).text() || 0;
+      });
+      $(renderTarget).html(sum.toFixed(2));
+    });
+  };
+
 //////////////// COMPARES PAGE //////////////////////////
 
   //USER SKATERS//
@@ -41,11 +51,11 @@ $(document).ready(function () {
   //Goalie JBR total//
   totalCalc('#each-user-goalie', '.losses', '.total-losses');
   //Goalie JBR total//
-  totalCalc('#each-user-goalie', '.gaa', '.total-gaa');
+  totalCalcPercentage('#each-user-goalie', '.gaa', '.total-gaa');
   //Goalie JBR total//
   totalCalc('#each-user-goalie', '.ga', '.total-ga');
   //Goalie JBR total//
-  totalCalc('#each-user-goalie', '.svpercent', '.total-svpercent');
+  totalCalcPercentage('#each-user-goalie', '.svpercent', '.total-svpercent');
   //Goalie JBR total//
   totalCalc('#each-user-goalie', '.saves', '.total-saves');
   //Goalie JBR total//
@@ -83,11 +93,11 @@ $(document).ready(function () {
     //Goalie JBR total//
     totalCalc('#each-other-goalie', '.losses', '.other-total-losses');
     //Goalie JBR total//
-    totalCalc('#each-other-goalie', '.gaa', '.other-total-gaa');
+    totalCalcPercentage('#each-other-goalie', '.gaa', '.other-total-gaa');
     //Goalie JBR total//
     totalCalc('#each-other-goalie', '.ga', '.other-total-ga');
     //Goalie JBR total//
-    totalCalc('#each-other-goalie', '.svpercent', '.other-total-svpercent');
+    totalCalcPercentage('#each-other-goalie', '.svpercent', '.other-total-svpercent');
     //Goalie JBR total//
     totalCalc('#each-other-goalie', '.saves', '.other-total-saves');
     //Goalie JBR total//

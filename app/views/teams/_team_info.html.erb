@@ -21,15 +21,13 @@
         <%= @players %>
 
     <% @players.each do |player_passport| %>
-            <%= player_passport %>
-
-    <% next if player_passport.player.positions.join("/").include?("G") %>
+    <% next if player_passport.player.positions.join(" / ").include?("G") %>
       <tr>
         <%= player_passport %>
         <td><%= player_passport.player.name %></td>
         <td><%= player_passport.player.pro_team.upcase %></td>
-        <td><%= player_passport.player.positions.join("/") %></td>
-        <td>150</td>
+        <td><%= player_passport.player.positions.join(" / ") %></td>
+        <td><%= jbr_by_cat(1, player_passport.player.player_id, :jbr)[player_passport.player.player_id] %> </td>
         <td><%= player_passport.player.player_prediction.g %></td>
         <td><%= player_passport.player.player_prediction.a %></td>
         <td><%= player_passport.player.player_prediction.p %></td>

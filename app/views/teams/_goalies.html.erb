@@ -14,11 +14,11 @@
   </thead>
   <tbody>
   <% @players.each do |player_passport| %>
-  <% next if player_passport.player.positions.join("/").exclude?("G") %>
+  <% next if player_passport.player.positions.join(" / ").exclude?("G") %>
     <tr>
       <td><%= player_passport.player.name %></td>
       <td><%= player_passport.player.pro_team.upcase %></td>
-      <td>100</td>
+      <td><%= jbr_by_cat(0, player_passport.player.player_id, :jbr)[player_passport.player.player_id] %> </td>
       <td><%= player_passport.player.player_prediction.w %></td>
       <td><%= player_passport.player.player_prediction.l %></td>
       <td><%= player_passport.player.player_prediction.gaa %></td>

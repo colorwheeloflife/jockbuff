@@ -106,7 +106,6 @@ def player_stats_current
     player_stats = {player_id: player_id}
     player_full_stats = player["fantasy_content"]["player"]["player_stats"]["stats"]["stat"]
     player_full_stats.select do |stat|
-      # byebug
       player_stats.merge!({ gp: stat['value'] }) if stat['stat_id'] == "30"
       ## gp for players is a different code than goalie
       player_stats.merge!({ gp: stat['value'] }) if stat['stat_id'] == "29"
