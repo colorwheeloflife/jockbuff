@@ -96,8 +96,6 @@ $(document).ready(function () {
     totalCalc('#each-other-goalie', '.goalie-jbr-stat', '.other-total-goalie-jbr');
   });
 
-
-
 //////////////// COMPARES PAGE //////////////////////////
 
 });
