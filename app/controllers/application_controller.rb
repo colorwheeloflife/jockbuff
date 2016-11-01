@@ -32,14 +32,23 @@ class ApplicationController < ActionController::Base
     @current_user = current_user
     @yahoo_root = yahoo_root
     league_full = HTTParty.get("#{@yahoo_root}league/#{league_key}/settings", headers:{
-      "Authorization" => "Bearer #{User.first.token}"
+      "Authorization" => "Bearer #{current_user.token}"
     })
     num_teams = league_full["fantasy_content"]["league"]["num_teams"].to_i
     team_arr = (1..num_teams).to_a
     team_info_arr = team_arr.map do |team|
       team_info = HTTParty.get("#{@yahoo_root}team/#{league_key}.t.#{team}/roster/players", headers:{
-      "Authorization" => "Bearer #{User.first.token}"
+      "Authorization" => "Bearer #{current_user.token}"
       })
+      if team_info["fantasy_content"]
+        team_info
+      else
+      sleep(5)
+      team_info = HTTParty.get("#{@yahoo_root}team/#{league_key}.t.#{team}/roster/players", headers:{
+      "Authorization" => "Bearer #{current_user.token}"
+      })
+    end
+    team_info
     end
     return team_info_arr
   end

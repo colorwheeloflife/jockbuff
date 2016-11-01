@@ -4,14 +4,15 @@ module PlayerPassportHelper
   def create_passport_entry (league_ids)
     @current_user = current_user
     league_ids.each do |league_id|
-    draft_full = HTTParty.get("https://fantasysports.yahooapis.com/fantasy/v2/league/363.l.#{league_id}/draftresults", headers:{
+    league_key = League.find_by(id: league_id.to_i).league_key
+    draft_full = HTTParty.get("https://fantasysports.yahooapis.com/fantasy/v2/league/#{league_key}/draftresults", headers:{
     "Authorization" => "Bearer #{@current_user.token}"
     })
+    byebug
     draft_players = draft_full["fantasy_content"]["league"]["draft_results"]["draft_result"]
     draft_positions = draft_players.map do |player|
       draft_info = [player["pick"], player["player_key"].split('p.')[1]]
     end
-    league_key = League.find_by(id: league_id.to_i).league_key
     team_info_arr = league_call(league_key)
     owned_players = team_info_arr.map do |team|
       player_info = team["fantasy_content"]["team"]["roster"]["players"]["player"]
