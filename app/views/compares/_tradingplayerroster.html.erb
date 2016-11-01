@@ -5,8 +5,6 @@
       <th data-field="name" data-sortable="true">Player</th>
       <th data-field="pro_team" data-sortable="true">Team</th>
       <th data-field="positions" data-sortable="true">Pos</th>
-      <th data-field="yahoo_rank"
-          data-sortable="true">Y!</th>
       <th data-field="jbr"
           data-sortable="true">JBR</th>
       <% if @player_passports[0].league.player_category.g == true %> <th data-field="g" data-sortable="true">G</th> <% end %>
@@ -43,7 +41,6 @@
         <td> <%= player_passport.player.name %> </td>
         <td> <%= player_passport.player.pro_team.upcase %></td>
         <td> <%= player_passport.player.positions.join("/") %> </td>
-        <td> 90 </td>
         <td> 100 </td>
         <% if player_passport.league.player_category.g == true %> <td> <%= player_passport.player.player_prediction.g %> </td> <% end %>
         <% if player_passport.league.player_category.a == true %> <td> <%= player_passport.player.player_prediction.a %> </td> <% end %>

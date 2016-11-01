@@ -1,5 +1,6 @@
 <div class="row container-fluid container-space-no-top">
   <div class="col-md-6">
+    <h1>Team Stat Impact</h1>
     <table class="table table-bordered table-striped table-hover table-responsive table-players">
       <thead>
         <tr>
@@ -47,16 +48,11 @@
           <% if @player_passports[0].league.player_category.fl == true %> <td class="user-total-fl"></td> <% end %>
           <% if @player_passports[0].league.player_category.hit == true %> <td class="user-total-hit"></td> <% end %>
           <% if @player_passports[0].league.player_category.blk == true %> <td class="user-total-blk"></td> <% end %>
-        <td class="user-total-jbr"></td>
-      </tr>
-      </tbody>
+          <td class="user-total-jbr"></td>
+        </tr>
+        </tbody>
       </table>
-    </div>
 
-
-
-
-    <div class="col-md-6">
     <table class="table table-bordered table-striped table-hover table-responsive table-players">
       <thead>
         <tr>
@@ -78,6 +74,66 @@
           <td class="total-shutouts"></td>
           <td class="total-saves"></td>
           <td class="total-goalie-jbr"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+<!-- Other Team -->
+
+  <div class="col-md-6">
+  <h1>Other Team Stat Impact</h1>
+    <table class="table table-bordered table-striped table-hover table-responsive table-players">
+      <thead>
+        <tr>
+          <th>G</th>
+          <th>A</th>
+          <th>Points</th>
+          <th>PPP</th>
+          <th>+/-</th>
+          <th>PIMS</th>
+          <th>SOG</th>
+          <th>HITS</th>
+          <th>BLKS</th>
+          <th>JBR</th>
+        </tr>
+      </thead>
+      <tbody id="total-team-stats">
+        <tr>
+          <td class="other-total-goals"></td>
+          <td class="other-total-assists"></td>
+          <td class="other-total-points"></td>
+          <td class="other-total-powerplay"></td>
+          <td class="other-total-plusminus"></td>
+          <td class="other-total-pims"></td>
+          <td class="other-total-sog"></td>
+          <td class="other-total-hits"></td>
+          <td class="other-total-blks"></td>
+          <td class="other-total-jbr"></td>
+        </tr>
+      </tbody>
+      </table>
+    <table class="table table-bordered table-striped table-hover table-responsive table-players">
+      <thead>
+        <tr>
+          <th>Wins</th>
+          <th>Losses</th>
+          <th>GAA</th>
+          <th>SV %</th>
+          <th>SO</th>
+          <th>Saves</th>
+          <th>JBR</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="other-total-wins"></td>
+          <td class="other-total-losses"></td>
+          <td class="other-total-gaa"></td>
+          <td class="other-total-svpercent"></td>
+          <td class="other-total-shutouts"></td>
+          <td class="other-total-saves"></td>
+          <td class="other-total-goalie-jbr"></td>
         </tr>
       </tbody>
     </table>

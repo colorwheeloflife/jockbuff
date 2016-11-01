@@ -5,32 +5,7 @@ $(function() {
 /* TAKES OTHER TEAM SELECTED PLAYERS STATS AND PUTS THEM IN OBJECT, THEN PUSH TO ARRAY FOR FUTURE USE */
 
   $('.trading-teams').on('check.bs.table', '#otherTable', function (e, row) {
-    otherCheckedRowsSkaters.push({
-      id: row.id,
-      name: row.name,
-      pro_team: row.pro_team,
-      positions: row.positions,
-      jbr: row.jbr,
-      g: row.g,
-      a: row.a,
-      p: row.p,
-      ppg: row.ppg,
-      ppa: row.ppa,
-      ppp: row.ppp,
-      plusminus: row.plusminus,
-      shg: row.shg,
-      sha: row.sha,
-      shp: row.shp,
-      gwg: row.gwg,
-      gtg: row.gtg,
-      pim: row.pim,
-      sog: row.sog,
-      shpercent: row.shpercent,
-      fw: row.fw,
-      fl: row.fl,
-      hit: row.hit,
-      blk: row.blk
-    });
+    otherCheckedRowsSkaters.push(row);
   });
 
 /* Unchecks selected other team players (ONLY SLICES, NEEDS IMPROVEMENT) */
@@ -55,9 +30,6 @@ $(function() {
         row.append($('<td>').text(value.pro_team));
         row.append($('<td>').text(value.positions));
         row.append($('<td>').text(value.jbr));
-
-        console.log(value);
-
         if (value.g != undefined) { row.append($('<td>').text(value.g)); }
         if (value.a != undefined) { row.append($('<td>').text(value.a)); }
         if (value.p != undefined) { row.append($('<td>').text(value.p)); }
@@ -81,26 +53,16 @@ $(function() {
   });
 
 
+
+
 /* OTHER TEAM GOALIES GOALIES GOALIES */
 
   // var otherCheckedRowsGoalies = [];
 
-  // $('.trading-teams').on('check.bs.table', '#otherGoalieTable', function (e, row) {
-  //   otherCheckedRowsGoalies.push({
-  //     name: row.name,
-  //     pro_team: row.pro_team,
-  //     positions: row.positions,
-  //     yahoo_rank: row.yahoo_rank,
-  //     jbr: row.jbr,
-  //     w: row.w,
-  //     l: row.l,
-  //     gaa: row.gaa,
-  //     svpercent: row.svpercent,
-  //     sho: row.sho,
-  //     sv: row.sv,
-  //   });
-  //   console.log(otherCheckedRowsGoalies);
-  // });
+// $('.trading-teams').on('check.bs.table', '#otherGoalieTable', function (e, row) {
+//     otherCheckedRowsGoalies.push(row);
+//     console.log(otherCheckedRowsGoalies);
+//   });
 
   // $('.trading-teams').on('uncheck.bs.table', '#otherGoalieTable', function (e, row) {
   //   $.each(otherCheckedRowsGoalies, function(index, value) {
@@ -129,4 +91,5 @@ $(function() {
   //     row.append($('<td>').text(value.sv));
   //   });
   // });
+
 });
