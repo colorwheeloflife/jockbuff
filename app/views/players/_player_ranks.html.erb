@@ -1,7 +1,8 @@
-<table class="table table-bordered table-striped table-hover table-responsive"
+<table class="table table-bordered table-striped table-hover table-responsive table-players "
       id="playersTable"
       data-toggle="table"
-      data-search="true">
+      data-search="true"
+      data-pagination="true">
 
   <thead>
     <tr>
@@ -36,7 +37,7 @@
   </thead>
 
   <tbody>
-    <% @player_passports.first(50).each do |player_passport| %>
+    <% @player_passports.each do |player_passport| %>
     <% next if player_passport.player.positions.join("/").include?("G") %>
     <% playerID = player_passport.id %>
       <tr>
