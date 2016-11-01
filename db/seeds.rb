@@ -2,7 +2,7 @@ require 'csv'
 require 'byebug'
 
 def players_to_seed
-  token = "8GjOy4GbvwjoM_V1RPshaZy7i9L6ZEMFqNZjADBwbzTxDde1.bXHS4wqakno7VI7sVCDI.QzLl5rsyE7DorL5mIH5TQl_kpwf3UxACAySwP_dPOYH8HBA1bEeVaBcFRrs__C9VEjb0nEIsYRp8CbEEv0o_cK3V6FVYiNmut1xRyzlic0EAIpr7X7scsFAIg6n4My0w7sw.XRjiiNcDc3K2v.fsfMb_IXu3hoZ7UTyHgJHjZrmQLiddpLaf5L4OgKyJgOYaF3u5aVnEoqdlVObp5i8d0Y_9CJwZjetjgwOr0UfGd1q4Wit8Dgu5Hs.JvU.xO9Dh5mdUILyAUpLTH5FpJPeW__qa8LmZDi9CU3FI_PSsenr1w8GbLX0r.LOKCAbIZEsvswOI5Erxi9j1Zn30fp4uKmCRI.o7naezHAuwSCS1QJq.FQSeAcgii594Wlw_AMuvzEd0r2psiLgSVIpUJ473z2hJCzPNpmKUzb0aJCYsZKKQg3taq2g5LrDvaHsp3aH07gb3aFP5LOt59myhIfPlixwnQLUJb1oJO8Fty.XRF4S.bfjZVQ.VxxS5nFgAJsNuAxWd1B5d5j.R_Blrg7oud9hG_pmb9uduirt53qgcLsVBXJLIktOiOsSB5zX61pxOu.r4YfAGLcwdXBPqyAklJpoFh2aSeQDlJhckUwvvzZ27UYrDIvHOUZdxTCtflomZB3EwZQx3e1yT4rO5UbEt.deIrSxYwVe_jiHGwqmnoCL_YNgEhj3n76X8KvOTWqdovkLzzngQ--"
+  token = User.first.token
   full_player_arr = []
   i = 0
   while i < 1888 do
@@ -10,9 +10,9 @@ def players_to_seed
     i = i + 25
   end
   players_full = full_player_arr.map do |start|
-    sleep(2)
+    sleep(0.2)
     p start
-    players = HTTParty.get("https://fantasysports.yahooapis.com/fantasy/v2/league/363.l.91004/players;start=#{start}", headers:{
+    players = HTTParty.get("https://fantasysports.yahooapis.com/fantasy/v2/league/363.l.473/players;start=#{start}", headers:{
         "Authorization" => "Bearer #{token}"
       })
     player_arr = players["fantasy_content"]["league"]["players"]["player"]
@@ -105,56 +105,56 @@ def player_predictions
   end
 end
 
-def player_stats_current
-  token ="8GjOy4GbvwjoM_V1RPshaZy7i9L6ZEMFqNZjADBwbzTxDde1.bXHS4wqakno7VI7sVCDI.QzLl5rsyE7DorL5mIH5TQl_kpwf3UxACAySwP_dPOYH8HBA1bEeVaBcFRrs__C9VEjb0nEIsYRp8CbEEv0o_cK3V6FVYiNmut1xRyzlic0EAIpr7X7scsFAIg6n4My0w7sw.XRjiiNcDc3K2v.fsfMb_IXu3hoZ7UTyHgJHjZrmQLiddpLaf5L4OgKyJgOYaF3u5aVnEoqdlVObp5i8d0Y_9CJwZjetjgwOr0UfGd1q4Wit8Dgu5Hs.JvU.xO9Dh5mdUILyAUpLTH5FpJPeW__qa8LmZDi9CU3FI_PSsenr1w8GbLX0r.LOKCAbIZEsvswOI5Erxi9j1Zn30fp4uKmCRI.o7naezHAuwSCS1QJq.FQSeAcgii594Wlw_AMuvzEd0r2psiLgSVIpUJ473z2hJCzPNpmKUzb0aJCYsZKKQg3taq2g5LrDvaHsp3aH07gb3aFP5LOt59myhIfPlixwnQLUJb1oJO8Fty.XRF4S.bfjZVQ.VxxS5nFgAJsNuAxWd1B5d5j.R_Blrg7oud9hG_pmb9uduirt53qgcLsVBXJLIktOiOsSB5zX61pxOu.r4YfAGLcwdXBPqyAklJpoFh2aSeQDlJhckUwvvzZ27UYrDIvHOUZdxTCtflomZB3EwZQx3e1yT4rO5UbEt.deIrSxYwVe_jiHGwqmnoCL_YNgEhj3n76X8KvOTWqdovkLzzngQ--"
-  player_ids = Player.all.pluck(:player_id)
-  # index = player_ids.index(3982)
-  # player_ids = player_ids.slice(index, player_ids.length)
-  player_ids.each do |player_id|
-    player = HTTParty.get("https://fantasysports.yahooapis.com/fantasy/v2/player/363.p.#{player_id}/stats", headers:{
-          "Authorization" => "Bearer #{token}"
-        })
-    player_stats = {player_id: player_id}
-    player_full_stats = player["fantasy_content"]["player"]["player_stats"]["stats"]["stat"]
-    player_full_stats.select do |stat|
-      # byebug
-      player_stats.merge!({ gp: stat['value'] }) if stat['stat_id'] == "30"
-      ## gp for players is a different code than goalie
-      player_stats.merge!({ gp: stat['value'] }) if stat['stat_id'] == "29"
-      player_stats.merge!({ g: stat['value'] }) if stat['stat_id'] == "1"
-      player_stats.merge!({ a: stat['value'] }) if stat['stat_id'] == "2"
-      player_stats.merge!({ p: stat['value'] })if stat['stat_id'] == "3"
-      player_stats.merge!({ plusminus:  stat['value'] }) if stat['stat_id'] == "4"
-      player_stats.merge!({ pim: stat['value'] }) if stat['stat_id'] == "5"
-      player_stats.merge!({ ppg: stat['value'] }) if stat['stat_id'] == "6"
-      player_stats.merge!({ ppa: stat['value'] }) if stat['stat_id'] == "7"
-      player_stats.merge!({ ppp: stat['value'] }) if stat['stat_id'] == "8"
-      player_stats.merge!({ shg: stat['value'] }) if stat['stat_id'] == "9"
-      player_stats.merge!({ sha: stat['value'] }) if stat['stat_id'] == "10"
-      player_stats.merge!({ shp: stat['value'] }) if stat['stat_id'] == "11"
-      player_stats.merge!({ gwg: stat['value'] }) if stat['stat_id'] == "12"
-      player_stats.merge!({ gwg: stat['value'] }) if stat['stat_id'] == "13"
-      player_stats.merge!({ sog: stat['value'] }) if stat['stat_id'] == "14"
-      player_stats.merge!({ shpercent: stat['value'] }) if stat['stat_id'] == "15"
-      player_stats.merge!({ fw: stat['value'] }) if stat['stat_id'] == "16"
-      player_stats.merge!({ fl: stat['value'] }) if stat['stat_id'] == "17"
-      player_stats.merge!({ hit: stat['value'] }) if stat['stat_id'] == "31"
-      player_stats.merge!({ blk: stat['value'] }) if stat['stat_id'] == "32"
-      player_stats.merge!({ gs: stat['value'] }) if stat['stat_id'] == "18"
-      player_stats.merge!({ w: stat['value'] }) if stat['stat_id'] == "19"
-      player_stats.merge!({ l: stat['value'] }) if stat['stat_id'] == "20"
-      player_stats.merge!({ ga: stat['value'] }) if stat['stat_id'] == "22"
-      player_stats.merge!({ gaa: stat['value'] }) if stat['stat_id'] == "23"
-      player_stats.merge!({ sa: stat['value'] }) if stat['stat_id'] == "24"
-      player_stats.merge!({ sec: (stat['value'].to_i * 60) }) if stat['stat_id'] == "28"
-      player_stats.merge!({ sv: stat['value'] }) if stat['stat_id'] == "25"
-      player_stats.merge!({ svpercent: stat['value'] }) if stat['stat_id'] == "26"
-      player_stats.merge!({ sho: stat['value'] }) if stat['stat_id'] == "27"
-    end
-  sleep(0.1)
-  PlayerStat.create(player_stats)
-  end
-end
+# def player_stats_current
+#   token = User.first.token
+#   player_ids = Player.all.pluck(:player_id)
+#   # index = player_ids.index(3982)
+#   # player_ids = player_ids.slice(index, player_ids.length)
+#   player_ids.each do |player_id|
+#     player = HTTParty.get("https://fantasysports.yahooapis.com/fantasy/v2/player/363.p.#{player_id}/stats", headers:{
+#           "Authorization" => "Bearer #{token}"
+#         })
+#     player_stats = {player_id: player_id}
+#     player_full_stats = player["fantasy_content"]["player"]["player_stats"]["stats"]["stat"]
+#     player_full_stats.select do |stat|
+#       # byebug
+#       player_stats.merge!({ gp: stat['value'] }) if stat['stat_id'] == "30"
+#       ## gp for players is a different code than goalie
+#       player_stats.merge!({ gp: stat['value'] }) if stat['stat_id'] == "29"
+#       player_stats.merge!({ g: stat['value'] }) if stat['stat_id'] == "1"
+#       player_stats.merge!({ a: stat['value'] }) if stat['stat_id'] == "2"
+#       player_stats.merge!({ p: stat['value'] })if stat['stat_id'] == "3"
+#       player_stats.merge!({ plusminus:  stat['value'] }) if stat['stat_id'] == "4"
+#       player_stats.merge!({ pim: stat['value'] }) if stat['stat_id'] == "5"
+#       player_stats.merge!({ ppg: stat['value'] }) if stat['stat_id'] == "6"
+#       player_stats.merge!({ ppa: stat['value'] }) if stat['stat_id'] == "7"
+#       player_stats.merge!({ ppp: stat['value'] }) if stat['stat_id'] == "8"
+#       player_stats.merge!({ shg: stat['value'] }) if stat['stat_id'] == "9"
+#       player_stats.merge!({ sha: stat['value'] }) if stat['stat_id'] == "10"
+#       player_stats.merge!({ shp: stat['value'] }) if stat['stat_id'] == "11"
+#       player_stats.merge!({ gwg: stat['value'] }) if stat['stat_id'] == "12"
+#       player_stats.merge!({ gwg: stat['value'] }) if stat['stat_id'] == "13"
+#       player_stats.merge!({ sog: stat['value'] }) if stat['stat_id'] == "14"
+#       player_stats.merge!({ shpercent: stat['value'] }) if stat['stat_id'] == "15"
+#       player_stats.merge!({ fw: stat['value'] }) if stat['stat_id'] == "16"
+#       player_stats.merge!({ fl: stat['value'] }) if stat['stat_id'] == "17"
+#       player_stats.merge!({ hit: stat['value'] }) if stat['stat_id'] == "31"
+#       player_stats.merge!({ blk: stat['value'] }) if stat['stat_id'] == "32"
+#       player_stats.merge!({ gs: stat['value'] }) if stat['stat_id'] == "18"
+#       player_stats.merge!({ w: stat['value'] }) if stat['stat_id'] == "19"
+#       player_stats.merge!({ l: stat['value'] }) if stat['stat_id'] == "20"
+#       player_stats.merge!({ ga: stat['value'] }) if stat['stat_id'] == "22"
+#       player_stats.merge!({ gaa: stat['value'] }) if stat['stat_id'] == "23"
+#       player_stats.merge!({ sa: stat['value'] }) if stat['stat_id'] == "24"
+#       player_stats.merge!({ sec: (stat['value'].to_i * 60) }) if stat['stat_id'] == "28"
+#       player_stats.merge!({ sv: stat['value'] }) if stat['stat_id'] == "25"
+#       player_stats.merge!({ svpercent: stat['value'] }) if stat['stat_id'] == "26"
+#       player_stats.merge!({ sho: stat['value'] }) if stat['stat_id'] == "27"
+#     end
+#   sleep(1)
+#   PlayerStat.create(player_stats)
+#   end
+# end
 
 
 # ####
