@@ -2,41 +2,33 @@
   <thead>
     <tr>
       <th>#</th>
-      <th>Category</th>
       <th>Best FA Available</th>
+      <th>Position</th>
+      <th>Y! R</th>
       <th>JBR</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>1</td>
-      <td>Goals</td>
-      <td>Dingo Burns</td>
-      <td>100</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>Hits</td>
-      <td>Meathead Mauler</td>
-      <td>96</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>PPP</td>
-      <td>Joey Powerplay</td>
-      <td>155</td>
-    </tr>
-    <tr>
-      <td>4</td>
-      <td>+/-</td>
-      <td>Otto Adder</td>
-      <td>76</td>
-    </tr>
-    <tr>
-      <td>5</td>
-      <td>A</td>
-      <td>Dan Playmaker</td>
-      <td>98</td>
-    </tr>
+    <% count = 0 %>
+    <% @freeagents.first(5).each do |player_passport| %>
+    <% next if player_passport.player.positions.join(" / ").include?("G") %>
+      <tr>
+        <td> <%= count += 1 %> </td>
+        <td> <%= player_passport.player.name %> </td>
+        <td> <%= player_passport.player.positions.join(" / ") %> </td>
+        <td> 150 </td>
+        <td> 220 </td>
+        <td class="hidden"> <%= player_passport.player.player_prediction.g %> </td>
+        <td class="hidden"> <%= player_passport.player.player_prediction.a %> </td>
+        <td class="hidden"> <%= player_passport.player.player_prediction.p %> </td>
+        <td class="hidden"> <%= player_passport.player.player_prediction.ppp %> </td>
+        <td class="hidden"> <%= player_passport.player.player_prediction.plusminus %> </td>
+        <td class="hidden"> <%= player_passport.player.player_prediction.pim %> </td>
+        <td class="hidden"> <%= player_passport.player.player_prediction.sog %> </td>
+        <td class="hidden"> <%= player_passport.player.player_prediction.fw %> </td>
+        <td class="hidden"> <%= player_passport.player.player_prediction.hit %> </td>
+        <td class="hidden"> <%= player_passport.player.player_prediction.blk %> </td>
+      </tr>
+    <% end %>
   </tbody>
 </table>

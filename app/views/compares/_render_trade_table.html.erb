@@ -26,7 +26,7 @@
   </thead>
   <tbody>
     <% @trade_team.each do |player_passport| %>
-    <% next if player_passport.player.positions.join("/").include?("G") %>
+    <% next if player_passport.player.positions.join(" / ").include?("G") %>
           <tr>
         <td>
         <label>
@@ -35,7 +35,7 @@
         </td>
         <td> <%= player_passport.player.name %> </td>
         <td> <%= player_passport.player.pro_team.upcase %></td>
-        <td> <%= player_passport.player.positions.join("/") %> </td>
+        <td> <%= player_passport.player.positions.join(" / ") %> </td>
         <td> 150 </td>
         <td> 220 </td>
         <td class="hidden"> <%= player_passport.player.player_prediction.g %> </td>
@@ -73,7 +73,7 @@
   </thead>
   <tbody>
     <% @trade_team.each do |player_passport| %>
-    <% next if player_passport.player.positions.join("/").exclude?("G") %>
+    <% next if player_passport.player.positions.join(" / ").exclude?("G") %>
     <tr>
       <td>
         <label>

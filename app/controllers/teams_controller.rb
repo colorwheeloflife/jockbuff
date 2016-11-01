@@ -12,6 +12,7 @@ class TeamsController < ApplicationController
     team_id = params[:id]
     @team = Team.find(team_id)
     @players = PlayerPassport.where(team_id: team_id).includes(:player)
+    @freeagents = PlayerPassport.where(position: "WW").includes(:player)
   end
 
   # private
