@@ -11,7 +11,6 @@ module LeaguesHelper
     PlayerPassport.find_by(league_id: league_ids)
   end
 
-
   def create_leagues
     @yahoo_root = yahoo_root
     @current_user = current_user
@@ -42,6 +41,14 @@ module LeaguesHelper
         @goalie_category = create_goalie_categories(league_settings, league_info)
       end
     end
+  end
+
+  def find_average
+
+  end
+
+  def find_ranking
+
   end
 
 end

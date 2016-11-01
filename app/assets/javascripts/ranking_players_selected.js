@@ -1,10 +1,21 @@
 $(function() {
 
   var selectedPlayers = [];
+
   var graph_data = [{
       name: 'P.Kane',
       data: [90, 100, 82, 46, 60, 106, 17, 30, 37, 21, 11, 40, .216, 17, 20, 0, 0, 9, 287, .160]
     }];
+
+  var graph_categories = ['Y!', 'JBR', 'G', 'A', 'P', 'PPG', 'PPA', 'PPP', '+/-', 'SHG', 'SHA', 'SHP', 'GWG', 'GTG', 'SOG', 'SH%', 'FW', 'FL', 'HIT', 'BLK', 'TOTAL'];
+
+  var graph_colors = ["#000000", "#23395B", "#008DD5", "#8EB1C7", "#5AFF15", "#FFBC42", "#EB4511", "#F45866", "#EE0000", "#9932CD"];
+
+  function colorer (array) {
+    var index = Math.random(0, array.length);
+    return array[index];
+  }
+
 
   $('#playersTable').on('check.bs.table', function (e, row) {
     selectedPlayers.push({
@@ -42,10 +53,13 @@ $(function() {
     $.each(selectedPlayers, function(index, value) {
       if (value.id === row.id) {
         selectedPlayers.splice(index,1);
+        console.log(index);
       }
     });
     // console.log(selectedPlayers);
   });
+
+
 
 
   $("#add_player").click(function() {
@@ -53,6 +67,7 @@ $(function() {
     $.each(selectedPlayers, function(index, value) {
       var row = $('<tr>');
       $('#selection-output').append(row);
+      row.addClass(value.id);
       row.append($('<td>').text(value.name));
       row.append($('<td>').text(value.pro_team));
       row.append($('<td>').text(value.positions));
@@ -78,7 +93,6 @@ $(function() {
       if (value.hit != undefined) { row.append($('<td>').text(value.hit)); }
       if (value.blk != undefined) { row.append($('<td>').text(value.blk)); }
     });
-
     $.each(selectedPlayers, function(index, value) {
       var data = [];
       var player_data = {
@@ -132,7 +146,7 @@ $(function() {
         plotLines: [{
             value: 0,
             width: 1,
-            color: '#808080'
+            color: "#000000"
         }]
       },
       legend: {
@@ -142,7 +156,8 @@ $(function() {
         borderWidth: 0
       },
       series: graph_data
-    });
+      }
+    );
 
 
   function linegraph () {
@@ -156,8 +171,7 @@ $(function() {
         x: -20
       },
       xAxis: {
-        categories: [
-        'Y!', 'JBR', 'G', 'A', 'P', 'PPG', 'PPA', 'PPP', '+/-', 'SHG', 'SHA', 'SHP', 'GWG', 'GTG', 'SOG', 'SH%', 'FW', 'FL', 'HIT', 'BLK', 'TOTAL']
+        categories: graph_categories
       },
       yAxis: {
         title: {
@@ -166,7 +180,7 @@ $(function() {
         plotLines: [{
             value: 0,
             width: 1,
-            color: '#808080'
+            color: "#000000"
         }]
       },
       legend: {

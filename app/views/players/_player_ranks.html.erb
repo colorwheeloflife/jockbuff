@@ -1,7 +1,8 @@
-<table class="table table-bordered table-striped table-hover table-responsive"
+<table class="table table-bordered table-striped table-hover table-responsive table-players "
       id="playersTable"
       data-toggle="table"
-      data-search="true">
+      data-search="true"
+      data-pagination="true">
 
   <thead>
     <tr>
@@ -36,8 +37,8 @@
   </thead>
 
   <tbody>
-    <% @player_passports.first(50).each do |player_passport| %>
-    <% next if player_passport.player.positions.join(" / ").include?("G") %>
+    <% @player_passports.each do |player_passport| %>
+    <% next if player_passport.player.positions.join("/").include?("G") %>
     <% playerID = player_passport.id %>
       <tr>
         <td>
@@ -72,36 +73,4 @@
       </tr>
     <% end %>
   </tbody>
-</table>
-
-<table class="table table-bordered table-striped table-hover table-responsive">
-    <thead>
-      <tr>
-        <th><%= "name" %></th>
-        <th><%= "team" %></th>
-        <th><%= "wins" %></th>
-        <th><%= "loses" %></th>
-        <th><%= "gaa" %></th>
-        <th><%= "sv %" %></th>
-        <th><%= "shutouts" %></th>
-        <th><%= "saves" %></th>
-        <th><%= "jbr" %></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @player_passports.first(50).each do |player_passport| %>
-      <% next if player_passport.player.positions.join(" / ").exclude?("G") %>
-        <tr>
-          <td><%= player_passport.player.name %></td>
-          <td><%= player_passport.player.pro_team.upcase %></td>
-          <td><%= player_passport.player.player_prediction.w %></td>
-          <td><%= player_passport.player.player_prediction.l %></td>
-          <td><%= player_passport.player.player_prediction.gaa %></td>
-          <td><%= player_passport.player.player_prediction.svpercent %></td>
-          <td><%= player_passport.player.player_prediction.sho %></td>
-          <td><%= player_passport.player.player_prediction.sv %></td>
-          <td>jbr</td>
-        </tr>
-      <% end %>
-    </tbody>
 </table>

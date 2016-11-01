@@ -39,8 +39,6 @@ include ApplicationHelper
     end
   end
 
-
-
   private
 
     def sort_column
