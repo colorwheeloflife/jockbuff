@@ -3,23 +3,7 @@
   var otherCheckedRowsSkaters = [];
 
   $('.trading-teams').on('check.bs.table', '#otherTable', function (e, row) {
-    otherCheckedRowsSkaters.push({
-      name: row.name,
-      pro_team: row.pro_team,
-      positions: row.positions,
-      yahoo_rank: row.yahoo_rank,
-      jbr: row.jbr,
-      g: row.g,
-      a: row.a,
-      p: row.p,
-      ppp: row.ppp,
-      plusminus: row.plusminus,
-      pim: row.pim,
-      sog: row.sog,
-      fow: row.fow,
-      hit: row.hit,
-      blk: row.blk
-    });
+    otherCheckedRowsSkaters.push(row);
   });
 
   $('.trading-teams').on('uncheck.bs.table', '#otherTable', function (e, row) {
@@ -33,14 +17,12 @@
 
   $('#add-to-trade').on('click', function() {
     $("#other-output").empty();
-
     $.each(otherCheckedRowsSkaters, function(index, value) {
         var row = $('<tr>');
         $('#other-output').append(row);
         row.append($('<td>').text(value.name));
         row.append($('<td>').text(value.pro_team));
         row.append($('<td>').text(value.positions));
-        row.append($('<td>').text(value.yahoo_rank));
         row.append($('<td>').text(value.jbr));
         row.append($('<td>').text(value.g));
         row.append($('<td>').text(value.a));
@@ -58,19 +40,7 @@
   var otherCheckedRowsGoalies = [];
 
   $('.trading-teams').on('check.bs.table', '#otherGoalieTable', function (e, row) {
-    otherCheckedRowsGoalies.push({
-      name: row.name,
-      pro_team: row.pro_team,
-      positions: row.positions,
-      yahoo_rank: row.yahoo_rank,
-      jbr: row.jbr,
-      w: row.w,
-      l: row.l,
-      gaa: row.gaa,
-      svpercent: row.svpercent,
-      sho: row.sho,
-      sv: row.sv,
-    });
+    otherCheckedRowsGoalies.push(row);
     console.log(otherCheckedRowsGoalies);
   });
 
@@ -91,7 +61,6 @@
       $('#other-output-goalies').append(row);
       row.append($('<td>').text(value.name));
       row.append($('<td>').text(value.pro_team));
-      row.append($('<td>').text(value.yahoo_rank));
       row.append($('<td>').text(value.jbr));
       row.append($('<td>').text(value.w));
       row.append($('<td>').text(value.l));
