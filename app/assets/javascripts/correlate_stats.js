@@ -1,12 +1,12 @@
 // $(function () {
-//
+
 // /* ------ Defining jQuery selector variables ------ */
-//
-//
-//
-//
+
+
+
+
 // /* ------ AJAX functions ------ */
-//
+
 //   $("#button").click(function() {
 //     $.ajax({
 //         url: "URL",
@@ -18,10 +18,10 @@
 //         }
 //     });
 //   });
-//
-//
+
+
 // // on load
-//
+
 //   $(function () {
 //     $.ajax({
 //         url: "URL",
@@ -32,7 +32,7 @@
 //         }
 //     });
 //   });
-//
+
 //   $(function () {
 //     $.ajax({
 //         url: "URL",
@@ -43,7 +43,7 @@
 //         }
 //     });
 //   });
-//
+
 //   $(function () {
 //     $.ajax({
 //         url: "URL",
@@ -54,7 +54,7 @@
 //         }
 //     });
 //   });
-//
+
 //   $(function () {
 //     $.ajax({
 //         url: "URL",
@@ -65,7 +65,7 @@
 //         }
 //     });
 //   });
-//
+
 //   $(function () {
 //     $.ajax({
 //         url: "URL",
@@ -76,7 +76,7 @@
 //         }
 //     });
 //   });
-//
+
 //   $(function () {
 //     $.ajax({
 //         url: "URL",
@@ -87,7 +87,7 @@
 //         }
 //     });
 //   });
-//
+
 //   $(function () {
 //     $.ajax({
 //         url: "URL",
@@ -98,7 +98,7 @@
 //         }
 //     });
 //   });
-//
+
 //   $(function () {
 //     $.ajax({
 //         url: "URL",
@@ -109,18 +109,18 @@
 //         }
 //     });
 //   });
-//
-//
-//
+
+
+
 // // drag n drop option — - -
-//
+
 //   $(function () {
 //     $('#player-draggable').draggable();
-//
+
 //     $('#player-droppable_1').droppable({
 //         drop: function (event, ui) {
 //             selectedPlayer1 = (ui.draggable.attr('id'));
-//
+
 //             // more magic goes here
 //             $.ajax({
 //                 url: "URL",
@@ -133,14 +133,14 @@
 //         }
 //     })
 //   });
-//
+
 //   $(function () {
 //     $('#player-draggable').draggable();
-//
+
 //     $('#player-droppable_2').droppable({
 //         drop: function (event, ui) {
 //             selectedPlayer2 = (ui.draggable.attr('id'));
-//
+
 //             // more magic goes here
 //             $.ajax({
 //                 url: "URL",
@@ -153,11 +153,11 @@
 //         }
 //     })
 //   });
-//
-//
-//
+
+
+
 // // click options — — — .select()
-//
+
 //   $("#button").click(function() {
 //     $.ajax({
 //         url: "URL",
@@ -168,7 +168,7 @@
 //         }
 //     });
 //   });
-//
+
 //   $("#button").click(function() {
 //     $.ajax({
 //         url: "URL",
@@ -179,7 +179,7 @@
 //         }
 //     });
 //   });
-//
+
 //   $("#button").click(function() {
 //     $.ajax({
 //         url: "URL",
@@ -190,7 +190,7 @@
 //         }
 //     });
 //   });
-//
+
 //   $("#button").click(function() {
 //     $.ajax({
 //         url: "URL",
@@ -201,7 +201,7 @@
 //         }
 //     });
 //   });
-//
+
 //   $("#button").click(function() {
 //     $.ajax({
 //         url: "URL",
@@ -212,7 +212,7 @@
 //         }
 //     });
 //   });
-//
+
 //   $("#button").click(function() {
 //     $.ajax({
 //         url: "URL",
@@ -223,7 +223,7 @@
 //         }
 //     });
 //   });
-//
+
 //   $("#button").click(function() {
 //     $.ajax({
 //         url: "URL",
@@ -234,7 +234,7 @@
 //         }
 //     });
 //   });
-//
+
 //   $("#button").click(function() {
 //     $.ajax({
 //         url: "URL",
@@ -245,11 +245,8 @@
 //         }
 //     });
 //   });
-//
-//
-//
-//
-//
-//
-//
+
+
+
+
 // }); /* end up function */
