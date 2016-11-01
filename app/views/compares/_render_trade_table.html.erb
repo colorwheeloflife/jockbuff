@@ -1,40 +1,74 @@
-<table class="table table-bordered table-striped table-hover table-responsive table-players">
+<table class="table table-bordered table-striped table-hover table-responsive table-players"
+       id="otherTable"
+       data-toggle="table"
+       data-search="true">
   <thead>
     <tr>
-      <th>Trade</th>
-      <th>Player</th>
-      <th>Team</th>
-      <th>Pos</th>
-      <th>G</th>
-      <th>JBR</th>
+      <th data-field="state" data-checkbox="true"> Trade</th>
+      <th data-field="name">Player</th>
+      <th data-field="pro_team">Team</th>
+      <th data-field="positions">Pos</th>
+      <th data-field="yahoo_rank"
+          data-sortable="true">Y!</th>
+      <th data-field="jbr"
+          data-sortable="true">JBR</th>
+      <th data-field="g" class="hidden">G</th>
+      <th data-field="a" class="hidden">A</th>
+      <th data-field="p" class="hidden">P</th>
+      <th data-field="ppp" class="hidden">PPP</th>
+      <th data-field="plusminus" class="hidden">+/-</th>
+      <th data-field="pim" class="hidden">PIM</th>
+      <th data-field="sog" class="hidden">SOG</th>
+      <th data-field="fow" class="hidden">FOW</th>
+      <th data-field="hit" class="hidden">HIT</th>
+      <th data-field="blk" class="hidden">BLK</th>
     </tr>
   </thead>
   <tbody>
     <% @trade_team.each do |player_passport| %>
     <% next if player_passport.player.positions.join("/").include?("G") %>
-      <tr>
+          <tr>
         <td>
         <label>
-          <input type="checkbox" id="inlineCheckbox1" value="<%= player_passport.player.id %>">
+          <input type="checkbox" class="inlineCheckbox1" value="<%= player_passport.player.id %>">
         </label>
         </td>
-        <td><%= player_passport.player.name %></td>
-        <td><%= player_passport.player.pro_team.upcase %></td>
-        <td><%= player_passport.player.positions.join("/") %></td>
-        <td><%= player_passport.player.player_prediction.g %></td>
-        <td>150</td>
+        <td> <%= player_passport.player.name %> </td>
+        <td> <%= player_passport.player.pro_team.upcase %></td>
+        <td> <%= player_passport.player.positions.join("/") %> </td>
+        <td> 150 </td>
+        <td> 220 </td>
+        <td class="hidden"> <%= player_passport.player.player_prediction.g %> </td>
+        <td class="hidden"> <%= player_passport.player.player_prediction.a %> </td>
+        <td class="hidden"> <%= player_passport.player.player_prediction.p %> </td>
+        <td class="hidden"> <%= player_passport.player.player_prediction.ppp %> </td>
+        <td class="hidden"> <%= player_passport.player.player_prediction.plusminus %> </td>
+        <td class="hidden"> <%= player_passport.player.player_prediction.pim %> </td>
+        <td class="hidden"> <%= player_passport.player.player_prediction.sog %> </td>
+        <td class="hidden"> <%= player_passport.player.player_prediction.fw %> </td>
+        <td class="hidden"> <%= player_passport.player.player_prediction.hit %> </td>
+        <td class="hidden"> <%= player_passport.player.player_prediction.blk %> </td>
       </tr>
     <% end %>
   </tbody>
 </table>
-<table class="table table-bordered table-striped table-hover table-responsive table-players">
+  <table class="table table-bordered table-striped table-hover table-responsive table-players"
+  id="otherGoalieTable"
+  data-toggle="table"">
   <thead>
     <tr>
-      <th>Trade</th>
-      <th>Name</th>
-      <th>Team</th>
-      <th>Wins</th>
-      <th>JBR</th>
+      <th data-field="state" data-checkbox="true">Trade</th>
+      <th data-field="name">Goalie</th>
+      <th data-field="pro_team">Team</th>
+      <th data-field="yahoo_rank">Y!</th>
+      <th data-field="jbr">JBR</th>
+      <th data-field="w" class="hidden">Wins</th>
+      <th data-field="l" class="hidden">Losses</th>
+      <th data-field="gaa" class="hidden">GAA</th>
+      <th data-field="ga" class="hidden">GA</th>
+      <th data-field="svpercent" class="hidden">SV%</th>
+      <th data-field="sv" class="hidden">Saves</th>
+      <th data-field="sho" class="hidden">SO</th>
     </tr>
   </thead>
   <tbody>
@@ -42,15 +76,23 @@
     <% next if player_passport.player.positions.join("/").exclude?("G") %>
     <tr>
       <td>
-      <label>
-        <input type="checkbox" id="inlineCheckbox1" value="<%= player_passport.player.id %>">
-      </label>
+        <label>
+          <input type="checkbox" class="inlineCheckbox1" value="<%= player_passport.player.id %>">
+        </label>
       </td>
       <td><%= player_passport.player.name %></td>
       <td><%= player_passport.player.pro_team.upcase %></td>
-      <td><%= player_passport.player.player_prediction.w %></td>
-      <td>100</td>
+      <td> 150 </td>
+      <td> 220 </td>
+      <td class="hidden"> <%= player_passport.player.player_prediction.w %> </td>
+      <td class="hidden"> <%= player_passport.player.player_prediction.l %> </td>
+      <td class="hidden"> <%= player_passport.player.player_prediction.gaa %> </td>
+      <td class="hidden"> <%= player_passport.player.player_prediction.ga %> </td>
+      <td class="hidden"> <%= player_passport.player.player_prediction.svpercent %> </td>
+      <td class="hidden"> <%= player_passport.player.player_prediction.sv %> </td>
+      <td class="hidden"> <%= player_passport.player.player_prediction.sho %> </td>
     </tr>
     <% end %>
   </tbody>
 </table>
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.8.1/bootstrap-table.min.js"></script>

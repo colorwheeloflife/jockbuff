@@ -16,13 +16,35 @@
     goalie_all_arr = goalie_arr.all.map do |row|
       row.attributes
     end
-    jock_buff_ranks.merge!({player: create_jbr_skaters(skater_all_arr, skater_categories)})
-    jock_buff_ranks.merge!({goalie: create_jbr_goalies(goalie_all_arr, goalie_categories)})
-    return jock_buff_ranks
+    skater_ranks = create_jbr_skaters(skater_all_arr, skater_categories)
+    goalie_ranks = create_jbr_goalies(goalie_all_arr, goalie_categories)
+    goalie_profiles = full_skater_profiles(goalie_ranks, goalie_all_arr.map { |rec| rec["player_id"] })
+    skater_profiles = full_skater_profiles(skater_ranks, skater_all_arr.map { |rec| rec["player_id"]  })
+    jock_buff_ranks = [goalie_profiles, skater_profiles]
   end
 
-
   private
+
+
+  def full_skater_profiles(ranks, player_ids)
+    player_id_arr = player_ids.map do |player_id|
+      player_jbr = ranks.map do |category|
+        cat_jbr = category[1].select do |p|
+          next if p.is_a? String
+          cat_jbr = p[1] if p[0] == player_id
+      end
+      cat_jbr =  [category[0], cat_jbr[0][1]]
+    end
+      player_jbr_hash = Hash[player_jbr.group_by(&:first).map{ |k,a| [k,a.map(&:last)[0]] } ]
+      overall_jbr = 0
+      total_jbr = player_jbr_hash.map do |key|
+        overall_jbr = key[1] + overall_jbr
+      end
+      player_jbr_hash.merge!(jbr: (total_jbr.last/total_jbr.length).to_i, player_id: player_id)
+    end
+    return player_id_arr
+  end
+
 
     def create_jbr_skaters(skater_all_arr, skater_categories)
       jbr_skater_full = {}

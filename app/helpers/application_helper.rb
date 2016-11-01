@@ -24,4 +24,7 @@ module ApplicationHelper
     link_to title, {:sort => column, :direction => direction}, {:class => css_class}
   end
 
+  def player_jbr(x, player_id)
+    jbr = @jock_buff_ranks[x].select { |pl| pl[:player_id] == player_id}.first[:jbr]
+  end
 end

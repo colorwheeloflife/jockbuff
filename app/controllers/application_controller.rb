@@ -14,6 +14,7 @@ class ApplicationController < ActionController::Base
   helper_method :correct_user?
   helper_method :yahoo_root
   helper_method :league_call
+  helper_method :player_jbr
 
   def current_user
     begin
@@ -64,6 +65,10 @@ class ApplicationController < ActionController::Base
     @create_league = create_leagues
     league_ids = League.where(user_id: @current_user.id).pluck('id')
     @player_passport = create_passport_entry(league_ids)
+  end
+
+    def player_jbr(x, player_id)
+    jbr = @jock_buff_ranks[x].select { |pl| pl[:player_id] == player_id}.first[:jbr]
   end
 
 end
