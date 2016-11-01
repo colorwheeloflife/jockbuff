@@ -3,18 +3,29 @@
     <table class="table table-bordered table-striped table-hover table-responsive table-players">
       <thead>
         <tr>
-          <th>G</th>
-          <th>A</th>
-          <th>Points</th>
-          <th>PPP</th>
-          <th>+/-</th>
-          <th>PIMS</th>
-          <th>SOG</th>
-          <th>HITS</th>
-          <th>BLKS</th>
-          <th>JBR</th>
+          <% if @player_passports[0].league.player_category.g == true %> <th data-field="g">G</th> <% end %>
+          <% if @player_passports[0].league.player_category.a == true %> <th data-field="a">A</th> <% end %>
+          <% if @player_passports[0].league.player_category.p == true %> <th data-field="p">P</th> <% end %>
+          <% if @player_passports[0].league.player_category.ppg == true %> <th data-field="ppg">PPG</th> <% end %>
+          <% if @player_passports[0].league.player_category.ppa == true %> <th data-field="ppa">PPA</th> <% end %>
+          <% if @player_passports[0].league.player_category.ppp == true %> <th data-field="ppp">PPP</th> <% end %>
+          <% if @player_passports[0].league.player_category.plusminus == true %> <th data-field="plusminus">+/-</th> <% end %>
+          <% if @player_passports[0].league.player_category.shg == true %> <th data-field="shg">SHG</th> <% end %>
+          <% if @player_passports[0].league.player_category.sha == true %> <th data-field="sha">SHA</th> <% end %>
+          <% if @player_passports[0].league.player_category.shp == true %> <th data-field="shp">SHP</th> <% end %>
+          <% if @player_passports[0].league.player_category.gwg == true %> <th data-field="gwg">GWG</th> <% end %>
+          <% if @player_passports[0].league.player_category.gtg == true %> <th data-field="gtg">GTG</th> <% end %>
+          <% if @player_passports[0].league.player_category.pim == true %> <th data-field="pim">PIM</th> <% end %>
+          <% if @player_passports[0].league.player_category.sog == true %> <th data-field="sog">SOG</th> <% end %>
+          <% if @player_passports[0].league.player_category.shpercent == true %> <th data-field="shpercent">SH%</th> <% end %>
+          <% if @player_passports[0].league.player_category.fw == true %> <th data-field="fw">FW</th> <% end %>
+          <% if @player_passports[0].league.player_category.fl == true %> <th data-field="fl">FL</th> <% end %>
+          <% if @player_passports[0].league.player_category.hit == true %> <th data-field="hit">HIT</th> <% end %>
+          <% if @player_passports[0].league.player_category.blk == true %> <th data-field="blk">BLK</th> <% end %>
+          <th data-field="jbr">JBR</th>
         </tr>
       </thead>
+
       <tbody>
         <tr>
           <td>+ 155</td>
@@ -31,6 +42,10 @@
       </tbody>
       </table>
     </div>
+
+
+
+
     <div class="col-md-6">
     <table class="table table-bordered table-striped table-hover table-responsive table-players">
       <thead>
