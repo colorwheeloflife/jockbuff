@@ -77,19 +77,19 @@
 <table class="table table-bordered table-striped table-hover table-responsive">
     <thead>
       <tr>
-        <th><%= sortable "name" %></th>
-        <th><%= sortable "team" %></th>
-        <th><%= sortable "wins" %></th>
-        <th><%= sortable "loses" %></th>
-        <th><%= sortable "gaa" %></th>
-        <th><%= sortable "sv %" %></th>
-        <th><%= sortable "shutouts" %></th>
-        <th><%= sortable "saves" %></th>
-        <th><%= sortable "jbr" %></th>
+        <th><%= "name" %></th>
+        <th><%= "team" %></th>
+        <th><%= "wins" %></th>
+        <th><%= "loses" %></th>
+        <th><%= "gaa" %></th>
+        <th><%= "sv %" %></th>
+        <th><%= "shutouts" %></th>
+        <th><%= "saves" %></th>
+        <th><%= "jbr" %></th>
       </tr>
     </thead>
     <tbody>
-      <% @players.first(50).each do |player_passport| %>
+      <% @player_passports.first(50).each do |player_passport| %>
       <% next if player_passport.player.positions.join(" / ").exclude?("G") %>
         <tr>
           <td><%= player_passport.player.name %></td>
