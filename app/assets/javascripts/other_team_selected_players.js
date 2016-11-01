@@ -32,11 +32,7 @@
     console.log(otherCheckedRowsSkaters);
   });
 
-  $('.trading-teams').on('uncheck.bs.table', '#otherTable', function() {
-    $("#other-output").empty();
-  });
-
-  $('.trading-teams').on('check.bs.table', '#otherTable', function() {
+  $('#add-to-trade').on('click', function() {
     $("#other-output").empty();
 
     $.each(otherCheckedRowsSkaters, function(index, value) {
@@ -88,11 +84,7 @@
     console.log(otherCheckedRowsGoalies);
   });
 
-    $('.trading-teams').on('uncheck.bs.table', '#otherGoalieTable', function() {
-    $("#other-output-goalies").empty();
-  });
-
-    $('.trading-teams').on('check.bs.table', '#otherGoalieTable', function() {
+    $('#add-to-trade').on('click', function() {
     $("#other-output-goalies").empty();
 
     $.each(otherCheckedRowsGoalies, function(index, value) {

@@ -32,11 +32,7 @@ $(function() {
     console.log(userCheckedRowsSkaters);
   });
 
-  $('#userTable').on('uncheck.bs.table', function() {
-    $("#user-output").empty();
-  });
-
-  $('#userTable').on('check.bs.table', function() {
+  $('#add-to-trade').on('click', function() {
     $("#user-output").empty();
 
     $.each(userCheckedRowsSkaters, function(index, value) {
@@ -89,11 +85,7 @@ $(function() {
     console.log(checkedRowsGoalies);
   });
 
-  $('#userGoalieTable').on('uncheck.bs.table', function() {
-    $("#user-output-goalies").empty();
-  });
-
-  $('#userGoalieTable').on('check.bs.table', function() {
+  $('#add-to-trade').on('click', function() {
     $("#user-output-goalies").empty();
 
     $.each(checkedRowsGoalies, function(index, value) {
