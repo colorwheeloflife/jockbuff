@@ -33,7 +33,7 @@
         <td class="user-team-players"> <%= player_passport.player.name %> </td>
         <td class="user-team-players"> <%= player_passport.player.pro_team.upcase %></td>
         <td class="user-team-players"> <%= player_passport.player.positions.join("/") %> </td>
-        <td class="user-team-players jbr-stat"> 50 </td>
+        <td class="user-team-players jbr-stat"> 1 </td>
         <td class="hidden user-team-players goals"> <%= player_passport.player.player_prediction.g %> </td>
         <td class="hidden user-team-players assists"> <%= player_passport.player.player_prediction.a %> </td>
         <td class="hidden user-team-players points"> <%= player_passport.player.player_prediction.p %> </td>
@@ -66,7 +66,7 @@
       <th data-field="sho" class="hidden">SO</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody id="each-user-goalie">
     <% @current_user_players.each do |player_passport| %>
     <% next if player_passport.player.positions.join("/").exclude?("G") %>
     <tr>
@@ -77,14 +77,14 @@
       </td>
       <td class="user-team-goalie-name"><%= player_passport.player.name %></td>
       <td class="user-team-goalie-pro"><%= player_passport.player.pro_team.upcase %></td>
-      <td class="user-team-goalie"> 50 </td>
-      <td class="hidden user-team-goalie"> <%= player_passport.player.player_prediction.w %> </td>
-      <td class="hidden user-team-goalie"> <%= player_passport.player.player_prediction.l %> </td>
-      <td class="hidden user-team-goalie"> <%= player_passport.player.player_prediction.gaa %> </td>
-      <td class="hidden user-team-goalie"> <%= player_passport.player.player_prediction.ga %> </td>
-      <td class="hidden user-team-goalie"> <%= player_passport.player.player_prediction.svpercent %> </td>
-      <td class="hidden user-team-goalie"> <%= player_passport.player.player_prediction.sv %> </td>
-      <td class="hidden user-team-goalie"> <%= player_passport.player.player_prediction.sho %> </td>
+      <td class="user-team-goalie .goalie-jbr">1</td>
+      <td class="hidden user-team-goalie wins"> <%= player_passport.player.player_prediction.w %> </td>
+      <td class="hidden user-team-goalie losses"> <%= player_passport.player.player_prediction.l %> </td>
+      <td class="hidden user-team-goalie gaa"> <%= player_passport.player.player_prediction.gaa %> </td>
+      <td class="hidden user-team-goalie ga"> <%= player_passport.player.player_prediction.ga %> </td>
+      <td class="hidden user-team-goalie svpercent"> <%= player_passport.player.player_prediction.svpercent %> </td>
+      <td class="hidden user-team-goalie saves"> <%= player_passport.player.player_prediction.sv %> </td>
+      <td class="hidden user-team-goalie shutouts"> <%= player_passport.player.player_prediction.sho %> </td>
     </tr>
     <% end %>
   </tbody>

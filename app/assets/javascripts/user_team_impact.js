@@ -10,6 +10,8 @@ $(document).ready(function () {
     });
   };
 
+  //USER SKATERS//
+
   //goal totals//
   totalCalc('#each-user-player','.goals','.total-goals');
   //assist totals//
@@ -30,5 +32,24 @@ $(document).ready(function () {
   totalCalc('#each-user-player', '.blk', '.total-blks' );
   //JBR total//
   totalCalc('#each-user-player', '.jbr-stat', '.total-jbr');
+
+  //USER GOALIES//
+
+  //Goalie wins total//
+  totalCalc('#each-user-goalie', '.wins', '.total-wins');
+  //Goalie JBR total//
+  totalCalc('#each-user-goalie', '.losses', '.total-losses');
+  //Goalie JBR total//
+  totalCalc('#each-user-goalie', '.gaa', '.total-gaa');
+  //Goalie JBR total//
+  totalCalc('#each-user-goalie', '.ga', '.total-ga');
+  //Goalie JBR total//
+  totalCalc('#each-user-goalie', '.svpercent', '.total-svpercent');
+  //Goalie JBR total//
+  totalCalc('#each-user-goalie', '.saves', '.total-saves');
+  //Goalie JBR total//
+  totalCalc('#each-user-goalie', '.shutouts', '.total-shutouts');
+  //Goalie JBR total//
+  totalCalc('#each-user-goalie', '.goalie-jbr-stat', '.total-goalie-jbr');
 
 });
