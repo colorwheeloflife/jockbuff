@@ -38,23 +38,4 @@ include ApplicationHelper
       end
     end
   end
-
-
-
-  private
-
-  def sort_column
-
-    if Player.column_names.include?(params[:sort])
-      "players." + params[:sort]
-    elsif PlayerPrediction.column_names.include?(params[:sort])
-      "player_predictions." + params[:sort]
-    else
-      "players.name"
-    end
-  end
-
-  def sort_direction
-    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
-  end
 end
