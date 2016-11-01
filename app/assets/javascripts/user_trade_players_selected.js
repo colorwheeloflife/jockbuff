@@ -1,8 +1,8 @@
 $(function() {
-
   var userCheckedRowsSkaters = [];
 
   $('#userTable').on('check.bs.table', function (e, row) {
+    console.log("ADDED A SKATER");
     userCheckedRowsSkaters.push({
       name: row.name,
       pro_team: row.pro_team,
@@ -20,25 +20,23 @@ $(function() {
       hit: row.hit,
       blk: row.blk
     });
-    console.log(userCheckedRowsSkaters);
+    // console.log(userCheckedRowsSkaters);
   });
 
   $('#userTable').on('uncheck.bs.table', function (e, row) {
+    console.log("HI REINHARDT");
     $.each(userCheckedRowsSkaters, function(index, value) {
       if (value.id === row.id) {
         userCheckedRowsSkaters.splice(index,1);
       }
     });
-    console.log(userCheckedRowsSkaters);
+    // console.log(userCheckedRowsSkaters);
   });
-
-  $('#userTable').on('uncheck.bs.table', function() {
-    $("#user-output").empty();
-  });
-
   $('#userTable').on('check.bs.table', function() {
     $("#user-output").empty();
-
+  // $('#userTable').on('uncheck.bs.table', function() {
+  //   $("#user-output").empty();
+  // });
     $.each(userCheckedRowsSkaters, function(index, value) {
         var row = $('<tr>');
         $('#user-output').append(row);
@@ -76,7 +74,7 @@ $(function() {
       sho: row.sho,
       sv: row.sv,
     });
-    console.log(checkedRowsGoalies);
+    // console.log(checkedRowsGoalies);
   });
 
 
@@ -86,12 +84,12 @@ $(function() {
         checkedRowsGoalies.splice(index,1);
       }
     });
-    console.log(checkedRowsGoalies);
+    // console.log(checkedRowsGoalies);
   });
 
-  $('#userGoalieTable').on('uncheck.bs.table', function() {
-    $("#user-output-goalies").empty();
-  });
+  // $('#userGoalieTable').on('uncheck.bs.table', function() {
+  //   $("#user-output-goalies").empty();
+  // });
 
   $('#userGoalieTable').on('check.bs.table', function() {
     $("#user-output-goalies").empty();
