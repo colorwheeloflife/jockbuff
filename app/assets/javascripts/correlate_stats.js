@@ -3,24 +3,6 @@
 //     // alert(gon.player_passports.length);
 //     alert(gon.player_passports.first);
 
-//     // for (var i; i < pp.length; i++) {
-
-//     //     if (i.id == 5777) {
-//     //            alert(i.id);
-//     //         }
-
-//     //     else {
-//     //         alert('nope');
-//     //     }
-
-
-//         // hasValue(prop, id, 5777)
-
-//         // function hasValue(obj, id, value) {
-//         //     return obj.hasOwnProperty(id) && obj[id] === value;
-//         // }
-
-//     // }
 
 //   });
 
@@ -109,17 +91,17 @@ $(function () {
 
 /* ------ AJAX functions ------ */
 
-  $("#button").click(function() {
-    $.ajax({
-        url: "URL",
-        type: "POST",
-        data: {DATA},
-        success: function (data) {
-            // append data to your page
-            $("PAGE ELEMENT").html(data);
-        }
-    });
-  });
+  // $("#button").click(function() {
+  //   $.ajax({
+  //       url: "URL",
+  //       type: "POST",
+  //       data: {DATA},
+  //       success: function (data) {
+  //           // append data to your page
+  //           $("PAGE ELEMENT").html(data);
+  //       }
+  //   });
+  // });
 
 
 // on load
