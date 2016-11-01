@@ -2,6 +2,7 @@
   require 'yaml'
   require 'pnorm'
 
+
   class JBR
 
   def jock_ranks (league_id)

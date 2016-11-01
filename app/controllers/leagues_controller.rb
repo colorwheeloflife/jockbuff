@@ -34,7 +34,8 @@ class LeaguesController < ApplicationController
     @league_id = params[:id]
     @leagues = League.where(user_id: current_user.id)
     @teams = Team.where(league_id: @league_id)
-    @players = PlayerPassport.where(league_id: true)
+    @players = PlayerPassport.where(league_id: @league_id)
+    @jock_buff_ranks = JBR.new.jock_ranks(@league_id)
   end
 
 end

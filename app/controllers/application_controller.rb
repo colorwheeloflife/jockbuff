@@ -15,6 +15,7 @@ class ApplicationController < ActionController::Base
   helper_method :yahoo_root
   helper_method :league_call
   helper_method :jbr_by_cat
+  helper_method :jbr_by_team
 
   def current_user
     begin
@@ -87,4 +88,17 @@ class ApplicationController < ActionController::Base
     end
     rank_by_cat.to_h
   end
+
+    def jbr_by_team (team_id)
+    team_players = PlayerPassport.where(team_id: team_id).pluck("player_id")
+    goalies = team_players.select do |pl|
+      pl if Player.find_by(player_id: pl, type_p: "G")
+      end
+    skaters = team_players - goalies
+    all_skater_jbr = jbr_by_cat(1, skaters, :jbr)
+    all_goalie_jbr = jbr_by_cat(0, goalies, :jbr)
+    grading_scale = team_players.length.to_f/11
+    team_jbr = (all_skater_jbr.merge(all_goalie_jbr).values.inject{ |a, b| a + b }/grading_scale).to_i
+  end
+
 end
