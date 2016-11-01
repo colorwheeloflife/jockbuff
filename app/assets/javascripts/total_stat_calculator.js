@@ -38,6 +38,8 @@ $(document).ready(function () {
   totalCalc('#each-user-player', '.pims', '.total-pims');
   //sog totals//
   totalCalc('#each-user-player', '.sog', '.total-sog');
+  //fow total//
+  totalCalc('#each-user-player', '.fow', '.total-fow');
   //hits total//
   totalCalc('#each-user-player', '.hit', '.total-hits');
   //blks total//
@@ -105,6 +107,25 @@ $(document).ready(function () {
     //Goalie JBR total//
     totalCalc('#each-other-goalie', '.goalie-jbr-stat', '.other-total-goalie-jbr');
   });
+
+/////PLAYERS TO BE TRADED STATS//////////
+
+  $('#user-output').bind('playerloaded', function() {
+      totalCalc('#user-output', '.goals', '.total-trade-goals');
+      totalCalc('#user-output', '.assists', '.total-trade-assists');
+      totalCalc('#user-output', '.points', '.total-trade-points');
+      totalCalc('#user-output', '.ppp', '.total-trade-ppp');
+      totalCalc('#user-output', '.plusminus', '.total-trade-plusminus');
+      totalCalc('#user-output', '.pim', '.total-trade-pims');
+      totalCalc('#user-output', '.sog', '.total-trade-sog');
+      totalCalc('#user-output', '.fow', '.total-trade-fow');
+      totalCalc('#user-output', '.hit', '.total-trade-hits');
+      totalCalc('#user-output', '.blk', '.total-trade-blks');
+      totalCalc('#user-output', '.jbr', '.total-trade-jbr');
+
+
+  });
+
 
 //////////////// COMPARES PAGE //////////////////////////
 
