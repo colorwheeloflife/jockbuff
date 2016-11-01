@@ -3,6 +3,9 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
 
   require 'table-for'
+  include PlayerPassportHelper
+  include TeamsHelper
+
 
   protect_from_forgery with: :exception
 
@@ -11,6 +14,7 @@ class ApplicationController < ActionController::Base
   helper_method :correct_user?
   helper_method :yahoo_root
   helper_method :league_call
+  helper_method :player_jbr
 
   def current_user
     begin
@@ -22,7 +26,6 @@ class ApplicationController < ActionController::Base
 
   def yahoo_root
     return @yahoo_root = "https://fantasysports.yahooapis.com/fantasy/v2/"
-    # "https://fantasysports.yahooapis.com/fantasy/v2/"
   end
 
   def league_call(league_key)
@@ -57,4 +60,15 @@ class ApplicationController < ActionController::Base
       redirect_to root_url, :alert => 'You need to sign in for access to this page.'
     end
   end
+
+  def create
+    @create_league = create_leagues
+    league_ids = League.where(user_id: @current_user.id).pluck('id')
+    @player_passport = create_passport_entry(league_ids)
+  end
+
+    def player_jbr(x, player_id)
+    jbr = @jock_buff_ranks[x].select { |pl| pl[:player_id] == player_id}.first[:jbr]
+  end
+
 end

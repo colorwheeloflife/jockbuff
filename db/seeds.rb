@@ -1,6 +1,8 @@
 require 'csv'
+require 'byebug'
 
 def players_to_seed
+  token = "8GjOy4GbvwjoM_V1RPshaZy7i9L6ZEMFqNZjADBwbzTxDde1.bXHS4wqakno7VI7sVCDI.QzLl5rsyE7DorL5mIH5TQl_kpwf3UxACAySwP_dPOYH8HBA1bEeVaBcFRrs__C9VEjb0nEIsYRp8CbEEv0o_cK3V6FVYiNmut1xRyzlic0EAIpr7X7scsFAIg6n4My0w7sw.XRjiiNcDc3K2v.fsfMb_IXu3hoZ7UTyHgJHjZrmQLiddpLaf5L4OgKyJgOYaF3u5aVnEoqdlVObp5i8d0Y_9CJwZjetjgwOr0UfGd1q4Wit8Dgu5Hs.JvU.xO9Dh5mdUILyAUpLTH5FpJPeW__qa8LmZDi9CU3FI_PSsenr1w8GbLX0r.LOKCAbIZEsvswOI5Erxi9j1Zn30fp4uKmCRI.o7naezHAuwSCS1QJq.FQSeAcgii594Wlw_AMuvzEd0r2psiLgSVIpUJ473z2hJCzPNpmKUzb0aJCYsZKKQg3taq2g5LrDvaHsp3aH07gb3aFP5LOt59myhIfPlixwnQLUJb1oJO8Fty.XRF4S.bfjZVQ.VxxS5nFgAJsNuAxWd1B5d5j.R_Blrg7oud9hG_pmb9uduirt53qgcLsVBXJLIktOiOsSB5zX61pxOu.r4YfAGLcwdXBPqyAklJpoFh2aSeQDlJhckUwvvzZ27UYrDIvHOUZdxTCtflomZB3EwZQx3e1yT4rO5UbEt.deIrSxYwVe_jiHGwqmnoCL_YNgEhj3n76X8KvOTWqdovkLzzngQ--"
   full_player_arr = []
   i = 0
   while i < 1888 do
@@ -8,8 +10,10 @@ def players_to_seed
     i = i + 25
   end
   players_full = full_player_arr.map do |start|
+    sleep(2)
+    p start
     players = HTTParty.get("https://fantasysports.yahooapis.com/fantasy/v2/league/363.l.91004/players;start=#{start}", headers:{
-        "Authorization" => "Bearer #{User.first.token}"
+        "Authorization" => "Bearer #{token}"
       })
     player_arr = players["fantasy_content"]["league"]["players"]["player"]
     player_arr.map do |player|
@@ -27,75 +31,136 @@ def players_to_seed
   end
 end
 
-player_details = players_to_seed
-Player.create(player_details)
+def player_predictions
 
-teamstats = File.read(Rails.root.join('lib', 'seeds', 'teamstats_2015.csv'))
-teamstats_parse = CSV.parse(teamstats, :headers => true, :encoding => 'ISO-8859-1')
-team_stat = teamstats_parse.map do |row|
-  row.to_hash
+  teamstats = File.read(Rails.root.join('lib', 'seeds', 'teamstats_2015.csv'))
+  teamstats_parse = CSV.parse(teamstats, :headers => true, :encoding => 'ISO-8859-1')
+  team_stat = teamstats_parse.map do |row|
+    row.to_hash
+  end
+
+  predictions = File.read(Rails.root.join('lib', 'seeds', 'predictions.csv'))
+  predictions_parsed = CSV.parse(predictions, :headers => true, :encoding => 'ISO-8859-1')
+  full_stat = predictions_parsed.map do |row|
+    row = row.to_hash
+    player_id = Player.where(name: row['Player']).pluck(:player_id).first
+    puts row['Player'] if player_id == nil
+    row['player_id'] = player_id
+    row
+  end
+
+  goalie_stat = full_stat.select { |row| row['Position'] == "G" }
+  player_stat = (full_stat - goalie_stat)
+
+  player_stat.each do |row|
+
+  end
+
+  goalie_stat.each do |row|
+    t = PlayerPrediction.new
+    t.player_id = row['player_id'].to_i
+    t.gp = row['Games Played'].to_i
+    t.gs = row['Games Played'].to_i
+    t.w = row['W'].to_i
+    t.l = (row['Games Played'].to_i - row['W'].to_i)
+    t.ga = (row['Games Played'].to_i * row['GAA'].to_i).round
+    t.gaa = row['GAA'].to_f
+    goalie_team = team_stat.select{ |team| team['Team'] == row['Team']}
+    team_shots = goalie_team[0]['SA/GP'].to_f
+    t.sa = (row['Games Played'].to_i *  team_shots).round
+    t.sv = ((row['Games Played'].to_i *  team_shots) - (row['Games Played'].to_i * row['GAA'].to_i)).round
+    t.svpercent = row['SV%'].to_f
+    t.sho = row['SO'].to_i
+    t.save
+  end
+
+  player_stat.each do |row|
+    goalpercentage = (row['G'].to_f / row['P'].to_f) if row['P'].to_i > 0
+    goalpercentage = 0 if row['P'].to_i == 0
+    shpercent = (row['G'].to_f / row['SOG'].to_f) if row['SOG'].to_i > 0
+    shpercent = 0 if row['SOG'].to_i == 0
+    t = PlayerPrediction.new
+    t.player_id = row['player_id'].to_i
+    t.gp = row['Games Played'].to_i
+    t.g = row['G'].to_i
+    t.p = row['P'].to_i
+    t.a = row['A'].to_i
+    t.plusminus = row['+/-'].to_i
+    t.pim = row['PIM'].to_i
+    t.ppg = (row['PPP'].to_i * goalpercentage).round
+    t.ppa = (row['PPP'].to_i * (1 - goalpercentage)).round
+    t.ppp = row['PPP'].to_i
+    t.shg = row['SHG'].to_i
+    t.sha = (row['SHP'].to_i - row['SHG'].to_i)
+    t.shp = row['SHP'].to_i
+    t.gwg = row['GWG'].to_i
+    t.gtg = row['GWG'].to_i
+    t.sog = row['SOG'].to_i
+    t.shpercent = shpercent
+    t.fw = row['FOW'].to_i
+    t.fl = row['FOW'].to_i
+    t.hit = row['HITS'].to_i
+    t.blk = row['BKS'].to_i
+    t.save
+  end
 end
 
-predictions = File.read(Rails.root.join('lib', 'seeds', 'predictions.csv'))
-predictions_parsed = CSV.parse(predictions, :headers => true, :encoding => 'ISO-8859-1')
-full_stat = predictions_parsed.map do |row|
-  row = row.to_hash
-  player_id = Player.where(name: row['Player']).pluck(:player_id).first
-  puts row['Player'] if player_id == nil
-  row['player_id'] = player_id
-  row
+def player_stats_current
+  token ="8GjOy4GbvwjoM_V1RPshaZy7i9L6ZEMFqNZjADBwbzTxDde1.bXHS4wqakno7VI7sVCDI.QzLl5rsyE7DorL5mIH5TQl_kpwf3UxACAySwP_dPOYH8HBA1bEeVaBcFRrs__C9VEjb0nEIsYRp8CbEEv0o_cK3V6FVYiNmut1xRyzlic0EAIpr7X7scsFAIg6n4My0w7sw.XRjiiNcDc3K2v.fsfMb_IXu3hoZ7UTyHgJHjZrmQLiddpLaf5L4OgKyJgOYaF3u5aVnEoqdlVObp5i8d0Y_9CJwZjetjgwOr0UfGd1q4Wit8Dgu5Hs.JvU.xO9Dh5mdUILyAUpLTH5FpJPeW__qa8LmZDi9CU3FI_PSsenr1w8GbLX0r.LOKCAbIZEsvswOI5Erxi9j1Zn30fp4uKmCRI.o7naezHAuwSCS1QJq.FQSeAcgii594Wlw_AMuvzEd0r2psiLgSVIpUJ473z2hJCzPNpmKUzb0aJCYsZKKQg3taq2g5LrDvaHsp3aH07gb3aFP5LOt59myhIfPlixwnQLUJb1oJO8Fty.XRF4S.bfjZVQ.VxxS5nFgAJsNuAxWd1B5d5j.R_Blrg7oud9hG_pmb9uduirt53qgcLsVBXJLIktOiOsSB5zX61pxOu.r4YfAGLcwdXBPqyAklJpoFh2aSeQDlJhckUwvvzZ27UYrDIvHOUZdxTCtflomZB3EwZQx3e1yT4rO5UbEt.deIrSxYwVe_jiHGwqmnoCL_YNgEhj3n76X8KvOTWqdovkLzzngQ--"
+  player_ids = Player.all.pluck(:player_id)
+  # index = player_ids.index(3982)
+  # player_ids = player_ids.slice(index, player_ids.length)
+  player_ids.each do |player_id|
+    player = HTTParty.get("https://fantasysports.yahooapis.com/fantasy/v2/player/363.p.#{player_id}/stats", headers:{
+          "Authorization" => "Bearer #{token}"
+        })
+    player_stats = {player_id: player_id}
+    player_full_stats = player["fantasy_content"]["player"]["player_stats"]["stats"]["stat"]
+    player_full_stats.select do |stat|
+      # byebug
+      player_stats.merge!({ gp: stat['value'] }) if stat['stat_id'] == "30"
+      ## gp for players is a different code than goalie
+      player_stats.merge!({ gp: stat['value'] }) if stat['stat_id'] == "29"
+      player_stats.merge!({ g: stat['value'] }) if stat['stat_id'] == "1"
+      player_stats.merge!({ a: stat['value'] }) if stat['stat_id'] == "2"
+      player_stats.merge!({ p: stat['value'] })if stat['stat_id'] == "3"
+      player_stats.merge!({ plusminus:  stat['value'] }) if stat['stat_id'] == "4"
+      player_stats.merge!({ pim: stat['value'] }) if stat['stat_id'] == "5"
+      player_stats.merge!({ ppg: stat['value'] }) if stat['stat_id'] == "6"
+      player_stats.merge!({ ppa: stat['value'] }) if stat['stat_id'] == "7"
+      player_stats.merge!({ ppp: stat['value'] }) if stat['stat_id'] == "8"
+      player_stats.merge!({ shg: stat['value'] }) if stat['stat_id'] == "9"
+      player_stats.merge!({ sha: stat['value'] }) if stat['stat_id'] == "10"
+      player_stats.merge!({ shp: stat['value'] }) if stat['stat_id'] == "11"
+      player_stats.merge!({ gwg: stat['value'] }) if stat['stat_id'] == "12"
+      player_stats.merge!({ gwg: stat['value'] }) if stat['stat_id'] == "13"
+      player_stats.merge!({ sog: stat['value'] }) if stat['stat_id'] == "14"
+      player_stats.merge!({ shpercent: stat['value'] }) if stat['stat_id'] == "15"
+      player_stats.merge!({ fw: stat['value'] }) if stat['stat_id'] == "16"
+      player_stats.merge!({ fl: stat['value'] }) if stat['stat_id'] == "17"
+      player_stats.merge!({ hit: stat['value'] }) if stat['stat_id'] == "31"
+      player_stats.merge!({ blk: stat['value'] }) if stat['stat_id'] == "32"
+      player_stats.merge!({ gs: stat['value'] }) if stat['stat_id'] == "18"
+      player_stats.merge!({ w: stat['value'] }) if stat['stat_id'] == "19"
+      player_stats.merge!({ l: stat['value'] }) if stat['stat_id'] == "20"
+      player_stats.merge!({ ga: stat['value'] }) if stat['stat_id'] == "22"
+      player_stats.merge!({ gaa: stat['value'] }) if stat['stat_id'] == "23"
+      player_stats.merge!({ sa: stat['value'] }) if stat['stat_id'] == "24"
+      player_stats.merge!({ sec: (stat['value'].to_i * 60) }) if stat['stat_id'] == "28"
+      player_stats.merge!({ sv: stat['value'] }) if stat['stat_id'] == "25"
+      player_stats.merge!({ svpercent: stat['value'] }) if stat['stat_id'] == "26"
+      player_stats.merge!({ sho: stat['value'] }) if stat['stat_id'] == "27"
+    end
+  sleep(0.1)
+  PlayerStat.create(player_stats)
+  end
 end
 
 
-goalie_stat = full_stat.select { |row| row['Position'] == "G" }
-player_stat = (full_stat - goalie_stat)
-
-goalie_stat.each do |row|
-  t = PlayerPrediction.new
-  t.player_id = row['player_id'].to_i
-  t.gs = row['Games Played'].to_i
-  t.w = row['W'].to_i
-  t.l = (row['Games Played'].to_i - row['W'].to_i)
-  t.ga = (row['Games Played'].to_i * row['GAA'].to_i).round
-  t.gaa = row['GAA'].to_f
-  goalie_team = team_stat.select{ |team| team['Team'] == row['Team']}
-  team_shots = goalie_team[0]['SA/GP'].to_f
-  t.sa = (row['Games Played'].to_i *  team_shots).round
-  t.sv = ((row['Games Played'].to_i *  team_shots) - (row['Games Played'].to_i * row['GAA'].to_i)).round
-  t.svpercent = row['SV%'].to_f
-  t.sho = row['SO'].to_i
-  t.save
-end
-
-player_stat.each do |row|
-  goalpercentage = (row['G'].to_f / row['P'].to_f) if row['P'].to_i > 0
-  goalpercentage = 0 if row['P'].to_i == 0
-  shpercent = (row['G'].to_f / row['SOG'].to_f) if row['SOG'].to_i > 0
-  shpercent = 0 if row['SOG'].to_i == 0
-  t = PlayerPrediction.new
-  t.player_id = row['player_id'].to_i
-  t.g = row['G'].to_i
-  t.p = row['P'].to_i
-  t.a = row['A'].to_i
-  t.plusminus = row['+/-'].to_i
-  t.pim = row['PIM'].to_i
-  t.ppg = (row['PPP'].to_i * goalpercentage).round
-  t.ppa = (row['PPP'].to_i * (1 - goalpercentage)).round
-  t.ppp = row['PPP'].to_i
-  t.shg = row['SHG'].to_i
-  t.sha = (row['SHP'].to_i - row['SHG'].to_i)
-  t.shp = row['SHP'].to_i
-  t.gwg = row['GWG'].to_i
-  t.gtg = row['GWG'].to_i
-  t.sog = row['SOG'].to_i
-  t.shpercent = shpercent
-  t.fw = row['FOW'].to_i
-  t.fl = row['FOW'].to_i
-  t.hit = row['HITS'].to_i
-  t.blk = row['BKS'].to_i
-  puts "\n\n\n\n\n #{t.errors.full_messages} \n\n\n"
-  t.save
-end
-
-all_predictions = PlayerPrediction.all.pluck('player_id')
+# ####
+Player.create(players_to_seed)
+player_predictions
+all_predictions = PlayerPrediction.all.pluck(:player_id)
 Player.where.not(player_id: all_predictions).destroy_all
+# player_stats_current
+# ####

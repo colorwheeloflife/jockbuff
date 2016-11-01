@@ -17,9 +17,13 @@
     </tr>
   </thead>
   <tbody>
+    <%= @team.id %>
+        <%= @players %>
+
     <% @players.each do |player_passport| %>
     <% next if player_passport.player.positions.join(" / ").include?("G") %>
       <tr>
+        <%= player_passport %>
         <td><%= player_passport.player.name %></td>
         <td><%= player_passport.player.pro_team.upcase %></td>
         <td><%= player_passport.player.positions.join(" / ") %></td>

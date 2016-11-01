@@ -60,7 +60,11 @@ gem 'spring-watcher-listen', '~> 2.0.0'
 
 gem "activerecord-import"
 
+<<<<<<< HEAD
 gem 'gon', '~> 6.1'
+=======
+gem 'sidekiq'
+>>>>>>> 53287be3f3e4d78aab467262f185537a6d009274
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
