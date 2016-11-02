@@ -5,7 +5,6 @@ include ApplicationHelper
   def index
     league_id = params[:league_id]
     @player_passports = PlayerPassport.includes(:player, :player_predictions)
-    gon.player_passports = @player_passports
     @team = Team.where(league_id: league_id, ownership: true).pluck(:id)
   end
 

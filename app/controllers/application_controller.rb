@@ -86,10 +86,10 @@ class ApplicationController < ActionController::Base
     end
     rank_by_cat.push([player_id.to_i, jbr_cat[0][category]])
     end
-    rank_by_cat.to_h
+    rank_by_cat.to_h.sort_by {|k,v| v}.reverse.to_h
   end
 
-    def jbr_by_team (team_id, category)
+  def jbr_by_team (team_id, category)
     team_players = PlayerPassport.where(team_id: team_id).pluck("player_id")
     goalies = team_players.select do |pl|
       pl if Player.find_by(player_id: pl, type_p: "G")
