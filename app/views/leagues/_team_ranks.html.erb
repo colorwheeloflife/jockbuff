@@ -1,4 +1,7 @@
- <table class="table table-bordered table-striped table-responsive table-players ">
+ <table class="table table-bordered table-striped table-responsive table-players "
+      data-toggle="table"
+      data-search="true"
+>
   <thead>
     <tr>
       <th class="col-md-1">Rank</th>
@@ -8,12 +11,19 @@
   </thead>
   <tbody>
     <% count = 0 %>
+    <% jbr_team = [] %>
     <% @teams.each do |team| %>
     <% next if team.name.include?("Waiver") %>
+    <% jbr = jbr_by_team(team.id, :jbr) %>
+    <% name = team.name %>
+    <% jbr_team.push([name, jbr]) %>
+    <% end %>
+    <% jbr_team = jbr_team.sort_by {|k, v| v}.reverse.to_h %>
     <tr>
-      <td><%= count += 1 %></td>
-      <td><%= link_to "#{team.name}", user_league_team_path(@current_user, @league_id, team) %></td>
-      <td> <%= jbr_by_team(team.id, :jbr) %></td>
+      <% jbr_team.each do |team| %>
+      <td><%= count += 1  %></td>
+      <td><%= link_to "#{team[0]}", user_league_team_path(@current_user, @league_id, team) %></td>
+      <td> <%= team[1] %></td>
     </tr>
     <% end %>
   </tbody>
