@@ -1,6 +1,6 @@
 $(function() {
 
-  var selectedPlayers = [];
+  // var selectedPlayers = [];
 
   var graph_data = [{
       name: 'P.Kane',
@@ -18,21 +18,28 @@ $(function() {
 
 
 
-  $('#playersTable').on('check.bs.table', function (e, row) {
-    selectedPlayers.push(row);
-  });
+  // $('#playersTable').on('check.bs.table', function (e, row) {
+  //   selectedPlayers.push(row);
+  // });
 
-  $('#playersTable').on('uncheck.bs.table', function (e, row) {
-    $.each(selectedPlayers, function(index, value) {
-      if (value.id === row.id) {
-        selectedPlayers.splice(index,1);
-        console.log(index);
-      }
-    });
-  });
+
+
+  // $('#playersTable').on('uncheck.bs.table', function (e, row) {
+  //       console.log(row);
+  //       var index = $(row).prop('data-index');
+  //       console.log(index);
+  //       var index_num = parseInt(index);
+  //       console.log(index_num);
+  //       selectedPlayers.splice(index_num, 1);
+  // });
+
+
 
   $("#add_player").click(function() {
     $("#selection-output").empty();
+
+    var selectedPlayers = $('#playersTable').bootstrapTable('getSelections');
+    console.log(selectedPlayers);
     $.each(selectedPlayers, function(index, value) {
       var row = $('<tr>');
       $('#selection-output').append(row);
@@ -61,6 +68,7 @@ $(function() {
       if (value.hit != undefined) { row.append($('<td>').text(value.hit)); }
       if (value.blk != undefined) { row.append($('<td>').text(value.blk)); }
     });
+    graph_data = [];
     $.each(selectedPlayers, function(index, value) {
       var data = [];
       var player_data = {
@@ -87,10 +95,10 @@ $(function() {
       if (value.fl != undefined) { data.push(parseInt(value.fl)); }
       if (value.hit != undefined) { data.push(parseInt(value.hit)); }
       if (value.blk != undefined) { data.push(parseInt(value.blk)); }
-
       graph_data.push(player_data);
-      linegraph();
     });
+    linegraph();
+
   });
 
   $('#line_graph-top').highcharts({

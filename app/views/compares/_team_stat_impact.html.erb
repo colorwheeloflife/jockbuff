@@ -55,40 +55,6 @@
 
 
 
-    <table class="table table-bordered table-striped table-hover table-responsive table-players">
-      <thead>
-        <tr>
-          <% if @player_passports[0].league.goalie_category.gs == true %> <th data-field="gs">GS</th> <% end %>
-          <% if @player_passports[0].league.goalie_category.w == true %> <th data-field="w">W</th> <% end %>
-          <% if @player_passports[0].league.goalie_category.l == true %> <th data-field="l">L</th> <% end %>
-          <% if @player_passports[0].league.goalie_category.ga == true %> <th data-field="ga">GA</th> <% end %>
-          <% if @player_passports[0].league.goalie_category.gaa == true %> <th data-field="gaa">GAA</th> <% end %>
-          <% if @player_passports[0].league.goalie_category.sa == true %> <th data-field="sa">SA</th> <% end %>
-          <% if @player_passports[0].league.goalie_category.sec == true %> <th data-field="sec">SEC</th> <% end %>
-          <% if @player_passports[0].league.goalie_category.sv == true %> <th data-field="sv">SV</th> <% end %>
-          <% if @player_passports[0].league.goalie_category.svpercent == true %> <th data-field="svpercent">SV%</th> <% end %>
-          <% if @player_passports[0].league.goalie_category.sho == true %> <th data-field="sho">SHO</th> <% end %>
-          <th class="user-total-goalie-jbr">JBR</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <% if player_passport.league.goalie_category.gs == true %> <th class="user-goalies-total gs">GS</th> <% end %>
-          <% if player_passport.league.goalie_category.w == true %> <th class="user-goalies-total w">W</th> <% end %>
-          <% if player_passport.league.goalie_category.l == true %> <th class="user-goalies-total l">L</th> <% end %>
-          <% if player_passport.league.goalie_category.ga == true %> <th class="user-goalies-total ga">GA</th> <% end %>
-          <% if player_passport.league.goalie_category.gaa == true %> <th class="user-goalies-total gaa">GAA</th> <% end %>
-          <% if player_passport.league.goalie_category.sa == true %> <th class="user-goalies-total sa">SA</th> <% end %>
-          <% if player_passport.league.goalie_category.sec == true %> <th class="user-goalies-total sec">SEC</th> <% end %>
-          <% if player_passport.league.goalie_category.sv == true %> <th class="user-goalies-total sv">SV</th> <% end %>
-          <% if player_passport.league.goalie_category.svpercent == true %> <th class="user-goalies-total svpercent">SV%</th> <% end %>
-          <% if player_passport.league.goalie_category.sho == true %> <th class="user-goalies-total sho">SHO</th> <% end %>
-          <td class="user-goalies-total jbr">jbr</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
 
 
 
@@ -152,37 +118,6 @@
 
 
 
-    <table class="table table-bordered table-striped table-hover table-responsive table-players">
-      <thead>
-        <tr>
-          <% if @player_passports[0].league.goalie_category.gs == true %> <th data-field="gs">GS</th> <% end %>
-          <% if @player_passports[0].league.goalie_category.w == true %> <th data-field="w">W</th> <% end %>
-          <% if @player_passports[0].league.goalie_category.l == true %> <th data-field="l">L</th> <% end %>
-          <% if @player_passports[0].league.goalie_category.ga == true %> <th data-field="ga">GA</th> <% end %>
-          <% if @player_passports[0].league.goalie_category.gaa == true %> <th data-field="gaa">GAA</th> <% end %>
-          <% if @player_passports[0].league.goalie_category.sa == true %> <th data-field="sa">SA</th> <% end %>
-          <% if @player_passports[0].league.goalie_category.sec == true %> <th data-field="sec">SEC</th> <% end %>
-          <% if @player_passports[0].league.goalie_category.sv == true %> <th data-field="sv">SV</th> <% end %>
-          <% if @player_passports[0].league.goalie_category.svpercent == true %> <th data-field="svpercent">SV%</th> <% end %>
-          <% if @player_passports[0].league.goalie_category.sho == true %> <th data-field="sho">SHO</th> <% end %>
-          <th class="user-total-goalie-jbr">JBR</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <% if player_passport.league.goalie_category.gs == true %> <th class="other-goalies-total gs">GS</th> <% end %>
-          <% if player_passport.league.goalie_category.w == true %> <th class="other-goalies-total w">W</th> <% end %>
-          <% if player_passport.league.goalie_category.l == true %> <th class="other-goalies-total l">L</th> <% end %>
-          <% if player_passport.league.goalie_category.ga == true %> <th class="other-goalies-total ga">GA</th> <% end %>
-          <% if player_passport.league.goalie_category.gaa == true %> <th class="other-goalies-total gaa">GAA</th> <% end %>
-          <% if player_passport.league.goalie_category.sa == true %> <th class="other-goalies-total sa">SA</th> <% end %>
-          <% if player_passport.league.goalie_category.sec == true %> <th class="other-goalies-total sec">SEC</th> <% end %>
-          <% if player_passport.league.goalie_category.sv == true %> <th class="other-goalies-total sv">SV</th> <% end %>
-          <% if player_passport.league.goalie_category.svpercent == true %> <th class="other-goalies-total svpercent">SV%</th> <% end %>
-          <% if player_passport.league.goalie_category.sho == true %> <th class="other-goalies-total sho">SHO</th> <% end %>
-          <td class="other-goalies-total jbr">jbr</td>
-        </tr>
-      </tbody>
-    </table>
+
   </div>
 </div>
