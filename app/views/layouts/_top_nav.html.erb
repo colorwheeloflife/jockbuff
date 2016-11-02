@@ -27,6 +27,7 @@
             </ul>
           </a>
         </li>
+      </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "Log out #{current_user.name}", :signout, :method => :delete %></li>
         <%= image_tag "#{current_user.image}", :id => 'nav-useravatar' %>
