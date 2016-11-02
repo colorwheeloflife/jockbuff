@@ -1,9 +1,9 @@
 $(document).ready(function () {
 
   totalCalc = function (tableTarget, statsTarget, renderTarget) {
-    $(tableTarget).each(function () {
+    $(tableTarget).each(function() {
       var sum = 0
-      $(this).find(statsTarget).each(function () {
+      $(this).find(statsTarget).each(function() {
           sum += +$(this).text() || 0;
       });
       $(renderTarget).html(sum);
@@ -11,14 +11,31 @@ $(document).ready(function () {
   };
 
   totalCalcPercentage = function (tableTarget, statsTarget, renderTarget) {
-    $(tableTarget).each(function () {
+    $(tableTarget).each(function() {
       var sum = 0
-      $(this).find(statsTarget).each(function () {
+      $(this).find(statsTarget).each(function() {
           sum += +$(this).text() || 0;
       });
       $(renderTarget).html(sum.toFixed(2));
     });
   };
+
+  diffFromTrade = function (topCell, bottomCell, totalCell) {
+    var fullStat = topCell;
+    var tradeStat = bottomCell;
+    var total = (fullstat - tradestat);
+    $(totalCell).html(total);
+  };
+
+  addFromTrade = function (topCell, bottomCell, totalCell) {
+    var fullStat = topCell;
+    var tradeStat = bottomCell;
+    var total = (fullstat + tradestat);
+    $(totalCell).html(total);
+  };
+
+
+
 
 //////////////// COMPARES PAGE //////////////////////////
 
