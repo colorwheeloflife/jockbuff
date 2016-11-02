@@ -38,7 +38,7 @@
     <% next if player_passport.player.positions.join("/").include?("G") %>
     <% playerID = player_passport.id %>
       <tr>
-        <td></td>
+        <td type='checkbox'></td>
         <td> <%= player_passport.player.name %> </td>
         <td> <%= player_passport.player.pro_team.upcase %></td>
         <td> <%= player_passport.player.positions.join("/") %> </td>
