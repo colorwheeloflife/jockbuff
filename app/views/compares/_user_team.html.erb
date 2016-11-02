@@ -92,11 +92,7 @@
     <% @current_user_players.each do |player_passport| %>
     <% next if player_passport.player.positions.join("/").exclude?("G") %>
       <tr>
-        <td>
-          <label>
-            <input type="checkbox" class="inlineCheckbox1" value="<%= player_passport.player.id %>">
-          </label>
-        </td>
+        <td></td>
         <td class="user-team-goalies"><%= player_passport.player.name %></td>
         <td class="user-team-goalies"><%= player_passport.player.pro_team.upcase %></td>
         <td class="user-team-goalies"><%= player_passport.player.player_prediction.gs %></td>
