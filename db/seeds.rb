@@ -28,6 +28,7 @@ def players_to_seed
     end
   end
 end
+
 def player_predictions
   teamstats = File.read(Rails.root.join('lib', 'seeds', 'teamstats_2015.csv'))
   teamstats_parse = CSV.parse(teamstats, :headers => true, :encoding => 'ISO-8859-1')

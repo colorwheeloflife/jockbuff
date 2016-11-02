@@ -1,10 +1,8 @@
 class ApplicationController < ActionController::Base
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
+
   require 'table-for'
   include PlayerPassportHelper
   include TeamsHelper
-  require "byebug"
 
   protect_from_forgery with: :exception
 

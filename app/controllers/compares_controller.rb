@@ -17,5 +17,4 @@ class ComparesController < ApplicationController
     render :partial => 'render_trade_table'
   end
 
-
 end

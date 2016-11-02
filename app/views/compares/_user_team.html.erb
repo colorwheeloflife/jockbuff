@@ -7,6 +7,7 @@
       <%= stat[0].upcase %> </th>
       <% end %>
         </tr>
+
   </thead>
   <tbody id="each-user-player">
     <% @current_user_players.each do |player_passport| %>
@@ -17,6 +18,7 @@
         <td class="user-team-players"> <%= player_passport.player.pro_team.upcase %></td>
         <td class="user-team-players"> <%= player_passport.player.positions.join(" / ") %> </td>
         <td class="user-team-players jbr-stat"> <%= jbr_by_cat(1, player_passport.player.player_id, :jbr)[player_passport.player.player_id] %> </td>
+
         <% PlayerCategory.find_by(league_id: params[:league_id]).attributes.each do |stat| %>
         <% next unless stat[1] == true %>
         <td class = "hidden user-team-players <%=stat[0]%>"> <%= player_passport.player.player_prediction.send(stat[0]) %> </td>

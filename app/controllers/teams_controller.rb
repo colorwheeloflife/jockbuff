@@ -3,9 +3,6 @@ class TeamsController < ApplicationController
   include TeamsHelper
   include ApplicationHelper
 
-  def create
-  end
-
   def show
     @current_user = current_user
     leagues = League.where(user_id: @current_user.id)

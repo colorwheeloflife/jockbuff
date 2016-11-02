@@ -11,7 +11,6 @@ module LeaguesHelper
     PlayerPassport.find_by(league_id: league_ids)
   end
 
-
   def create_leagues
     @yahoo_root = yahoo_root
     @current_user = current_user
@@ -19,9 +18,7 @@ module LeaguesHelper
     user_leagues_full = HTTParty.get("#{@yahoo_root}users;use_login=1/games;game_keys=363/teams", headers:{
     "Authorization" => "Bearer #{@current_user.token}"
     })
-    # return redirect_to(:signin) if(user_leagues_full["error"])
     user_leagues_arr = user_leagues_full["fantasy_content"]["users"]["user"]["games"]["game"]["teams"]["team"]
-
     user_leagues_arr.map do |league|
       league_info = {
           user_team: league["name"],

@@ -11,7 +11,6 @@ $(function() {
         userCheckedRowsSkaters.splice(index,1);
       }
     });
-    console.log(userCheckedRowsSkaters);
   });
 
   $('#add-to-trade').on('click', function() {
@@ -42,7 +41,6 @@ $(function() {
 
   $('#userGoalieTable').on('check.bs.table', function (e, row) {
     checkedRowsGoalies.push(row);
-    console.log(checkedRowsGoalies);
   });
 
   $('#userGoalieTable').on('uncheck.bs.table', function (e, row) {
@@ -51,7 +49,6 @@ $(function() {
         checkedRowsGoalies.splice(index,1);
       }
     });
-    console.log(checkedRowsGoalies);
   });
 
   $('#add-to-trade').on('click', function() {
