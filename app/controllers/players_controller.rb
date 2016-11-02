@@ -6,6 +6,9 @@ include ApplicationHelper
     league_id = params[:league_id]
     @player_passports = PlayerPassport.includes(:player, :player_predictions).where(league_id: params[:league_id])
     @team = Team.where(league_id: league_id, ownership: true).pluck(:id)
+    @leagues = League.where(user_id: current_user.id)
+
+
   end
 
   def create
