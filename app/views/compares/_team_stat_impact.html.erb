@@ -19,17 +19,17 @@
       </thead>
       <tbody id="total-team-stats">
         <tr>
-          <td class="total-goals"></td>
-          <td class="total-assists"></td>
-          <td class="total-points"></td>
-          <td class="total-powerplay"></td>
-          <td class="total-plusminus"></td>
-          <td class="total-pims"></td>
-          <td class="total-sog"></td>
-          <td class="total-fow"></td>
-          <td class="total-hits"></td>
-          <td class="total-blks"></td>
-          <td class="total-jbr"></td>
+          <td id="total-team-goals" class="total-goals"></td>
+          <td id="total-team-assists" class="total-assists"></td>
+          <td id="total-team-points" class="total-points"></td>
+          <td id="total-team-ppp" class="total-ppp"></td>
+          <td id="total-team-plusminus" class="total-plusminus"></td>
+          <td id="total-team-pims" class="total-pims"></td>
+          <td id="total-team-sog" class="total-sog"></td>
+          <td id="total-team-fow" class="total-fow"></td>
+          <td id="total-team-hits" class="total-hits"></td>
+          <td id="total-team-blks" class="total-blks"></td>
+          <td id="total-team-jbr" class="total-jbr"></td>
         </tr>
       </tbody>
       </table>
@@ -86,7 +86,7 @@
           <td class="other-total-goals"></td>
           <td class="other-total-assists"></td>
           <td class="other-total-points"></td>
-          <td class="other-total-powerplay"></td>
+          <td class="other-total-ppp"></td>
           <td class="other-total-plusminus"></td>
           <td class="other-total-pims"></td>
           <td class="other-total-sog"></td>
@@ -143,12 +143,12 @@
             <th>JBR</th>
           </tr>
         </thead>
-        <tbody id="total-team-stats">
-          <tr>
+        <tbody id="sum-of-trade-stats">
+          <tr class="hidden">
             <td class="total-goals"></td>
             <td class="total-assists"></td>
             <td class="total-points"></td>
-            <td class="total-powerplay"></td>
+            <td class="total-ppp"></td>
             <td class="total-plusminus"></td>
             <td class="total-pims"></td>
             <td class="total-sog"></td>
@@ -170,6 +170,18 @@
             <td class="total-trade-blks"></td>
             <td class="total-trade-jbr"></td>
           </tr>
+          <tr>
+            <td class="sum-of-trade-goals"></td>
+            <td class="sum-of-trade-assists"></td>
+            <td class="sum-of-trade-points"></td>
+            <td class="sum-of-trade-ppp"></td>
+            <td class="sum-of-trade-plusminus"></td>
+            <td class="sum-of-trade-pims"></td>
+            <td class="sum-of-trade-sog"></td>
+            <td class="sum-of-trade-fow"></td>
+            <td class="sum-of-trade-hits"></td>
+            <td class="sum-of-trade-blks"></td>
+            <td class="sum-of-trade-jbr"></td>
         </tbody>
         </table>
 
@@ -233,7 +245,7 @@
             <td class="other-total-goals"></td>
             <td class="other-total-assists"></td>
             <td class="other-total-points"></td>
-            <td class="other-total-powerplay"></td>
+            <td class="other-total-ppp"></td>
             <td class="other-total-plusminus"></td>
             <td class="other-total-pims"></td>
             <td class="other-total-sog"></td>
