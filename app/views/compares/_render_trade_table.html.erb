@@ -10,61 +10,42 @@
       <th data-field="positions">Pos</th>
       <th data-field="jbr"
           data-sortable="true">JBR</th>
-      <% if @player_passports[0].league.player_category.g == true %> <th class="hidden" data-field="g" data-sortable="true">G</th> <% end %>
-      <% if @player_passports[0].league.player_category.a == true %> <th class="hidden" data-field="a" data-sortable="true">A</th> <% end %>
-      <% if @player_passports[0].league.player_category.p == true %> <th class="hidden" data-field="p" data-sortable="true">P</th> <% end %>
-      <% if @player_passports[0].league.player_category.ppg == true %> <th class="hidden" data-field="ppg" data-sortable="true">PPG</th> <% end %>
-      <% if @player_passports[0].league.player_category.ppa == true %> <th class="hidden" data-field="ppa" data-sortable="true">PPA</th> <% end %>
-      <% if @player_passports[0].league.player_category.ppp == true %> <th class="hidden" data-field="ppp" data-sortable="true">PPP</th> <% end %>
-      <% if @player_passports[0].league.player_category.plusminus == true %> <th class="hidden" data-field="plusminus" data-sortable="true">+/-</th> <% end %>
-      <% if @player_passports[0].league.player_category.shg == true %> <th class="hidden" data-field="shg" data-sortable="true">SHG</th> <% end %>
-      <% if @player_passports[0].league.player_category.sha == true %> <th class="hidden" data-field="sha" data-sortable="true">SHA</th> <% end %>
-      <% if @player_passports[0].league.player_category.shp == true %> <th class="hidden" data-field="shp" data-sortable="true">SHP</th> <% end %>
-      <% if @player_passports[0].league.player_category.gwg == true %> <th class="hidden" data-field="gwg" data-sortable="true">GWG</th> <% end %>
-      <% if @player_passports[0].league.player_category.gtg == true %> <th class="hidden" data-field="gtg" data-sortable="true">GTG</th> <% end %>
-      <% if @player_passports[0].league.player_category.pim == true %> <th class="hidden" data-field="pim" data-sortable="true">PIM</th> <% end %>
-      <% if @player_passports[0].league.player_category.sog == true %> <th class="hidden" data-field="sog" data-sortable="true">SOG</th> <% end %>
-      <% if @player_passports[0].league.player_category.shpercent == true %> <th class="hidden" data-field="shpercent" data-sortable="true">SH%</th> <% end %>
-      <% if @player_passports[0].league.player_category.fw == true %> <th class="hidden" data-field="fw" data-sortable="true">FW</th> <% end %>
-      <% if @player_passports[0].league.player_category.fl == true %> <th class="hidden" data-field="fl" data-sortable="true">FL</th> <% end %>
-      <% if @player_passports[0].league.player_category.hit == true %> <th class="hidden" data-field="hit" data-sortable="true">HIT</th> <% end %>
-      <% if @player_passports[0].league.player_category.blk == true %> <th class="hidden" data-field="blk" data-sortable="true">BLK</th> <% end %>
+      <th data-field="g" class="hidden">G</th>
+      <th data-field="a" class="hidden">A</th>
+      <th data-field="p" class="hidden">P</th>
+      <th data-field="ppp" class="hidden">PPP</th>
+      <th data-field="plusminus" class="hidden">+/-</th>
+      <th data-field="pim" class="hidden">PIM</th>
+      <th data-field="sog" class="hidden">SOG</th>
+      <th data-field="fow" class="hidden">FOW</th>
+      <th data-field="hit" class="hidden">HIT</th>
+      <th data-field="blk" class="hidden">BLK</th>
     </tr>
   </thead>
-  <tbody>
   <tbody id="each-other-player">
     <% @trade_team.each do |player_passport| %>
-    <% next if player_passport.player.positions.join(" / ").include?("G") %>
-      <tr>
+    <% next if player_passport.player.positions.join("/").include?("G") %>
+    <tr>
       <td>
       <label>
         <input type="checkbox" class="inlineCheckbox1" value="<%= player_passport.player.id %>">
       </label>
-        </td>
-        <td class="other-team-players"> <%= player_passport.player.name %> </td>
-        <td class="other-team-players"> <%= player_passport.player.pro_team.upcase %></td>
-        <td class="other-team-players"> <%= player_passport.player.positions.join(" / ") %> </td>
-        <td class="other-team-players jbr-stat"> 220 </td>
-        <% if player_passport.league.player_category.g == true %> <td class="hidden other-team-players goals"> <%= player_passport.player.player_prediction.g %> </td> <% end %>
-        <% if player_passport.league.player_category.a == true %> <td class="hidden other-team-players assists"> <%= player_passport.player.player_prediction.a %> </td> <% end %>
-        <% if player_passport.league.player_category.p == true %> <td class="hidden other-team-players points"> <%= player_passport.player.player_prediction.p %> </td> <% end %>
-        <% if player_passport.league.player_category.ppg == true %> <td class="hidden other-team-players powerplay-goals"> <%= player_passport.player.player_prediction.ppg %> </td> <% end %>
-        <% if player_passport.league.player_category.ppa == true %> <td class="hidden other-team-players powerplay-assists"> <%= player_passport.player.player_prediction.ppa %> </td> <% end %>
-        <% if player_passport.league.player_category.ppp == true %> <td class="hidden other-team-players powerplay-points"> <%= player_passport.player.player_prediction.ppp %> </td> <% end %>
-        <% if player_passport.league.player_category.plusminus == true %> <td class="hidden other-team-players plusminus"> <%= player_passport.player.player_prediction.plusminus %> </td> <% end %>
-        <% if player_passport.league.player_category.shg == true %> <td class="hidden other-team-players shg"> <%= player_passport.player.player_prediction.shg %> </td> <% end %>
-        <% if player_passport.league.player_category.sha == true %> <td class="hidden other-team-players sha"> <%= player_passport.player.player_prediction.sha %> </td> <% end %>
-        <% if player_passport.league.player_category.shp == true %> <td class="hidden other-team-players shp"> <%= player_passport.player.player_prediction.shp %> </td> <% end %>
-        <% if player_passport.league.player_category.gwg == true %> <td class="hidden other-team-players gwg"> <%= player_passport.player.player_prediction.gwg %> </td> <% end %>
-        <% if player_passport.league.player_category.gtg == true %> <td class="hidden other-team-players gtg"> <%= player_passport.player.player_prediction.gtg %> </td> <% end %>
-        <% if player_passport.league.player_category.pim == true %> <td class="hidden other-team-players pims"> <%= player_passport.player.player_prediction.pim %> </td> <% end %>
-        <% if player_passport.league.player_category.sog == true %> <td class="hidden other-team-players sog"> <%= player_passport.player.player_prediction.sog %> </td> <% end %>
-        <% if player_passport.league.player_category.shpercent == true %> <td class="hidden other-team-players shpercent"> <%= player_passport.player.player_prediction.shpercent %> </td> <% end %>
-        <% if player_passport.league.player_category.fw == true %> <td class="hidden other-team-players fw"> <%= player_passport.player.player_prediction.fw %> </td> <% end %>
-        <% if player_passport.league.player_category.fl == true %> <td class="hidden other-team-players fl"> <%= player_passport.player.player_prediction.fl %> </td> <% end %>
-        <% if player_passport.league.player_category.hit == true %> <td class="hidden other-team-players hit"> <%= player_passport.player.player_prediction.hit %> </td> <% end %>
-        <% if player_passport.league.player_category.blk == true %> <td class="hidden other-team-players blk"> <%= player_passport.player.player_prediction.blk %> </td> <% end %>
-      </tr>
+      </td>
+      <td> <%= player_passport.player.name %> </td>
+      <td> <%= player_passport.player.pro_team.upcase %></td>
+      <td> <%= player_passport.player.positions.join("/") %> </td>
+      <td class="jbr-stat"> 150 </td>
+      <td class="hidden goals"> <%= player_passport.player.player_prediction.g %> </td>
+      <td class="hidden assists"> <%= player_passport.player.player_prediction.a %> </td>
+      <td class="hidden points"> <%= player_passport.player.player_prediction.p %> </td>
+      <td class="hidden powerplay"> <%= player_passport.player.player_prediction.ppp %> </td>
+      <td class="hidden plusminus"> <%= player_passport.player.player_prediction.plusminus %> </td>
+      <td class="hidden pims"> <%= player_passport.player.player_prediction.pim %> </td>
+      <td class="hidden sog"> <%= player_passport.player.player_prediction.sog %> </td>
+      <td class="hidden fow"> <%= player_passport.player.player_prediction.fw %> </td>
+      <td class="hidden hit"> <%= player_passport.player.player_prediction.hit %> </td>
+      <td class="hidden blk"> <%= player_passport.player.player_prediction.blk %> </td>
+    </tr>
     <% end %>
   </tbody>
 </table>

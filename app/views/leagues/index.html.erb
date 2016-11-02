@@ -19,14 +19,25 @@
             <td><%= link_to "#{league.user_team}",user_league_team_path(@current_user, league.id, @team_id[count]) %></td>
             <% count = count + 1 %>
           </tr>
-          <% end %>
+          <% end %>s
         </tbody>
       </table>
-      <%= form_tag(user_leagues_path(@current_user), method: "post") do %>
-      <button type= "submit" class= "btn btn-primary btn-lg" id="spinner">
-      Click to Update Your Leagues
-      </button>
+      <% unless passport_exist(@current_user.id) %>
+        <%= form_tag(user_leagues_path(@current_user), method: "post") do %>
+          <button type= "submit" class= "btn btn-primary btn-lg" id="spinner">
+          Download Your Teams
+          </button>
+        <% end %>
+      <% else %>
+        <%= form_tag(new_user_league_path(@current_user.id), method: "get") do %>
+        <button type= "submit" class= "btn btn-primary btn-lg" id="spinner">
+        Update ALL leagues
+        </button>
+        <% end %>
       <% end %>
     </div>
   </div>
 </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/js/bootstrap-select.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.8.1/bootstrap-table.min.js"></script>

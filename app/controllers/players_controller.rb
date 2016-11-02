@@ -5,7 +5,6 @@ include ApplicationHelper
   def index
     league_id = params[:league_id]
     @player_passports = PlayerPassport.includes(:player, :player_predictions)
-    gon.player_passports = @player_passports
     @team = Team.where(league_id: league_id, ownership: true).pluck(:id)
   end
 
@@ -35,7 +34,18 @@ include ApplicationHelper
           type_p: player["position_type"]
         }
         @player = Player.create(player_details)
+
       end
     end
   end
+
+  private
+
+    def sort_column
+      Player.column_names.include?(params[:sort]) ? params[:sort] : "name"
+    end
+
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+    end
 end

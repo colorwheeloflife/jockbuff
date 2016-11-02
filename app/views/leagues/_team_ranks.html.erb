@@ -1,19 +1,78 @@
- <table class="table table-bordered table-striped table-responsive table-players ">
+<script>
+    var leagueJBRs = []
+    var leagueTeams = [];
+
+    var JbrLeagueRankData = getLeagueChartData();
+    console.log(JbrLeagueRankData);
+
+    for (var i = 0; i < JbrLeagueRankData.length; i++) {
+          var obj = JbrLeagueRankData[i];
+          var team_name = obj[Object.keys(obj)[0]];
+          var team_jbr = obj[Object.keys(obj)[1]];
+          leagueTeams.push(team_name);
+          leagueJBRs.push(team_jbr);
+      }
+
+    $(function(){
+      $('#rank_column-top').highcharts({
+          chart: {
+              type: 'column',
+              options3d: {
+                  enabled: true,
+                  alpha: 15,
+                  beta: 15,
+                  depth: 50,
+                  viewDistance: 25
+              }
+          },
+          title: {
+              text: 'Category Leaderboard'
+          },
+          subtitle: {
+              text: 'Category: Total Overall'
+          },
+          plotOptions: {
+              column: {
+                  depth: 25
+              }
+          },
+          xAxis: {
+              categories: leagueTeams
+          },
+          series: [{
+            data: leagueJBRs
+          }]
+      });
+    });
+
+    function getLeagueChartData () {
+        return [
+            <% @teams.each do |team| %>
+            <% next if team.name.include?("Waiver") %>
+              {name:"<%= team.name %>",jbr:<%= jbr_by_team(team.id, :jbr) %>},
+            <% end %>
+        ];
+    }
+</script>
+
+ <table class="table table-bordered table-striped table-responsive table-players "
+        id="leaguesTable">
   <thead>
     <tr>
       <th class="col-md-1">Rank</th>
-      <th>Team Name</th>
-      <th>JBR</th>
+      <th data-field="team_name">Team Name</th>
+      <th data-field="jbr">JBR</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody class="jbr_scores">
     <% count = 0 %>
     <% @teams.each do |team| %>
     <% next if team.name.include?("Waiver") %>
     <tr>
       <td><%= count += 1 %></td>
-      <td><%= link_to "#{team.name}", user_league_team_path(@current_user, @league_id, team) %></td>
-      <td>500</td>
+      <% c = count %>
+      <td ><%= link_to "#{team.name}", user_league_team_path(@current_user, @league_id, team) %></td>
+      <td ><%= jbr_by_team(team.id, :jbr) %></td>
     </tr>
     <% end %>
   </tbody>

@@ -17,11 +17,13 @@
     </tr>
   </thead>
   <tbody>
-    <% @players.first(5).each do |player_passport| %>
+    <% top_five = jbr_by_cat(1, Player.where(type_p: "P").pluck(:player_id), :jbr).keys.first(5) %>
+    <% top_five.each do |id| %>
+    <% @player_passports.where(player_id: id).each do |player_passport| %>
     <% next if player_passport.player.positions.join(" / ").include?("G") %>
       <tr>
         <td> <%= player_passport.player.name %> </td>
-        <td> 999 </td>
+        <td> <%= jbr_by_cat(1, player_passport.player.player_id, :jbr)[player_passport.player.player_id] %></td>
         <td> <%= player_passport.player.pro_team.upcase %></td>
         <td> <%= player_passport.player.positions.join(" / ") %> </td>
         <td> <%= player_passport.player.player_prediction.g %> </td>
@@ -35,5 +37,6 @@
         <td> <%= player_passport.player.player_prediction.blk %> </td>
       </tr>
     <% end %>
-  </tbody>
+    <% end %>
+    </tbody>
 </table>

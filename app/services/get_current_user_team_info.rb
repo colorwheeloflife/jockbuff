@@ -8,7 +8,7 @@ class GetCurrentUserTeamInfo
     @user_players = PlayerPassport.where(team_id: team).includes(:player)
   end
 
-  def get_team_name(league_id, user_id)
+  def get_team_name(league_id)
     @team_name = Team.where(league_id: league_id, ownership: true).pluck(:name).join("")
   end
 

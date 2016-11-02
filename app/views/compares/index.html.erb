@@ -5,7 +5,6 @@
   };
 </script>
 <div class="row container-fluid topfix container-space">
-<!-- -->
   <div class="trading-teams">
     <div class="col-md-6">
       <h1><%= @user_team_name %></h1>
@@ -30,13 +29,18 @@
   </div>
   <button class="btn btn-default btn-lg goaliebtn" id="add-to-trade"> Select Players For Trade </button>
 
-  <!-- -->
+
+  <container id="hidden-trades" class="hidden">
   <div class="row container-fluid topfix container-space">
     <div class="col-md-12">
     <!-- Players to be traded table -->
     <%= render 'players_to_be_traded' %>
     </div>
   </div>
+  </container>
+
+
+  <!-- TEAM STAT IMPACT -->
   <div class="row container-fluid topfix container-space">
     <div class="col-md-12">
       <%= render 'team_stat_impact' %>
@@ -44,5 +48,3 @@
   </div>
   <div class="col-md-12 graph" id="neg-value-column_top" style="width:100%; height:400px;">HI</div>
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/js/bootstrap-select.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.8.1/bootstrap-table.min.js"></script>

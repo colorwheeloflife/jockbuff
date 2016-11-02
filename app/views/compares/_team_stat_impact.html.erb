@@ -24,6 +24,21 @@
           <% if @player_passports[0].league.player_category.hit == true %> <th data-field="hit">HIT</th> <% end %>
           <% if @player_passports[0].league.player_category.blk == true %> <th data-field="blk">BLK</th> <% end %>
           <th data-field="jbr">JBR</th>
+  <h1>Full Team Stats</h1>
+    <table class="table table-bordered table-striped table-hover table-responsive table-players">
+      <thead>
+        <tr>
+          <th>G</th>
+          <th>A</th>
+          <th>Points</th>
+          <th>PPP</th>
+          <th>+/-</th>
+          <th>PIMS</th>
+          <th>SOG</th>
+          <th>FOW</th>
+          <th>HITS</th>
+          <th>BLKS</th>
+          <th>JBR</th>
         </tr>
       </thead>
 
@@ -53,17 +68,47 @@
         </tbody>
       </table>
 
-
-
-
-
+    <table class="table table-bordered table-striped table-hover table-responsive table-players">
+      <thead>
+        <tr>
+          <th>Wins</th>
+          <th>Losses</th>
+          <th>GAA</th>
+          <th>SV %</th>
+          <th>SO</th>
+          <th>Saves</th>
+          <th>JBR</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="total-wins"></td>
+          <td class="total-losses"></td>
+          <td class="total-gaa"></td>
+          <td class="total-svpercent"></td>
+          <td class="total-shutouts"></td>
+          <td class="total-saves"></td>
+          <td class="total-goalie-jbr"></td>
+        </tr>
+        <tr>
+          <td class="total-trade-wins"></td>
+          <td class="total-trade-losses"></td>
+          <td class="total-trade-gaa"></td>
+          <td class="total-trade-svpercent"></td>
+          <td class="total-trade-shutouts"></td>
+          <td class="total-trade-saves"></td>
+          <td class="total-trade-goalie-jbr"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
 
 
 <!-- Other Team -->
 
   <div class="col-md-6">
-  <h1>Other Team Stat Impact</h1>
+  <h1>Full Other Team Stats</h1>
     <table class="table table-bordered table-striped table-hover table-responsive table-players">
       <thead>
         <tr>
@@ -115,9 +160,5 @@
         </tr>
         </tbody>
       </table>
-
-
-
-
   </div>
 </div>

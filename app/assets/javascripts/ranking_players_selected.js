@@ -1,7 +1,5 @@
 $(function() {
 
-  // var selectedPlayers = [];
-
   var graph_data = [{
       name: 'P.Kane',
       data: [100, 82, 46, 60, 106, 17, 30, 37, 21, 11, 40, .216, 17, 20, 0, 0, 9, 287, .160]
@@ -18,9 +16,7 @@ $(function() {
 
   $("#add_player").click(function() {
     $("#selection-output").empty();
-
     var selectedPlayers = $('#playersTable').bootstrapTable('getSelections');
-    console.log(selectedPlayers);
     $.each(selectedPlayers, function(index, value) {
       var row = $('<tr>');
       $('#selection-output').append(row);
