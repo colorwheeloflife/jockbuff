@@ -1,7 +1,9 @@
   <%= render partial: "fixed_header_columns", locals: {tableType: "userTable" } %>
       <% PlayerCategory.find_by(league_id: params[:league_id]).attributes.each do |stat| %>
       <% next unless stat[1] == true %>
-      <th class = "hidden" data-field="<%=stat[0]%>" data-sortable="true"> <% stat[0] = "+/-" if stat[0] == "plusminus" %>
+      <th class = "hidden" data-field="<%=stat[0]%>" data-sortable="true">
+      <% stat[0] = "+/-" if stat[0] == "plusminus" %>
+      <% stat[0] = "SH%" if stat[0] == "shpercent" %>
       <%= stat[0].upcase %> </th>
       <% end %>
         </tr>
@@ -23,7 +25,6 @@
         <% end %>
     </tbody>
   </table>
-
      <%= render partial: "fixed_header_columns", locals: { tableType: "userGoalieTable" } %>
      <% GoalieCategory.find_by(league_id: params[:league_id]).attributes.each do |stat| %>
         <% next unless stat[1] == true %>
