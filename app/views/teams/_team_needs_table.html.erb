@@ -1,42 +1,31 @@
-<table class="table table-bordered table-striped table-hover table-responsive table-players ">
+<table class="table table-bordered table-striped table-hover table-responsive table-players "
+      id="teamNeedsTable"
+      data-toggle="table">
   <thead>
+    <h3>Team Needs</h3>
     <tr>
       <th>#</th>
       <th>Category</th>
-      <th>Best FA Available</th>
       <th>JBR</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>1</td>
-      <td>Goals</td>
-      <td>Dingo Burns</td>
-      <td>100</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>Hits</td>
-      <td>Meathead Mauler</td>
-      <td>96</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>PPP</td>
-      <td>Joey Powerplay</td>
-      <td>155</td>
-    </tr>
-    <tr>
-      <td>4</td>
-      <td>+/-</td>
-      <td>Otto Adder</td>
-      <td>76</td>
-    </tr>
-    <tr>
-      <td>5</td>
-      <td>A</td>
-      <td>Dan Playmaker</td>
-      <td>98</td>
-    </tr>
+  <% cat_arr = [] %>
+  <% jbr_arr = [] %>
+  <% PlayerCategory.find_by(league_id: params[:league_id]).attributes.each {|stat| cat_arr.push(stat[0]) if stat[1] == true } %>
+  <% cat_arr.each do |category| %>
+    <% jbr = jbr_by_team(params[:id], category) %>
+    <% jbr_arr.push(category, jbr) %>
+  <% end %>
+  <% jbr_arr = Hash[*jbr_arr].sort_by {|k,v| v}.to_h %>
+    <% count = 0 %>
+    <% jbr_arr.first(5).each do |jbr| %>
+      <tr>
+        <td> <%= count += 1 %> </td>
+        <td> <%= jbr[0] %> </td>
+        <td> <%= jbr[1] %> </td>
+      </tr>
+    <% end %>
   </tbody>
 </table>
+

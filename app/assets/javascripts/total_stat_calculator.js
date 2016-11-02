@@ -113,13 +113,11 @@ $(document).ready(function () {
 
     function cycle(value) {
       for (var i = 0; i < value.length; ++i) {
-        // console.log(allTheKeys[i]);
         if (["g", "a", "p", "ppg", "ppa", "ppp", "plusminus", "shg", "sha", "shp", "gwg", "gtg", "pim", "sog", "shpercent", "fw", "fl", "hit", "blk"].includes(allTheKeys[i])) { graphCategories.push(allTheKeys[i]); }
       }
-    }
+    };
     cycle(allTheKeys);
 
-    console.log(graphCategories);
 
     if (value.g !== undefined) { data.push((+$('.sum-of-trade-goals').text()) - (+$('#total-team-goals').text())); }
     if (value.a !== undefined) { data.push((+$('.sum-of-trade-assists').text()) - (+$('#total-team-assists').text()) ); }
@@ -140,9 +138,28 @@ $(document).ready(function () {
     if (value.fl !== undefined) { data.push((+$('.sum-of-trade-fl').text()) - (+$('#total-team-fl').text()) ); }
     if (value.hit !== undefined) { data.push((+$('.sum-of-trade-hit').text()) - (+$('#total-team-hit').text()) ); }
     if (value.blk !== undefined) { data.push((+$('.sum-of-trade-blk').text()) - (+$('#total-team-blk').text()) ); }
-    // console.log( ( +$('.sum-of-trade-goals').text() ) - ( +$('#total-team-goals').text() ) );
-    // console.log( ( +$('.sum-of-trade-assists').text() ) - ( +$('#total-team-assists').text() ) );
-    // console.log( ( +$('.sum-of-trade-points').text() ) - ( +$('#total-team-points').text() ) );
+
+    if (value.g !== undefined) { data.push((+$('.other-sum-of-trade-goals').text()) - (+$('#other-total-team-goals').text())); }
+    if (value.a !== undefined) { data.push((+$('.other-sum-of-trade-goals-assists').text()) - (+$('#other-total-team-assists').text()) ); }
+    if (value.p !== undefined) { data.push((+$('.other-sum-of-trade-goals-points').text()) - (+$('#other-total-team-points').text()) ); }
+    if (value.ppg !== undefined) { data.push((+$('.other-sum-of-trade-goals-ppg').text()) - (+$('#other-total-team-ppg').text()) ); }
+    if (value.ppa !== undefined) { data.push((+$('.other-sum-of-trade-goals-ppa').text()) - (+$('#other-total-team-ppa').text()) ); }
+    if (value.ppp !== undefined) { data.push((+$('.other-sum-of-trade-goals-ppp').text()) - (+$('#other-total-team-ppp').text()) ); }
+    if (value.plusminus !== undefined) { data.push((+$('.other-sum-of-trade-goals-plusminus').text()) - (+$('#other-total-team-plusminus').text()) ); }
+    if (value.shg !== undefined) { data.push((+$('.other-sum-of-trade-goals-shg').text()) - (+$('#other-total-team-shg').text()) ); }
+    if (value.sha !== undefined) { data.push((+$('.other-sum-of-trade-goals-sha').text()) - (+$('#other-total-team-sha').text()) ); }
+    if (value.shp !== undefined) { data.push((+$('.other-sum-of-trade-goals-shp').text()) - (+$('#other-total-team-shp').text()) ); }
+    if (value.gwg !== undefined) { data.push((+$('.other-sum-of-trade-goals-gwg').text()) - (+$('#other-total-team-gwg').text()) ); }
+    if (value.gtg !== undefined) { data.push((+$('.other-sum-of-trade-goals-gtg').text()) - (+$('#other-total-team-gtg').text()) ); }
+    if (value.pim !== undefined) { data.push((+$('.other-sum-of-trade-goals-pim').text()) - (+$('#other-total-team-pim').text()) ); }
+    if (value.sog !== undefined) { data.push((+$('.other-sum-of-trade-goals-sog').text()) - (+$('#other-total-team-sog').text()) ); }
+    if (value.shpercent !== undefined) { data.push((+$('.other-sum-of-trade-goals-shpercent').text()) - (+$('#other-total-team-shpercent').text()) ); }
+    if (value.fw !== undefined) { data.push((+$('.other-sum-of-trade-goals-fw').text()) - (+$('#other-total-team-fw').text()) ); }
+    if (value.fl !== undefined) { data.push((+$('.other-sum-of-trade-goals-fl').text()) - (+$('#other-total-team-fl').text()) ); }
+    if (value.hit !== undefined) { data.push((+$('.other-sum-of-trade-goals-hit').text()) - (+$('#other-total-team-hit').text()) ); }
+    if (value.blk !== undefined) { data.push((+$('.other-sum-of-trade-goals-blk').text()) - (+$('#other-total-team-blk').text()) ); }
+
+
     graphData.push(playerData);
 
   });

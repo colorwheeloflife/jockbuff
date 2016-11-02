@@ -1,7 +1,5 @@
 module PlayerCategoriesHelper
-
-
-
+  
   def create_player_categories(league_settings, league_info)
 
     league_id = League.where(:league_key => league_info[:league_key]).where(:user_id => @current_user.id).pluck(:id)
@@ -10,7 +8,7 @@ module PlayerCategoriesHelper
     stat_cats = league_settings["fantasy_content"]["league"]["settings"]["stat_categories"]["stats"]["stat"]
       player_cats = stat_cats.select {|cat| cat["stat_position_types"]["stat_position_type"]["position_type"] == "P"}
     player_cats = player_cats.map do |cat|
-       cat["name"]
+       cat["name"] unless cat["stat_position_types"]["stat_position_type"]["is_only_display_stat"]
     end
 
     player_cats_save = {
@@ -35,6 +33,8 @@ module PlayerCategoriesHelper
       hit: player_cats.include?('Hits'),
       blk: player_cats.include?('Blocks'),
     }
+
     @player_category = PlayerCategory.create(player_cats_save)
+
     end
 end

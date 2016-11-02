@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161026163405) do
+ActiveRecord::Schema.define(version: 20161102081359) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,10 +74,11 @@ ActiveRecord::Schema.define(version: 20161026163405) do
   create_table "player_passports", force: :cascade do |t|
     t.integer  "player_id"
     t.string   "position"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.integer  "team_id"
     t.integer  "league_id"
+    t.integer  "draft_position"
     t.index ["league_id"], name: "index_player_passports_on_league_id", using: :btree
     t.index ["player_id"], name: "index_player_passports_on_player_id", using: :btree
     t.index ["team_id"], name: "index_player_passports_on_team_id", using: :btree
@@ -118,9 +119,9 @@ ActiveRecord::Schema.define(version: 20161026163405) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "player_stats", force: :cascade do |t|
+  create_table "player_stats", id: false, force: :cascade do |t|
     t.integer  "player_id"
-    t.integer  "true_id"
+    t.integer  "gp"
     t.integer  "g"
     t.integer  "a"
     t.integer  "p"
@@ -147,12 +148,11 @@ ActiveRecord::Schema.define(version: 20161026163405) do
     t.float    "gaa"
     t.integer  "sa"
     t.integer  "sv"
+    t.integer  "sec"
     t.float    "svpercent"
     t.integer  "sho"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["player_id"], name: "index_player_stats_on_player_id", using: :btree
-    t.index ["true_id"], name: "index_player_stats_on_true_id", using: :btree
   end
 
   create_table "players", id: false, force: :cascade do |t|

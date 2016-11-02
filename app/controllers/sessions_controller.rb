@@ -1,11 +1,11 @@
 class SessionsController < ApplicationController
+  include LeaguesHelper
 
   def new
     redirect_to '/auth/yahoo'
   end
 
   def create
-    @current_user = current_user
     auth = request.env["omniauth.auth"]
     puts auth
     user = User.where(:provider => auth['provider'],
@@ -14,8 +14,8 @@ class SessionsController < ApplicationController
     # reset_session
     user.update(token: auth['credentials']['token'])
     session[:user_id] = user.id
-    null = nil
-    @league = League.new()
+    @current_user = current_user
+    @create_league = create_leagues unless League.where(user_id: @current_user.id).exists?
     redirect_to user_leagues_path(current_user), :notice => 'Signed in!'
   end
 

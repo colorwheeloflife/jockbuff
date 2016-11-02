@@ -1,10 +1,10 @@
 
 module TeamsHelper
   def create_teams (league_info)
-    league_key = league_info[:league_key]
+    league_key = league_info["league_key"]
     team_info_arr = league_call(league_key)
-    user_team = League.where(league_info).pluck(:user_team)[0]
-    league_id = League.where(league_info).pluck(:id)[0]
+    user_team = league_info["user_team"]
+    league_id = league_info["id"]
     team_info = team_info_arr.map do |owner|
       team_info = {}
       team_info.merge!(league_id: league_id)

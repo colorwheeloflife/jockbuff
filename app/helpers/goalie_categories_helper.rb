@@ -5,12 +5,11 @@ def create_goalie_categories(league_settings, league_info)
 stat_cats = league_settings["fantasy_content"]["league"]["settings"]["stat_categories"]["stats"]["stat"]
     goalie_cats = stat_cats.select {|cat| cat["stat_position_types"]["stat_position_type"]["position_type"] == "G"}
     goalie_cats = goalie_cats.map do |cat|
-       cat["name"]
+       cat["name"] unless cat["stat_position_types"]["stat_position_type"]["is_only_display_stat"]
     end
 
     league_id = League.where(:league_key => league_info[:league_key]).where(:user_id => @current_user.id).pluck(:id)
     league_id = league_id[0]
-
 
     goalie_cats_save = {
       league_id: league_id,
@@ -25,6 +24,6 @@ stat_cats = league_settings["fantasy_content"]["league"]["settings"]["stat_categ
       svpercent: goalie_cats.include?('Save Percentage'),
       sho: goalie_cats.include?('Shutouts'),
     }
-    GoalieCategory.create(goalie_cats_save)
+    @goalie_category = GoalieCategory.create(goalie_cats_save)
   end
 end

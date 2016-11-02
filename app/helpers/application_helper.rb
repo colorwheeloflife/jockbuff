@@ -6,7 +6,6 @@ module ApplicationHelper
 
   def current_user
     @current_user ||= User.find_by(id: session[:user_id])
-
   end
 
   def logged_in?
@@ -24,5 +23,4 @@ module ApplicationHelper
     direction = column == sort_column && sort_direction == "asc" ? "desc" : "asc"
     link_to title, {:sort => column, :direction => direction}, {:class => css_class}
   end
-
 end

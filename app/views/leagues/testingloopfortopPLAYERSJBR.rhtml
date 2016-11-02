@@ -1,0 +1,33 @@
+<table class="table table-bordered table-striped table-hover table-responsive table-players">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>JBR</th>
+      <th>Pro Team</th>
+      <th>Position</th>
+      <% PlayerCategory.find_by(league_id: params[:id]).attributes.each do |stat| %>
+      <% next unless stat[1] == true %>
+      <th> <%= stat[0] %> </th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <% top_five = jbr_by_cat(1, Player.where(type_p: "P").pluck(:player_id), :jbr).keys.first(5) %>
+    <% top_five.each do |id| %>
+    <% @player_passports.where(player_id: id).each do |player_passport| %>
+    <% next if player_passport.player.positions.join(" / ").include?("G") %>
+      <tr>
+        <td> <%= player_passport.player.name %> </td>
+        <td> <%= jbr_by_cat(1, player_passport.player.player_id, :jbr)[player_passport.player.player_id] %></td>
+        <td> <%= player_passport.player.pro_team.upcase %></td> if
+        <td> <%= player_passport.player.positions.join(" / ") %> </td>
+         <% PlayerCategory.find_by(league_id: params[:id]).attributes.each do |stat| %>
+        <% next unless stat[1] == true %>
+        <% byebug %>
+        <%= player_passport.player.player_prediction.stat[0] %>
+        <% end %>
+      </tr>
+    <% end %>
+    <% end %>
+    </tbody>
+</table>

@@ -1,6 +1,7 @@
 class CreatePlayerPredictions < ActiveRecord::Migration[5.0]
   def change
     create_table :player_predictions, id:false, force: true do |t|
+      t.integer :gp
       t.integer :g
       t.integer :a
       t.integer :p
@@ -28,6 +29,7 @@ class CreatePlayerPredictions < ActiveRecord::Migration[5.0]
       t.float :gaa
       t.integer :sa
       t.integer :sv
+      t.integer :sec
       t.float :svpercent
       t.integer :sho
       t.float :total
