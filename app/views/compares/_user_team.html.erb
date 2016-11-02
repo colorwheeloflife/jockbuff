@@ -12,7 +12,7 @@
       <th data-field="jbr"
           data-sortable="true">JBR</th>
       <% if @player_passports[0].league.player_category.g == true %> <th class="hidden" data-field="g" data-sortable="true">G</th> <% end %>
-      <% if @player_passports[0].league.player_category.a == true %> <th data-field="a" data-sortable="true">A</th> <% end %>
+      <% if @player_passports[0].league.player_category.a == true %> <th class="hidden" data-field="a" data-sortable="true">A</th> <% end %>
       <% if @player_passports[0].league.player_category.p == true %> <th class="hidden" data-field="p" data-sortable="true">P</th> <% end %>
       <% if @player_passports[0].league.player_category.ppg == true %> <th class="hidden" data-field="ppg" data-sortable="true">PPG</th> <% end %>
       <% if @player_passports[0].league.player_category.ppa == true %> <th class="hidden" data-field="ppa" data-sortable="true">PPA</th> <% end %>
@@ -41,7 +41,7 @@
         <td class="user-team-players"> <%= player_passport.player.pro_team.upcase %></td>
         <td class="user-team-players"> <%= player_passport.player.positions.join(" / ") %> </td>
         <td class="user-team-players jbr-stat"> <%= jbr_by_cat(1, player_passport.player.player_id, :jbr)[player_passport.player.player_id] %> </td>
-        <% if player_passport.league.player_category.g == true %> <td class="user-team-players goals"> <%= player_passport.player.player_prediction.g %> </td> <% end %>
+        <% if player_passport.league.player_category.g == true %> <td class="hidden user-team-players goals"> <%= player_passport.player.player_prediction.g %> </td> <% end %>
         <% if player_passport.league.player_category.a == true %> <td class="hidden user-team-players assists"> <%= player_passport.player.player_prediction.a %> </td> <% end %>
         <% if player_passport.league.player_category.p == true %> <td class="hidden user-team-players points"> <%= player_passport.player.player_prediction.p %> </td> <% end %>
         <% if player_passport.league.player_category.ppg == true %> <td class="hidden user-team-players powerplay-goals"> <%= player_passport.player.player_prediction.ppg %> </td> <% end %>
@@ -69,12 +69,11 @@
 
 <table class="table table-bordered table-striped table-hover table-responsive table-players "
       id="userGoalieTable"
-      data-toggle="table"
-      data-search="true">
+      data-toggle="table">
   <thead>
     <tr>
       <th data-field="state" data-checkbox="true">Trade</th>
-      <th data-field="name" data-sortable="true" >Goalie</th>
+      <th data-field="name">Goalie</th>
       <th data-field="pro_team" data-sortable="true">Team</th>
       <th data-field="jbr" data-sortable="true">JBR</th>
       <% if @player_passports[0].league.goalie_category.gs == true %> <th data-field="gs" data-sortable="true" class="hidden">GS</th> <% end %>
