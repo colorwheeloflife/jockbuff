@@ -14,12 +14,14 @@
             <ul class="dropdown-menu multi-level">
               <li class="navbarheader"><%= link_to 'League Management', user_leagues_path(current_user) %></li>
               <li role="separator" class="divider"></li>
+              <% if passport_exist(current_user.id) %>
               <% current_user_leagues(current_user.id).each do |league| %>
               <li class="userteamheader"><%= link_to "#{league.name}",user_league_path(current_user, league) %></li>
               <li class="dropdown-submenu">
               <li><%= link_to 'Player Ranks', players_path(current_user, league, league.teams.find_by(ownership: true).id) %></li>
               <li><%= link_to 'Trade Calculator', compares_path(current_user, league) %></li>
               <li role="separator" class="divider"></li>
+              <% end %>
               <% end %>
               </li>
             </ul>

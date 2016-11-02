@@ -37,7 +37,7 @@ $(document).ready(function () {
     };
   };
 
-    percentageDiffFromTrade = function (topCell, bottomCell, otherCell, totalCell) {
+  percentageDiffFromTrade = function (topCell, bottomCell, otherCell, totalCell) {
     var fullStat = +$(topCell).text();
     var tradeStat = +$(bottomCell).text();
     var playersReceived = +$(otherCell).text();

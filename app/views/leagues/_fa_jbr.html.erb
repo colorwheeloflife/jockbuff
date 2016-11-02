@@ -1,62 +1,36 @@
-<table class="table table-bordered table-striped table-hover table-responsive table-players ">
+ <table class="table table-bordered table-striped table-hover table-responsive table-players ">
   <thead>
     <tr>
-      <th>Player</th>
-      <th>Position</th>
-      <th>G</th>
-      <th>A</th>
-      <th>Points</th>
-      <th>PPP</th>
-      <th>+/-</th>
-      <th>PIMS</th>
-      <th>SOG</th>
-      <th>HITS</th>
-      <th>BLKS</th>
+      <th>Name</th>
       <th>JBR</th>
+      <th>Pro Team</th>
+      <th>Position</th>
+      <% PlayerCategory.find_by(league_id: params[:id]).attributes.each do |stat| %>
+      <% next unless stat[1] == true %>
+      <% stat[0] = "+/-" if stat[0] == "plusminus" %>
+      <th> <%= stat[0].upcase %> </th>
+      <% end %>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>Sidney Crosby</td>
-      <td>Centre</td>
-      <td>155</td>
-      <td>155</td>
-      <td>155</td>
-      <td>155</td>
-      <td>155</td>
-      <td>155</td>
-      <td>155</td>
-      <td>155</td>
-      <td>155</td>
-      <td>155</td>
-    </tr>
-    <tr>
-      <td>Brent Burns</td>
-      <td>Defense</td>
-      <td>155</td>
-      <td>155</td>
-      <td>155</td>
-      <td>155</td>
-      <td>155</td>
-      <td>155</td>
-      <td>155</td>
-      <td>155</td>
-      <td>155</td>
-      <td>155</td>
-    </tr>
-    <tr>
-      <td>Conor McDavid</td>
-      <td>Centre</td>
-      <td>155</td>
-      <td>155</td>
-      <td>155</td>
-      <td>155</td>
-      <td>155</td>
-      <td>155</td>
-      <td>155</td>
-      <td>155</td>
-      <td>155</td>
-      <td>155</td>
-    </tr>
-  </tbody>
+    <% all_players = Player.where(type_p: "P").pluck(:player_id) %>
+    <% waiver_team = Team.where(league_id: params[:id], name: "Waiver").pluck(:id) %>
+    <% skaters = PlayerPassport.where(player_id: all_players, team_id: waiver_team).pluck(:player_id) %>
+    <% top_five = jbr_by_cat(1, skaters, :jbr).keys.first(5) %>
+    <% top_five.each do |id| %>
+    <% @player_passports.where(player_id: id).each do |player_passport| %>
+    <% next if player_passport.player.positions.join(" / ").include?("G") %>
+      <tr>
+        <td> <%= player_passport.player.name %> </td>
+        <td> <%= jbr_by_cat(1, player_passport.player.player_id, :jbr)[player_passport.player.player_id] %></td>
+        <td> <%= player_passport.player.pro_team.upcase %></td>
+        <td> <%= player_passport.player.positions.join(" / ") %> </td>
+         <% PlayerCategory.find_by(league_id: params[:id]).attributes.each do |stat| %>
+        <% next unless stat[1] == true %>
+        <td> <%= player_passport.player.player_prediction.send(stat[0]) %></td>
+        <% end %>
+      </tr>
+    <% end %>
+    <% end %>
+    </tbody>
 </table>

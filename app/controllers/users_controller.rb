@@ -6,7 +6,6 @@ class UsersController < ApplicationController
 
   def create
     user = User.new(user_params)
-
     if User.where(:email => user.email).exists?
       raise 'You have entered an email already in the system.'
       redirect_to '/signup'
@@ -18,7 +17,6 @@ class UsersController < ApplicationController
         redirect_to '/signup'
       end
     end
-
   end
 
   private

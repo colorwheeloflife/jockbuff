@@ -1,0 +1,12 @@
+
+<table>
+  <% cat_arr = [] %>
+  <% jbr_arr = [] %>
+  <% PlayerCategory.find_by(league_id: params[:id]).attributes.each {|stat| cat_arr.push(stat[1] if stat[1] == true } %>
+  <% cat_arr.each do |category| %>
+    <% jbr = jbr_by_team(params[:id], category) %>
+    <% jbr_arr.push(category, name) %>
+  <% end %>
+  <% jbr_arr = jbr_arr.to_h.sort_by {|k,v| v}.to_h %>
+  <%
+

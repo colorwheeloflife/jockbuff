@@ -1,6 +1,6 @@
 class CreatePlayerStats < ActiveRecord::Migration[5.0]
   def change
-    create_table :player_stats do |t|
+    create_table :player_stats  do |t|
       t.belongs_to :player, index = true
       t.integer :g
       t.integer :a
