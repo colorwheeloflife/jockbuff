@@ -4,7 +4,7 @@
        data-search="true">
   <thead>
     <tr>
-      <th data-field="state" data-checkbox="true"> Trade</th>
+      <th data-field="state" data-checkbox="true"></th>
       <th data-field="name">Player</th>
       <th data-field="pro_team">Team</th>
       <th data-field="positions">Pos</th>
@@ -36,9 +36,6 @@
     <% next if player_passport.player.positions.join(" / ").include?("G") %>
       <tr>
         <td>
-        <label>
-          <input type="checkbox" class="inlineCheckbox1" value="<%= player_passport.player.id %>">
-        </label>
         </td>
         <td class="user-team-players"> <%= player_passport.player.name %> </td>
         <td class="user-team-players"> <%= player_passport.player.pro_team.upcase %></td>

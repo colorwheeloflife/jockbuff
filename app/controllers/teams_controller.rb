@@ -2,7 +2,6 @@ class TeamsController < ApplicationController
 
   include TeamsHelper
   include ApplicationHelper
-  require byebug
 
   def create
   end
@@ -12,9 +11,9 @@ class TeamsController < ApplicationController
     leagues = League.where(user_id: @current_user.id)
     team_id = params[:id]
     @team = Team.find(team_id)
-    @players = PlayerPassport.includes(:player).where(team_id: team_id)
     @player_passports = PlayerPassport.where(team_id: team_id).includes(:player, :player_predictions)
     @freeagents = PlayerPassport.where(position: "WW")
+    @jock_buff_ranks = JBR.new.jock_ranks(params[:league_id])
   end
 
 end

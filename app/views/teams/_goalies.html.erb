@@ -13,7 +13,7 @@
     </tr>
   </thead>
   <tbody>
-  <% @players.each do |player_passport| %>
+  <% @player_passports.each do |player_passport| %>
   <% next if player_passport.player.positions.join(" / ").exclude?("G") %>
     <tr>
       <td><%= player_passport.player.name %></td>
