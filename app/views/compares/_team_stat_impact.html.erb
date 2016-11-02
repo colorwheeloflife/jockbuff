@@ -90,15 +90,7 @@
           <td class="total-saves"></td>
           <td class="total-goalie-jbr"></td>
         </tr>
-        <tr>
-          <td class="total-trade-wins"></td>
-          <td class="total-trade-losses"></td>
-          <td class="total-trade-gaa"></td>
-          <td class="total-trade-svpercent"></td>
-          <td class="total-trade-shutouts"></td>
-          <td class="total-trade-saves"></td>
-          <td class="total-trade-goalie-jbr"></td>
-        </tr>
+
       </tbody>
     </table>
   </div>
@@ -128,7 +120,7 @@
           <td class="other-total-goals"></td>
           <td class="other-total-assists"></td>
           <td class="other-total-points"></td>
-          <td class="other-total-powerplay"></td>
+          <td class="other-total-ppp"></td>
           <td class="other-total-plusminus"></td>
           <td class="other-total-pims"></td>
           <td class="other-total-sog"></td>
@@ -136,19 +128,6 @@
           <td class="other-total-hits"></td>
           <td class="other-total-blks"></td>
           <td class="other-total-jbr"></td>
-        </tr>
-        <tr>
-          <td class="other-total-trade-goals"></td>
-          <td class="other-total-trade-assists"></td>
-          <td class="other-total-trade-points"></td>
-          <td class="other-total-trade-ppp"></td>
-          <td class="other-total-trade-plusminus"></td>
-          <td class="other-total-trade-pims"></td>
-          <td class="other-total-trade-sog"></td>
-          <td class="other-total-trade-fow"></td>
-          <td class="other-total-trade-hits"></td>
-          <td class="other-total-trade-blks"></td>
-          <td class="other-total-trade-jbr"></td>
         </tr>
       </tbody>
     </table>
@@ -174,16 +153,189 @@
           <td class="other-total-saves"></td>
           <td class="other-total-goalie-jbr"></td>
         </tr>
-        <tr>
-          <td class="other-total-trade-wins"></td>
-          <td class="other-total-trade-losses"></td>
-          <td class="other-total-trade-gaa"></td>
-          <td class="other-total-trade-svpercent"></td>
-          <td class="other-total-trade-shutouts"></td>
-          <td class="other-total-trade-saves"></td>
-          <td class="other-total-trade-goalie-jbr"></td>
-        </tr>
       </tbody>
     </table>
   </div>
 </div>
+<container  id="impact-to-team" class="hidden">
+  <div class="row container-fluid container-space-no-top">
+    <div class="col-md-6">
+    <h1>Team Stat Impact</h1>
+      <table class="table table-bordered table-striped table-hover table-responsive table-players">
+        <thead>
+          <tr>
+            <th>G</th>
+            <th>A</th>
+            <th>Points</th>
+            <th>PPP</th>
+            <th>+/-</th>
+            <th>PIMS</th>
+            <th>SOG</th>
+            <th>FOW</th>
+            <th>HITS</th>
+            <th>BLKS</th>
+            <th>JBR</th>
+          </tr>
+        </thead>
+        <tbody id="sum-of-trade-stats">
+          <tr class="hidden">
+            <td class="total-goals"></td>
+            <td class="total-assists"></td>
+            <td class="total-points"></td>
+            <td class="total-ppp"></td>
+            <td class="total-plusminus"></td>
+            <td class="total-pims"></td>
+            <td class="total-sog"></td>
+            <td class="total-fow"></td>
+            <td class="total-hits"></td>
+            <td class="total-blks"></td>
+            <td class="total-jbr"></td>
+          </tr>
+          <tr class="hidden">
+            <td class="total-trade-goals"></td>
+            <td class="total-trade-assists"></td>
+            <td class="total-trade-points"></td>
+            <td class="total-trade-ppp"></td>
+            <td class="total-trade-plusminus"></td>
+            <td class="total-trade-pims"></td>
+            <td class="total-trade-sog"></td>
+            <td class="total-trade-fow"></td>
+            <td class="total-trade-hits"></td>
+            <td class="total-trade-blks"></td>
+            <td class="total-trade-jbr"></td>
+          </tr>
+          <tr>
+            <td class="sum-of-trade-goals"></td>
+            <td class="sum-of-trade-assists"></td>
+            <td class="sum-of-trade-points"></td>
+            <td class="sum-of-trade-ppp"></td>
+            <td class="sum-of-trade-plusminus"></td>
+            <td class="sum-of-trade-pims"></td>
+            <td class="sum-of-trade-sog"></td>
+            <td class="sum-of-trade-fow"></td>
+            <td class="sum-of-trade-hits"></td>
+            <td class="sum-of-trade-blks"></td>
+            <td class="sum-of-trade-jbr"></td>
+        </tbody>
+        </table>
+
+      <table class="table table-bordered table-striped table-hover table-responsive table-players">
+        <thead>
+          <tr>
+            <th>Wins</th>
+            <th>Losses</th>
+            <th>GAA</th>
+            <th>SV %</th>
+            <th>SO</th>
+            <th>Saves</th>
+            <th>JBR</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="total-wins"></td>
+            <td class="total-losses"></td>
+            <td class="total-gaa"></td>
+            <td class="total-svpercent"></td>
+            <td class="total-shutouts"></td>
+            <td class="total-saves"></td>
+            <td class="total-goalie-jbr"></td>
+          </tr>
+          <tr class="hidden">
+            <td class="total-trade-wins"></td>
+            <td class="total-trade-losses"></td>
+            <td class="total-trade-gaa"></td>
+            <td class="total-trade-svpercent"></td>
+            <td class="total-trade-shutouts"></td>
+            <td class="total-trade-saves"></td>
+            <td class="total-trade-goalie-jbr"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  <!-- Other Team -->
+
+    <div class="col-md-6">
+    <h1>Other Teams Stat Impact</h1>
+      <table class="table table-bordered table-striped table-hover table-responsive table-players">
+        <thead>
+          <tr>
+            <th>G</th>
+            <th>A</th>
+            <th>Points</th>
+            <th>PPP</th>
+            <th>+/-</th>
+            <th>PIMS</th>
+            <th>SOG</th>
+            <th>FOW</th>
+            <th>HITS</th>
+            <th>BLKS</th>
+            <th>JBR</th>
+          </tr>
+        </thead>
+        <tbody id="total-team-stats">
+          <tr>
+            <td class="other-total-goals"></td>
+            <td class="other-total-assists"></td>
+            <td class="other-total-points"></td>
+            <td class="other-total-ppp"></td>
+            <td class="other-total-plusminus"></td>
+            <td class="other-total-pims"></td>
+            <td class="other-total-sog"></td>
+            <td class="other-total-fow"></td>
+            <td class="other-total-hits"></td>
+            <td class="other-total-blks"></td>
+            <td class="other-total-jbr"></td>
+          </tr>
+          <tr class="hidden">
+            <td class="hidden other-total-trade-goals"></td>
+            <td class="hidden other-total-trade-assists"></td>
+            <td class="hidden other-total-trade-points"></td>
+            <td class="hidden other-total-trade-ppp"></td>
+            <td class="hidden other-total-trade-plusminus"></td>
+            <td class="hidden other-total-trade-pims"></td>
+            <td class="hidden other-total-trade-sog"></td>
+            <td class="hidden other-total-trade-fow"></td>
+            <td class="hidden other-total-trade-hits"></td>
+            <td class="hidden other-total-trade-blks"></td>
+            <td class="hidden other-total-trade-jbr"></td>
+          </tr>
+        </tbody>
+      </table>
+      <table class="table table-bordered table-striped table-hover table-responsive table-players">
+        <thead>
+          <tr>
+            <th>Wins</th>
+            <th>Losses</th>
+            <th>GAA</th>
+            <th>SV %</th>
+            <th>SO</th>
+            <th>Saves</th>
+            <th>JBR</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="other-total-wins"></td>
+            <td class="other-total-losses"></td>
+            <td class="other-total-gaa"></td>
+            <td class="other-total-svpercent"></td>
+            <td class="other-total-shutouts"></td>
+            <td class="other-total-saves"></td>
+            <td class="other-total-goalie-jbr"></td>
+          </tr>
+          <tr class="hidden">
+            <td class="hidden other-total-trade-wins"></td>
+            <td class="hidden other-total-trade-losses"></td>
+            <td class="hidden other-total-trade-gaa"></td>
+            <td class="hidden other-total-trade-svpercent"></td>
+            <td class="hidden other-total-trade-shutouts"></td>
+            <td class="hidden other-total-trade-saves"></td>
+            <td class="hidden other-total-trade-goalie-jbr"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</container>

@@ -16,7 +16,7 @@
     <% all_players = Player.where(type_p: "P").pluck(:player_id) %>
     <% waiver_team = Team.where(league_id: params[:id], name: "Waiver").pluck(:id) %>
     <% skaters = PlayerPassport.where(player_id: all_players, team_id: waiver_team).pluck(:player_id) %>
-    <% top_five = jbr_by_cat(1, skaters ,:jbr).keys.first(5) %>
+    <% top_five = jbr_by_cat(1, skaters, :jbr).keys.first(5) %>
     <% top_five.each do |id| %>
     <% @player_passports.where(player_id: id).each do |player_passport| %>
     <% next if player_passport.player.positions.join(" / ").include?("G") %>

@@ -2,35 +2,28 @@
       id="teamNeedsTable"
       data-toggle="table">
   <thead>
-    <h3>Free Agents Available</h3>
+    <h3>Team Needs</h3>
     <tr>
       <th>#</th>
-      <th>Best Available</th>
-      <th>Position</th>
-      <th>Y! R</th>
+      <th>Category</th>
       <th>JBR</th>
     </tr>
   </thead>
   <tbody>
+  <% cat_arr = [] %>
+  <% jbr_arr = [] %>
+  <% PlayerCategory.find_by(league_id: params[:league_id]).attributes.each {|stat| cat_arr.push(stat[0]) if stat[1] == true } %>
+  <% cat_arr.each do |category| %>
+    <% jbr = jbr_by_team(params[:id], category) %>
+    <% jbr_arr.push(category, jbr) %>
+  <% end %>
+  <% jbr_arr = Hash[*jbr_arr].sort_by {|k,v| v}.to_h %>
     <% count = 0 %>
-    <% @freeagents.first(5).each do |player_passport| %>
-    <% next if player_passport.player.positions.join(" / ").include?("G") %>
+    <% jbr_arr.first(5).each do |jbr| %>
       <tr>
         <td> <%= count += 1 %> </td>
-        <td> <%= player_passport.player.name %> </td>
-        <td> <%= player_passport.player.positions.join(" / ") %> </td>
-        <td> <%= player_passport.player.player_prediction.g %> </td>
-        <td> <%= player_passport.player.player_prediction.a %> </td>
-        <td class="hidden"> <%= player_passport.player.player_prediction.g %> </td>
-        <td class="hidden"> <%= player_passport.player.player_prediction.a %> </td>
-        <td class="hidden"> <%= player_passport.player.player_prediction.p %> </td>
-        <td class="hidden"> <%= player_passport.player.player_prediction.ppp %> </td>
-        <td class="hidden"> <%= player_passport.player.player_prediction.plusminus %> </td>
-        <td class="hidden"> <%= player_passport.player.player_prediction.pim %> </td>
-        <td class="hidden"> <%= player_passport.player.player_prediction.sog %> </td>
-        <td class="hidden"> <%= player_passport.player.player_prediction.fw %> </td>
-        <td class="hidden"> <%= player_passport.player.player_prediction.hit %> </td>
-        <td class="hidden"> <%= player_passport.player.player_prediction.blk %> </td>
+        <td> <%= jbr[0] %> </td>
+        <td> <%= jbr[1] %> </td>
       </tr>
     <% end %>
   </tbody>

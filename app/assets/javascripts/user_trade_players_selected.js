@@ -15,27 +15,27 @@ $(function() {
   });
 
   $('#add-to-trade').on('click', function() {
-    $("#hidden-trades").removeClass('hidden');
-    $("#user-output").empty();
-    $.each(userCheckedRowsSkaters, function(index, value) {
-      var row = $('<tr>');
-      $('#user-output').append(row);
-      row.append($('<td>').addClass('selected-players-for-trade name').text(value.name));
-      row.append($('<td>').addClass('selected-players-for-trade pro_team').text(value.pro_team));
-      row.append($('<td>').addClass('selected-players-for-trade pos').text(value.positions));
-      row.append($('<td>').addClass('selected-players-for-trade jbr').text(value.jbr));
-      row.append($('<td>').addClass('selected-players-for-trade goals').text(value.g));
-      row.append($('<td>').addClass('selected-players-for-trade assists').text(value.a));
-      row.append($('<td>').addClass('selected-players-for-trade points').text(value.p));
-      row.append($('<td>').addClass('selected-players-for-trade ppp').text(value.ppp));
-      row.append($('<td>').addClass('selected-players-for-trade plusminus').text(value.plusminus));
-      row.append($('<td>').addClass('selected-players-for-trade pim').text(value.pim));
-      row.append($('<td>').addClass('selected-players-for-trade sog').text(value.sog));
-      row.append($('<td>').addClass('selected-players-for-trade fow').text(value.fow));
-      row.append($('<td>').addClass('selected-players-for-trade hit').text(value.hit));
-      row.append($('<td>').addClass('selected-players-for-trade blk').text(value.blk));
-      $('#user-output').trigger('playerloaded');
-    });
+      $("#hidden-trades").removeClass('hidden');
+      $("#user-output").empty();
+      $.each(userCheckedRowsSkaters, function(index, value) {
+        var row = $('<tr>');
+        $('#user-output').append(row);
+        row.append($('<td>').addClass('selected-players-for-trade name').text(value.name));
+        row.append($('<td>').addClass('selected-players-for-trade pro_team').text(value.pro_team));
+        row.append($('<td>').addClass('selected-players-for-trade pos').text(value.positions));
+        row.append($('<td>').addClass('selected-players-for-trade jbr').text(value.jbr));
+        row.append($('<td>').addClass('selected-players-for-trade goals').text(value.g));
+        row.append($('<td>').addClass('selected-players-for-trade assists').text(value.a));
+        row.append($('<td>').addClass('selected-players-for-trade points').text(value.p));
+        row.append($('<td>').addClass('selected-players-for-trade ppp').text(value.ppp));
+        row.append($('<td>').addClass('selected-players-for-trade plusminus').text(value.plusminus));
+        row.append($('<td>').addClass('selected-players-for-trade pim').text(value.pim));
+        row.append($('<td>').addClass('selected-players-for-trade sog').text(value.sog));
+        row.append($('<td>').addClass('selected-players-for-trade fow').text(value.fow));
+        row.append($('<td>').addClass('selected-players-for-trade hit').text(value.hit));
+        row.append($('<td>').addClass('selected-players-for-trade blk').text(value.blk));
+        $('#user-output').trigger('playerloaded');
+      });
   });
 
   var checkedRowsGoalies = [];

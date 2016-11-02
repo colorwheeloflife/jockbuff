@@ -16,6 +16,7 @@
   });
 
   $('#add-to-trade').on('click', function() {
+    $('#impact-to-team').removeClass('hidden');
     $("#other-output").empty();
     $.each(otherCheckedRowsSkaters, function(index, value) {
         var row = $('<tr>');
