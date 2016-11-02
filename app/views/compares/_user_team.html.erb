@@ -25,8 +25,7 @@
     <% @current_user_players.each do |player_passport| %>
     <% next if player_passport.player.positions.join("/").include?("G") %>
       <tr>
-        <td>
-        </td>
+        <td></td>
         <td class="user-team-players"> <%= player_passport.player.name %> </td>
         <td class="user-team-players"> <%= player_passport.player.pro_team.upcase %></td>
         <td class="user-team-players"> <%= player_passport.player.positions.join("/") %> </td>

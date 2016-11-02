@@ -25,11 +25,7 @@
     <% @trade_team.each do |player_passport| %>
     <% next if player_passport.player.positions.join("/").include?("G") %>
     <tr>
-      <td>
-      <label>
-        <input type="checkbox" class="inlineCheckbox1" value="<%= player_passport.player.id %>">
-      </label>
-      </td>
+      <td></td>
       <td> <%= player_passport.player.name %> </td>
       <td> <%= player_passport.player.pro_team.upcase %></td>
       <td> <%= player_passport.player.positions.join("/") %> </td>
