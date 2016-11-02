@@ -25,15 +25,11 @@
     <% @trade_team.each do |player_passport| %>
     <% next if player_passport.player.positions.join("/").include?("G") %>
     <tr>
-      <td>
-      <label>
-        <input type="checkbox" class="inlineCheckbox1" value="<%= player_passport.player.id %>">
-      </label>
-      </td>
+      <td></td>
       <td> <%= player_passport.player.name %> </td>
       <td> <%= player_passport.player.pro_team.upcase %></td>
       <td> <%= player_passport.player.positions.join("/") %> </td>
-      <td class="jbr-stat"> 150 </td>
+      <td class="jbr-stat"> <%= jbr_by_cat(1, player_passport.player.player_id, :jbr)[player_passport.player.player_id] %></td>
       <td class="hidden goals"> <%= player_passport.player.player_prediction.g %> </td>
       <td class="hidden assists"> <%= player_passport.player.player_prediction.a %> </td>
       <td class="hidden points"> <%= player_passport.player.player_prediction.p %> </td>
@@ -77,7 +73,7 @@
       </td>
       <td><%= player_passport.player.name %></td>
       <td><%= player_passport.player.pro_team.upcase %></td>
-      <td class="goalie-jbr-stat"> 150 </td>
+      <td class="goalie-jbr-stat"> <%= jbr_by_cat(0, player_passport.player.player_id, :jbr)[player_passport.player.player_id] %> </td>
       <td class="hidden wins"> <%= player_passport.player.player_prediction.w %> </td>
       <td class="hidden losses"> <%= player_passport.player.player_prediction.l %> </td>
       <td class="hidden gaa"> <%= player_passport.player.player_prediction.gaa %> </td>

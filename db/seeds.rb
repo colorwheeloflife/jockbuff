@@ -1,6 +1,6 @@
 require 'csv'
 def players_to_seed
-  token = User.first.token
+  # token = User.first.token
   full_player_arr = []
   i = 0
   while i < 1888 do
@@ -11,7 +11,7 @@ def players_to_seed
     sleep(0.2)
     p start
     players = HTTParty.get("https://fantasysports.yahooapis.com/fantasy/v2/league/363.l.473/players;start=#{start}", headers:{
-        "Authorization" => "Bearer #{token}"
+        "Authorization" => "Bearer 4nac6TCQo11f6TrVtnSGESPc8rGWZHo..G_VcoBOuBnzJPiEgeX754sl6l57bIhyq968oL4BYQDD46CEaCxsvKfMWvCvU1zsLOQuXQzQGNne8GEbF3pv7bfrykwbSYFzxgsyVuDzzKx3z5cPWsmJisBfTEQ82hju1.J43TSPF7ZUHwNzXnK12faIzH8hlfTTh0lCnlPpF2nIoRkc_RVfULsiZQJKmBLCpyNruduBIMOTy9AtZP9quigCfpEw818kcrJYBO1CwLIISGk20YFrLhluknPAKZxuSiJBtPdv2eCGJm1I1MBGH03ckGirnCaKHzqJWYB6zkK0h2V6VxjH2VK8.fOHHOLJnRbx7EkVhPqkZqndbcOcdIfU3RJb5X_HOySYdJoNsva7i6m5mMzZD_hu_KchlWiEniI3V1RigeTlOMSsXbTyiAxJpvbwNwoQQPwK1tFSZDDz9O3atFryXqgCcTsM0WAIXXgCQs5wSumsIrD.OXdtN75Qt8ZZFXb.rCYBgnEdq_c7UO42PmmNwP7yit4zC_f58fVH8z1Uazmzf6KsegTMm1WbQI7ItyiWEriHZ5Gn1ESzlyrBSIphaLJ8ZRRlGs2K0yxx.6Qy82fvzPV6BpweLKl9zK8m3HtLy59.IbfqQvrS_TaCbOUYAGWQKwc1diNjUD_fXgNBkS7FLiWuvaZRE82OX8vh1NTDtGf1YZnM1QL1H7TdjXvXtGvkMzL.1vjeePMW61QaAtEJQaBlk_4nkNzGPDW62MF37_5gUWk5P.aGybjTDHjNsMtQXI9WLE420TI4QLNH2JTWmAGi_y0zWZQTsv5OfA3N6zHymHnD9B4uzlDBPAyTN3s3ajMcv9KQX5tR4XaACFSi4UmyiiV..T9cev5D"
       })
     player_arr = players["fantasy_content"]["league"]["players"]["player"]
     player_arr.map do |player|
@@ -95,13 +95,13 @@ def player_predictions
   end
 end
 def player_stats_current
-  token = User.first.token
+  # token = User.first.token
   player_ids = Player.all.pluck(:player_id)
-  # index = player_ids.index(3982)
-  # player_ids = player_ids.slice(index, player_ids.length)
+  index = player_ids.index(5072)
+  player_ids = player_ids.slice(index, player_ids.length)
   player_ids.each do |player_id|
     player = HTTParty.get("https://fantasysports.yahooapis.com/fantasy/v2/player/363.p.#{player_id}/stats", headers:{
-          "Authorization" => "Bearer #{token}"
+          "Authorization" => "Bearer 4nac6TCQo11f6TrVtnSGESPc8rGWZHo..G_VcoBOuBnzJPiEgeX754sl6l57bIhyq968oL4BYQDD46CEaCxsvKfMWvCvU1zsLOQuXQzQGNne8GEbF3pv7bfrykwbSYFzxgsyVuDzzKx3z5cPWsmJisBfTEQ82hju1.J43TSPF7ZUHwNzXnK12faIzH8hlfTTh0lCnlPpF2nIoRkc_RVfULsiZQJKmBLCpyNruduBIMOTy9AtZP9quigCfpEw818kcrJYBO1CwLIISGk20YFrLhluknPAKZxuSiJBtPdv2eCGJm1I1MBGH03ckGirnCaKHzqJWYB6zkK0h2V6VxjH2VK8.fOHHOLJnRbx7EkVhPqkZqndbcOcdIfU3RJb5X_HOySYdJoNsva7i6m5mMzZD_hu_KchlWiEniI3V1RigeTlOMSsXbTyiAxJpvbwNwoQQPwK1tFSZDDz9O3atFryXqgCcTsM0WAIXXgCQs5wSumsIrD.OXdtN75Qt8ZZFXb.rCYBgnEdq_c7UO42PmmNwP7yit4zC_f58fVH8z1Uazmzf6KsegTMm1WbQI7ItyiWEriHZ5Gn1ESzlyrBSIphaLJ8ZRRlGs2K0yxx.6Qy82fvzPV6BpweLKl9zK8m3HtLy59.IbfqQvrS_TaCbOUYAGWQKwc1diNjUD_fXgNBkS7FLiWuvaZRE82OX8vh1NTDtGf1YZnM1QL1H7TdjXvXtGvkMzL.1vjeePMW61QaAtEJQaBlk_4nkNzGPDW62MF37_5gUWk5P.aGybjTDHjNsMtQXI9WLE420TI4QLNH2JTWmAGi_y0zWZQTsv5OfA3N6zHymHnD9B4uzlDBPAyTN3s3ajMcv9KQX5tR4XaACFSi4UmyiiV..T9cev5D"
         })
     player_stats = {player_id: player_id}
     player_full_stats = player["fantasy_content"]["player"]["player_stats"]["stats"]["stat"]
@@ -144,9 +144,9 @@ def player_stats_current
   end
 end
 # ####
-Player.create(players_to_seed)
-player_predictions
-all_predictions = PlayerPrediction.all.pluck(:player_id)
-Player.where.not(player_id: all_predictions).destroy_all
+# Player.create(players_to_seed)
+# player_predictions
+# all_predictions = PlayerPrediction.all.pluck(:player_id)
+# Player.where.not(player_id: all_predictions).destroy_all
 player_stats_current
 # ####
