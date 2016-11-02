@@ -1,3 +1,0 @@
-class PlayerPredictionsController < ApplicationController
-
-end

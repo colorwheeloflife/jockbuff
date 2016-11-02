@@ -1,6 +1,4 @@
 class ApplicationController < ActionController::Base
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
 
   require 'table-for'
 
@@ -22,7 +20,6 @@ class ApplicationController < ActionController::Base
 
   def yahoo_root
     return @yahoo_root = "https://fantasysports.yahooapis.com/fantasy/v2/"
-    # "https://fantasysports.yahooapis.com/fantasy/v2/"
   end
 
   def league_call(league_key)

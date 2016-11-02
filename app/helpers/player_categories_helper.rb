@@ -1,7 +1,5 @@
 module PlayerCategoriesHelper
 
-
-
   def create_player_categories(league_settings, league_info)
 
     league_id = League.where(:league_key => league_info[:league_key]).where(:user_id => @current_user.id).pluck(:id)
@@ -37,4 +35,5 @@ module PlayerCategoriesHelper
     }
     @player_category = PlayerCategory.create(player_cats_save)
     end
+
 end

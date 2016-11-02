@@ -17,15 +17,14 @@
               <% current_user_leagues(current_user.id).each do |league| %>
               <li class="userteamheader"><%= link_to "#{league.name}",user_league_path(current_user, league) %></li>
               <li class="dropdown-submenu">
-                <li><%= link_to 'Player Ranks', players_path(current_user, league, league.teams.find_by(ownership: true).id) %></li>
-                <li><%= link_to 'Trade Calculator', compares_path(current_user, league) %></li>
-                <li role="separator" class="divider"></li>
+              <li><%= link_to 'Player Ranks', players_path(current_user, league, league.teams.find_by(ownership: true).id) %></li>
+              <li><%= link_to 'Trade Calculator', compares_path(current_user, league) %></li>
+              <li role="separator" class="divider"></li>
               <% end %>
               </li>
             </ul>
           </a>
         </li>
-        <li><%= link_to 'Statistical Analysis', :analysis_index %></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "Log out #{current_user.name}", :signout, :method => :delete %></li>
@@ -33,7 +32,7 @@
       </ul>
       <% else %>
       <ul class="nav navbar-nav navbar-right">
-      <li><%= link_to 'Log in to Yahoo Fantasy Sports', :signin %></li>
+        <li><%= link_to 'Log in to Yahoo Fantasy Sports', :signin %></li>
       </ul>
       <% end %>
     </div>

@@ -1,5 +1,4 @@
 require 'httparty'
-require 'byebug'
 
     full_player_arr = []
     i = 0
