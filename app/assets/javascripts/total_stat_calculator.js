@@ -81,6 +81,8 @@ $(document).ready(function () {
     totalCalc('#each-other-player', '.pims', '.other-total-pims');
     //sog totals//
     totalCalc('#each-other-player', '.sog', '.other-total-sog');
+    // FOQW TOTALS ///
+    totalCalc('#each-other-player', '.fow', '.other-total-fow' );
     //hits total//
     totalCalc('#each-other-player', '.hit', '.other-total-hits');
     //blks total//
@@ -111,19 +113,52 @@ $(document).ready(function () {
 /////PLAYERS TO BE TRADED STATS//////////
 
   $('#user-output').bind('playerloaded', function() {
-      totalCalc('#user-output', '.goals', '.total-trade-goals');
-      totalCalc('#user-output', '.assists', '.total-trade-assists');
-      totalCalc('#user-output', '.points', '.total-trade-points');
-      totalCalc('#user-output', '.ppp', '.total-trade-ppp');
-      totalCalc('#user-output', '.plusminus', '.total-trade-plusminus');
-      totalCalc('#user-output', '.pim', '.total-trade-pims');
-      totalCalc('#user-output', '.sog', '.total-trade-sog');
-      totalCalc('#user-output', '.fow', '.total-trade-fow');
-      totalCalc('#user-output', '.hit', '.total-trade-hits');
-      totalCalc('#user-output', '.blk', '.total-trade-blks');
-      totalCalc('#user-output', '.jbr', '.total-trade-jbr');
+    totalCalc('#user-output', '.goals', '.total-trade-goals');
+    totalCalc('#user-output', '.assists', '.total-trade-assists');
+    totalCalc('#user-output', '.points', '.total-trade-points');
+    totalCalc('#user-output', '.ppp', '.total-trade-ppp');
+    totalCalc('#user-output', '.plusminus', '.total-trade-plusminus');
+    totalCalc('#user-output', '.pim', '.total-trade-pims');
+    totalCalc('#user-output', '.sog', '.total-trade-sog');
+    totalCalc('#user-output', '.fow', '.total-trade-fow');
+    totalCalc('#user-output', '.hit', '.total-trade-hits');
+    totalCalc('#user-output', '.blk', '.total-trade-blks');
+    totalCalc('#user-output', '.jbr', '.total-trade-jbr');
+  });
 
-
+//// USER GOALIES TO BE TRADED /////
+  $('#user-output-goalies').bind('goalieloaded', function() {
+    totalCalc('#user-output-goalies', '.wins', '.total-trade-wins');
+    totalCalc('#user-output-goalies', '.losses', '.total-trade-losses');
+    totalCalc('#user-output-goalies', '.gaa', '.total-trade-gaa');
+    totalCalc('#user-output-goalies', '.svpercent', '.total-trade-svpercent');
+    totalCalc('#user-output-goalies', '.sho', '.total-trade-shutouts');
+    totalCalc('#user-output-goalies', '.sv', '.total-trade-saves');
+    totalCalc('#user-output-goalies', '.goalie-jbr', '.total-trade-goalie-jbr');
+  });
+//// OTHER PLAYERS TO BE TRADED /////////
+  $('#other-output').bind('otherplayerloaded', function() {
+    totalCalc('#other-output', '.goals', '.other-total-trade-goals');
+    totalCalc('#other-output', '.assists', '.other-total-trade-assists');
+    totalCalc('#other-output', '.points', '.other-total-trade-points');
+    totalCalc('#other-output', '.ppp', '.other-total-trade-ppp');
+    totalCalc('#other-output', '.plusminus', '.other-total-trade-plusminus');
+    totalCalc('#other-output', '.pim', '.other-total-trade-pims');
+    totalCalc('#other-output', '.sog', '.other-total-trade-sog');
+    totalCalc('#other-output', '.fow', '.other-total-trade-fow');
+    totalCalc('#other-output', '.hit', '.other-total-trade-hits');
+    totalCalc('#other-output', '.blk', '.other-total-trade-blks');
+    totalCalc('#other-output', '.jbr', '.other-total-trade-jbr');
+  });
+////// OTHER GOALIES TO BE TRADED STATS /////////
+  $('#other-output-goalies').bind('othergoalieloaded', function() {
+    totalCalc('#other-output-goalies', '.wins', '.other-total-trade-wins');
+    totalCalc('#other-output-goalies', '.losses', '.other-total-trade-losses');
+    totalCalc('#other-output-goalies', '.gaa', '.other-total-trade-gaa');
+    totalCalc('#other-output-goalies', '.svpercent', '.other-total-trade-svpercent');
+    totalCalc('#other-output-goalies', '.sho', '.other-total-trade-shutouts');
+    totalCalc('#other-output-goalies', '.sv', '.other-total-trade-saves');
+    totalCalc('#other-output-goalies', '.goalie-jbr', '.other-total-trade-goalie-jbr');
   });
 
 

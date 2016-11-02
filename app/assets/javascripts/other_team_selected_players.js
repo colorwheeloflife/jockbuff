@@ -20,20 +20,22 @@
     $.each(otherCheckedRowsSkaters, function(index, value) {
         var row = $('<tr>');
         $('#other-output').append(row);
-        row.append($('<td>').text(value.name));
-        row.append($('<td>').text(value.pro_team));
-        row.append($('<td>').text(value.positions));
-        row.append($('<td>').text(value.jbr));
-        row.append($('<td>').text(value.g));
-        row.append($('<td>').text(value.a));
-        row.append($('<td>').text(value.p));
-        row.append($('<td>').text(value.ppp));
-        row.append($('<td>').text(value.plusminus));
-        row.append($('<td>').text(value.pim));
-        row.append($('<td>').text(value.sog));
-        row.append($('<td>').text(value.fow));
-        row.append($('<td>').text(value.hit));
-        row.append($('<td>').text(value.blk));
+          row.append($('<td>').addClass('name').text(value.name));
+          row.append($('<td>').addClass('pro_team').text(value.pro_team));
+          row.append($('<td>').addClass('pos').text(value.positions));
+          row.append($('<td>').addClass('jbr').text(value.jbr));
+          row.append($('<td>').addClass('goals').text(value.g));
+          row.append($('<td>').addClass('assists').text(value.a));
+          row.append($('<td>').addClass('points').text(value.p));
+          row.append($('<td>').addClass('ppp').text(value.ppp));
+          row.append($('<td>').addClass('plusminus').text(value.plusminus));
+          row.append($('<td>').addClass('pim').text(value.pim));
+          row.append($('<td>').addClass('sog').text(value.sog));
+          row.append($('<td>').addClass('fow').text(value.fow));
+          row.append($('<td>').addClass('hit').text(value.hit));
+          row.append($('<td>').addClass('blk').text(value.blk));
+        $('#other-output').trigger('otherplayerloaded');
+
     });
   });
 
@@ -59,15 +61,17 @@
     $.each(otherCheckedRowsGoalies, function(index, value) {
       var row = $('<tr>');
       $('#other-output-goalies').append(row);
-      row.append($('<td>').text(value.name));
-      row.append($('<td>').text(value.pro_team));
-      row.append($('<td>').text(value.jbr));
-      row.append($('<td>').text(value.w));
-      row.append($('<td>').text(value.l));
-      row.append($('<td>').text(value.gaa));
-      row.append($('<td>').text(value.svpercent));
-      row.append($('<td>').text(value.sho));
-      row.append($('<td>').text(value.sv));
+        row.append($('<td>').addClass('other-goalies-for-trade name').text(value.name));
+        row.append($('<td>').addClass('other-goalies-for-trade pro_team').text(value.pro_team));
+        row.append($('<td>').addClass('other-goalies-for-trade goalie-jbr').text(value.jbr));
+        row.append($('<td>').addClass('other-goalies-for-trade wins').text(value.w));
+        row.append($('<td>').addClass('other-goalies-for-trade losses').text(value.l));
+        row.append($('<td>').addClass('other-goalies-for-trade gaa').text(value.gaa));
+        row.append($('<td>').addClass('other-goalies-for-trade svpercent').text(value.svpercent));
+        row.append($('<td>').addClass('other-goalies-for-trade sho').text(value.sho));
+        row.append($('<td>').addClass('other-goalies-for-trade sv').text(value.sv));
+      $('#other-output-goalies').trigger('othergoalieloaded');
+
     });
   });
 });

@@ -20,7 +20,7 @@ $(function() {
     $.each(userCheckedRowsSkaters, function(index, value) {
       var row = $('<tr>');
       $('#user-output').append(row);
-      row.append($('<td>').addClass().text(value.name));
+      row.append($('<td>').addClass('selected-players-for-trade name').text(value.name));
       row.append($('<td>').addClass('selected-players-for-trade pro_team').text(value.pro_team));
       row.append($('<td>').addClass('selected-players-for-trade pos').text(value.positions));
       row.append($('<td>').addClass('selected-players-for-trade jbr').text(value.jbr));
@@ -59,15 +59,17 @@ $(function() {
     $.each(checkedRowsGoalies, function(index, value) {
       var row = $('<tr>');
       $('#user-output-goalies').append(row);
-      row.append($('<td>').text(value.name));
-      row.append($('<td>').text(value.pro_team));
-      row.append($('<td>').text(value.jbr));
-      row.append($('<td>').text(value.w));
-      row.append($('<td>').text(value.l));
-      row.append($('<td>').text(value.gaa));
-      row.append($('<td>').text(value.svpercent));
-      row.append($('<td>').text(value.sho));
-      row.append($('<td>').text(value.sv));
+      row.append($('<td>').addClass('selected-goalies-for-trade name').text(value.name));
+      row.append($('<td>').addClass('selected-goalies-for-trade pro_team').text(value.pro_team));
+      row.append($('<td>').addClass('selected-goalies-for-trade goalie-jbr').text(value.jbr));
+      row.append($('<td>').addClass('selected-goalies-for-trade wins').text(value.w));
+      row.append($('<td>').addClass('selected-goalies-for-trade losses').text(value.l));
+      row.append($('<td>').addClass('selected-goalies-for-trade gaa').text(value.gaa));
+      row.append($('<td>').addClass('selected-goalies-for-trade svpercent').text(value.svpercent));
+      row.append($('<td>').addClass('selected-goalies-for-trade sho').text(value.sho));
+      row.append($('<td>').addClass('selected-goalies-for-trade sv').text(value.sv));
+      $('#user-output-goalies').trigger('goalieloaded');
+
     });
   });
 
