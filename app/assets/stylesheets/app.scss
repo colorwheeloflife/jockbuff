@@ -42,6 +42,14 @@ h1 {
   margin-bottom:($spacing-unit / 2);
 }
 
+.needs {
+  font-family: 'Sanchez', serif;
+  margin-top: ($spacing-unit / 2);
+  margin-bottom: ($spacing-unit / 2);
+  margin-left: 0;
+}
+
+
 h2,
 h3,
 h4,
@@ -161,14 +169,19 @@ th,{
 
  }
 
- .dropspace #player-droppable_1 {
-   float: left;
+.container-full-background {
+  background-color: $brand-color-middark;
 
- }
+}
 
- .dropspace #player-droppable_2 {
-   float: right;
-  }
+
+.dropspace #player-droppable_1 {
+  float: left;
+}
+
+.dropspace #player-droppable_2 {
+ float: right;
+}
 
 .hidden {
   display: none;
