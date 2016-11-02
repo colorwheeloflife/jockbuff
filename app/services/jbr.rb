@@ -20,7 +20,7 @@
     skater_ranks = create_jbr_skaters(skater_all_arr, skater_categories)
     goalie_ranks = create_jbr_goalies(goalie_all_arr, goalie_categories)
     goalie_profiles = full_skater_profiles(goalie_ranks, goalie_all_arr.map { |rec| rec["player_id"] })
-    skater_profiles = full_skater_profiles(skater_ranks, skater_all_arr.map { |rec| rec["player_id"]  })
+    skater_profiles = full_skater_profiles(skater_ranks, skater_all_arr.map { |rec| rec["player_id"] })
     jock_buff_ranks = [goalie_profiles, skater_profiles]
   end
 

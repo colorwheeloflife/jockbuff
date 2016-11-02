@@ -18,7 +18,6 @@
     <% name = team.name %>
     <% jbr_team.push([name, jbr]) %>
     <% end %>
-    <% byebug %>
     <% jbr_team = jbr_team.sort_by {|k, v| v}.reverse.to_h %>
     <tr>
       <% jbr_team.each do |team| %>

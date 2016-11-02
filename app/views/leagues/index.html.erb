@@ -19,7 +19,7 @@
             <td><%= link_to "#{league.user_team}",user_league_team_path(@current_user, league.id, @team_id[count]) %></td>
             <% count = count + 1 %>
           </tr>
-          <% end %>s
+          <% end %>
         </tbody>
       </table>
       <% unless passport_exist(@current_user.id) %>
