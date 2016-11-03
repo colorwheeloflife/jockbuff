@@ -5,15 +5,11 @@
       <th>JBR</th>
       <th>Pro Team</th>
       <th>Position</th>
-      <th>G</th>
-      <th>A</th>
-      <th>Points</th>
-      <th>PPP</th>
-      <th>+/-</th>
-      <th>PIMS</th>
-      <th>SOG</th>
-      <th>HITS</th>
-      <th>BLKS</th>
+      <% PlayerCategory.find_by(league_id: params[:id]).attributes.each do |stat| %>
+      <% next unless stat[1] == true %>
+      <% stat[0] = "+/-" if stat[0] == "plusminus" %>
+      <th> <%= stat[0].upcase %> </th>
+      <% end %>
     </tr>
   </thead>
   <tbody>
@@ -26,15 +22,10 @@
         <td> <%= jbr_by_cat(1, player_passport.player.player_id, :jbr)[player_passport.player.player_id] %></td>
         <td> <%= player_passport.player.pro_team.upcase %></td>
         <td> <%= player_passport.player.positions.join(" / ") %> </td>
-        <td> <%= player_passport.player.player_prediction.g %> </td>
-        <td> <%= player_passport.player.player_prediction.a %> </td>
-        <td> <%= player_passport.player.player_prediction.p %> </td>
-        <td> <%= player_passport.player.player_prediction.ppp %> </td>
-        <td> <%= player_passport.player.player_prediction.plusminus %> </td>
-        <td> <%= player_passport.player.player_prediction.pim %> </td>
-        <td> <%= player_passport.player.player_prediction.sog %> </td>
-        <td> <%= player_passport.player.player_prediction.hit %> </td>
-        <td> <%= player_passport.player.player_prediction.blk %> </td>
+         <% PlayerCategory.find_by(league_id: params[:id]).attributes.each do |stat| %>
+        <% next unless stat[1] == true %>
+        <td> <%= player_passport.player.player_prediction.send(stat[0]) %></td>
+        <% end %>
       </tr>
     <% end %>
     <% end %>

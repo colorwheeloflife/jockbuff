@@ -12,10 +12,10 @@
         otherCheckedRowsSkaters.splice(index,1);
       }
     });
-    console.log(otherCheckedRowsSkaters);
   });
 
   $('#add-to-trade').on('click', function() {
+    $('#impact-to-team').removeClass('hidden');
     $("#other-output").empty();
     $.each(otherCheckedRowsSkaters, function(index, value) {
         var row = $('<tr>');
@@ -43,7 +43,6 @@
 
   $('.trading-teams').on('check.bs.table', '#otherGoalieTable', function (e, row) {
     otherCheckedRowsGoalies.push(row);
-    console.log(otherCheckedRowsGoalies);
   });
 
   $('.trading-teams').on('uncheck.bs.table', '#otherGoalieTable', function (e, row) {
@@ -52,7 +51,6 @@
         otherCheckedRowsGoalies.splice(index,1);
       }
     });
-    console.log(otherCheckedRowsGoalies);
   });
 
     $('#add-to-trade').on('click', function() {

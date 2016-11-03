@@ -1,19 +1,23 @@
-<table class="table table-bordered table-striped table-hover table-responsive table-players">
+<table class="table table-bordered table-striped table-hover table-responsive table-players"
+  id="user-team"
+  data-toggle="table"
+  data-search="true">
   <thead>
     <tr>
-      <th>Players</th>
-      <th>Pro Team</th>
-      <th>Position</th>
-      <th>JBR</th>
-      <th>G</th>
-      <th>A</th>
-      <th>Points</th>
-      <th>PPP</th>
-      <th>+/-</th>
-      <th>PIMS</th>
-      <th>SOG</th>
-      <th>HITS</th>
-      <th>BLKS</th>
+      <th data-field="name">Players</th>
+      <th data-field="pro_team">Pro Team</th>
+      <th data-sortable="true" data-field="pos">Position</th>
+      <th data-sortable="true" data-field="jbr">JBR</th>
+      <th data-sortable="true" data-field="g">G</th>
+      <th data-sortable="true" data-field="a">A</th>
+      <th data-sortable="true" data-field="p">Points</th>
+      <th data-sortable="true" data-field="ppp">PPP</th>
+      <th data-sortable="true" data-field="plusminus">+/-</th>
+      <th data-sortable="true" data-field="pim">PIMS</th>
+      <th data-sortable="true" data-field="sog">SOG</th>
+      <th data-sortable="true" data-field="fw">FOW</th>
+      <th data-sortable="true" data-field="hit">HITS</th>
+      <th data-sortable="true" data-field="blk">BLKS</th>
     </tr>
   </thead>
   <tbody>
@@ -31,6 +35,7 @@
         <td><%= player_passport.player.player_prediction.plusminus %></td>
         <td><%= player_passport.player.player_prediction.pim %></td>
         <td><%= player_passport.player.player_prediction.sog %></td>
+        <td><%= player_passport.player.player_prediction.fw %></td>
         <td><%= player_passport.player.player_prediction.hit %></td>
         <td><%= player_passport.player.player_prediction.blk %></td>
       </tr>

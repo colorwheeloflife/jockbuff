@@ -7,7 +7,6 @@
 <div class="row container-fluid topfix container-space">
   <div class="trading-teams">
     <div class="col-md-6">
-      <h1><%= @user_team_name %></h1>
       <%= render 'user_team' %>
     </div>
 
@@ -29,7 +28,6 @@
   </div>
   <button class="btn btn-default btn-lg goaliebtn" id="add-to-trade"> Select Players For Trade </button>
 
-
   <container id="hidden-trades" class="hidden">
   <div class="row container-fluid topfix container-space">
     <div class="col-md-12">
@@ -38,13 +36,11 @@
     </div>
   </div>
   </container>
-
-
   <!-- TEAM STAT IMPACT -->
   <div class="row container-fluid topfix container-space">
     <div class="col-md-12">
       <%= render 'team_stat_impact' %>
     </div>
   </div>
-  <div class="col-md-12 graph" id="neg-value-column_top" style="width:100%; height:400px;">HI</div>
+  <div class="col-md-12 graph" id="neg-value-column_top" style="width:100%; height:400px;"></div>
 </div>

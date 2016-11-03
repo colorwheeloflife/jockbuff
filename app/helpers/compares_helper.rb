@@ -11,7 +11,6 @@ module ComparesHelper
 
   def find_difference (category)
     total = 0
-
   end
 
 end

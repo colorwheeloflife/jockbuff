@@ -9,7 +9,7 @@ font-family: 'Ubuntu', sans-serif;
 font-family: 'Sanchez', serif;
 */
 
-/* Variables*/
+/* Variables */
 
 $base-font-size: 16px;
 $base-line-height: ($base-font-size * 2);
@@ -56,6 +56,11 @@ th,{
 
 .table-players {
   text-align: center;
+}
+
+.table-header-spacing {
+  margin: 0;
+  padding: 0;
 }
 
 .container-space {
@@ -144,7 +149,6 @@ th,{
   margin-top: ($spacing-unit * 3);
 }
 
-
 .dropspace {
    padding: 5px;
    background-color: blue;
@@ -170,3 +174,11 @@ th,{
   display: none;
 }
 
+.red {
+  color: red;
+  font-weight: bold;
+}
+.green {
+  color: green;
+  font-weight: bold;
+}

@@ -2,37 +2,90 @@
       id="teamNeedsTable"
       data-toggle="table">
   <thead>
-    <h3>Free Agents Available</h3>
+    <h3>Team Needs</h3>
     <tr>
-      <th>#</th>
-      <th>Best Available</th>
-      <th>Position</th>
-      <th>Y! R</th>
-      <th>JBR</th>
+      <th data-field="top-needs">#</th>
+      <th data-field="categories">Category</th>
+      <th data-field="jbr-single-stat-needs">Team Total JBR</th>
     </tr>
   </thead>
   <tbody>
-    <% count = 0 %>
-    <% @freeagents.first(5).each do |player_passport| %>
-    <% next if player_passport.player.positions.join(" / ").include?("G") %>
-      <tr>
-        <td> <%= count += 1 %> </td>
-        <td> <%= player_passport.player.name %> </td>
-        <td> <%= player_passport.player.positions.join(" / ") %> </td>
-        <td> <%= player_passport.player.player_prediction.g %> </td>
-        <td> <%= player_passport.player.player_prediction.a %> </td>
-        <td class="hidden"> <%= player_passport.player.player_prediction.g %> </td>
-        <td class="hidden"> <%= player_passport.player.player_prediction.a %> </td>
-        <td class="hidden"> <%= player_passport.player.player_prediction.p %> </td>
-        <td class="hidden"> <%= player_passport.player.player_prediction.ppp %> </td>
-        <td class="hidden"> <%= player_passport.player.player_prediction.plusminus %> </td>
-        <td class="hidden"> <%= player_passport.player.player_prediction.pim %> </td>
-        <td class="hidden"> <%= player_passport.player.player_prediction.sog %> </td>
-        <td class="hidden"> <%= player_passport.player.player_prediction.fw %> </td>
-        <td class="hidden"> <%= player_passport.player.player_prediction.hit %> </td>
-        <td class="hidden"> <%= player_passport.player.player_prediction.blk %> </td>
-      </tr>
+    <% cat_arr = [] %>
+    <% jbr_arr = [] %>
+
+    <% PlayerCategory.find_by(league_id: params[:league_id]).attributes.each {|stat| cat_arr.push(stat[0]) if stat[1] == true } %>
+    <% cat_arr.each do |category| %>
+      <% jbr = jbr_by_team(params[:id], category) %>
+      <% jbr_arr.push(category, jbr) %>
     <% end %>
+    <% jbr_arr = Hash[*jbr_arr].sort_by {|k,v| v}.to_h %>
+      <% count = 0 %>
+
+    <% jbr_arr.first(10).each do |jbr| %>
+      <tr>
+        <td class="numbered-needs"> <%= count += 1 %> </td>
+        <td class="stat-category-names"> <%= jbr[0].upcase %> </td>
+        <td class="jbr-single-stat-ranking"> <%= jbr[1] %> </td>
+        <% end %>
+      </tr>
   </tbody>
 </table>
 
+
+<table class="table table-bordered table-striped table-hover table-responsive table-players "
+      id="teamNeedsTable"
+      data-toggle="table">
+  <thead>
+    <h3>Best Available FA</h3>
+    <tr>
+      <th>Best Available Free Agent</th>
+      <th>Position</th>
+      <th>Category JBR</th>
+      <th>After Impact<th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <% best_fa_by_cat = [] %>
+    <% raw_team_ranks_wo_last = [] %>
+
+    <tr>
+      <% jbr_arr.first(10).each do |cate| %>
+      <% player_bool = 1 if PlayerCategory.new.attributes.keys.include?(cate[0]) %>
+      <% player_bool = 0 if GoalieCategory.new.attributes.keys.include?(cate[0]) %>
+        <% all_players = PlayerPassport.where(team_id: Team.where(league_id: params[:league_id], name: "Waiver").pluck(:id)).pluck("player_id") %>
+        <% goalies = all_players.select do |pl| %>
+          <% pl if Player.find_by(player_id: pl, type_p: "G") %>
+          <% end %>
+        <% skaters = all_players - goalies %>
+        <% fa_jbr = jbr_by_cat(player_bool, skaters, cate[0]) if player_bool == 1 %>
+        <% fa_jbr = jbr_by_cat(player_bool, goalies, cate[0]) if player_bool == 0 %>
+        <% best_fa_by_cat.push([cate[0], fa_jbr.first]) %>
+      <% end %>
+
+      <% all_players_t= PlayerPassport.where(team_id: params[:id]).pluck("player_id") %>
+        <% goalies_t = all_players_t.select do |pl| %>
+          <% pl if Player.find_by(player_id: pl, type_p: "G") %>
+          <% end %>
+        <% skaters_t = all_players_t - goalies_t %>
+
+      <% jbr_arr.first(10).each do |cate| %>
+      <% jbr = jbr_by_team_wo_last(params[:id], cate[0]) %>
+      <% grading_scale = skaters_t.length.to_f/8 %>
+      <% jbr_adjust = (jbr + best_fa_by_cat.select {|el| el[1] if el[0] == cate[0]}.flatten.last)/grading_scale.to_i %>
+      <% raw_team_ranks_wo_last.push([cate[0], jbr_adjust]) %>
+      <% end %>
+
+      <% byebug %>
+      <% count = 0 %>
+      <% best_fa_by_cat.each do |pl| %>
+        <td > <%= Player.find_by(player_id: pl[1][0]).name %> </td>
+        <td class="fa-position"> <%= Player.find_by(player_id: pl[1][0]).positions.join("/") %> </td>
+        <td class="category-jbr-score"> <%= pl[1][1] %> </td>
+        <td> <%= raw_team_ranks_wo_last[count][1] %> </td>
+        <% count = count + 1 %>
+        </tr>
+      <% end %>
+    </tr>
+  </tbody>
+</table>

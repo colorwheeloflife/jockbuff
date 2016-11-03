@@ -11,7 +11,6 @@ class SessionsController < ApplicationController
     user = User.where(:provider => auth['provider'],
                       :image => auth['info']['urls']['image'],
                       :uid => auth['uid'].to_s).first || User.create_with_omniauth(auth)
-    # reset_session
     user.update(token: auth['credentials']['token'])
     session[:user_id] = user.id
     @current_user = current_user
