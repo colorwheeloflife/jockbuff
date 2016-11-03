@@ -53,54 +53,53 @@
 <!-- Other Team -->
 
   <div class="col-md-6">
-  <h1>Full Other Team Stats</h1>
-    <table class="table table-bordered table-striped table-hover table-responsive table-players">
-      <thead>
-        <tr>
+    <h1>Full Other Team Stats</h1>
+      <table class="table table-bordered table-striped table-hover table-responsive table-players">
+        <thead>
+          <tr>
+            <% PlayerCategory.find_by(league_id: params[:league_id]).attributes.each do |stat| %>
+            <% next unless stat[1] == true %>
+            <th data-field="<%=stat[0]%>">
+            <% stat[0] = "+/-" if stat[0] == "plusminus" %>
+            <% stat[0] = "SH%" if stat[0] == "shpercent" %>
+            <%= stat[0].upcase %> </th>
+            <% end %>
+            <th data-field="jbr">JBR</th>
+          </tr>
+        </thead>
+        <tbody id="other-total-team-stats">
+          <tr>
           <% PlayerCategory.find_by(league_id: params[:league_id]).attributes.each do |stat| %>
-          <% next unless stat[1] == true %>
-          <th data-field="<%=stat[0]%>">
-          <% stat[0] = "+/-" if stat[0] == "plusminus" %>
-          <% stat[0] = "SH%" if stat[0] == "shpercent" %>
-          <%= stat[0].upcase %> </th>
-          <% end %>
-          <th data-field="jbr">JBR</th>
-        </tr>
-      </thead>
-      <tbody id="other-total-team-stats">
-        <tr>
-        <% PlayerCategory.find_by(league_id: params[:league_id]).attributes.each do |stat| %>
-          <% next unless stat[1] == true %>
-          <td id="other-total-team-<%=stat[0]%>" class = "other-total-<%=stat[0]%>"></td>
-          <% end %>
-          <td class="user-total-jbr"></td>
-        </tr>
+            <% next unless stat[1] == true %>
+            <td id="other-total-team-<%=stat[0]%>" class = "other-total-<%=stat[0]%>"></td>
+            <% end %>
+            <td class="user-total-jbr"></td>
+          </tr>
+          </tbody>
+        </table>
+
+      <table class="table table-bordered table-striped table-hover table-responsive table-players">
+        <thead>
+          <tr>
+            <% GoalieCategory.find_by(league_id: params[:league_id]).attributes.each do |stat| %>
+            <% next unless stat[1] == true %>
+            <th data-field = "<%=stat[0]%>"> <% stat[0] = "SV%" if stat[0] == "svpercent" %>
+            <%= stat[0].upcase %> </th>
+            <% end %>
+            <th data-field="jbr">JBR</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <% GoalieCategory.find_by(league_id: params[:league_id]).attributes.each do |stat| %>
+            <% next unless stat[1] == true %>
+            <td id="other-total-team-<%=stat[0]%>" class = "other-total-<%=stat[0]%>"></td>
+            <% end %>
+            <td class="user-total-jbr"></td>
+          </tr>
         </tbody>
       </table>
-
-    <table class="table table-bordered table-striped table-hover table-responsive table-players">
-      <thead>
-        <tr>
-          <% GoalieCategory.find_by(league_id: params[:league_id]).attributes.each do |stat| %>
-          <% next unless stat[1] == true %>
-          <th data-field = "<%=stat[0]%>"> <% stat[0] = "SV%" if stat[0] == "svpercent" %>
-          <%= stat[0].upcase %> </th>
-          <% end %>
-          <th data-field="jbr">JBR</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <% GoalieCategory.find_by(league_id: params[:league_id]).attributes.each do |stat| %>
-          <% next unless stat[1] == true %>
-          <td id="other-total-team-<%=stat[0]%>" class = "other-total-<%=stat[0]%>"></td>
-          <% end %>
-          <td class="user-total-jbr"></td>
-        </tr>
-      </tbody>
-      </tbody>
-    </table>
-  </div>
+    </div>
 </div>
 
 <!-- SUMS OF TRADED STATS -->
