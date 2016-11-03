@@ -1,4 +1,4 @@
-  <%= render partial: "fixed_header_columns", locals: {tableType: "userTable" } %>
+  <%= render partial: "fixed_header_columns", locals: {tableType: "userTable", playerType: "Player" } %>
       <% PlayerCategory.find_by(league_id: params[:league_id]).attributes.each do |stat| %>
       <% next unless stat[1] == true %>
       <th class = "hidden" data-field="<%=stat[0]%>" data-sortable="true">
@@ -27,7 +27,7 @@
         <% end %>
     </tbody>
   </table>
-     <%= render partial: "fixed_header_columns", locals: { tableType: "userGoalieTable" } %>
+     <%= render partial: "fixed_header_columns", locals: { tableType: "userGoalieTable", playerType: "Goalie" } %>
      <% GoalieCategory.find_by(league_id: params[:league_id]).attributes.each do |stat| %>
         <% next unless stat[1] == true %>
         <th class = "hidden" data-field = "<%=stat[0]%>"" data-sortable="true"> <% stat[0] = "SV%" if stat[0] == "svpercent" %>
