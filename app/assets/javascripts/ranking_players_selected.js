@@ -1,11 +1,123 @@
 $(function() {
   if (window.location.pathname == "/users/" + PageData.user_id + "/leagues/" + PageData.league_id + "/teams/" + PageData.team_id + "/players") {
     var topLeaguePlayerData = getTopPlayerStats();
+    var categories = getLeagueCats();
+    var topPlayerName = getTopPlayerName() + " (top JBR player)";
+    cleanerCategories = [];
+    cleanestCategories = [];
+    var g = "";
+    var a = "";
+    var p = "";
+    var ppg = "";
+    var ppa = "";
+    var ppp = "";
+    var plusminus = "";
+    var shg = "";
+    var sha = "";
+    var shp = "";
+    var gwg= "";
+    var gtg = "";
+    var pim = "";
+    var sog = "";
+    var shpercent = "";
+    var fw = "";
+    var fl = "";
+    var hit = "";
+    var blk = "";
+    for (var i = 0; i < categories.length; i++) {
+      if (categories[i] !== "") {
+        switch (categories[i]) {
+        case "g":
+          var g = "g";
+          break;
+        case "a":
+          var a = "a";
+          break;
+        case "p":
+          var p = "p";
+          break;
+        case "ppg":
+          var ppg = "ppg";
+          break;
+        case "ppa":
+          var ppa = "ppa";
+          break;
+        case "ppp":
+          var ppp = "ppp";
+          break;
+        case "plusminus":
+          var plusminus = "plusminus";
+          break;
+        case "shg":
+          var shg = "shg";
+          break;
+        case "sha":
+          var sha = "sha";
+          break;
+        case "shp":
+          var shp = "shp";
+          break;
+        case "gwg":
+          var gwg = "gwg";
+          break;
+        case "gtg":
+          var gtg = "gtg";
+          break;
+        case "pim":
+          var pim = "pim";
+          break;
+        case "sog":
+          var sog = "sog";
+          break;
+        case "shpercent":
+          var shperent = "shpercent";
+          break;
+        case "fw":
+          var fw = "fw";
+          break;
+        case "fl":
+          var fl = "fl";
+          break;
+        case "hit":
+          var hit = "hit";
+          break;
+        case "blk":
+          var blk = "blk";
+          break;
+        default:
+          break;
+      }
+      }
+    }
+    cleanerCategories.push(g);
+    cleanerCategories.push(a);
+    cleanerCategories.push(p);
+    cleanerCategories.push(ppg);
+    cleanerCategories.push(ppa);
+    cleanerCategories.push(ppp);
+    cleanerCategories.push(plusminus);
+    cleanerCategories.push(shg);
+    cleanerCategories.push(sha);
+    cleanerCategories.push(shp);
+    cleanerCategories.push(gwg);
+    cleanerCategories.push(gtg);
+    cleanerCategories.push(pim);
+    cleanerCategories.push(sog);
+    cleanerCategories.push(shpercent);
+    cleanerCategories.push(fw);
+    cleanerCategories.push(fl);
+    cleanerCategories.push(hit);
+    cleanerCategories.push(blk);
+    for (var i = 0; i < cleanerCategories.length; i++) {
+      if (cleanerCategories[i] !== "") {
+        cleanestCategories.push(cleanerCategories[i]);
+      }
+    }
     var graph_data = [{
-        name: 'P.Kane',
+        name: topPlayerName,
         data: topLeaguePlayerData
       }];
-    var graph_categories = ['JBR', 'G', 'A', 'P', 'PPG', 'PPA', 'PPP', '+/-', 'SHG', 'SHA', 'SHP', 'GWG', 'GTG', 'SOG', 'SH%', 'FW', 'FL', 'HIT', 'BLK', 'TOTAL'];
+    var graph_categories = cleanestCategories;
     var graph_colors = ["#000000", "#23395B", "#008DD5", "#8EB1C7", "#5AFF15", "#FFBC42", "#EB4511", "#F45866", "#EE0000", "#9932CD"];
     function colorer (array) {
       var index = Math.random(0, array.length);
@@ -49,7 +161,6 @@ $(function() {
           name: value.name,
           data: data
         };
-        data.push(parseInt(value.jbr));
         if (value.g !== undefined) { data.push(parseInt(value.g)); }
         if (value.a !== undefined) { data.push(parseInt(value.a)); }
         if (value.p !== undefined) { data.push(parseInt(value.p)); }
