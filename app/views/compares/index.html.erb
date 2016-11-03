@@ -29,16 +29,15 @@
   </div>
   <button class="btn btn-default btn-lg goaliebtn" id="add-to-trade"> Select Players For Trade </button>
 
-
   <container id="hidden-trades" class="hidden">
   <div class="row container-fluid topfix container-space">
     <div class="col-md-12">
     <!-- Players to be traded table -->
-    <%= render 'players_to_be_traded' %>
+    <%= render partial: 'to_be_traded_tables', locals: { idPlayer: "user-output", idGoalie: "user-output-goalies", tableHeader: "Your Players"}  %>
+    <%= render partial: 'to_be_traded_tables', locals: { idPlayer: "other-output", idGoalie: "other-output-goalie", tableHeader: "Opponent's Players"}  %>
     </div>
   </div>
   </container>
-
 
   <!-- TEAM STAT IMPACT -->
   <div class="row container-fluid topfix container-space">

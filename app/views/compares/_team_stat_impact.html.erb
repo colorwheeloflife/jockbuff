@@ -1,68 +1,26 @@
 <div class="row container-fluid container-space-no-top">
   <div class="col-md-6">
-    <h1>Team Stat Impact</h1>
+    <h1>Full Team Stats</h1>
     <table class="table table-bordered table-striped table-hover table-responsive table-players">
       <thead>
         <tr>
-          <% if @player_passports[0].league.player_category.g == true %> <th data-field="g">G</th> <% end %>
-          <% if @player_passports[0].league.player_category.a == true %> <th data-field="a">A</th> <% end %>
-          <% if @player_passports[0].league.player_category.p == true %> <th data-field="p">P</th> <% end %>
-          <% if @player_passports[0].league.player_category.ppg == true %> <th data-field="ppg">PPG</th> <% end %>
-          <% if @player_passports[0].league.player_category.ppa == true %> <th data-field="ppa">PPA</th> <% end %>
-          <% if @player_passports[0].league.player_category.ppp == true %> <th data-field="ppp">PPP</th> <% end %>
-          <% if @player_passports[0].league.player_category.plusminus == true %> <th data-field="plusminus">+/-</th> <% end %>
-          <% if @player_passports[0].league.player_category.shg == true %> <th data-field="shg">SHG</th> <% end %>
-          <% if @player_passports[0].league.player_category.sha == true %> <th data-field="sha">SHA</th> <% end %>
-          <% if @player_passports[0].league.player_category.shp == true %> <th data-field="shp">SHP</th> <% end %>
-          <% if @player_passports[0].league.player_category.gwg == true %> <th data-field="gwg">GWG</th> <% end %>
-          <% if @player_passports[0].league.player_category.gtg == true %> <th data-field="gtg">GTG</th> <% end %>
-          <% if @player_passports[0].league.player_category.pim == true %> <th data-field="pim">PIM</th> <% end %>
-          <% if @player_passports[0].league.player_category.sog == true %> <th data-field="sog">SOG</th> <% end %>
-          <% if @player_passports[0].league.player_category.shpercent == true %> <th data-field="shpercent">SH%</th> <% end %>
-          <% if @player_passports[0].league.player_category.fw == true %> <th data-field="fw">FW</th> <% end %>
-          <% if @player_passports[0].league.player_category.fl == true %> <th data-field="fl">FL</th> <% end %>
-          <% if @player_passports[0].league.player_category.hit == true %> <th data-field="hit">HIT</th> <% end %>
-          <% if @player_passports[0].league.player_category.blk == true %> <th data-field="blk">BLK</th> <% end %>
+          <% PlayerCategory.find_by(league_id: params[:league_id]).attributes.each do |stat| %>
+          <% next unless stat[1] == true %>
+          <th data-field="<%=stat[0]%>">
+          <% stat[0] = "+/-" if stat[0] == "plusminus" %>
+          <% stat[0] = "SH%" if stat[0] == "shpercent" %>
+          <%= stat[0].upcase %> </th>
+          <% end %>
           <th data-field="jbr">JBR</th>
-  <h1>Full Team Stats</h1>
-    <table class="table table-bordered table-striped table-hover table-responsive table-players">
-      <thead>
-        <tr>
-          <th>G</th>
-          <th>A</th>
-          <th>Points</th>
-          <th>PPP</th>
-          <th>+/-</th>
-          <th>PIMS</th>
-          <th>SOG</th>
-          <th>FOW</th>
-          <th>HITS</th>
-          <th>BLKS</th>
-          <th>JBR</th>
         </tr>
       </thead>
 
       <tbody id="total-team-stats">
         <tr>
-          <% if @player_passports[0].league.player_category.g == true %> <td class="user-total-goals"></td> <% end %>
-          <% if @player_passports[0].league.player_category.a == true %> <td class="user-total-assists"></td> <% end %>
-          <% if @player_passports[0].league.player_category.p == true %> <td class="user-total-points"><% end %>
-          <% if @player_passports[0].league.player_category.ppg == true %> <td class="user-total-powerplay-goals"></td> <% end %>
-          <% if @player_passports[0].league.player_category.ppa == true %> <td class="user-total-powerplay-assists"></td> <% end %>
-          <% if @player_passports[0].league.player_category.ppp == true %> <td class="user-total-powerplay-points"></td> <% end %>
-          <% if @player_passports[0].league.player_category.plusminus == true %> <td class="user-total-plusminus"></td> <% end %>
-          <% if @player_passports[0].league.player_category.shg == true %> <td class="user-total-shg"></td> <% end %>
-          <% if @player_passports[0].league.player_category.sha == true %> <td class="user-total-sha"></td> <% end %>
-          <% if @player_passports[0].league.player_category.shp == true %> <td class="user-total-shp"></td> <% end %>
-          <% if @player_passports[0].league.player_category.gwg == true %> <td class="user-total-gwg"></td> <% end %>
-          <% if @player_passports[0].league.player_category.gtg == true %> <td class="user-total-gtg"></td> <% end %>
-          <% if @player_passports[0].league.player_category.pim == true %> <td class="user-total-pims"></td> <% end %>
-          <% if @player_passports[0].league.player_category.sog == true %> <td class="user-total-sog"></td> <% end %>
-          <% if @player_passports[0].league.player_category.shpercent == true %> <td class="user-total-shpercent"></td> <% end %>
-          <% if @player_passports[0].league.player_category.fw == true %> <td class="user-total-fw"></td> <% end %>
-          <% if @player_passports[0].league.player_category.fl == true %> <td class="user-total-fl"></td> <% end %>
-          <% if @player_passports[0].league.player_category.hit == true %> <td class="user-total-hit"></td> <% end %>
-          <% if @player_passports[0].league.player_category.blk == true %> <td class="user-total-blk"></td> <% end %>
+        <% PlayerCategory.find_by(league_id: params[:league_id]).attributes.each do |stat| %>
+          <% next unless stat[1] == true %>
+          <td class = "user-total-<%=stat[0]%>"></td>
+          <% end %>
           <td class="user-total-jbr"></td>
         </tr>
         </tbody>
@@ -71,28 +29,25 @@
     <table class="table table-bordered table-striped table-hover table-responsive table-players">
       <thead>
         <tr>
-          <th>Wins</th>
-          <th>Losses</th>
-          <th>GAA</th>
-          <th>SV %</th>
-          <th>SO</th>
-          <th>Saves</th>
-          <th>JBR</th>
+          <% GoalieCategory.find_by(league_id: params[:league_id]).attributes.each do |stat| %>
+          <% next unless stat[1] == true %>
+          <th data-field = "<%=stat[0]%>"> <% stat[0] = "SV%" if stat[0] == "svpercent" %>
+          <%= stat[0].upcase %> </th>
+          <% end %>
+          <th data-field="jbr">JBR</th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
-          <td id="total-team-wins" class="total-wins"></td>
-          <td id="total-team-losses" class="total-losses"></td>
-          <td id="total-team-gaa" class="total-gaa"></td>
-          <td id="total-team-svpercent" class="total-svpercent"></td>
-          <td id="total-team-shutouts" class="total-shutouts"></td>
-          <td id="total-team-saves" class="total-saves"></td>
-          <td id="total-team-goalie-jbr" class="total-goalie-jbr"></td>
-        </tr>
 
-      </tbody>
-    </table>
+      <tbody>
+       <tr>
+        <% GoalieCategory.find_by(league_id: params[:league_id]).attributes.each do |stat| %>
+          <% next unless stat[1] == true %>
+          <td class = "user-total-<%=stat[0]%>"></td>
+          <% end %>
+          <td class="user-total-jbr"></td>
+        </tr>
+        </tbody>
+      </table>
   </div>
 
 <!-- Other Team -->
@@ -102,57 +57,47 @@
     <table class="table table-bordered table-striped table-hover table-responsive table-players">
       <thead>
         <tr>
-          <th>G</th>
-          <th>A</th>
-          <th>Points</th>
-          <th>PPP</th>
-          <th>+/-</th>
-          <th>PIMS</th>
-          <th>SOG</th>
-          <th>FOW</th>
-          <th>HITS</th>
-          <th>BLKS</th>
-          <th>JBR</th>
+          <% PlayerCategory.find_by(league_id: params[:league_id]).attributes.each do |stat| %>
+          <% next unless stat[1] == true %>
+          <th data-field="<%=stat[0]%>">
+          <% stat[0] = "+/-" if stat[0] == "plusminus" %>
+          <% stat[0] = "SH%" if stat[0] == "shpercent" %>
+          <%= stat[0].upcase %> </th>
+          <% end %>
+          <th data-field="jbr">JBR</th>
         </tr>
       </thead>
-      <tbody id="total-team-stats">
+      <tbody id="other-total-team-stats">
         <tr>
-          <td id="other-total-team-goals" class="other-total-goals"></td>
-          <td id="other-total-team-assists" class="other-total-assists"></td>
-          <td id="other-total-team-points" class="other-total-points"></td>
-          <td id="other-total-team-ppp" class="other-total-ppp"></td>
-          <td id="other-total-team-plusminus" class="other-total-plusminus"></td>
-          <td id="other-total-team-pims" class="other-total-pims"></td>
-          <td id="other-total-team-sog" class="other-total-sog"></td>
-          <td id="other-total-team-fow" class="other-total-fow"></td>
-          <td id="other-total-team-hits" class="other-total-hits"></td>
-          <td id="other-total-team-blks" class="other-total-blks"></td>
-          <td id="other-total-team-jbr" class="other-total-jbr"></td>
+        <% PlayerCategory.find_by(league_id: params[:league_id]).attributes.each do |stat| %>
+          <% next unless stat[1] == true %>
+          <td id="other-total-team-<%=stat[0]%>" class = "other-total-<%=stat[0]%>"></td>
+          <% end %>
+          <td class="user-total-jbr"></td>
         </tr>
-      </tbody>
-    </table>
+        </tbody>
+      </table>
+
     <table class="table table-bordered table-striped table-hover table-responsive table-players">
       <thead>
         <tr>
-          <th>Wins</th>
-          <th>Losses</th>
-          <th>GAA</th>
-          <th>SV %</th>
-          <th>SO</th>
-          <th>Saves</th>
-          <th>JBR</th>
+          <% GoalieCategory.find_by(league_id: params[:league_id]).attributes.each do |stat| %>
+          <% next unless stat[1] == true %>
+          <th data-field = "<%=stat[0]%>"> <% stat[0] = "SV%" if stat[0] == "svpercent" %>
+          <%= stat[0].upcase %> </th>
+          <% end %>
+          <th data-field="jbr">JBR</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td id="other-total-team-wins" class="other-total-wins"></td>
-          <td id="other-total-team-losses" class="other-total-losses"></td>
-          <td id="other-total-team-gaa" class="other-total-gaa"></td>
-          <td id="other-total-team-svpercent" class="other-total-svpercent"></td>
-          <td id="other-total-team-shutouts" class="other-total-shutouts"></td>
-          <td id="other-total-team-saves" class="other-total-saves"></td>
-          <td id="other-total-team-goalie-jbr" class="other-total-goalie-jbr"></td>
+          <% GoalieCategory.find_by(league_id: params[:league_id]).attributes.each do |stat| %>
+          <% next unless stat[1] == true %>
+          <td id="other-total-team-<%=stat[0]%>" class = "other-total-<%=stat[0]%>"></td>
+          <% end %>
+          <td class="user-total-jbr"></td>
         </tr>
+      </tbody>
       </tbody>
     </table>
   </div>
