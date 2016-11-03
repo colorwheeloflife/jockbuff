@@ -2,7 +2,7 @@ $(document).ready(function () {
 
   totalCalc = function (tableTarget, statsTarget, renderTarget) {
     $(tableTarget).each(function() {
-      var sum = 0
+      var sum = 0;
       $(this).find(statsTarget).each(function() {
           sum += +$(this).text() || 0;
       });
@@ -22,83 +22,81 @@ $(document).ready(function () {
     });
   };
 
-  diffFromTrade = function (topCell, bottomCell, otherCell, totalCell) {
-    var fullStat = +$(topCell).text();
-    var tradeStat = +$(bottomCell).text();
-    var playersReceived = +$(otherCell).text();
-    var total = (fullStat + playersReceived) - tradeStat;
+  diffFromTrade = function (userData, otherData, renderCell) {
+    var userStat = +$(userData).text();
+    var otherStat = +$(otherData).text();
+    var total = userStat - otherStat;
 
-    if (total > fullStat) {
-      $(totalCell).html(total).addClass('green');
-    } else if (total < fullStat) {
-      $(totalCell).html(total).addClass('red');
+    if (total > 0) {
+      $(renderCell).html(total).addClass('green');
+    } else if (total < 0) {
+      $(renderCell).html(total).addClass('red');
     } else {
-    $(totalCell).html(total);
-    };
+    $(renderCell).html(total);
+    }
   };
 
-    percentageDiffFromTrade = function (topCell, bottomCell, otherCell, totalCell) {
-    var fullStat = +$(topCell).text();
-    var tradeStat = +$(bottomCell).text();
-    var playersReceived = +$(otherCell).text();
-    var total = (fullStat + playersReceived) - tradeStat;
 
-    if (total > fullStat) {
-      $(totalCell).html(total.toFixed(2)).addClass('green');
-    } else if (total < fullStat) {
-      $(totalCell).html(total.toFixed(2)).addClass('red');
+  percentageDiffFromTrade = function (userData, otherData, renderCell) {
+    var userStat = +$(userData).text();
+    var otherStat = +$(otherData).text();
+    var total = userStat - otherStat;
+
+    if (total > 0) {
+      $(renderCell).html(total.toFixed(2)).addClass('green');
+    } else if (total < 0) {
+      $(renderCell).html(total.toFixed(2)).addClass('red');
     } else {
-    $(totalCell).html(total.toFixed(2));
-    };
+    $(renderCell).html(total.toFixed(2));
+    }
   };
-
-  var graphCategories = [];
-  var graphData = [];
 
   $( "#add-to-trade" ).click(function() {
     var duration = 100;
     setTimeout(function() {
       //// USER TEAM PLAYER STATS
-    diffFromTrade('#total-team-goals', '.total-trade-goals', '.other-total-trade-goals', '.sum-of-trade-goals');
-    diffFromTrade('#total-team-assists', '.total-trade-assists', '.other-total-trade-assists', '.sum-of-trade-assists');
-    diffFromTrade('#total-team-points', '.total-trade-points', '.other-total-trade-points', '.sum-of-trade-points');
-    diffFromTrade('#total-team-ppp', '.total-trade-ppp', '.other-total-trade-ppp', '.sum-of-trade-ppp');
-    diffFromTrade('#total-team-plusminus', '.total-trade-plusminus', '.other-total-trade-plusminus', '.sum-of-trade-plusminus');
-    diffFromTrade('#total-team-pims', '.total-trade-pims', '.other-total-trade-pims', '.sum-of-trade-pims');
-    diffFromTrade('#total-team-sog', '.total-trade-sog', '.other-total-trade-sog', '.sum-of-trade-sog');
-    diffFromTrade('#total-team-fow', '.total-trade-fow', '.other-total-trade-fow', '.sum-of-trade-fow');
-    diffFromTrade('#total-team-hits', '.total-trade-hits', '.other-total-trade-hits', '.sum-of-trade-hits');
-    diffFromTrade('#total-team-blks', '.total-trade-blks', '.other-total-trade-blks', '.sum-of-trade-blks');
-    diffFromTrade('#total-team-jbr', '.total-trade-jbr', '.other-total-trade-jbr', '.sum-of-trade-jbr');
-    //// OTHER TEAM PLAYER STATS
-    diffFromTrade('#other-total-team-goals', '.other-total-trade-goals', '.total-trade-goals', '.other-sum-of-trade-goals');
-    diffFromTrade('#other-total-team-assists', '.other-total-trade-assists', '.total-trade-assists', '.other-sum-of-trade-assists');
-    diffFromTrade('#other-total-team-points', '.other-total-trade-points', '.total-trade-points', '.other-sum-of-trade-points');
-    diffFromTrade('#other-total-team-ppp', '.other-total-trade-ppp', '.total-trade-ppp', '.other-sum-of-trade-ppp');
-    diffFromTrade('#other-total-team-plusminus', '.other-total-trade-plusminus', '.total-trade-plusminus', '.other-sum-of-trade-plusminus');
-    diffFromTrade('#other-total-team-pims', '.other-total-trade-pims', '.total-trade-pims', '.other-sum-of-trade-pims');
-    diffFromTrade('#other-total-team-sog', '.other-total-trade-sog', '.total-trade-sog', '.other-sum-of-trade-sog');
-    diffFromTrade('#other-total-team-fow', '.other-total-trade-fow', '.total-trade-fow', '.other-sum-of-trade-fow');
-    diffFromTrade('#other-total-team-hits', '.other-total-trade-hits', '.total-trade-hits', '.other-sum-of-trade-hits');
-    diffFromTrade('#other-total-team-blks', '.other-total-trade-blks', '.total-trade-blks', '.other-sum-of-trade-blks');
-    diffFromTrade('#other-total-team-jbr', '.other-total-trade-jbr', '.total-trade-jbr', '.other-sum-of-trade-jbr');
+    diffFromTrade('.total-trade-goals', '.other-total-trade-goals', '.sum-of-trade-goals');
+    diffFromTrade('.total-trade-assists', '.other-total-trade-assists', '.sum-of-trade-assists');
+    diffFromTrade('.total-trade-points', '.other-total-trade-points', '.sum-of-trade-points');
+    diffFromTrade('.total-trade-ppp', '.other-total-trade-ppp', '.sum-of-trade-ppp');
+    diffFromTrade('.total-trade-plusminus', '.other-total-trade-plusminus', '.sum-of-trade-plusminus');
+    diffFromTrade('.total-trade-pims', '.other-total-trade-pims', '.sum-of-trade-pims');
+    diffFromTrade('.total-trade-sog', '.other-total-trade-sog', '.sum-of-trade-sog');
+    diffFromTrade('.total-trade-fow', '.other-total-trade-fow', '.sum-of-trade-fow');
+    diffFromTrade('.total-trade-hits', '.other-total-trade-hits', '.sum-of-trade-hits');
+    diffFromTrade('.total-trade-blks', '.other-total-trade-blks', '.sum-of-trade-blks');
+    diffFromTrade('.total-trade-jbr', '.other-total-trade-jbr', '.sum-of-trade-jbr');
 
-    /// USER TEAM GOALIE STATS
-    diffFromTrade('#total-team-wins', '.total-trade-wins', '.other-total-trade-wins', '.sum-of-trade-wins');
-    diffFromTrade('#total-team-losses', '.total-trade-losses', '.other-total-trade-losses', '.sum-of-trade-losses');
-    percentageDiffFromTrade('#total-team-gaa', '.total-trade-gaa', '.other-total-trade-gaa', '.sum-of-trade-gaa');
-    percentageDiffFromTrade('#total-team-svpercent', '.total-trade-svpercent', '.other-total-trade-svpercent', '.sum-of-trade-svpercent');
-    diffFromTrade('#total-team-shutouts', '.total-trade-shutouts', '.other-total-trade-shutouts', '.sum-of-trade-shutouts');
-    diffFromTrade('#total-team-saves', '.total-trade-saves', '.other-total-trade-saves', '.sum-of-trade-saves');
-    diffFromTrade('#total-team-goalie-jbr', '.total-trade-goalie-jbr', '.other-total-trade-goalie-jbr', '.sum-of-trade-goalie-jbr');
-    /// OTHER TEAM GOALIE SATS
-    diffFromTrade('#other-total-team-wins', '.other-total-trade-wins', '.total-trade-wins', '.other-sum-of-trade-wins');
-    diffFromTrade('#other-total-team-losses', '.other-total-trade-losses', '.total-trade-losses', '.other-sum-of-trade-losses');
-    percentageDiffFromTrade('#other-total-team-gaa', '.other-total-trade-gaa', '.total-trade-gaa', '.other-sum-of-trade-gaa');
-    percentageDiffFromTrade('#other-total-team-svpercent', '.other-total-trade-svpercent', '.total-trade-svpercent', '.other-sum-of-trade-svpercent');
-    diffFromTrade('#other-total-team-shutouts', '.other-total-trade-shutouts', '.total-trade-shutouts', '.other-sum-of-trade-shutouts');
-    diffFromTrade('#other-total-team-saves', '.other-total-trade-saves', '.total-trade-saves', '.other-sum-of-trade-saves');
-    diffFromTrade('#other-total-team-goalie-jbr', '.other-total-trade-goalie-jbr', '.total-trade-goalie-jbr', '.other-sum-of-trade-goalie-jbr');
+    // //// OTHER TEAM PLAYER STATS
+    diffFromTrade('.other-total-trade-goals', '.total-trade-goals', '.other-sum-of-trade-goals');
+    diffFromTrade('.other-total-trade-assists', '.total-trade-assists', '.other-sum-of-trade-assists');
+    diffFromTrade('.other-total-trade-points', '.total-trade-points', '.other-sum-of-trade-points');
+    diffFromTrade('.other-total-trade-ppp', '.total-trade-ppp', '.other-sum-of-trade-ppp');
+    diffFromTrade('.other-total-trade-plusminus', '.total-trade-plusminus', '.other-sum-of-trade-plusminus');
+    diffFromTrade('.other-total-trade-pims', '.total-trade-pims', '.other-sum-of-trade-pims');
+    diffFromTrade('.other-total-trade-sog', '.total-trade-sog', '.other-sum-of-trade-sog');
+    diffFromTrade('.other-total-trade-fow', '.total-trade-fow', '.other-sum-of-trade-fow');
+    diffFromTrade('.other-total-trade-hits', '.total-trade-hits', '.other-sum-of-trade-hits');
+    diffFromTrade('.other-total-trade-blks', '.total-trade-blks', '.other-sum-of-trade-blks');
+    diffFromTrade('.other-total-trade-jbr', '.total-trade-jbr', '.other-sum-of-trade-jbr');
+    //
+    // /// USER TEAM GOALIE STATS
+    diffFromTrade('.total-trade-wins', '.other-total-trade-wins', '.sum-of-trade-wins');
+    diffFromTrade('.total-trade-losses', '.other-total-trade-losses', '.sum-of-trade-losses');
+    percentageDiffFromTrade('.total-trade-gaa', '.other-total-trade-gaa', '.sum-of-trade-gaa');
+    percentageDiffFromTrade('.total-trade-svpercent', '.other-total-trade-svpercent', '.sum-of-trade-svpercent');
+    diffFromTrade('.total-trade-shutouts', '.other-total-trade-shutouts', '.sum-of-trade-shutouts');
+    diffFromTrade('.total-trade-saves', '.other-total-trade-saves', '.sum-of-trade-saves');
+    diffFromTrade('.total-trade-goalie-jbr', '.other-total-trade-goalie-jbr', '.sum-of-trade-goalie-jbr');
+
+    // /// OTHER TEAM GOALIE STATS
+    diffFromTrade('.other-total-trade-wins', '.total-trade-wins', '.other-sum-of-trade-wins');
+    diffFromTrade('.other-total-trade-losses', '.total-trade-losses', '.other-sum-of-trade-losses');
+    percentageDiffFromTrade('.other-total-trade-gaa', '.total-trade-gaa', '.other-sum-of-trade-gaa');
+    percentageDiffFromTrade('.other-total-trade-svpercent', '.total-trade-svpercent', '.other-sum-of-trade-svpercent');
+    diffFromTrade('.other-total-trade-shutouts', '.total-trade-shutouts', '.other-sum-of-trade-shutouts');
+    diffFromTrade('.other-total-trade-saves', '.total-trade-saves', '.other-sum-of-trade-saves');
+    diffFromTrade('.other-total-trade-goalie-jbr', '.total-trade-goalie-jbr', '.other-sum-of-trade-goalie-jbr');
 
     var userCheckedRowsSkaters = $('#userTable').bootstrapTable('getSelections');
    $.each(userCheckedRowsSkaters, function(index, value) {
@@ -140,13 +138,9 @@ $(document).ready(function () {
     if (value.fl !== undefined) { data.push((+$('.sum-of-trade-fl').text()) - (+$('#total-team-fl').text()) ); }
     if (value.hit !== undefined) { data.push((+$('.sum-of-trade-hit').text()) - (+$('#total-team-hit').text()) ); }
     if (value.blk !== undefined) { data.push((+$('.sum-of-trade-blk').text()) - (+$('#total-team-blk').text()) ); }
-    // console.log( ( +$('.sum-of-trade-goals').text() ) - ( +$('#total-team-goals').text() ) );
-    // console.log( ( +$('.sum-of-trade-assists').text() ) - ( +$('#total-team-assists').text() ) );
-    // console.log( ( +$('.sum-of-trade-points').text() ) - ( +$('#total-team-points').text() ) );
     graphData.push(playerData);
 
   });
-  negColumnGraph();
     }, duration);
   });
 
@@ -290,30 +284,4 @@ $(document).ready(function () {
     totalCalc('#other-output-goalies', '.sv', '.other-total-trade-saves');
     totalCalc('#other-output-goalies', '.goalie-jbr', '.other-total-trade-goalie-jbr');
   });
-  negColumnGraph = function () {
-      $('#neg-value-column_top').highcharts({
-        chart: {
-          type: 'column'
-        },
-        title: {
-          text: 'Category Leaderboard with Average as Equator'
-        },
-        subtitle: {
-          text: 'Category: Total Overall'
-        },
-        xAxis: {
-          categories: graphCategories
-        },
-        credits: {
-          enabled: false
-        },
-        series: graphData
-      });
-    };
-
 });
-
-/* COMPARES PAGE */
-
-
-

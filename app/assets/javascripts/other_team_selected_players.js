@@ -36,7 +36,6 @@
           row.append($('<td>').addClass('hit').text(value.hit));
           row.append($('<td>').addClass('blk').text(value.blk));
         $('#other-output').trigger('otherplayerloaded');
-
     });
   });
 
@@ -58,21 +57,24 @@
 
     $('#add-to-trade').on('click', function() {
     $("#other-output-goalies").empty();
-
-    $.each(otherCheckedRowsGoalies, function(index, value) {
-      var row = $('<tr>');
-      $('#other-output-goalies').append(row);
-        row.append($('<td>').addClass('other-goalies-for-trade name').text(value.name));
-        row.append($('<td>').addClass('other-goalies-for-trade pro_team').text(value.pro_team));
-        row.append($('<td>').addClass('other-goalies-for-trade goalie-jbr').text(value.jbr));
-        row.append($('<td>').addClass('other-goalies-for-trade wins').text(value.w));
-        row.append($('<td>').addClass('other-goalies-for-trade losses').text(value.l));
-        row.append($('<td>').addClass('other-goalies-for-trade gaa').text(value.gaa));
-        row.append($('<td>').addClass('other-goalies-for-trade svpercent').text(value.svpercent));
-        row.append($('<td>').addClass('other-goalies-for-trade sho').text(value.sho));
-        row.append($('<td>').addClass('other-goalies-for-trade sv').text(value.sv));
-      $('#other-output-goalies').trigger('othergoalieloaded');
-
+      $.each(otherCheckedRowsGoalies, function(index, value) {
+        var row = $('<tr>');
+        $('#other-output-goalies').append(row);
+          row.append($('<td>').addClass('other-goalies-for-trade name').text(value.name));
+          row.append($('<td>').addClass('other-goalies-for-trade pro_team').text(value.pro_team));
+          row.append($('<td>').addClass('other-goalies-for-trade goalie-jbr').text(value.jbr));
+          row.append($('<td>').addClass('other-goalies-for-trade wins').text(value.w));
+          row.append($('<td>').addClass('other-goalies-for-trade losses').text(value.l));
+          row.append($('<td>').addClass('other-goalies-for-trade gaa').text(value.gaa));
+          row.append($('<td>').addClass('other-goalies-for-trade svpercent').text(value.svpercent));
+          row.append($('<td>').addClass('other-goalies-for-trade sho').text(value.sho));
+          row.append($('<td>').addClass('other-goalies-for-trade sv').text(value.sv));
+        $('#other-output-goalies').trigger('othergoalieloaded');
+      });
+      setTimeout(function() {
+        $('html,body').animate({
+          scrollTop: $("#hidden-trades").offset().top
+        },'slow');
+      }, 10);
     });
-  });
 });
