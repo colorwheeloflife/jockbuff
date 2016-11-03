@@ -1,6 +1,6 @@
 $(function() {
   if (window.location.pathname == "/users/" + PageData.user_id + "/leagues/" + PageData.league_id) {
-    var leagueJBRs = []
+    var leagueJBRs = [];
     var leagueTeams = [];
 
     var JbrLeagueRankData = getLeagueChartData();
