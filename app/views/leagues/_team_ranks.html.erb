@@ -68,15 +68,26 @@ function getLeagueChartData () {
     </tr>
   </thead>
   <tbody class="jbr_scores">
+
     <% count = 0 %>
-    <% jbr_team = [] %>
-    <% @teams.each do |team| %>
-    <% next if team.name.include?("Waiver") %>
-    <% jbr = jbr_by_team(team.id, :jbr) %>
-    <% name = team.name %>
-    <% jbr_team.push([name, jbr]) %>
+    <% jbr_team_all = {} %>
+    <% cat_arr = [] %>
+<% PlayerCategory.find_by(league_id: params[:id]).attributes.each {|stat| cat_arr.push(stat[0]) if stat[1] == true } %>
+      <% jbr_team = [] %>
+     <% cat_arr.each do |cate| %>
+        <% @teams.each do |team| %>
+        <% next if team.name.include?("Waiver") %>
+        <% jbr = jbr_by_team(team.id, cate) %>
+        <% name = team.name %>
+        <% jbr_team.push([name, jbr]) %>
+        <% end %>
+       <% jbr_team_hash = jbr_team.sort_by {|k, v| v}.reverse.to_h %>
+      <% jbr_team_all.merge!(cate => jbr_team_hash) %>
     <% end %>
-    <% jbr_team = jbr_team.sort_by {|k, v| v}.reverse.to_h %>
+    <% jbr_team_all = jbr_team_all.map do |jbr_cat| %>
+    <% byebug %>
+    <% end %>
+        <% byebug %>
     <tr>
       <% jbr_team.each do |team| %>
       <td><%= count += 1  %></td>
