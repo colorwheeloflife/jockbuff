@@ -7,7 +7,7 @@ include ApplicationHelper
     @player_passports = PlayerPassport.includes(:player, :player_predictions).where(league_id: params[:league_id])
     @team = Team.where(league_id: league_id, ownership: true).pluck(:id)
     @leagues = League.where(user_id: current_user.id)
-
+    @jock_buff_ranks = JBR.new.jock_ranks(league_id)
 
   end
 

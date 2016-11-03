@@ -1,3 +1,10 @@
+<script>
+ var PageData = {
+     user_id: <%= params[:user_id].to_i %>,
+     league_id: <%= params[:league_id].to_i %>,
+     team_id: <%= params[:team_id].to_i %>
+   };
+</script>
 <div class="col-md-3">
   <h1>Player Rankings</h1>
 </div>
@@ -11,3 +18,42 @@
   <%= render 'player_selected' %>
   <%= render 'player_ranks' %>
 </div>
+
+<script>
+<% top_player = jbr_by_cat(1, Player.where(type_p: "P").pluck(:player_id), :jbr) %>
+
+<% full_profile = PlayerPrediction.where(player_id: top_player.first[0]) %>
+<% full_profile = full_profile.to_a %>
+
+<% cats = [] %>
+
+<% PlayerCategory.find_by(league_id: params[:league_id]).attributes.each do |stat|  %>
+  <% next unless stat[1] == true  %>
+  <% cats.push(stat[0]) %>
+<% end  %>
+<% player_profile = [] %>
+
+<% cats.each do |cat| %>
+<%   player_profile.push(full_profile[0][cat]) %>
+<% end %>
+
+function getTopPlayerStats () {
+  return [<%= player_profile[0] %>,
+          <%= player_profile[1] %>,
+          <%= player_profile[2] %>,
+          <%= player_profile[3] %>,
+          <%= player_profile[4] %>,
+          <%= player_profile[5] %>,
+          <%= player_profile[6] %>,
+          <%= player_profile[7] %>,
+          <%= player_profile[8] %>,
+          <%= player_profile[9] %>,
+          <%= player_profile[10] %>,
+          <%= player_profile[11] %>,
+          <%= player_profile[12] %>,
+          <%= player_profile[13] %>,
+          <%= player_profile[14] %>
+      ]
+}
+
+</script>

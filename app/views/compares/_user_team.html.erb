@@ -29,16 +29,16 @@
         <td class="user-team-players"> <%= player_passport.player.pro_team.upcase %></td>
         <td class="user-team-players"> <%= player_passport.player.positions.join("/") %> </td>
         <td class="user-team-players jbr-stat"> <%= jbr_by_cat(1, player_passport.player.player_id, :jbr)[player_passport.player.player_id] %> </td>
-        <td class="hidden user-team-players goals"> <%= player_passport.player.player_prediction.g %> </td>
-        <td class="hidden user-team-players assists"> <%= player_passport.player.player_prediction.a %> </td>
-        <td class="hidden user-team-players points"> <%= player_passport.player.player_prediction.p %> </td>
-        <td class="hidden user-team-players powerplay"> <%= player_passport.player.player_prediction.ppp %> </td>
-        <td class="hidden user-team-players plusminus"> <%= player_passport.player.player_prediction.plusminus %> </td>
-        <td class="hidden user-team-players pims"> <%= player_passport.player.player_prediction.pim %> </td>
-        <td class="hidden user-team-players sog"> <%= player_passport.player.player_prediction.sog %> </td>
-        <td class="hidden user-team-players fow"> <%= player_passport.player.player_prediction.fw %> </td>
-        <td class="hidden user-team-players hit"> <%= player_passport.player.player_prediction.hit %> </td>
-        <td class="hidden user-team-players blk"> <%= player_passport.player.player_prediction.blk %> </td>
+        <% if player_passport.league.player_category.g == true %> <td class="hidden user-team-players goals"> <%= player_passport.player.player_prediction.g %> </td> <% end %>
+        <% if player_passport.league.player_category.a == true %> <td class="hidden user-team-players assists"> <%= player_passport.player.player_prediction.a %> </td> <% end %>
+        <% if player_passport.league.player_category.p == true %> <td class="hidden user-team-players points"> <%= player_passport.player.player_prediction.p %> </td> <% end %>
+        <% if player_passport.league.player_category.ppp == true %> <td class="hidden user-team-players powerplay"> <%= player_passport.player.player_prediction.ppp %> </td> <% end %>
+        <% if player_passport.league.player_category.plusminus == true %> <td class="hidden user-team-players plusminus"> <%= player_passport.player.player_prediction.plusminus %> </td> <% end %>
+        <% if player_passport.league.player_category.pim == true %> <td class="hidden user-team-players pims"> <%= player_passport.player.player_prediction.pim %> </td> <% end %>
+        <% if player_passport.league.player_category.sog == true %> <td class="hidden user-team-players sog"> <%= player_passport.player.player_prediction.sog %> </td> <% end %>
+        <% if player_passport.league.player_category.fw == true %> <td class="hidden user-team-players fow"> <%= player_passport.player.player_prediction.fw %> </td> <% end %>
+        <% if player_passport.league.player_category.hit == true %> <td class="hidden user-team-players hit"> <%= player_passport.player.player_prediction.hit %> </td> <% end %>
+        <% if player_passport.league.player_category.blk == true %> <td class="hidden user-team-players blk"> <%= player_passport.player.player_prediction.blk %> </td> <% end %>
       </tr>
     <% end %>
   </tbody>
