@@ -2,30 +2,29 @@
       id="teamNeedsTable"
       data-toggle="table">
   <thead>
-    <h3>Team Needs</h3>
+    <h3 class="needs">Team Needs</h3>
     <tr>
-      <th>#</th>
-      <th>Category</th>
-      <th>JBR</th>
+      <th data-field="top-needs">#</th>
+      <th data-field="categories">Category</th>
+      <th data-field="jbr-single-stat-needs">JBR</th>
     </tr>
   </thead>
   <tbody>
-  <% cat_arr = [] %>
-  <% jbr_arr = [] %>
-  <% PlayerCategory.find_by(league_id: params[:league_id]).attributes.each {|stat| cat_arr.push(stat[0]) if stat[1] == true } %>
-  <% cat_arr.each do |category| %>
-    <% jbr = jbr_by_team(params[:id], category) %>
-    <% jbr_arr.push(category, jbr) %>
-  <% end %>
-  <% jbr_arr = Hash[*jbr_arr].sort_by {|k,v| v}.to_h %>
-    <% count = 0 %>
-    <% jbr_arr.first(5).each do |jbr| %>
-      <tr>
-        <td> <%= count += 1 %> </td>
-        <td> <%= jbr[0] %> </td>
-        <td> <%= jbr[1] %> </td>
-      </tr>
+    <% cat_arr = [] %>
+    <% jbr_arr = [] %>
+    <% PlayerCategory.find_by(league_id: params[:league_id]).attributes.each {|stat| cat_arr.push(stat[0]) if stat[1] == true } %>
+    <% cat_arr.each do |category| %>
+      <% jbr = jbr_by_team(params[:id], category) %>
+      <% jbr_arr.push(category, jbr) %>
+    <% end %>
+    <% jbr_arr = Hash[*jbr_arr].sort_by {|k,v| v}.to_h %>
+      <% count = 0 %>
+      <% jbr_arr.first(10).each do |jbr| %>
+    <tr>
+      <td class="numbered-needs"> <%= count += 1 %> </td>
+      <td class="stat-category-names"> <%= jbr[0].upcase %> </td>
+      <td class="jbr-single-stat-ranking"> <%= jbr[1] %> </td>
+    </tr>
     <% end %>
   </tbody>
 </table>
-

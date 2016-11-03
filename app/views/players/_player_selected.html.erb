@@ -1,34 +1,32 @@
 <h3>Selected Players</h3>
 <table class="table table-bordered table-striped table-hover table-responsive table-players">
   <thead>
-    <th data-field="state" data-checkbox="true"> Selected </th>
-    <th>Player</th>
-    <th>Team</th>
-    <th>Pos</th>
-    <th>JBR</th>
-    <% PlayerCategory.find_by(league_id: params[:league_id]).attributes.each do |stat| %>
-      <% next unless stat[1] == true %>
-      <% stat[0] = "+/-" if stat[0] == "plusminus" %>
-      <th> <%= stat[0].upcase %> </th>
-    <% end %>
+      <th data-field="name" data-sortable="true">Player</th>
+      <th data-field="pro_team" data-sortable="true">Team</th>
+      <th data-field="positions" data-sortable="true">Pos</th>
+      <th data-field="jbr"
+          data-sortable="true">JBR</th>
+      <% if @player_passports[0].league.player_category.g == true %> <th>G</th> <% end %>
+      <% if @player_passports[0].league.player_category.a == true %> <th>A</th> <% end %>
+      <% if @player_passports[0].league.player_category.p == true %> <th>P</th> <% end %>
+      <% if @player_passports[0].league.player_category.ppg == true %> <th>PPG</th> <% end %>
+      <% if @player_passports[0].league.player_category.ppa == true %> <th>PPA</th> <% end %>
+      <% if @player_passports[0].league.player_category.ppp == true %> <th>PPP</th> <% end %>
+      <% if @player_passports[0].league.player_category.plusminus == true %> <th>+/-</th> <% end %>
+      <% if @player_passports[0].league.player_category.shg == true %> <th>SHG</th> <% end %>
+      <% if @player_passports[0].league.player_category.sha == true %> <th>SHA</th> <% end %>
+      <% if @player_passports[0].league.player_category.shp == true %> <th>SHP</th> <% end %>
+      <% if @player_passports[0].league.player_category.gwg == true %> <th>GWG</th> <% end %>
+      <% if @player_passports[0].league.player_category.gtg == true %> <th>GTG</th> <% end %>
+      <% if @player_passports[0].league.player_category.pim == true %> <th>PIM</th> <% end %>
+      <% if @player_passports[0].league.player_category.sog == true %> <th>SOG</th> <% end %>
+      <% if @player_passports[0].league.player_category.shpercent == true %> <th>SH%</th> <% end %>
+      <% if @player_passports[0].league.player_category.fw == true %> <th>FW</th> <% end %>
+      <% if @player_passports[0].league.player_category.fl == true %> <th>FL</th> <% end %>
+      <% if @player_passports[0].league.player_category.hit == true %> <th>HIT</th> <% end %>
+      <% if @player_passports[0].league.player_category.blk == true %> <th>BLK</th> <% end %>
   </thead>
   <tbody class="selected-players" id="selection-output">
   </tbody>
 </table>
-<table class="table table-bordered table-striped table-hover table-responsive table-players">
-  <thead>
-    <th data-field="state" data-checkbox="true"> Selected </th>
-    <th>Player</th>
-    <th>Team</th>
-    <th>Pos</th>
-    <th>JBR</th>
-    <% GoalieCategory.find_by(league_id: params[:league_id]).attributes.each do |stat| %>
-      <% next unless stat[1] == true %>
-      <% stat[0] = "SV%" if stat[0] == "svpercent" %>
-      <th> <%= stat[0].upcase %> </th>
-    <% end %>
-      </tr>
-  </thead>
-  <tbody class="selected-players" id="selection-output">
-  </tbody>
 </table>

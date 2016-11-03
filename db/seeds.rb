@@ -11,7 +11,7 @@ def players_to_seed
     sleep(0.2)
     p start
     players = HTTParty.get("https://fantasysports.yahooapis.com/fantasy/v2/league/363.l.473/players;start=#{start}", headers:{
-        "Authorization" => "Bearer 4nac6TCQo11f6TrVtnSGESPc8rGWZHo..G_VcoBOuBnzJPiEgeX754sl6l57bIhyq968oL4BYQDD46CEaCxsvKfMWvCvU1zsLOQuXQzQGNne8GEbF3pv7bfrykwbSYFzxgsyVuDzzKx3z5cPWsmJisBfTEQ82hju1.J43TSPF7ZUHwNzXnK12faIzH8hlfTTh0lCnlPpF2nIoRkc_RVfULsiZQJKmBLCpyNruduBIMOTy9AtZP9quigCfpEw818kcrJYBO1CwLIISGk20YFrLhluknPAKZxuSiJBtPdv2eCGJm1I1MBGH03ckGirnCaKHzqJWYB6zkK0h2V6VxjH2VK8.fOHHOLJnRbx7EkVhPqkZqndbcOcdIfU3RJb5X_HOySYdJoNsva7i6m5mMzZD_hu_KchlWiEniI3V1RigeTlOMSsXbTyiAxJpvbwNwoQQPwK1tFSZDDz9O3atFryXqgCcTsM0WAIXXgCQs5wSumsIrD.OXdtN75Qt8ZZFXb.rCYBgnEdq_c7UO42PmmNwP7yit4zC_f58fVH8z1Uazmzf6KsegTMm1WbQI7ItyiWEriHZ5Gn1ESzlyrBSIphaLJ8ZRRlGs2K0yxx.6Qy82fvzPV6BpweLKl9zK8m3HtLy59.IbfqQvrS_TaCbOUYAGWQKwc1diNjUD_fXgNBkS7FLiWuvaZRE82OX8vh1NTDtGf1YZnM1QL1H7TdjXvXtGvkMzL.1vjeePMW61QaAtEJQaBlk_4nkNzGPDW62MF37_5gUWk5P.aGybjTDHjNsMtQXI9WLE420TI4QLNH2JTWmAGi_y0zWZQTsv5OfA3N6zHymHnD9B4uzlDBPAyTN3s3ajMcv9KQX5tR4XaACFSi4UmyiiV..T9cev5D"
+        "Authorization" => "Bearer gbVW5j6bvwiJIyKVVbfAZshGgfwT5PYsZ3VsTQaq_uYk13q5H3YG1q.g3fF9QxqZYjMzagRaZroXX0NHYNIqW8xKFFhqYqs_Mj05gAYuwzqNExBgFnka3S1ZocGvbRrTxcYF7W55JF2J9ARjJGH2jTKsh_DvJNREwsFgSmGbrhpZnwRzlrFTEv3MWxqda9ejTdfPPGcogtLS_4WmOffLjKMvrtCRKmNtzzrnVRdzShEBWIVX4ArfAnC6P8Ofwg8ZGC9gH5XDtV8hERug4fB4uolhmYTYGy49vLQ4SnxRIkLLOkLJGMEjxfCn9rzf0CuWAk7MNEVEXXpO96J_esekYGrK9UjphBeem5SPS2bp_VnF41qFN_cdDk3BgVp8Sm2TOrI5Df82miqcAwfPR1AjJyQi6EZ2JXL7NqzOesXLhcm4wxGtAA9er15amOl8DY5FU.xut5.FZ6CDqSSJ4LDD91jB8d6Qs1PPE7gxRM4aggNIM.1zPbOEe14DL2X9ZVnGHfvIAJfgmZvfcZW4XB_Zu0I8qU5JG0O9qTB2VKBhujsdC2N07J2M.02Sd__Qz2gNM_U8GV.4yBMj6Vu2ZrdmBkAQLJE6u4XwA4hRVAwpfkBAu8PJOrI4bHKUWnckNS5ce0kiVLHLLu39aOX1SzFrtbzqEwF_m7O0SqI9JVzs1lUNtOlFEQtbKj4HYmNbUGOD_jgVDp1RICqQsxBhVRoWcMXisb6NePLHzpc6leEe8wLQG0HSHrAaxPViRwGwKAEwwBj_zgwfdqOV"
       })
     player_arr = players["fantasy_content"]["league"]["players"]["player"]
     player_arr.map do |player|
@@ -28,6 +28,7 @@ def players_to_seed
     end
   end
 end
+
 def player_predictions
   teamstats = File.read(Rails.root.join('lib', 'seeds', 'teamstats_2015.csv'))
   teamstats_parse = CSV.parse(teamstats, :headers => true, :encoding => 'ISO-8859-1')
@@ -101,7 +102,7 @@ def player_stats_current
   player_ids = player_ids.slice(index, player_ids.length)
   player_ids.each do |player_id|
     player = HTTParty.get("https://fantasysports.yahooapis.com/fantasy/v2/player/363.p.#{player_id}/stats", headers:{
-          "Authorization" => "Bearer 4nac6TCQo11f6TrVtnSGESPc8rGWZHo..G_VcoBOuBnzJPiEgeX754sl6l57bIhyq968oL4BYQDD46CEaCxsvKfMWvCvU1zsLOQuXQzQGNne8GEbF3pv7bfrykwbSYFzxgsyVuDzzKx3z5cPWsmJisBfTEQ82hju1.J43TSPF7ZUHwNzXnK12faIzH8hlfTTh0lCnlPpF2nIoRkc_RVfULsiZQJKmBLCpyNruduBIMOTy9AtZP9quigCfpEw818kcrJYBO1CwLIISGk20YFrLhluknPAKZxuSiJBtPdv2eCGJm1I1MBGH03ckGirnCaKHzqJWYB6zkK0h2V6VxjH2VK8.fOHHOLJnRbx7EkVhPqkZqndbcOcdIfU3RJb5X_HOySYdJoNsva7i6m5mMzZD_hu_KchlWiEniI3V1RigeTlOMSsXbTyiAxJpvbwNwoQQPwK1tFSZDDz9O3atFryXqgCcTsM0WAIXXgCQs5wSumsIrD.OXdtN75Qt8ZZFXb.rCYBgnEdq_c7UO42PmmNwP7yit4zC_f58fVH8z1Uazmzf6KsegTMm1WbQI7ItyiWEriHZ5Gn1ESzlyrBSIphaLJ8ZRRlGs2K0yxx.6Qy82fvzPV6BpweLKl9zK8m3HtLy59.IbfqQvrS_TaCbOUYAGWQKwc1diNjUD_fXgNBkS7FLiWuvaZRE82OX8vh1NTDtGf1YZnM1QL1H7TdjXvXtGvkMzL.1vjeePMW61QaAtEJQaBlk_4nkNzGPDW62MF37_5gUWk5P.aGybjTDHjNsMtQXI9WLE420TI4QLNH2JTWmAGi_y0zWZQTsv5OfA3N6zHymHnD9B4uzlDBPAyTN3s3ajMcv9KQX5tR4XaACFSi4UmyiiV..T9cev5D"
+          "Authorization" => "Bearer gbVW5j6bvwiJIyKVVbfAZshGgfwT5PYsZ3VsTQaq_uYk13q5H3YG1q.g3fF9QxqZYjMzagRaZroXX0NHYNIqW8xKFFhqYqs_Mj05gAYuwzqNExBgFnka3S1ZocGvbRrTxcYF7W55JF2J9ARjJGH2jTKsh_DvJNREwsFgSmGbrhpZnwRzlrFTEv3MWxqda9ejTdfPPGcogtLS_4WmOffLjKMvrtCRKmNtzzrnVRdzShEBWIVX4ArfAnC6P8Ofwg8ZGC9gH5XDtV8hERug4fB4uolhmYTYGy49vLQ4SnxRIkLLOkLJGMEjxfCn9rzf0CuWAk7MNEVEXXpO96J_esekYGrK9UjphBeem5SPS2bp_VnF41qFN_cdDk3BgVp8Sm2TOrI5Df82miqcAwfPR1AjJyQi6EZ2JXL7NqzOesXLhcm4wxGtAA9er15amOl8DY5FU.xut5.FZ6CDqSSJ4LDD91jB8d6Qs1PPE7gxRM4aggNIM.1zPbOEe14DL2X9ZVnGHfvIAJfgmZvfcZW4XB_Zu0I8qU5JG0O9qTB2VKBhujsdC2N07J2M.02Sd__Qz2gNM_U8GV.4yBMj6Vu2ZrdmBkAQLJE6u4XwA4hRVAwpfkBAu8PJOrI4bHKUWnckNS5ce0kiVLHLLu39aOX1SzFrtbzqEwF_m7O0SqI9JVzs1lUNtOlFEQtbKj4HYmNbUGOD_jgVDp1RICqQsxBhVRoWcMXisb6NePLHzpc6leEe8wLQG0HSHrAaxPViRwGwKAEwwBj_zgwfdqOV"
         })
     player_stats = {player_id: player_id}
     player_full_stats = player["fantasy_content"]["player"]["player_stats"]["stats"]["stat"]
@@ -144,9 +145,9 @@ def player_stats_current
   end
 end
 # ####
-# Player.create(players_to_seed)
-# player_predictions
-# all_predictions = PlayerPrediction.all.pluck(:player_id)
-# Player.where.not(player_id: all_predictions).destroy_all
-player_stats_current
+Player.create(players_to_seed)
+player_predictions
+all_predictions = PlayerPrediction.all.pluck(:player_id)
+Player.where.not(player_id: all_predictions).destroy_all
+# player_stats_current
 # ####

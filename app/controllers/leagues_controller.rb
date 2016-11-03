@@ -3,6 +3,7 @@ class LeaguesController < ApplicationController
   include TeamsHelper
   include LeaguesHelper
 
+
   def index
     @current_user = current_user
     @leagues = League.where(user_id: @current_user.id)

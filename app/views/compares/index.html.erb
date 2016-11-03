@@ -5,6 +5,7 @@
   };
 </script>
 <div class="row container-fluid topfix container-space">
+<!-- -->
   <div class="trading-teams">
     <div class="col-md-6">
       <h1><%= @user_team_name %></h1>
@@ -33,11 +34,10 @@
   <div class="row container-fluid topfix container-space">
     <div class="col-md-12">
     <!-- Players to be traded table -->
-    <%= render partial: 'to_be_traded_tables', locals: { idPlayer: "user-output", idGoalie: "user-output-goalies", tableHeader: "Your Players"}  %>
-    <%= render partial: 'to_be_traded_tables', locals: { idPlayer: "other-output", idGoalie: "other-output-goalie", tableHeader: "Opponent's Players"}  %>
+    <%= render 'players_to_be_traded' %>
     </div>
   </div>
-  </container>
+
 
   <!-- TEAM STAT IMPACT -->
   <div class="row container-fluid topfix container-space">
@@ -45,5 +45,5 @@
       <%= render 'team_stat_impact' %>
     </div>
   </div>
-  <div class="col-md-12 graph" id="neg-value-column_top" style="width:100%; height:400px;">console.log</div>
 </div>
+</container>

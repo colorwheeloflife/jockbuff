@@ -28,7 +28,7 @@
       <td> <%= player_passport.player.name %> </td>
       <td> <%= player_passport.player.pro_team.upcase %></td>
       <td> <%= player_passport.player.positions.join("/") %> </td>
-      <td class="jbr-stat"> <%= jbr_by_cat(1, player_passport.player.player_id, :jbr)[player_passport.player.player_id] %></td>
+      <td class="jbr-stat"> <%= jbr_by_cat(1, player_passport.player.player_id, :jbr)[player_passport.player.player_id] %> </td>
       <td class="hidden goals"> <%= player_passport.player.player_prediction.g %> </td>
       <td class="hidden assists"> <%= player_passport.player.player_prediction.a %> </td>
       <td class="hidden points"> <%= player_passport.player.player_prediction.p %> </td>
@@ -45,7 +45,7 @@
 </table>
   <table class="table table-bordered table-striped table-hover table-responsive table-players"
   id="otherGoalieTable"
-  data-toggle="table"">
+  data-toggle="table">
   <thead>
     <tr>
       <th data-field="state" data-checkbox="true">Trade</th>
@@ -84,4 +84,3 @@
     <% end %>
   </tbody>
 </table>
-<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.8.1/bootstrap-table.min.js"></script>

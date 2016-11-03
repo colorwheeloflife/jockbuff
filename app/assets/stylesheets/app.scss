@@ -2,6 +2,7 @@
 @import url('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/css/bootstrap-select.min.css');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.8.1/bootstrap-table.min.css');
+
 /*
 Fonts
 font-family: 'Bungee Inline', cursive;
@@ -9,7 +10,7 @@ font-family: 'Ubuntu', sans-serif;
 font-family: 'Sanchez', serif;
 */
 
-/* Variables*/
+/* Variables */
 
 $base-font-size: 16px;
 $base-line-height: ($base-font-size * 2);
@@ -42,6 +43,14 @@ h1 {
   margin-bottom:($spacing-unit / 2);
 }
 
+.needs {
+  font-family: 'Sanchez', serif;
+  margin-top: ($spacing-unit / 2);
+  margin-bottom: ($spacing-unit / 2);
+  margin-left: 0;
+}
+
+
 h2,
 h3,
 h4,
@@ -56,6 +65,11 @@ th,{
 
 .table-players {
   text-align: center;
+}
+
+.table-header-spacing {
+  margin: 0;
+  padding: 0;
 }
 
 .container-space {
@@ -144,7 +158,6 @@ th,{
   margin-top: ($spacing-unit * 3);
 }
 
-
 .dropspace {
    padding: 5px;
    background-color: blue;
@@ -157,14 +170,19 @@ th,{
 
  }
 
- .dropspace #player-droppable_1 {
-   float: left;
+.container-full-background {
+  background-color: $brand-color-middark;
 
- }
+}
 
- .dropspace #player-droppable_2 {
-   float: right;
-  }
+
+.dropspace #player-droppable_1 {
+  float: left;
+}
+
+.dropspace #player-droppable_2 {
+ float: right;
+}
 
 .hidden {
   display: none;
@@ -177,4 +195,11 @@ th,{
 .green {
   color: green;
   font-weight: bold;
+}
+
+#add-to-trade {
+  width: 99%;
+  height: 65px;
+  font-size: 25px;
+  margin-top: $spacing-unit;
 }

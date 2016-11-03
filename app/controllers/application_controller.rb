@@ -1,10 +1,8 @@
 class ApplicationController < ActionController::Base
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
+
   require 'table-for'
   include PlayerPassportHelper
   include TeamsHelper
-  require "byebug"
 
   protect_from_forgery with: :exception
 
@@ -15,6 +13,7 @@ class ApplicationController < ActionController::Base
   helper_method :league_call
   helper_method :jbr_by_cat
   helper_method :jbr_by_team
+  helper_method :jbr_by_team_wo_last
 
   def current_user
     begin
@@ -105,7 +104,8 @@ class ApplicationController < ActionController::Base
     team_jbr
   end
 
-    def jbr_by_team_wo_last (team_id, category)
+
+  def jbr_by_team_wo_last (team_id, category)
     category = category.to_s unless category == :jbr
     team_players = PlayerPassport.where(team_id: team_id).pluck("player_id")
     goalies = team_players.select do |pl|
@@ -114,9 +114,9 @@ class ApplicationController < ActionController::Base
     skaters = team_players - goalies
     all_skater_jbr = jbr_by_cat(1, skaters, category) if PlayerCategory.new.attributes.keys.include?(category) || category == :jbr
     all_goalie_jbr = jbr_by_cat(0, goalies, category) if GoalieCategory.new.attributes.keys.include?(category) || category == :jbr
-    team_jbr = (all_skater_jbr.merge(all_goalie_jbr).values.inject{ |a, b| a + b }/grading_scale).to_i if category == :jbr
-    team_jbr = all_goalie_jbr.except!(all_goalie_jbr.keys.last).values.inject{|a, b| a + b }/grading_scale.to_i if GoalieCategory.new.attributes.keys.include?(category)
-    team_jbr = all_skater_jbr..except!(all_skater_jbr.keys.last).values.inject{|a, b| a + b }/grading_scale.to_i if PlayerCategory.new.attributes.keys.include?(category)
+    team_jbr = (all_skater_jbr.merge(all_goalie_jbr).values.inject{ |a, b| a + b })if category == :jbr
+    team_jbr = all_goalie_jbr.except!(all_goalie_jbr.keys.last).values.inject{|a, b| a + b } if GoalieCategory.new.attributes.keys.include?(category)
+    team_jbr = all_skater_jbr.except!(all_skater_jbr.keys.last).values.inject{|a, b| a + b } if PlayerCategory.new.attributes.keys.include?(category)
     team_jbr
   end
 

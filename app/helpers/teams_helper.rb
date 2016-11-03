@@ -1,5 +1,5 @@
-
 module TeamsHelper
+
   def create_teams (league_info)
     league_key = league_info["league_key"]
     team_info_arr = league_call(league_key)

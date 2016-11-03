@@ -1,33 +1,178 @@
-<div class="container-fluid topfix container-space">
-  <div class="row">
-    <div class="col-md-1">
-      <%= image_tag "#{@team.image}" , :class => 'teamlogo' %>
-    </div>
-      <div class="col-md-4">
-        <h1><%= @team.name %></h1>
-        <%= render 'team_needs_table' %>
-      </div>
-      <div class="col-md-7">
-        <div id="spider_graph" class="col-md-6 graph" style="width:100%; height:500px;">
-          If You See This The Graph Had An Error
-        </div>
-      </div>
+<div class="col-md-5">
+       <h1 style="margin=0;"><%= @team.name %></h1>
     </div>
   </div>
-<div class="container-fluid container-space">
+  <br>
   <div class="row">
     <div class="col-md-6">
-      <h1><%= @team.name %> Roster</h1>
+      <table>
+        <td>
+        <table class="table table-bordered table-striped table-hover table-responsive table-players "
+              id="teamNeedsTable"
+              data-toggle="table">
+          <thead>
+            <tr>
+              <th data-field="top-needs">#</th>
+              <th data-field="categories">Category</th>
+              <th data-field="jbr-single-stat-needs">Team Total JBR</th>
+            </tr>
+          </thead>
+            <tbody>
+              <% cat_arr = [] %>
+              <% jbr_arr = [] %>
+              <% PlayerCategory.find_by(league_id: params[:league_id]).attributes.each {|stat| cat_arr.push(stat[0]) if stat[1] == true } %>
+              <% cat_arr.each do |category| %>
+                <% jbr = jbr_by_team(params[:id], category) %>
+                <% jbr_arr.push(category, jbr) %>
+              <% end %>
+              <% jbr_arr = Hash[*jbr_arr].sort_by {|k,v| v}.to_h %>
+                <% count = 0 %>
+              <% jbr_arr.first(10).each do |jbr| %>
+                <tr>
+                  <td class="numbered-needs"> <%= count += 1 %> </td>
+                  <td class="stat-category-names"> <%= jbr[0].upcase %> </td>
+                  <td class="jbr-single-stat-ranking"> <%= jbr[1] %> </td>
+                  <% end %>
+                </tr>
+            </tbody>
+          </table>
+      </td>
+      <td>
+        <table class="table table-bordered table-striped table-hover table-responsive table-players "
+              id="teamNeedsTable"
+              data-toggle="table">
+          <thead>
+            <tr>
+              <th>Best Available Free Agents</th>
+              <th>After Impact</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% best_fa_by_cat = [] %>
+            <% raw_team_ranks_wo_last = [] %>
+            <tr>
+              <% jbr_arr.first(10).each do |cate| %>
+              <% player_bool = 1 if PlayerCategory.new.attributes.keys.include?(cate[0]) %>
+              <% player_bool = 0 if GoalieCategory.new.attributes.keys.include?(cate[0]) %>
+                <% all_players = PlayerPassport.where(team_id: Team.where(league_id: params[:league_id], name: "Waiver").pluck(:id)).pluck("player_id") %>
+                <% goalies = all_players.select do |pl| %>
+                  <% pl if Player.find_by(player_id: pl, type_p: "G") %>
+                  <% end %>
+                <% skaters = all_players - goalies %>
+                <% fa_jbr = jbr_by_cat(player_bool, skaters, cate[0]) if player_bool == 1 %>
+                <% fa_jbr = jbr_by_cat(player_bool, goalies, cate[0]) if player_bool == 0 %>
+                <% best_fa_by_cat.push([cate[0], fa_jbr.first]) %>
+              <% end %>
+              <% all_players_t= PlayerPassport.where(team_id: params[:id]).pluck("player_id") %>
+                <% goalies_t = all_players_t.select do |pl| %>
+                  <% pl if Player.find_by(player_id: pl, type_p: "G") %>
+                  <% end %>
+                <% skaters_t = all_players_t - goalies_t %>
+              <% jbr_arr.first(10).each do |cate| %>
+              <% jbr = jbr_by_team_wo_last(params[:id], cate[0]) %>
+              <% grading_scale = skaters_t.length.to_f/8 %>
+              <% jbr_adjust = (jbr + best_fa_by_cat.select {|el| el[1] if el[0] == cate[0]}.flatten.last)/grading_scale.to_i %>
+              <% raw_team_ranks_wo_last.push([cate[0], jbr_adjust]) %>
+              <% end %>
+              <% count = 0 %>
+              <% best_fa_by_cat.each do |pl| %>
+                <td > <%= Player.find_by(player_id: pl[1][0]).name %> </td>
+                <td> <%= raw_team_ranks_wo_last[count][1] %> </td>
+                <% count = count + 1 %>
+                </tr>
+              <% end %>
+              </tr>
+            </tbody>
+          </table>
+          </td>
+        </table>
     </div>
+    <div id="spider_graph" class="col-md-6 graph" style="width:50%; height:600px;"></div>
   </div>
-  <div class="row">
-    <div class="col-md-12">
-       <%= render 'team_info' %>
-     </div>
-   </div>
-  <div class="row">
-    <div class="col-md-12">
-      <%= render 'goalies' %>
+</div>
+ <div class="container-fluid container-space">
+    <div class="row">
+      <div class="col-md-12">
+         <%= render 'team_info' %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <%= render 'goalies' %>
+      </div>
     </div>
   </div>
 </div>
+<script>
+ var PageData = {
+      user_id: parseInt(<%= params[:user_id] %>),
+      league_id: parseInt(<%= params[:league_id] %>),
+      team_id: parseInt(<%= params[:id] %>)
+    };
+if (window.location.pathname == "/users/" + PageData.user_id + "/leagues/" + PageData.league_id + "/teams/" + PageData.team_id) {
+  <% jbr_a = jbr_arr.to_a %>
+  original_data = [];
+  altered_data = [];
+  graph_categories = [];
+  original_data.push(parseInt(("<%= jbr_a[0][1] %>")));
+  original_data.push(parseInt(("<%= jbr_a[1][1] %>")));
+  original_data.push(parseInt(("<%= jbr_a[2][1] %>")));
+  original_data.push(parseInt(("<%= jbr_a[3][1] %>")));
+  original_data.push(parseInt(("<%= jbr_a[4][1] %>")));
+  altered_data.push(parseInt(("<%= raw_team_ranks_wo_last[0][1] %>")));
+  altered_data.push(parseInt(("<%= raw_team_ranks_wo_last[1][1] %>")));
+  altered_data.push(parseInt(("<%= raw_team_ranks_wo_last[2][1] %>")));
+  altered_data.push(parseInt(("<%= raw_team_ranks_wo_last[3][1] %>")));
+  altered_data.push(parseInt(("<%= raw_team_ranks_wo_last[4][1] %>")));
+  graph_categories.push(("<%= jbr_a[0][0] %>"));
+  graph_categories.push(("<%= jbr_a[1][0] %>"));
+  graph_categories.push(("<%= jbr_a[2][0] %>"));
+  graph_categories.push(("<%= jbr_a[3][0] %>"));
+  graph_categories.push(("<%= jbr_a[4][0] %>"));
+
+  $(function () {
+    $('#spider_graph').highcharts({
+      chart: {
+        polar: true,
+        type: 'line'
+      },
+      title: {
+        text: 'Profile Outlook',
+        x: -80
+      },
+      pane: {
+        size: '80%'
+      },
+      xAxis: {
+        categories: graph_categories,
+        tickmarkPlacement: 'on',
+        lineWidth: 0
+      },
+      yAxis: {
+        gridLineInterpolation: 'polygon',
+        lineWidth: 0,
+        min: 0
+      },
+      tooltip: {
+        shared: true,
+        pointFormat: '<span style="color:{series.color}">{series.name}: <b>${point.y:,.0f}</b><br/>'
+      },
+      legend: {
+        align: 'right',
+        verticalAlign: 'top',
+        y: 70,
+        layout: 'vertical'
+      },
+      series: [{
+        name: 'Original JBR',
+        data: original_data,
+        pointPlacement: 'on'
+      }, {
+        name: 'After Free Agent Impact',
+        data: altered_data,
+        pointPlacement: 'on'
+      }]
+    });
+  });
+}
+</script>

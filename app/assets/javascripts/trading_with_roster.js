@@ -1,7 +1,9 @@
 $(function() {
+
   $(".team-selector").on("change", function(e) {
     var team_id = $(e.target).val();
     $('.render_trade_table').html("");
+
     var spinner = new Spinner().spin()
     $('.render_trade_table').append(spinner.el)
 
@@ -18,4 +20,5 @@ $(function() {
       }
     })
   });
+
 });
