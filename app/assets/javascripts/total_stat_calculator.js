@@ -2,7 +2,7 @@ $(document).ready(function () {
 
   totalCalc = function (tableTarget, statsTarget, renderTarget) {
     $(tableTarget).each(function() {
-      var sum = 0
+      var sum = 0;
       $(this).find(statsTarget).each(function() {
           sum += +$(this).text() || 0;
       });
@@ -34,7 +34,7 @@ $(document).ready(function () {
       $(totalCell).html(total).addClass('red');
     } else {
     $(totalCell).html(total);
-    };
+    }
   };
 
     percentageDiffFromTrade = function (topCell, bottomCell, otherCell, totalCell) {
@@ -49,7 +49,7 @@ $(document).ready(function () {
       $(totalCell).html(total.toFixed(2)).addClass('red');
     } else {
     $(totalCell).html(total.toFixed(2));
-    };
+    }
   };
 
   var graphCategories = [];
@@ -314,6 +314,3 @@ $(document).ready(function () {
 });
 
 /* COMPARES PAGE */
-
-
-
