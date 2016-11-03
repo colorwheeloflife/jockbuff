@@ -70,7 +70,7 @@
                 <% skaters_t = all_players_t - goalies_t %>
               <% jbr_arr.first(10).each do |cate| %>
               <% jbr = jbr_by_team_wo_last(params[:id], cate[0]) %>
-              <% grading_scale = skaters_t.length.to_f/8 %>
+              <% grading_scale = all_players_t.length.to_f/11 %>
               <% jbr_adjust = (jbr + best_fa_by_cat.select {|el| el[1] if el[0] == cate[0]}.flatten.last)/grading_scale.to_i %>
               <% raw_team_ranks_wo_last.push([cate[0], jbr_adjust]) %>
               <% end %>
