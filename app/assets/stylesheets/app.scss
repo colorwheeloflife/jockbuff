@@ -172,9 +172,11 @@ th,{
 
 .container-full-background {
   background-color: $brand-color-middark;
-
 }
 
+.panel-heading {
+  text-align: center;
+}
 
 .dropspace #player-droppable_1 {
   float: left;

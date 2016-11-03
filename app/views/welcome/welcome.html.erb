@@ -1,21 +1,21 @@
-      <div class="container-full topfix-welcome">
-      <div class="row">
-        <div class="col-lg-12 text-center v-center">
-          <span class="logo">JockBuff</span>
-          <p class="lead">JockBuff is a fantasy analysis tool to improve your chances to have a championship team.</p>
-          <br>
-          <%= image_tag "JockLogoMedium.png", :id => 'welcomelogo' %>
-          <br>
-          <br>
-          <form class="col-lg-12">
-            <div class="input-group input-group-lg col-sm-offset-4 col-sm-4">
-              <% if !user_signed_in? %>
-              <a class=" login btn btn-primary btn-lg" href="signin" role="button">Log In With Yahoo</a>
-              <% end %>
-            </div>
-          </form>
+<div class="container-full topfix-welcome">
+  <div class="row">
+    <div class="col-lg-12 text-center v-center">
+      <span class="logo">JockBuff</span>
+      <p class="lead">JockBuff is a fantasy analysis tool to improve your chances to have a championship team.</p>
+      <br>
+      <%= image_tag "JockLogoMedium.png", :id => 'welcomelogo' %>
+      <br>
+      <br>
+      <form class="col-lg-12">
+        <div class="input-group input-group-lg col-sm-offset-4 col-sm-4">
+          <% if !user_signed_in? %>
+          <a class=" login btn btn-primary btn-lg" href="signin" role="button">Log In With Yahoo</a>
+          <% end %>
         </div>
-      </div>
+      </form>
+    </div>
+  </div>
 </div>
 <div class="container">
     <hr>
