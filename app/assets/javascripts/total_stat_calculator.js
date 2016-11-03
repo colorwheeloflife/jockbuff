@@ -290,26 +290,6 @@ $(document).ready(function () {
     totalCalc('#other-output-goalies', '.sv', '.other-total-trade-saves');
     totalCalc('#other-output-goalies', '.goalie-jbr', '.other-total-trade-goalie-jbr');
   });
-  negColumnGraph = function () {
-      $('#neg-value-column_top').highcharts({
-        chart: {
-          type: 'column'
-        },
-        title: {
-          text: 'Category Leaderboard with Average as Equator'
-        },
-        subtitle: {
-          text: 'Category: Total Overall'
-        },
-        xAxis: {
-          categories: graphCategories
-        },
-        credits: {
-          enabled: false
-        },
-        series: graphData
-      });
-    };
 
 });
 
