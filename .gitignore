@@ -26,3 +26,5 @@
 .env
 
 /test/*
+
+vendor/assets/*
