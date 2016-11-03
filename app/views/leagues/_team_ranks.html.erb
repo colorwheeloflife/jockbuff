@@ -1,65 +1,7 @@
-<script>
-var leagueJBRs = []
-var leagueTeams = [];
-
-var JbrLeagueRankData = getLeagueChartData();
-
-for (var i = 0; i < JbrLeagueRankData.length; i++) {
-      var obj = JbrLeagueRankData[i];
-      var team_name = obj[Object.keys(obj)[0]];
-      var team_jbr = obj[Object.keys(obj)[1]];
-      var decoded = he.decode(team_name);
-      leagueTeams.push(decoded);
-      leagueJBRs.push(team_jbr);
-
-  }
-
-$(function(){
-  $('#rank_column-top').highcharts({
-      chart: {
-          type: 'column',
-          options3d: {
-              enabled: true,
-              alpha: 15,
-              beta: 15,
-              depth: 50,
-              viewDistance: 25
-          }
-      },
-      title: {
-          text: 'Category Leaderboard'
-      },
-      subtitle: {
-          text: 'Category: Total Overall'
-      },
-      plotOptions: {
-          column: {
-              depth: 25
-          }
-      },
-      xAxis: {
-          categories: leagueTeams
-      },
-      series: [{
-        name: 'League Ranks By JBR',
-        data: leagueJBRs
-      }]
-  });
-});
-
-function getLeagueChartData () {
-    return [
-        <% @teams.each do |team| %>
-        <% next if team.name.include?("Waiver") %>
-          {name:"<%= team.name %>",jbr:<%= jbr_by_team(team.id, :jbr) %>},
-        <% end %>
-    ];
-}
-</script>
-
- <table class="table table-bordered table-striped table-responsive table-players "
-        id="leaguesTable"
-        data-toggle="table">
+<table class="table table-bordered table-striped table-responsive table-players "
+      data-toggle="table"
+      id="leaguesTable"
+>
   <thead>
     <tr>
       <th class="col-md-1">Rank</th>
@@ -70,13 +12,16 @@ function getLeagueChartData () {
   <tbody class="jbr_scores">
     <% count = 0 %>
     <% jbr_team = [] %>
+
     <% @teams.each do |team| %>
     <% next if team.name.include?("Waiver") %>
     <% jbr = jbr_by_team(team.id, :jbr) %>
     <% name = team.name %>
     <% jbr_team.push([name, jbr]) %>
     <% end %>
+
     <% jbr_team = jbr_team.sort_by {|k, v| v}.reverse.to_h %>
+    <% jbr_for_graph = jbr_team.to_a %>
     <tr>
       <% jbr_team.each do |team| %>
       <td><%= count += 1  %></td>
@@ -86,3 +31,18 @@ function getLeagueChartData () {
     <% end %>
   </tbody>
 </table>
+
+<script>
+  var PageData = {
+      user_id: <%= params[:user_id].to_i %>,
+      league_id: <%= params[:id].to_i %>
+    };
+
+  function getLeagueChartData () {
+      return [
+          <% jbr_for_graph.each do |team| %>
+            {name: "<%= team[0] %>",jbr: <%= team[1] %>},
+          <% end %>
+      ];
+  }
+</script>
