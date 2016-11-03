@@ -3,7 +3,6 @@ var leagueJBRs = []
 var leagueTeams = [];
 
 var JbrLeagueRankData = getLeagueChartData();
-console.log(JbrLeagueRankData);
 
 for (var i = 0; i < JbrLeagueRankData.length; i++) {
       var obj = JbrLeagueRankData[i];
@@ -40,6 +39,7 @@ $(function(){
           categories: leagueTeams
       },
       series: [{
+        name: 'League Ranks By JBR',
         data: leagueJBRs
       }]
   });

@@ -79,6 +79,9 @@ th,{
 .container-space-no-top {
   margin-bottom: $spacing-unit;
 }
+.container-space-no-bottom {
+  margin-top: $spacing-unit;
+}
 
 .logo {
   font-family: 'Bungee Inline', cursive;
@@ -90,9 +93,52 @@ th,{
 .teamlogo {
   border-radius: ($spacing-unit * 2);
   margin-right: ($spacing-unit * 1.5);
-  width:110px;
-  height:110px;
+  margin-left: ($spacing-unit * 1.5);
+  margin-top: ($spacing-unit * 1.5);
+  width:150px;
+  height:150px;
 }
+
+.teamname {
+  margin-left: 85px;
+  margin-top: 85px;
+  font-size: 50px;
+}
+
+#spider_graph {
+  margin-top: -160px;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+.highcharts-title {
+  font-size: 35px;
+  font-family: 'Sanchez', serif;
+}
+
+.highcharts-subtitle{
+  font-family: 'Sanchez', serif;
+}
+
+.highcharts-legend {
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.highcharts-axis-labels {
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.highcharts-xaxis-labels {
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.highcharts-tooltip {
+  display: none;
+  color: white;
+  cursor: none;
+
+}
+
 
 #welcomelogo {
   width: 400px;
