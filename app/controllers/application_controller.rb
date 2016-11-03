@@ -89,37 +89,27 @@ class ApplicationController < ActionController::Base
   end
 
   def jbr_by_team (team_id, category)
-     category = category.to_s unless category == :jbr
-     team_players = PlayerPassport.where(team_id: team_id).pluck("player_id")
-     goalies = team_players.select do |pl|
-       pl if Player.find_by(player_id: pl, type_p: "G")
-       end
-     skaters = team_players - goalies
-     all_skater_jbr = jbr_by_cat(1, skaters, category) if PlayerCategory.new.attributes.keys.include?(category) || category == :jbr
-     all_goalie_jbr = jbr_by_cat(0, goalies, category) if GoalieCategory.new.attributes.keys.include?(category) || category == :jbr
-     grading_scale = team_players.length.to_f/11 if category == :jbr
-     grading_scale = skaters.length.to_f/8 if PlayerCategory.new.attributes.keys.include?(category)
-     grading_scale = goalies.length.to_f/3 if GoalieCategory.new.attributes.keys.include?(category)
-     team_jbr = (all_skater_jbr.merge(all_goalie_jbr).values.inject{ |a, b| a + b }/grading_scale).to_i if category == :jbr
-     team_jbr = all_goalie_jbr.values.inject{|a, b| a + b }/grading_scale.to_i if GoalieCategory.new.attributes.keys.include?(category)
-     team_jbr = all_skater_jbr.values.inject{|a, b| a + b }/grading_scale.to_i if PlayerCategory.new.attributes.keys.include?(category)
-     team_jbr
-   end
-
-   def jbr_by_team_wo_last (team_id, category)
-  category = category.to_s unless category == :jbr
-  team_players = PlayerPassport.where(team_id: team_id).pluck("player_id")
-  goalies = team_players.select do |pl|
-    pl if Player.find_by(player_id: pl, type_p: "G")
+    category = category.to_s unless category == :jbr
+    team_players = PlayerPassport.where(team_id: team_id).pluck("player_id")
+    goalies = team_players.select do |pl|
+      pl if Player.find_by(player_id: pl, type_p: "G")
+      end
     end
-  skaters = team_players - goalies
-  all_skater_jbr = jbr_by_cat(1, skaters, category) if PlayerCategory.new.attributes.keys.include?(category) || category == :jbr
-  all_goalie_jbr = jbr_by_cat(0, goalies, category) if GoalieCategory.new.attributes.keys.include?(category) || category == :jbr
-  team_jbr = (all_skater_jbr.merge(all_goalie_jbr).values.inject{ |a, b| a + b })if category == :jbr
-  team_jbr = all_goalie_jbr.except!(all_goalie_jbr.keys.last).values.inject{|a, b| a + b } if GoalieCategory.new.attributes.keys.include?(category)
-  team_jbr = all_skater_jbr.except!(all_skater_jbr.keys.last).values.inject{|a, b| a + b } if PlayerCategory.new.attributes.keys.include?(category)
-  team_jbr
-end
 
+
+    def jbr_by_team_wo_last (team_id, category)
+      category = category.to_s unless category == :jbr
+      team_players = PlayerPassport.where(team_id: team_id).pluck("player_id")
+      goalies = team_players.select do |pl|
+        pl if Player.find_by(player_id: pl, type_p: "G")
+        end
+      skaters = team_players - goalies
+      all_skater_jbr = jbr_by_cat(1, skaters, category) if PlayerCategory.new.attributes.keys.include?(category) || category == :jbr
+      all_goalie_jbr = jbr_by_cat(0, goalies, category) if GoalieCategory.new.attributes.keys.include?(category) || category == :jbr
+      team_jbr = (all_skater_jbr.merge(all_goalie_jbr).values.inject{ |a, b| a + b })if category == :jbr
+      team_jbr = all_goalie_jbr.except!(all_goalie_jbr.keys.last).values.inject{|a, b| a + b } if GoalieCategory.new.attributes.keys.include?(category)
+      team_jbr = all_skater_jbr.except!(all_skater_jbr.keys.last).values.inject{|a, b| a + b } if PlayerCategory.new.attributes.keys.include?(category)
+      team_jbr
+    end
 
 end
