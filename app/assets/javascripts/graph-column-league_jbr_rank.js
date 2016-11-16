@@ -9,7 +9,8 @@ $(function() {
           var obj = JbrLeagueRankData[i];
           var team_name = obj[Object.keys(obj)[0]];
           var team_jbr = obj[Object.keys(obj)[1]];
-          leagueTeams.push(team_name);
+          var decoded = he.decode(team_name);
+          leagueTeams.push(decoded);
           leagueJBRs.push(team_jbr);
       }
 
@@ -37,6 +38,11 @@ $(function() {
           },
           xAxis: {
               categories: leagueTeams
+          },
+          yAxis: {
+            floor: 200,
+            ceiling: 500
+
           },
           series: [{
             data: leagueJBRs

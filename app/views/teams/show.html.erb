@@ -1,12 +1,23 @@
-<div class="col-md-5">
-       <h1 style="margin=0;"><%= @team.name %></h1>
-    </div>
-  <br>
+<container class="container-space-no-bottom">
   <div class="row">
-    <div class="col-md-6">
+
+    <div class="col-md-1">
+      <img src="<%= @team.image %>" class="teamlogo">
+    </div>
+    <div class="col-md-4">
+      <h1 class="teamname"><%= @team.name %></h1>
+    </div>
+
+
+
+  </div>
+</container>
+<container class="container-space">
+  <div class="row container-space">
+    <div class="col-md-5">
       <table>
         <td>
-        <table class="table table-bordered table-striped table-hover table-responsive table-players "
+        <table class="table table-bordered table-striped table-hover table-responsive table-players"
               id="teamNeedsTable"
               data-toggle="table">
           <thead>
@@ -69,7 +80,7 @@
                 <% skaters_t = all_players_t - goalies_t %>
               <% jbr_arr.first(10).each do |cate| %>
               <% jbr = jbr_by_team_wo_last(params[:id], cate[0]) %>
-              <% grading_scale = skaters_t.length.to_f/8 %>
+              <% grading_scale = all_players_t.length.to_f/11 %>
               <% jbr_adjust = (jbr + best_fa_by_cat.select {|el| el[1] if el[0] == cate[0]}.flatten.last)/grading_scale.to_i %>
               <% raw_team_ranks_wo_last.push([cate[0], jbr_adjust]) %>
               <% end %>
@@ -86,9 +97,10 @@
           </td>
         </table>
     </div>
-    <div id="spider_graph" class="col-md-6 graph" style="width:50%; height:600px;"></div>
+    <div id="spider_graph" class="col-md-7 graph" style="width:50%; height:800px;"></div>
   </div>
 </div>
+</container>
  <div class="container-fluid container-space">
     <div class="row">
       <div class="col-md-12">
@@ -103,75 +115,75 @@
   </div>
 </div>
 <script>
- var PageData = {
+  var PageData = {
       user_id: parseInt(<%= params[:user_id] %>),
       league_id: parseInt(<%= params[:league_id] %>),
       team_id: parseInt(<%= params[:id] %>)
     };
-if (window.location.pathname == "/users/" + PageData.user_id + "/leagues/" + PageData.league_id + "/teams/" + PageData.team_id) {
-  <% jbr_a = jbr_arr.to_a %>
-  original_data = [];
-  altered_data = [];
-  graph_categories = [];
-  original_data.push(parseInt(("<%= jbr_a[0][1] %>")));
-  original_data.push(parseInt(("<%= jbr_a[1][1] %>")));
-  original_data.push(parseInt(("<%= jbr_a[2][1] %>")));
-  original_data.push(parseInt(("<%= jbr_a[3][1] %>")));
-  original_data.push(parseInt(("<%= jbr_a[4][1] %>")));
-  altered_data.push(parseInt(("<%= raw_team_ranks_wo_last[0][1] %>")));
-  altered_data.push(parseInt(("<%= raw_team_ranks_wo_last[1][1] %>")));
-  altered_data.push(parseInt(("<%= raw_team_ranks_wo_last[2][1] %>")));
-  altered_data.push(parseInt(("<%= raw_team_ranks_wo_last[3][1] %>")));
-  altered_data.push(parseInt(("<%= raw_team_ranks_wo_last[4][1] %>")));
-  graph_categories.push(("<%= jbr_a[0][0] %>"));
-  graph_categories.push(("<%= jbr_a[1][0] %>"));
-  graph_categories.push(("<%= jbr_a[2][0] %>"));
-  graph_categories.push(("<%= jbr_a[3][0] %>"));
-  graph_categories.push(("<%= jbr_a[4][0] %>"));
+  if (window.location.pathname == "/users/" + PageData.user_id + "/leagues/" + PageData.league_id + "/teams/" + PageData.team_id) {
+    <% jbr_a = jbr_arr.to_a %>
+    original_data = [];
+    altered_data = [];
+    graph_categories = [];
+    original_data.push(parseInt(("<%= jbr_a[0][1] %>")));
+    original_data.push(parseInt(("<%= jbr_a[1][1] %>")));
+    original_data.push(parseInt(("<%= jbr_a[2][1] %>")));
+    original_data.push(parseInt(("<%= jbr_a[3][1] %>")));
+    original_data.push(parseInt(("<%= jbr_a[4][1] %>")));
+    altered_data.push(parseInt(("<%= raw_team_ranks_wo_last[0][1] %>")));
+    altered_data.push(parseInt(("<%= raw_team_ranks_wo_last[1][1] %>")));
+    altered_data.push(parseInt(("<%= raw_team_ranks_wo_last[2][1] %>")));
+    altered_data.push(parseInt(("<%= raw_team_ranks_wo_last[3][1] %>")));
+    altered_data.push(parseInt(("<%= raw_team_ranks_wo_last[4][1] %>")));
+    graph_categories.push(("<%= jbr_a[0][0] %>"));
+    graph_categories.push(("<%= jbr_a[1][0] %>"));
+    graph_categories.push(("<%= jbr_a[2][0] %>"));
+    graph_categories.push(("<%= jbr_a[3][0] %>"));
+    graph_categories.push(("<%= jbr_a[4][0] %>"));
 
-  $(function () {
-    $('#spider_graph').highcharts({
-      chart: {
-        polar: true,
-        type: 'line'
-      },
-      title: {
-        text: 'Profile Outlook',
-        x: -80
-      },
-      pane: {
-        size: '80%'
-      },
-      xAxis: {
-        categories: graph_categories,
-        tickmarkPlacement: 'on',
-        lineWidth: 0
-      },
-      yAxis: {
-        gridLineInterpolation: 'polygon',
-        lineWidth: 0,
-        min: 0
-      },
-      tooltip: {
-        shared: true,
-        pointFormat: '<span style="color:{series.color}">{series.name}: <b>${point.y:,.0f}</b><br/>'
-      },
-      legend: {
-        align: 'right',
-        verticalAlign: 'top',
-        y: 70,
-        layout: 'vertical'
-      },
-      series: [{
-        name: 'Original JBR',
-        data: original_data,
-        pointPlacement: 'on'
-      }, {
-        name: 'After Free Agent Impact',
-        data: altered_data,
-        pointPlacement: 'on'
-      }]
+    $(function () {
+      $('#spider_graph').highcharts({
+        chart: {
+          polar: true,
+          type: 'line'
+        },
+        title: {
+          text: 'JBR Team Impact',
+          x: -80
+        },
+        pane: {
+          size: '80%'
+        },
+        xAxis: {
+          categories: graph_categories,
+          tickmarkPlacement: 'on',
+          lineWidth: 0
+        },
+        yAxis: {
+          gridLineInterpolation: 'polygon',
+          lineWidth: 0,
+          min: 0
+        },
+        tooltip: {
+          shared: true,
+          pointFormat: '<span style="color:{series.color}">{series.name}: <b>{point.y:,.0f}</b><br/>'
+        },
+        legend: {
+          align: 'right',
+          verticalAlign: 'top',
+          y: 70,
+          layout: 'vertical'
+        },
+        series: [{
+          name: 'Original JBR',
+          data: original_data,
+          pointPlacement: 'on'
+        }, {
+          name: 'After Free Agent Impact',
+          data: altered_data,
+          pointPlacement: 'on'
+        }]
+      });
     });
-  });
-}
+  }
 </script>

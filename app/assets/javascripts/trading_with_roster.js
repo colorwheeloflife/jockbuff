@@ -4,8 +4,8 @@ $(function() {
     var team_id = $(e.target).val();
     $('.render_trade_table').html("");
 
-    var spinner = new Spinner().spin()
-    $('.render_trade_table').append(spinner.el)
+    var spinner = new Spinner().spin();
+    $('.render_trade_table').append(spinner.el);
 
     $.ajax({
       method: "GET",
@@ -16,9 +16,9 @@ $(function() {
         spinner.stop();
       },
       error: function() {
-        spinner.stop()
+        spinner.stop();
       }
-    })
+    });
   });
 
 });
