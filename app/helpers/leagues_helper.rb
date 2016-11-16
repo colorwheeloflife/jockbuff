@@ -14,7 +14,6 @@ module LeaguesHelper
   def create_leagues
     @yahoo_root = yahoo_root
     @current_user = current_user
-
     user_leagues_full = HTTParty.get("#{@yahoo_root}users;use_login=1/games;game_keys=363/teams", headers:{
     "Authorization" => "Bearer #{@current_user.token}"
     })
@@ -31,6 +30,13 @@ module LeaguesHelper
       league_settings =  HTTParty.get("#{yahoo_root}league/#{league_keys}/settings", headers:{
         "Authorization" => "Bearer #{@current_user.token}"
       })
+      if league_settings["fantasy_content"]
+        league_settings
+      else
+        sleep(3)
+        team_info = HTTParty.get("#{yahoo_root}league/#{league_keys}/settings", headers:{
+        "Authorization" => "Bearer #{@current_user.token}"
+      end
       league_name = league_settings["fantasy_content"]["league"]["name"]
       league_info.merge!(name: league_name)
       if league_settings["fantasy_content"]["league"]["draft_status"] == "postdraft" && League.find_by(league_info) == nil
@@ -40,5 +46,4 @@ module LeaguesHelper
       end
     end
   end
-
 end

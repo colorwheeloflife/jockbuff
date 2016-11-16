@@ -1,3 +1,10 @@
+<script>
+ var PageData = {
+     user_id: <%= params[:user_id].to_i %>,
+     league_id: <%= params[:league_id].to_i %>,
+     team_id: <%= params[:team_id].to_i %>
+   };
+</script>
 <div class="container-fluid topfix container-space">
   <div class="row">
     <div class="col-md-3">
