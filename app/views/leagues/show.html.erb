@@ -1,9 +1,21 @@
 <script>
- var PageData = {
+  $(function() {
+     var PageData = {
      user_id: <%= params[:user_id].to_i %>,
-     league_id: <%= params[:league_id].to_i %>,
-     team_id: <%= params[:team_id].to_i %>
+     league_id: <%= params[:id].to_i %>,
    };
+    $("#category").on("change", function(e) {
+      let category = $("#category").val()
+      $.ajax({
+        method: "GET",
+        url: "/ajax/users/" + PageData.user_id + "/leagues/" + PageData.league_id + '/' + category,
+        success: function(data){
+          $('#category-default').hide();
+          $("#teamranks-select").html(data);
+        }
+      });
+    });
+});
 </script>
 <div class="container-fluid topfix container-space">
   <div class="row">
@@ -14,8 +26,16 @@
 <div class="row">
   <div class="col-md-3">
     <div class="row">
-      <div class="col-md-10">
-       <%= render 'team_ranks' %>
+      <div class="col-md-10 ">
+        <% category_arr = ["jbr"] %>
+        <% categories = PlayerCategory.find_by(league_id: params[:id]).attributes %>
+        <% categories.each do |category| %>
+          <% next if (category[1] == false) %>
+          <% category_arr.push(category[0]) if category[1] == true %>
+        <% end %>
+          <%= select_tag(:category, options_for_select(category_arr)) %>
+          <div id="teamranks-select"></div>
+          <div id="category-default"><%= render "team_ranks", locals: { category: "jbr" } %></div>
       </div>
     </div>
   </div>

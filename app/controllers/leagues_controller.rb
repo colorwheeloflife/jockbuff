@@ -3,7 +3,6 @@ class LeaguesController < ApplicationController
   include TeamsHelper
   include LeaguesHelper
 
-
   def index
     @current_user = current_user
     @leagues = League.where(user_id: @current_user.id)
@@ -37,6 +36,20 @@ class LeaguesController < ApplicationController
     @teams = Team.where(league_id: @league_id)
     @player_passports = PlayerPassport.where(league_id: @league_id)
     @jock_buff_ranks = JBR.new.jock_ranks(@league_id)
+    @category = "jbr"
+  end
+
+  def team_ranks
+    @current_user = current_user
+    @league_id = params[:league_id]
+    @teams = Team.where(league_id: @league_id)
+    @player_passports = PlayerPassport.where(league_id: @league_id)
+    @jock_buff_ranks = JBR.new.jock_ranks(@league_id)
+    @category = params[:category]
+    render partial: 'team_ranks', locals: {category: @category}
+    # respond_to do |format|
+    #   format.js { render "alert('Hello Rails');" }
+    #   format.html { redirect_to user_league_path }
   end
 
 end

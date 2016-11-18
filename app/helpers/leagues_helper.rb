@@ -34,12 +34,14 @@ module LeaguesHelper
         league_settings
       else
         sleep(3)
-        team_info = HTTParty.get("#{yahoo_root}league/#{league_keys}/settings", headers:{
+        league_settings = HTTParty.get("#{yahoo_root}league/#{league_keys}/settings", headers:{
         "Authorization" => "Bearer #{@current_user.token}"
+        })
       end
-      league_name = league_settings["fantasy_content"]["league"]["name"]
-      league_info.merge!(name: league_name)
-      if league_settings["fantasy_content"]["league"]["draft_status"] == "postdraft" && League.find_by(league_info) == nil
+      if league_settings["fantasy_content"]["league"]["draft_status"] == "postdraft"
+        league_name = league_settings["fantasy_content"]["league"]["name"]
+        league_info.merge!(name: league_name)
+        league_settings["fantasy_content"]["league"]["draft_status"] == "postdraft" && League.find_by(league_info) == nil
         @league = League.create(league_info)
         @player_category = create_player_categories(league_settings, league_info)
         @goalie_category = create_goalie_categories(league_settings, league_info)

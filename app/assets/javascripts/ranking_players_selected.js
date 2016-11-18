@@ -249,4 +249,3 @@ $(function() {
     }
   }
 });
->>>>>>> 95dc1ea9884daa91a36a0ed75b6a5fe3f7a2ac35

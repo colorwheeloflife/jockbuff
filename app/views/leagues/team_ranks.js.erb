@@ -1,0 +1,14 @@
+
+$(function() {
+  $("#category").on("change", function(e) {
+    let category = $("#categorys").val()
+    $.ajax({
+      method: "GET",
+      url: "/ajax/users/" + PageData.user_id + "/leagues/" + PageData.league_id
+      success: function(data){
+        $('#category-default').hide();
+        $("#teamranks-select").append("<%= j render 'team_ranks', locals: {category: @category}  %>");
+      }
+    });
+  });
+});

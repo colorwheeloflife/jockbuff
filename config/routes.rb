@@ -18,11 +18,11 @@ Rails.application.routes.draw do
  get '/users/:user_id/leagues/:league_id/compares' => 'compares#index', :as => :compares
  get '/ajax/users/:user_id/leagues/:league_id/teams/:team_id' => 'compares#render_trade_table', :as => :render_table
  get '/ajax/trade/:player_id' => 'compares#players_to_be_traded', :as => :players_to_be_traded
+ get '/ajax/users/:user_id/leagues/:league_id/:category' => 'leagues#team_ranks'
 
 
  get '/users/:user_id/leagues/:league_id/teams' => 'teams#index'
  post '/users/:user_id/leagues/:league_id/teams' => 'teams#create'
- post '/users/:user_id/leagues/:id' => 'teams#create'
 
  get '/auth/:provider/callback' => 'sessions#create'
 
@@ -31,8 +31,8 @@ Rails.application.routes.draw do
  get '/auth/failure' => 'sessions#failure'
 
  get '/update_players_table' => 'players#create'
-
-
  delete '/signout' => 'sessions#destroy'
 
+
 end
+

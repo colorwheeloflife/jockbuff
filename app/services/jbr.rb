@@ -35,12 +35,12 @@
       end
       cat_jbr =  [category[0], cat_jbr[0][1]]
     end
-      player_jbr_hash = Hash[player_jbr.group_by(&:first).map{ |k,a| [k,a.map(&:last)[0]] } ]
+      player_jbr_hash = Hash[player_jbr.group_by(&:first).map{ |k,a| [k,a.map(&:last)[0]] }]
       overall_jbr = 0
       total_jbr = player_jbr_hash.map do |key|
         overall_jbr = key[1] + overall_jbr
       end
-      player_jbr_hash.merge!(jbr: (total_jbr.last/total_jbr.length).to_i, player_id: player_id)
+      player_jbr_hash.merge!("jbr" => (total_jbr.last/total_jbr.length).to_i, player_id: player_id)
     end
     return player_id_arr
   end
