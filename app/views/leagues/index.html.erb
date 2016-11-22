@@ -22,17 +22,19 @@
           <% end %>
         </tbody>
       </table>
-      <% unless passport_exist(@current_user.id) %>
-        <%= form_tag(user_leagues_path(@current_user), method: "post") do %>
+      <% unless @current_user.token == 'demo' %>
+        <% unless passport_exist(@current_user.id) %>
+          <%= form_tag(user_leagues_path(@current_user), method: "post") do %>
+            <button type= "submit" class= "btn btn-primary btn-lg" id="spinner">
+            Download Your Teams
+            </button>
+          <% end %>
+        <% else %>
+          <%= form_tag(new_user_league_path(@current_user.id), method: "get") do %>
           <button type= "submit" class= "btn btn-primary btn-lg" id="spinner">
-          Download Your Teams
+          Update Leagues
           </button>
-        <% end %>
-      <% else %>
-        <%= form_tag(new_user_league_path(@current_user.id), method: "get") do %>
-        <button type= "submit" class= "btn btn-primary btn-lg" id="spinner">
-        Update Leagues
-        </button>
+          <% end %>
         <% end %>
       <% end %>
     </div>

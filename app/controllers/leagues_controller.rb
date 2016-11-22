@@ -47,9 +47,6 @@ class LeaguesController < ApplicationController
     @jock_buff_ranks = JBR.new.jock_ranks(@league_id)
     @category = params[:category]
     render partial: 'team_ranks', locals: {category: @category}
-    # respond_to do |format|
-    #   format.js { render "alert('Hello Rails');" }
-    #   format.html { redirect_to user_league_path }
   end
 
 end

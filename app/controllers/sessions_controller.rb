@@ -18,6 +18,14 @@ class SessionsController < ApplicationController
     redirect_to user_leagues_path(current_user), :notice => 'Signed in!'
   end
 
+  def demo
+    user = User.find_by(id: 2)
+    user.update(token: 'demo')
+    session[:user_id] = user.id
+    redirect_to user_leagues_path(current_user)
+  end
+
+
 
   def destroy
     if current_user
