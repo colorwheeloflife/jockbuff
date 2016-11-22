@@ -1,4 +1,3 @@
-require 'byebug'
 module PlayerPassportHelper
 
   def create_passport_entry (league_ids)

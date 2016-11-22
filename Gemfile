@@ -2,59 +2,69 @@ source 'https://rubygems.org'
 
 ruby '2.3.0'
 
-group :production do
-  # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-  gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
-  gem 'omniauth-yahoo-oauth2', git: 'https://github.com/sarahveness/omniauth-yahoo-oauth2.git'
-  gem 'pg'
+# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 
-  # Use Puma as the app server
-  gem 'puma', '~> 3.0'
-  # Use SCSS for stylesheets
-  gem 'sass-rails', '~> 5.0'
-  # Use Uglifier as compressor for JavaScript assets
+# Use sqlite3 as the database for Active Record
+gem 'pg'
 
-  # Use jquery as the JavaScript library
-  gem 'jquery-rails'
-  gem 'jquery-ui-rails'
-  gem 'waypoints-rails', '~> 0.1'
-  gem 'uglifier'
-  # gem 'jquery-waypoints-rails', '~> 2.0', '>= 2.0.5'
-  # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-  gem 'turbolinks', '~> 5'
-  # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-  gem 'jbuilder', '~> 2.5'
-  # Use Redis adapter to run Action Cable in production
-  # gem 'redis', '~> 3.0'
-  # Use ActiveModel has_secure_password
-  gem 'bcrypt', '~> 3.1.7'
-  gem 'rails_12factor'
+# Use Puma as the app server
+gem 'puma', '~> 3.0'
+# Use SCSS for stylesheets
+gem 'sass-rails', '~> 5.0'
+# Use Uglifier as compressor for JavaScript assets
+gem 'uglifier', '>= 1.3.0'
+# Use CoffeeScript for .coffee assets and views
+gem 'coffee-rails', '~> 4.2'
+# See https://github.com/rails/execjs#readme for more supported runtimes
+# gem 'therubyracer', platforms: :ruby
 
-  gem 'httparty'
-  gem 'dotenv-rails'
-  gem 'omniauth'
-  gem "highcharts-rails"
-  gem 'foundation-rails'
-  gem "table-for"
+# Use jquery as the JavaScript library
+gem 'jquery-rails'
+gem 'jquery-ui-rails'
+gem 'waypoints-rails', '~> 0.1'
 
-  # Use Capistrano for deployment
-  # gem 'capistrano-rails', group: :development
-  gem 'listen', '~> 3.0.5'
-  gem 'bootstrap-sass'
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
+# gem 'jquery-waypoints-rails', '~> 2.0', '>= 2.0.5'
+# Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
+gem 'turbolinks', '~> 5'
+# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
+gem 'jbuilder', '~> 2.5'
+# Use Redis adapter to run Action Cable in production
+# gem 'redis', '~> 3.0'
+# Use ActiveModel has_secure_password
+gem 'bcrypt', '~> 3.1.7'
+
+gem 'httparty'
+
+gem 'dotenv-rails'
 
 
-  gem "activerecord-import"
-end
+gem 'omniauth'
 
+gem "highcharts-rails"
+
+gem 'foundation-rails'
+
+gem "table-for"
+
+# Use Capistrano for deployment
+# gem 'capistrano-rails', group: :development
+gem 'omniauth-yahoo-oauth2', git: 'https://github.com/sarahveness/omniauth-yahoo-oauth2.git'
+
+gem 'listen', '~> 3.0.5'
+gem 'bootstrap-sass'
+# Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+gem 'spring'
+gem 'spring-watcher-listen', '~> 2.0.0'
+
+
+gem "activerecord-import"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platform: :mri
-  gem 'web-console'
-  gem 'pry'
+gem 'byebug', platform: :mri
+gem 'web-console'
+gem 'pry'
 end
 
 group :development do
