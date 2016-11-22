@@ -30,6 +30,7 @@ group :production do
   # gem 'redis', '~> 3.0'
   # Use ActiveModel has_secure_password
   gem 'bcrypt', '~> 3.1.7'
+  gem 'rails_12factor'
 
   gem 'httparty'
   gem 'dotenv-rails'
