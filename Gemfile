@@ -39,7 +39,7 @@ gem 'httparty'
 gem 'dotenv-rails'
 
 
-gem 'omniauth'
+gem 'omniauth', group: :production
 
 gem "highcharts-rails"
 
@@ -49,8 +49,8 @@ gem "table-for"
 gem 'byebug'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-gem 'omniauth-yahoo-oauth2', git: 'https://github.com/sarahveness/omniauth-yahoo-oauth2.git'
-
+gem 'omniauth-yahoo-oauth2', git: 'https://github.com/sarahveness/omniauth-yahoo-oauth2.git', group: :production
+gem 'rails_12factor', group: :production
 gem 'listen', '~> 3.0.5'
 gem 'bootstrap-sass'
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
