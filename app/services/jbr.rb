@@ -1,4 +1,3 @@
-  require 'byebug'
   require 'yaml'
   require 'pnorm'
 
@@ -26,24 +25,24 @@
 
   private
 
-  def full_skater_profiles(ranks, player_ids)
-    player_id_arr = player_ids.map do |player_id|
-      player_jbr = ranks.map do |category|
-        cat_jbr = category[1].select do |p|
-          next if p.is_a? String
-          cat_jbr = p[1] if p[0] == player_id
+    def full_skater_profiles(ranks, player_ids)
+      player_id_arr = player_ids.map do |player_id|
+        player_jbr = ranks.map do |category|
+          cat_jbr = category[1].select do |p|
+            next if p.is_a? String
+            cat_jbr = p[1] if p[0] == player_id
+        end
+        cat_jbr =  [category[0], cat_jbr[0][1]]
       end
-      cat_jbr =  [category[0], cat_jbr[0][1]]
-    end
-      player_jbr_hash = Hash[player_jbr.group_by(&:first).map{ |k,a| [k,a.map(&:last)[0]] }]
-      overall_jbr = 0
-      total_jbr = player_jbr_hash.map do |key|
-        overall_jbr = key[1] + overall_jbr
+        player_jbr_hash = Hash[player_jbr.group_by(&:first).map{ |k,a| [k,a.map(&:last)[0]] }]
+        overall_jbr = 0
+        total_jbr = player_jbr_hash.map do |key|
+          overall_jbr = key[1] + overall_jbr
+        end
+        player_jbr_hash.merge!("jbr" => (total_jbr.last/total_jbr.length).to_i, player_id: player_id)
       end
-      player_jbr_hash.merge!("jbr" => (total_jbr.last/total_jbr.length).to_i, player_id: player_id)
+      return player_id_arr
     end
-    return player_id_arr
-  end
 
     def create_jbr_skaters(skater_all_arr, skater_categories)
       jbr_skater_full = {}
@@ -61,7 +60,7 @@
         cat_mean = mean(skater_cat_stat.first(200)) if category[0] == "fl"
         jbr_cat_arr = skater_cat_arr.map do |player|
            jbr = (player[1] - cat_mean) / cat_std
-           player[1] = p_table_get(jbr)
+           player[1] = p_table_get(jbr).to_i
            player
         end
         jbr_skater_full.merge!(category[0] => jbr_cat_arr)
@@ -86,7 +85,7 @@
         cat_mean = mean(goalie_stat_cat.first(200)) if category[0] == "l"
         jbr_cat_arr = goalie_cat_arr.map do |player|
            jbr = (player[1] - cat_mean) / cat_std
-           player[1] = p_table_get(jbr)
+           player[1] = p_table_get(jbr).to_i
            player
         end
         jbr_goalie_full.merge!(category[0] => jbr_cat_arr)

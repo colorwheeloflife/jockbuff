@@ -147,9 +147,16 @@ th,{
 .login {
   background-color: $brand-color-middark;
   border-color: $brand-color-middark;
-  margin-bottom: ($spacing-unit * 2);
+  margin-bottom: ($spacing-unit/2);
   margin-top: $spacing-unit;
 }
+
+.demo {
+  background-color: #777;
+  border-color: #777;
+  margin-bottom: $spacing-unit;
+}
+
 
 .lead {
   margin-top:$base-line-height;
