@@ -1,6 +1,0 @@
-require 'rubygems'
-require 'minitest/autorun'
-require 'shoulda'
-require 'mocha/setup'
-require 'blocks'
-require 'with_template'
